@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="サルベドTCG — ブラウザで遊べるオンライン対戦カードゲーム">
+<title>カードゲーム — サルベド漫画</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button class="nav-toggle" aria-label="メニュー">☰</button>
+<aside class="sidebar">
+  <a href="index.html" class="logo">サルベド漫画</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="about.html">チャンネル紹介</a>
+    <a href="videos.html">動画一覧</a>
+    <a href="game.html" class="active">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="blog.html">ブログ</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</aside>
+
+<div class="main-wrap">
+  <div class="page-content">
+    <h1>サルベドTCG</h1>
+    <p>サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べます。</p>
+
+    <div style="text-align:center;margin:32px 0;">
+      <a href="https://salvado-tcg.onrender.com" target="_blank" class="btn btn-primary" style="font-size:18px;padding:16px 40px;">今すぐ遊ぶ</a>
+    </div>
+
+    <h2>遊び方</h2>
+    <ul>
+      <li>ブラウザでアクセスするだけ。インストール不要</li>
+      <li>オンライン対戦・AI対戦に対応</li>
+      <li>デッキ構築で自分だけの戦略を組み立てよう</li>
+    </ul>
+
+    <h2>カード一覧</h2>
+    <p>ゲーム内に登場する全カードの一覧は<a href="https://salvado-tcg.onrender.com/cardlist/" target="_blank">こちら</a>から確認できます。</p>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="about.html">チャンネル紹介</a>
+        <a href="videos.html">動画一覧</a>
+        <a href="game.html">カードゲーム</a>
+        <a href="goods.html">グッズ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+</body>
+</html>
