@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="サルベド漫画の電子書籍一覧">
+<title>電子書籍 — サルベド漫画</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.ebook-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px;margin-top:24px;}
+.ebook-card{background:#16162a;border:1px solid #2a2a3a;border-radius:10px;overflow:hidden;transition:transform 0.2s,border-color 0.2s;}
+.ebook-card:hover{transform:translateY(-4px);border-color:#c0a860;}
+.ebook-cover{width:100%;aspect-ratio:7/10;object-fit:cover;display:block;background:#1a1a2e;}
+.ebook-info{padding:16px;}
+.ebook-info h3{font-size:15px;color:#f0e6d0;margin-bottom:10px;line-height:1.5;}
+.ebook-links{display:flex;flex-direction:column;gap:8px;}
+.ebook-links a{display:inline-block;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:bold;text-align:center;transition:all 0.2s;}
+.ebook-link-kindle{background:#f0c14b;color:#111;}.ebook-link-kindle:hover{background:#f5d060;color:#111;}
+.ebook-link-line{background:#06c755;color:#fff;}.ebook-link-line:hover{background:#08d960;color:#fff;}
+</style>
+</head>
+<body>
+
+<button class="nav-toggle" aria-label="メニュー">☰</button>
+<aside class="sidebar">
+  <a href="index.html" class="logo">サルベド漫画</a>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="about.html">チャンネル紹介</a>
+    <a href="videos.html">動画一覧</a>
+    <a href="game.html">カードゲーム</a>
+    <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
+    <a href="ebooks.html" class="active">電子書籍</a>
+    <a href="blog.html">ブログ</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</aside>
+
+<div class="main-wrap">
+  <div class="page-content">
+    <h1>電子書籍</h1>
+    <p>サルベド漫画の電子書籍作品はこちらからお読みいただけます。</p>
+
+    <div class="ebook-grid">
+      <div class="ebook-card">
+        <img class="ebook-cover" src="https://images-na.ssl-images-amazon.com/images/P/B0DR7CFBPM.09.LZZZZZZZ.jpg" alt="引っ込み思案の陰キャアイドルを褒めちぎったら「私、アイドルやめてアナタと結婚します！」">
+        <div class="ebook-info">
+          <h3>引っ込み思案の陰キャアイドルを褒めちぎったら「私、アイドルやめてアナタと結婚します！」</h3>
+          <div class="ebook-links">
+            <a href="https://www.amazon.co.jp/dp/B0DR7CFBPM" target="_blank" class="ebook-link-kindle">Kindleで読む</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ebook-card">
+        <img class="ebook-cover" src="https://cdn-manga-static-file-origin.ldf-static.net/router/indies_product/m_xIT3Jp25WllwMjzL9ZliKTDL.png" alt="褒め嫌い上司を褒めるのやめたら">
+        <div class="ebook-info">
+          <h3>褒め嫌い上司を褒めるのやめたら</h3>
+          <div class="ebook-links">
+            <a href="https://manga.line.me/indies/author/detail?author_id=12184" target="_blank" class="ebook-link-line">LINEマンガで読む</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="about.html">チャンネル紹介</a>
+        <a href="videos.html">動画一覧</a>
+        <a href="game.html">カードゲーム</a>
+        <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
+        <a href="ebooks.html">電子書籍</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+</body>
+</html>

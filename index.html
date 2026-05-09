@@ -17,7 +17,8 @@
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
     <a href="game.html">カードゲーム</a>
-    <a href="goods.html">グッズ</a>
+    <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">ブログ</a>
     <a href="news.html">お知らせ</a>
   </nav>
@@ -32,20 +33,14 @@
 
   <section class="section">
     <h2>最新動画</h2>
-    <div class="video-grid">
-      <div class="video-card">
-        <div class="video-thumb">
-          <iframe width="100%" height="100%" src="about:blank" data-src="" frameborder="0" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <p class="video-title">（動画タイトル）</p>
-      </div>
+    <div class="video-grid" id="latestVideos">
     </div>
     <div class="section-more"><a href="videos.html">すべての動画を見る →</a></div>
   </section>
 
   <section class="section section-dark">
     <div class="feature-grid-3col">
-      <a href="goods.html" class="feature-card feature-card-link feature-side">
+      <a href="https://sarubedo.booth.pm/" target="_blank" class="feature-card feature-card-link feature-side">
         <div class="feature-thumb"><!-- グッズのイラスト --></div>
         <h3>グッズ</h3>
       </a>
@@ -53,7 +48,7 @@
         <div class="feature-thumb"><!-- カードゲームのイラスト --></div>
         <h3>カードゲーム</h3>
       </a>
-      <a href="#" class="feature-card feature-card-link feature-side">
+      <a href="ebooks.html" class="feature-card feature-card-link feature-side">
         <div class="feature-thumb"><!-- 電子書籍のイラスト --></div>
         <h3>電子書籍</h3>
       </a>
@@ -75,7 +70,8 @@
         <a href="about.html">チャンネル紹介</a>
         <a href="videos.html">動画一覧</a>
         <a href="game.html">カードゲーム</a>
-        <a href="goods.html">グッズ</a>
+        <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
+        <a href="ebooks.html">電子書籍</a>
         <a href="blog.html">ブログ</a>
         <a href="news.html">お知らせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
@@ -85,6 +81,38 @@
   </footer>
 </div>
 
-<script>document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.sidebar').classList.toggle('open');});</script>
+<script>
+document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.sidebar').classList.toggle('open');});
+
+(function(){
+  var channels = [
+    { id: 'UCd8vNU9GdaDJF-jLDyWWvMw', name: 'サルベド漫画' },
+    { id: 'UCXU7pjSKDNHAFKf36YxntMw', name: 'サルベド漫画Emotional' },
+    { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画ファンタジー' }
+  ];
+  var container = document.getElementById('latestVideos');
+  channels.forEach(function(ch) {
+    var url = 'https://corsproxy.io/?' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + ch.id);
+    fetch(url).then(function(r) { return r.text(); }).then(function(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var entry = doc.querySelector('entry');
+      if (!entry) return;
+      var videoId = entry.querySelector('videoId') ? entry.querySelector('videoId').textContent : '';
+      var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
+      var card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = '<div class="video-thumb"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen loading="lazy"></iframe></div>' +
+        '<p class="video-title" style="font-size:12px;margin-top:6px;color:#ccc;">' + ch.name + '</p>' +
+        '<p class="video-title" style="font-size:13px;margin-top:2px;">' + title + '</p>';
+      container.appendChild(card);
+    }).catch(function() {
+      var card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = '<div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">読み込めませんでした</div><p class="video-title">' + ch.name + '</p>';
+      container.appendChild(card);
+    });
+  });
+})();
+</script>
 </body>
 </html>
