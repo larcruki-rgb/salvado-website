@@ -74,7 +74,7 @@ document.querySelector(".nav-toggle").addEventListener("click",function(){docume
     section.appendChild(link);
     container.appendChild(section);
 
-    var feedUrl = 'https://corsproxy.org/?url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + ch.id);
+    var feedUrl = 'https://game.sarubedo.jp/yt-feed?id=' + ch.id;
     fetch(feedUrl).then(function(r) { return r.text(); }).then(function(xml) {
       var doc = new DOMParser().parseFromString(xml, 'text/xml');
       var entries = doc.querySelectorAll('entry');
