@@ -94,7 +94,7 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
   ];
   var container = document.getElementById('latestVideos');
   channels.forEach(function(ch) {
-    var url = 'https://corsproxy.io/?' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + ch.id);
+    var url = 'https://corsproxy.org/?url=' + encodeURIComponent('https://www.youtube.com/feeds/videos.xml?channel_id=' + ch.id);
     fetch(url).then(function(r) { return r.text(); }).then(function(xml) {
       var doc = new DOMParser().parseFromString(xml, 'text/xml');
       var entry = doc.querySelector('entry');
