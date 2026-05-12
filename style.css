@@ -50,7 +50,7 @@ nav a.active{color:#f0e6d0;border-left-color:#c0a860;background:rgba(192,168,96,
 .blog-list{display:flex;flex-direction:column;gap:20px;}
 .blog-entry{display:flex;gap:20px;background:#1a1a2e;border:1px solid #2a2a3a;border-radius:12px;overflow:hidden;text-decoration:none;transition:transform 0.2s;}
 .blog-entry:hover{transform:translateY(-2px);}
-.blog-entry-img{width:200px;min-height:140px;object-fit:cover;flex-shrink:0;}
+.blog-entry-img{width:160px;height:120px;object-fit:cover;flex-shrink:0;}
 .blog-entry-body{padding:16px;display:flex;flex-direction:column;justify-content:center;}
 .blog-entry-body h3{font-size:18px;color:#f0e6d0;margin-bottom:6px;}
 .blog-entry-author{font-size:13px;color:#c0a860;margin-bottom:8px;}
