@@ -93,12 +93,12 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
     { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画Fantasy' }
   ];
   var container = document.getElementById('latestVideos');
-  channels.forEach(function(ch) {
+  function loadLatest(ch, retries) {
     var url = 'https://game.sarubedo.jp/yt-feed?id=' + ch.id;
-    fetch(url).then(function(r) { return r.text(); }).then(function(xml) {
+    fetch(url).then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function(xml) {
       var doc = new DOMParser().parseFromString(xml, 'text/xml');
       var entry = doc.querySelector('entry');
-      if (!entry) return;
+      if (!entry) { if (retries > 0) { setTimeout(function() { loadLatest(ch, retries - 1); }, 3000); } return; }
       var videoId = entry.querySelector('videoId') ? entry.querySelector('videoId').textContent : '';
       var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
       var card = document.createElement('div');
@@ -108,12 +108,14 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
         '<p class="video-title" style="font-size:13px;margin-top:2px;">' + title + '</p>';
       container.appendChild(card);
     }).catch(function() {
+      if (retries > 0) { setTimeout(function() { loadLatest(ch, retries - 1); }, 3000); return; }
       var card = document.createElement('div');
       card.className = 'video-card';
       card.innerHTML = '<div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">読み込めませんでした</div><p class="video-title">' + ch.name + '</p>';
       container.appendChild(card);
     });
-  });
+  }
+  channels.forEach(function(ch) { loadLatest(ch, 2); });
 })();
 </script>
 </body>
