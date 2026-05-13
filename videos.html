@@ -94,13 +94,13 @@ document.querySelector(".nav-toggle").addEventListener("click",function(){docume
         if (count === 0 && retries > 0) {
           setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
         } else if (count === 0) {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">動画がありません</div></div>';
+          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
         }
       }).catch(function() {
         if (retries > 0) {
           setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
         } else {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">読み込めませんでした</div></div>';
+          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
         }
       });
     }
