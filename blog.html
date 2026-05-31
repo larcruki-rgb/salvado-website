@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -6,32 +6,33 @@
 <meta name="description" content="サルベド漫画の作品・連載">
 <title>作品・連載 — サルベド漫画</title>
 <link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html">ホーム</a>
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html" class="active">作品・連載</a>
-    <a href="news.html">お知らせ</a>
-    <a href="contact.html">お問い合わせ</a>
   </nav>
-</aside>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
 
 <div class="main-wrap">
   <div class="page-content">
     <h1>作品・連載</h1>
-    <p>サルベド漫画の裏話や制作秘話などを不定期で更新します。</p>
+    <p>サルベド漫画の作品・連載一覧。各作品の制作裏話や更新情報を掲載しています。</p>
 
     <div class="blog-list">
       <a href="blog-sakamachi.html" class="blog-entry">
@@ -43,18 +44,17 @@
         </div>
       </a>
       <a href="blog-shinigami.html" class="blog-entry">
-        <img src="img/blog/shinigami01_header.jpg" alt="死神少女" class="blog-entry-img">
+        <img src="img/blog/shinigami01_header.jpg" alt="死神少女【原稿Ver】" class="blog-entry-img">
         <div class="blog-entry-body">
           <h3>死神少女【原稿Ver】</h3>
-          <p class="blog-entry-summary">寿命と引き換えに願いを叶える死神と、フリーター・ジュンとの切ない物語が始まる…</p>
+          <p class="blog-entry-summary">寿命と引き換えに願いを叶える死神と、バイトのジョーンを描く、切なくも温かい連載作品。</p>
           <p style="font-size:12px;color:#888;margin-top:6px;">記事 9本</p>
         </div>
       </a>
       <a href="blog-botsu.html" class="blog-entry">
-        <div class="blog-entry-img" style="background:linear-gradient(135deg,#2a2a3a 0%,#1a1a2e 100%);display:flex;align-items:center;justify-content:center;color:#c0a860;font-size:18px;font-weight:bold;letter-spacing:2px;">ボツの館</div>
         <div class="blog-entry-body">
           <h3>ボツの館</h3>
-          <p class="blog-entry-summary">過去サルベド漫画でボツシナリオになり散っていった作品達です</p>
+          <p class="blog-entry-summary">過去作で没になった構想・お蔵入りシナリオたちを供養する場所。</p>
           <p style="font-size:12px;color:#888;margin-top:6px;">記事 2本</p>
         </div>
       </a>
@@ -64,11 +64,6 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -77,6 +72,6 @@
   </footer>
 </div>
 
-<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});</script>
 </body>
 </html>

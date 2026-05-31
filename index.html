@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -6,62 +6,147 @@
 <meta name="description" content="サルベド漫画 公式サイト — 漫画動画・カードゲーム・グッズ情報">
 <title>サルベド漫画 公式サイト</title>
 <link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<style>
+/* ========================================
+   最新動画カルーセル — 全幅固定（こだわりサイズ）
+   ⚠ ここは絶対に変えない。他のCSSより最優先で動く。
+   ======================================== */
+:root{
+  --thumb-edge:500px;   /* 画面端からの余白（500=好みの確定値） */
+  --card-title-fs:14px;
+  --card-chname-fs:13px;
+  --header-to-videos:18px;  /* メニューバー⇔最新動画の間隔 */
+  --card-w:68%;          /* 1枚あたり幅（％ or px。％は表示エリア比） */
+  --vid-x:0px;           /* 動画エリアの左右オフセット */
+  --vid-y:0px;           /* 動画エリアの上下オフセット */
+}
+/* セクション全幅化 */
+.section-wide{max-width:none!important;padding:var(--header-to-videos) 0 20px!important;}
+/* #latestVideos に video-grid クラスが付いてるが、display:grid を無効化して全幅で使う */
+#latestVideos{display:block!important;position:relative!important;overflow:hidden!important;padding:6px var(--thumb-edge) 18px!important;max-width:none!important;width:100%!important;margin:0 auto!important;grid-template-columns:none!important;gap:0!important;transform:translate(var(--vid-x,0),var(--vid-y,0));}
+#latestVideos .video-grid-track{display:flex!important;width:100%!important;gap:14px!important;animation:latestMarquee var(--marquee-duration,20s) linear infinite;}
+#latestVideos:hover .video-grid-track{animation-play-state:paused;}
+@keyframes latestMarquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(calc(-1 * var(--marquee-count,4) * var(--card-w,30%) - var(--marquee-count,4) * 14px));}
+}
+#latestVideos .video-grid-track .video-card{flex:0 0 var(--card-w,30%)!important;width:var(--card-w,30%)!important;max-width:none!important;box-shadow:0 6px 18px rgba(0,0,0,0.18)!important;border-radius:12px!important;border:none!important;}
+#latestVideos .video-grid-track .video-card .video-thumb{width:100%!important;max-width:none!important;aspect-ratio:16/9!important;margin:0!important;position:relative!important;background:#000!important;overflow:hidden!important;}
+.video-chname{font-size:var(--card-chname-fs);margin-top:8px;color:#888;text-align:center;}
+.video-vidtitle{font-size:var(--card-title-fs);margin-top:4px;line-height:1.5;text-align:center;font-family:'Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;font-weight:700;color:#000;letter-spacing:0.5px;padding:4px 12px 8px;}
+
+/* サムネ画像方式（YouTubeロゴ無し版） */
+#latestVideos .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;}
+#latestVideos .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
+#latestVideos .video-thumb-poster:hover img{transform:scale(1.03);}
+#latestVideos .video-thumb-poster .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.85);width:96px;height:96px;border-radius:50%;background:#00DFD8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:38px;padding-left:6px;box-shadow:0 6px 20px rgba(0,0,0,0.3);font-weight:800;opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;}
+#latestVideos .video-thumb-poster:hover .video-play-btn{opacity:1;transform:translate(-50%,-50%) scale(1);}
+#latestVideos .video-grid-track .video-card.is-past::after{content:'PAST PICK';position:absolute;top:8px;right:8px;background:#6FDFD6;color:#0a3d3a;font-size:10px;font-weight:800;padding:3px 8px;border-radius:3px;letter-spacing:1px;z-index:2;}
+#latestVideos .video-grid-track .video-card{position:relative;}
+#latestVideos .carousel-arrow{display:none!important;}
+#latestVideos .carousel-arrow-old{position:absolute;top:calc(50% - 30px);transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.97);border:1px solid #e0e0e0;box-shadow:0 4px 14px rgba(0,0,0,0.12);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#333;z-index:3;transition:all 0.2s;}
+#latestVideos .carousel-arrow:hover:not(:disabled){background:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.18);}
+#latestVideos .carousel-arrow.prev{left:6px;}
+#latestVideos .carousel-arrow.next{right:6px;}
+#latestVideos .carousel-arrow:disabled{opacity:0.25;cursor:default;}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:20px;}
+.carousel-dot{width:32px;height:4px;background:#ddd;border:none;cursor:pointer;border-radius:2px;transition:background 0.2s,transform 0.2s;padding:0;}
+.carousel-dot:hover{background:#aaa;}
+.carousel-dot.active{background:#6FDFD6;transform:scaleY(1.5);}
+
+@media(max-width:700px){
+  #latestVideos{padding:0 36px;}
+  #latestVideos .video-grid-track .video-card{flex:0 0 100%;}
+  #latestVideos .carousel-arrow{width:40px;height:40px;font-size:16px;}
+  #latestVideos .carousel-arrow.prev{left:0;}
+  #latestVideos .carousel-arrow.next{right:0;}
+}
+
+/* 動画背景を白に＆サイズ調整（index.html限定） */
+.main-video{background:#fff!important;}
+.video-stage{max-width:850px!important;aspect-ratio:21/9!important;}
+.video-title-bar{max-width:850px!important;}
+
+/* === お知らせ（上位3件） === */
+.news-top3{list-style:none;margin:0;}
+.news-top3 li{padding:14px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.news-top3 li:last-child{border-bottom:none;}
+.news-top3 .news-date{font-size:12px;color:#888;min-width:90px;letter-spacing:1px;}
+.news-top3 .news-tag{font-size:11px;background:#F0E6CC;color:#7A5D00;padding:3px 10px;border-radius:3px;letter-spacing:1px;font-weight:800;}
+.news-top3 a{font-size:14px;color:#222;font-weight:600;flex:1;min-width:200px;}
+.news-top3 a:hover{color:#00DFD8;}
+
+/* === 作品・連載 誘導バナー（仮） === */
+.blog-banner-wrap{max-width:1100px;padding:30px 32px;}
+.blog-banner{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+.blog-banner:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
+.blog-banner-image{aspect-ratio:4/3;background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;}
+.blog-banner-placeholder{padding:24px;text-align:center;}
+.blog-banner-text{padding:32px 36px;display:flex;flex-direction:column;justify-content:center;}
+.blog-banner-label{font-size:11px;color:#888;letter-spacing:3px;margin-bottom:8px;font-weight:800;}
+.blog-banner-text h2{font-size:24px;color:#1a1a1a;font-weight:900;letter-spacing:2px;margin-bottom:14px;}
+.blog-banner-desc{font-size:13px;color:#666;line-height:1.8;margin-bottom:18px;}
+.blog-banner-cta{font-size:13px;color:#00DFD8;font-weight:800;letter-spacing:2px;display:inline-flex;align-items:center;}
+
+/* === 3コンテンツ === */
+.feature-3-wrap{max-width:1100px;padding:50px 32px;}
+.feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
+.feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.feature-3-card{background:#fff;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
+.feature-3-card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
+.feature-3-thumb{aspect-ratio:4/3;background:#f5f5f5;overflow:hidden;}
+.feature-3-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
+.feature-3-card:hover .feature-3-thumb img{transform:scale(1.04);}
+.feature-3-body{padding:20px 22px;display:flex;flex-direction:column;flex:1;}
+.feature-3-tag{display:inline-block;font-size:10px;font-weight:900;background:#0a3d3a;color:#fff;padding:3px 10px;border-radius:3px;letter-spacing:2px;margin-bottom:10px;align-self:flex-start;}
+.feature-3-card h3{font-size:18px;font-weight:900;color:#1a1a1a;letter-spacing:2px;margin-bottom:8px;}
+.feature-3-card p{font-size:13px;color:#666;line-height:1.7;margin-bottom:14px;flex:1;}
+.feature-3-cta{font-size:12px;color:#00DFD8;font-weight:800;letter-spacing:1px;}
+
+@media(max-width:760px){
+  .blog-banner{grid-template-columns:1fr;}
+  .blog-banner-image{aspect-ratio:16/9;}
+  .blog-banner-text{padding:24px 22px;}
+  .feature-3-grid{grid-template-columns:1fr;gap:16px;}
+}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html" class="active">ホーム</a>
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">作品・連載</a>
-    <a href="news.html">お知らせ</a>
-    <a href="contact.html">お問い合わせ</a>
   </nav>
-</aside>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
 
 <div class="main-wrap">
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>サルベド漫画 公式HP</h1>
-    </div>
-  </section>
-
-  <section class="section">
+  <section class="latest-title">
     <h2>最新動画</h2>
+    <p class="en">LATEST VIDEOS</p>
+  </section>
+  <section class="section section-wide">
     <div class="video-grid" id="latestVideos">
     </div>
     <div class="section-more"><a href="videos.html">すべての動画を見る →</a></div>
   </section>
 
-  <section class="section section-dark">
-    <div class="feature-grid-3col">
-      <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer" class="feature-card feature-card-link feature-side">
-        <div class="feature-thumb"><img src="img-goods.png" alt="グッズ"></div>
-        <h3>グッズ</h3>
-      </a>
-      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="feature-card feature-card-link feature-center">
-        <div class="feature-thumb"><img src="img-card.png" alt="カードゲーム"></div>
-        <h3>カードゲーム</h3>
-      </a>
-      <a href="ebooks.html" class="feature-card feature-card-link feature-side">
-        <div class="feature-thumb"><img src="https://images-na.ssl-images-amazon.com/images/P/B0DR7CFBPM.09.LZZZZZZZ.jpg" alt="電子書籍"></div>
-        <h3>電子書籍</h3>
-      </a>
-    </div>
-  </section>
-
   <section class="section">
     <h2>お知らせ</h2>
-    <ul class="news-list">
+    <ul class="news-list news-top3" id="newsTop3">
       <li><span class="news-date">2026.05.24</span><span class="news-tag">サイト</span><a href="contact.html">お問い合わせページを追加しました</a></li>
       <li><span class="news-date">2026.05.24</span><span class="news-tag">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を各話個別ページに対応しました</a></li>
       <li><span class="news-date">2026.05.23</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームのカードデザインリニューアル準備中</a></li>
@@ -69,16 +154,58 @@
     <div class="section-more"><a href="news.html">お知らせ一覧 →</a></div>
   </section>
 
+  <!-- 作品・連載 誘導バナー（仮レイアウト） -->
+  <section class="section blog-banner-wrap">
+    <a href="blog.html" class="blog-banner">
+      <div class="blog-banner-image">
+        <span class="blog-banner-placeholder">バナー画像（仮）</span>
+      </div>
+      <div class="blog-banner-text">
+        <p class="blog-banner-label">SARUBEDO MANGA / WORKS &amp; SERIES</p>
+        <h2>ホームページ限定作品、多数公開中！</h2>
+        <p class="blog-banner-desc">連載作品「死神少女」、作画担当・坂街透のブログ、ボツ作品集など。<br>サルベド漫画の作品世界の裏側へ。</p>
+        <span class="blog-banner-cta">読みに行く →</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- 3コンテンツ カードゲーム / 電子書籍 / グッズ -->
+  <section class="section feature-3-wrap">
+    <h2 class="feature-3-heading">CONTENTS</h2>
+    <div class="feature-3-grid">
+      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img-card.png" alt="カードゲーム"></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">GAME</span>
+          <h3>カードゲーム</h3>
+          <p>サルベド漫画オリジナルのカードゲーム。ブラウザ上ですぐ遊べる。</p>
+          <span class="feature-3-cta">プレイする →</span>
+        </div>
+      </a>
+      <a href="ebooks.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="https://images-na.ssl-images-amazon.com/images/P/B0DR7CFBPM.09.LZZZZZZZ.jpg" alt="電子書籍"></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">BOOKS</span>
+          <h3>電子書籍</h3>
+          <p>Kindle・各電子書店で配信中のサルベド漫画作品集。</p>
+          <span class="feature-3-cta">一覧を見る →</span>
+        </div>
+      </a>
+      <a href="goods.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img-goods.png" alt="グッズ"></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">GOODS</span>
+          <h3>グッズ</h3>
+          <p>BOOTH・LINEスタンプで販売中のオフィシャルグッズ。</p>
+          <span class="feature-3-cta">ラインナップを見る →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-        <a href="ebooks.html">電子書籍</a>
-        <a href="blog.html">作品・連載</a>
-        <a href="news.html">お知らせ</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -88,47 +215,130 @@
 </div>
 
 <script>
-document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelector('.sidebar').classList.toggle('open');});
+document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelectorAll('.site-header nav').forEach(function(n){n.classList.toggle('open');});});
+
+/* === お知らせ：news.html から上位3件を取得 === */
+(function(){
+  var target = document.getElementById('newsTop3');
+  if (!target) return;
+  fetch('news.html')
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function(html){
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var items = doc.querySelectorAll('.news-list li');
+      if (!items.length) return;
+      var top3 = Array.prototype.slice.call(items, 0, 3);
+      target.innerHTML = '';
+      top3.forEach(function(li){ target.appendChild(li.cloneNode(true)); });
+    })
+    .catch(function(){
+      /* fetch失敗時はHTMLに直接書いた静的フォールバックを維持 */
+    });
+})();
 
 (function(){
+  var MAIN_CH = { id: 'UCd8vNU9GdaDJF-jLDyWWvMw', name: 'サルベド漫画', latestCount: 2 };
   var channels = [
-    { id: 'UCd8vNU9GdaDJF-jLDyWWvMw', name: 'サルベド漫画' },
-    { id: 'UCXU7pjSKDNHAFKf36YxntMw', name: 'サルベド漫画Emotional' },
-    { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画Fantasy' }
+    MAIN_CH,
+    { id: 'UCXU7pjSKDNHAFKf36YxntMw', name: 'サルベド漫画Emotional', latestCount: 1 },
+    { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画Fantasy', latestCount: 1 }
   ];
-  var container = document.getElementById('latestVideos');
-  channels.forEach(function(ch) {
-    var ph = document.createElement('div'); ph.className = 'video-card'; ph.id = 'ph-' + ch.id;
-    ph.innerHTML = '<div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">読み込み中...</div><p class="video-title">' + ch.name + '</p>';
-    container.appendChild(ph);
-  });
-  function loadLatest(ch, retries) {
-    var url = 'https://game.sarubedo.jp/yt-feed?id=' + ch.id;
-    fetch(url).then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function(xml) {
-      var doc = new DOMParser().parseFromString(xml, 'text/xml');
-      var entry = doc.querySelector('entry');
-      if (!entry) {
-        if (retries > 0) { setTimeout(function() { loadLatest(ch, retries - 1); }, 5000); } else {
-          var ph = document.getElementById('ph-' + ch.id);
-          if (ph) ph.innerHTML = '<div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div><p class="video-title">' + ch.name + '</p>';
-        } return;
-      }
-      var ph = document.getElementById('ph-' + ch.id); if (ph) ph.remove();
-      var videoId = entry.querySelector('videoId') ? entry.querySelector('videoId').textContent : '';
-      var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
-      var card = document.createElement('div');
-      card.className = 'video-card';
-      card.innerHTML = '<div class="video-thumb"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen loading="lazy"></iframe></div>' +
-        '<p class="video-title" style="font-size:12px;margin-top:6px;color:#ccc;">' + ch.name + '</p>' +
-        '<p class="video-title" style="font-size:13px;margin-top:2px;">' + title + '</p>';
-      container.appendChild(card);
-    }).catch(function() {
-      if (retries > 0) { setTimeout(function() { loadLatest(ch, retries - 1); }, 5000); return; }
-      var ph = document.getElementById('ph-' + ch.id);
-      if (ph) ph.innerHTML = '<div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div><p class="video-title">' + ch.name + '</p>';
-    });
+
+  // --- 最新動画カルーセル（各チャンネル最新2本 + 過去動画ランダム1本） ---
+  var gridEl = document.getElementById('latestVideos');
+  var container = document.createElement('div');
+  container.className = 'video-grid-track';
+  gridEl.appendChild(container);
+
+  function fetchChannel(ch, latestCount){
+    return fetch('https://game.sarubedo.jp/yt-feed?id=' + ch.id)
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(xml){
+        var doc = new DOMParser().parseFromString(xml, 'text/xml');
+        var entries = doc.querySelectorAll('entry');
+        var latest = [], past = [];
+        for (var i = 0; i < entries.length; i++){
+          var e = entries[i];
+          var vid = e.querySelector('videoId') ? e.querySelector('videoId').textContent : '';
+          var ttl = e.querySelector('title') ? e.querySelector('title').textContent : '';
+          if (!vid) continue;
+          var item = {videoId:vid, title:ttl, chName:ch.name};
+          if (i < latestCount) latest.push(item); else past.push(item);
+        }
+        return {latest:latest, past:past};
+      })
+      .catch(function(){ return {latest:[], past:[]}; });
   }
-  channels.forEach(function(ch) { loadLatest(ch, 3); });
+
+  function buildCard(v, isPast){
+    var card = document.createElement('div');
+    card.className = 'video-card' + (isPast ? ' is-past' : '');
+    var safeTitle = v.title.replace(/"/g, '&quot;');
+    card.innerHTML = '<div class="video-thumb">' +
+        '<div class="video-thumb-poster" data-id="' + v.videoId + '">' +
+          '<img src="https://i.ytimg.com/vi/' + v.videoId + '/hqdefault.jpg" alt="' + safeTitle + '" loading="lazy" onerror="this.src=\'https://i.ytimg.com/vi/' + v.videoId + '/mqdefault.jpg\'">' +
+          '<div class="video-play-btn">▶</div>' +
+        '</div>' +
+      '</div>' +
+      '<p class="video-chname">' + v.chName + '</p>' +
+      '<p class="video-vidtitle">' + v.title + '</p>';
+    return card;
+  }
+
+  // クリック委譲：本物カードでもクローンでも .video-thumb-poster クリックで再生
+  container.addEventListener('click', function(e){
+    var poster = e.target.closest('.video-thumb-poster');
+    if (!poster) return;
+    var id = poster.dataset.id;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('frameborder', '0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    poster.parentNode.replaceChild(iframe, poster);
+  });
+
+  Promise.all(channels.map(function(ch){ return fetchChannel(ch, ch.latestCount); }))
+    .then(function(results){
+      var all = [], pastPool = [];
+      results.forEach(function(r){
+        r.latest.forEach(function(v){ all.push({v:v, past:false}); });
+        pastPool = pastPool.concat(r.past);
+      });
+      if (pastPool.length){
+        var rnd = pastPool[Math.floor(Math.random() * pastPool.length)];
+        all.push({v:rnd, past:true});
+      }
+      container.innerHTML = '';
+      all.forEach(function(item){ container.appendChild(buildCard(item.v, item.past)); });
+      if (container.children.length === 0){
+        container.innerHTML = '<p style="padding:20px;color:#888;text-align:center;width:100%;">最新動画を取得できませんでした。<a href="javascript:location.reload()">再読み込み</a></p>';
+        return;
+      }
+      initCarousel();
+    });
+
+  function initCarousel(){
+    var realCount = container.children.length;
+    if (realCount < 1) return;
+
+    // 継ぎ目なしマーキー：本物セットを末尾に複製
+    var originals = Array.prototype.slice.call(container.children);
+    originals.forEach(function(card){
+      container.appendChild(card.cloneNode(true));
+    });
+
+    // CSS変数：移動距離は本物枚数ぶん、速度は本物枚数×5秒
+    var SECONDS_PER_CARD = 5;
+    document.documentElement.style.setProperty('--marquee-count', realCount);
+    document.documentElement.style.setProperty('--marquee-duration', (SECONDS_PER_CARD * realCount) + 's');
+
+    // アニメ再起動（変数を確実に反映）
+    container.style.animation = 'none';
+    void container.offsetWidth;
+    container.style.animation = '';
+  }
 })();
 </script>
 </body>
