@@ -42,18 +42,6 @@
 .channel-icon .icon-circle img{width:100%;height:100%;object-fit:cover;display:block;}
 .channel-icon .name{font-size:var(--ci-name-fs);font-weight:800;color:#1a1a1a;letter-spacing:var(--ci-name-ls);text-align:center;font-family:'Murecho',sans-serif;}
 
-/* === サイズ調整パネル === */
-.size-panel{position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(255,255,255,0.98);border:1px solid #ccc;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,0.22);font-size:13px;width:320px;font-family:sans-serif;max-height:calc(100vh - 40px);overflow-y:auto;}
-.size-panel-toggle{background:#6FDFD6;color:#0a3d3a;border:none;width:100%;padding:12px;font-weight:800;cursor:pointer;border-radius:10px;font-size:15px;letter-spacing:2px;}
-.size-panel.open .size-panel-toggle{border-radius:10px 10px 0 0;}
-.size-panel-body{display:none;padding:16px;color:#333;}
-.size-panel.open .size-panel-body{display:block;}
-.sp-title{font-size:12px;font-weight:800;color:#6FDFD6;background:#0a3d3a;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;letter-spacing:2px;}
-.size-panel label{display:block;margin-bottom:14px;font-size:13px;}
-.size-panel .lbl{font-weight:700;color:#222;}
-.size-panel .val{font-weight:800;color:#0a3d3a;float:right;font-size:14px;background:#f0fdfb;padding:1px 8px;border-radius:3px;}
-.size-panel input[type=range]{width:100%;margin:8px 0 0;}
-
 @media(max-width:900px){
   .about-us-channels{grid-template-columns:repeat(2,1fr);gap:36px;}
 }
@@ -68,28 +56,6 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
-
-<div id="sizePanel" class="size-panel">
-  <button class="size-panel-toggle" id="sizePanelToggle">⚙ サイズ調整</button>
-  <div class="size-panel-body">
-    <p class="sp-title">ABOUT US タイトル</p>
-    <label><span class="lbl">ページ上余白（タイトル位置）</span><span class="val" id="v-hero-pad-top">36</span>px<input type="range" min="0" max="200" step="2" value="36" data-var="--hero-pad-top" data-unit="px"></label>
-    <label><span class="lbl">タイトル文字サイズ</span><span class="val" id="v-hero-title-fs">56</span>px<input type="range" min="24" max="96" step="2" value="56" data-var="--hero-title-fs" data-unit="px"></label>
-    <label><span class="lbl">タイトル字間</span><span class="val" id="v-hero-title-ls">12</span>px<input type="range" min="0" max="30" step="1" value="12" data-var="--hero-title-ls" data-unit="px"></label>
-    <label><span class="lbl">タイトル⇔説明文の隙間</span><span class="val" id="v-hero-mb">32</span>px<input type="range" min="0" max="160" step="2" value="32" data-var="--hero-mb" data-unit="px"></label>
-    <p class="sp-title">説明文</p>
-    <label><span class="lbl">説明文の上余白（追加調整）</span><span class="val" id="v-intro-mt">12</span>px<input type="range" min="-40" max="80" step="2" value="12" data-var="--intro-mt" data-unit="px"></label>
-    <label><span class="lbl">説明文⇔アイコンの隙間</span><span class="val" id="v-intro-mb">40</span>px<input type="range" min="0" max="160" step="2" value="40" data-var="--intro-mb" data-unit="px"></label>
-    <label><span class="lbl">説明文文字サイズ</span><span class="val" id="v-intro-fs">14</span>px<input type="range" min="11" max="22" step="1" value="14" data-var="--intro-fs" data-unit="px"></label>
-    <label><span class="lbl">説明文行間</span><span class="val" id="v-intro-lh">1.9</span><input type="range" min="1.2" max="2.6" step="0.05" value="1.9" data-var="--intro-lh" data-unit=""></label>
-    <p class="sp-title">チャンネルアイコン</p>
-    <label><span class="lbl">アイコン円のサイズ</span><span class="val" id="v-ci-size">180</span>px<input type="range" min="80" max="280" step="2" value="180" data-var="--ci-size" data-unit="px"></label>
-    <label><span class="lbl">アイコン間の隙間</span><span class="val" id="v-ci-gap">30</span>px<input type="range" min="0" max="100" step="2" value="30" data-var="--ci-gap" data-unit="px"></label>
-    <label><span class="lbl">名前⇔アイコンの隙間</span><span class="val" id="v-ci-name-mt">13</span>px<input type="range" min="0" max="40" step="1" value="13" data-var="--ci-name-mt" data-unit="px"></label>
-    <label><span class="lbl">チャンネル名文字サイズ</span><span class="val" id="v-ci-name-fs">14</span>px<input type="range" min="10" max="24" step="1" value="14" data-var="--ci-name-fs" data-unit="px"></label>
-    <label><span class="lbl">チャンネル名文字間隔</span><span class="val" id="v-ci-name-ls">2</span>px<input type="range" min="0" max="6" step="0.5" value="2" data-var="--ci-name-ls" data-unit="px"></label>
-  </div>
-</div>
 
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
@@ -157,22 +123,6 @@
 <script>
 document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
-/* === サイズパネル開閉＋スライダー === */
-(function(){
-  var panel = document.getElementById('sizePanel');
-  var toggle = document.getElementById('sizePanelToggle');
-  if (panel && toggle) toggle.addEventListener('click', function(){ panel.classList.toggle('open'); });
-  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
-    s.addEventListener('input', function(){
-      var v = this.value;
-      var unit = this.dataset.unit !== undefined ? this.dataset.unit : 'px';
-      document.documentElement.style.setProperty(this.dataset.var, v + unit);
-      var id = 'v-' + this.dataset.var.replace('--','');
-      var el = document.getElementById(id);
-      if (el) el.textContent = v;
-    });
-  });
-})();
 </script>
 </body>
 </html>
