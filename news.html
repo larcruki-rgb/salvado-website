@@ -1,36 +1,61 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="サルベド漫画のお知らせ・更新情報">
 <title>お知らせ — サルベド漫画</title>
-<link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css?v=2">
+<style>
+.page-content{width:100%!important;box-sizing:border-box;}
+.news-tabs{display:flex;width:100%;margin:24px 0 28px;box-sizing:border-box;}
+.news-tab{flex:1 1 0;min-width:0;padding:14px 8px;background:#fff;border:1.5px solid #1a1a1a;border-right-width:0;color:#1a1a1a;font-weight:800;font-size:13px;letter-spacing:3px;cursor:pointer;transition:all 0.2s;font-family:inherit;text-align:center;box-sizing:border-box;}
+.news-tab:last-child{border-right-width:1.5px;}
+.news-tab.active{background:#1a1a1a;color:#fff;}
+.news-tab:hover:not(.active){background:#f5f5f5;}
+.news-list.is-hidden{display:none;}
+.news-empty{padding:24px 0;color:#888;text-align:center;font-size:14px;}
+@media(max-width:600px){
+  .news-tabs{flex-wrap:wrap;}
+  .news-tab{flex:1 1 50%;}
+  .news-tab:nth-child(2){border-right-width:1.5px;}
+  .news-tab:nth-child(3),.news-tab:nth-child(4){border-top-width:0;}
+}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html">ホーム</a>
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">作品・連載</a>
+  </nav>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
     <a href="news.html" class="active">お知らせ</a>
   </nav>
-</aside>
+</header>
 
 <div class="main-wrap">
   <div class="page-content">
     <h1>お知らせ</h1>
-    <ul class="news-list">
+    <div class="news-tabs" id="newsTabs">
+      <button class="news-tab active" data-filter="all">すべて</button>
+      <button class="news-tab" data-filter="サイト">サイト</button>
+      <button class="news-tab" data-filter="ブログ">ブログ</button>
+      <button class="news-tab" data-filter="ゲーム">ゲーム</button>
+    </div>
+    <p class="news-empty" id="newsEmpty" hidden>該当するお知らせはありません</p>
+    <ul class="news-list" id="newsList">
       <li><span class="news-date">2026.05.24</span><span class="news-tag">サイト</span><a href="contact.html">お問い合わせページを追加しました</a></li>
       <li><span class="news-date">2026.05.24</span><span class="news-tag">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を各話個別ページに対応しました</a></li>
       <li><span class="news-date">2026.05.23</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームのカードデザインリニューアル準備中</a></li>
@@ -44,11 +69,6 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -57,6 +77,37 @@
   </footer>
 </div>
 
-<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+<script>
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+
+/* === タブで絞り込み === */
+(function(){
+  var tabs = document.getElementById('newsTabs');
+  var list = document.getElementById('newsList');
+  var empty = document.getElementById('newsEmpty');
+  if (!tabs || !list) return;
+  var items = Array.prototype.slice.call(list.querySelectorAll('li'));
+
+  function applyFilter(filter){
+    var shown = 0;
+    items.forEach(function(li){
+      var tag = li.querySelector('.news-tag');
+      var match = filter === 'all' || (tag && tag.textContent.trim() === filter);
+      li.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    if (empty) empty.hidden = shown !== 0;
+    list.classList.toggle('is-hidden', shown === 0);
+  }
+
+  tabs.querySelectorAll('.news-tab').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      tabs.querySelectorAll('.news-tab').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      applyFilter(this.dataset.filter);
+    });
+  });
+})();
+</script>
 </body>
 </html>

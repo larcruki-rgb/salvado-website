@@ -1,49 +1,89 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="サルベド漫画へのお問い合わせ">
+<meta name="description" content="サルベド漫画へのお問い合わせ・お仕事のご依頼はこちらから">
 <title>お問い合わせ — サルベド漫画</title>
-<link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css?v=2">
+<style>
+.contact-form{max-width:640px;margin:24px auto 0;}
+.contact-form .field{margin-bottom:18px;}
+.contact-form label{display:block;font-size:14px;font-weight:700;color:#222;margin-bottom:6px;}
+.contact-form .req{color:#c0392b;font-size:12px;margin-left:4px;}
+.contact-form input[type=text],
+.contact-form input[type=email],
+.contact-form select,
+.contact-form textarea{width:100%;padding:10px 12px;border:1px solid #ccc;border-radius:6px;font-size:14px;font-family:inherit;background:#fff;box-sizing:border-box;}
+.contact-form textarea{resize:vertical;min-height:140px;line-height:1.6;}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{outline:none;border-color:#6FDFD6;box-shadow:0 0 0 3px rgba(111,223,214,0.18);}
+.contact-form .submit-btn{background:#6FDFD6;color:#0a3d3a;border:none;border-radius:6px;padding:12px 36px;font-size:15px;font-weight:800;letter-spacing:2px;cursor:pointer;transition:background 0.2s;}
+.contact-form .submit-btn:hover{background:#3bbcb0;color:#fff;}
+.contact-note{background:#fafafa;border-left:3px solid #6FDFD6;padding:12px 18px;border-radius:4px;font-size:13px;color:#555;line-height:1.7;margin-bottom:20px;}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html">ホーム</a>
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">作品・連載</a>
-    <a href="news.html">お知らせ</a>
-    <a href="contact.html" class="active">お問い合わせ</a>
   </nav>
-</aside>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
 
 <div class="main-wrap">
   <div class="page-content">
     <h1>お問い合わせ</h1>
-    <p style="color:#a0a0b0;margin-bottom:24px;">サルベド漫画へのご意見・ご質問・お仕事のご依頼などはこちらからお送りください。</p>
+    <p>サルベド漫画へのご意見・ご質問・お仕事のご依頼などはこちらからお送りください。</p>
 
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdfXCAr-9FENNC_hTvqQy60r7hySQsu3Fc69MjB7FHhabB3RQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:10px;max-width:640px;">読み込んでいます…</iframe>
+    <p class="contact-note">頂いたお問い合わせには、内容を確認の上、順次ご返信いたします。<br>内容によってはご返信できかねる場合がございますので、あらかじめご了承ください。</p>
+
+    <form class="contact-form" id="contactForm">
+      <div class="field">
+        <label for="name">お名前<span class="req">必須</span></label>
+        <input type="text" id="name" name="name" required maxlength="60">
+      </div>
+      <div class="field">
+        <label for="email">メールアドレス<span class="req">必須</span></label>
+        <input type="email" id="email" name="email" required maxlength="120">
+      </div>
+      <div class="field">
+        <label for="subject">件名</label>
+        <select id="subject" name="subject">
+          <option value="ご感想">ご感想</option>
+          <option value="ご質問">ご質問</option>
+          <option value="お仕事のご依頼">お仕事のご依頼</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">お問い合わせ内容<span class="req">必須</span></label>
+        <textarea id="message" name="message" required maxlength="3000"></textarea>
+      </div>
+      <div style="text-align:center;margin-top:24px;">
+        <button type="submit" class="submit-btn">送信する</button>
+      </div>
+    </form>
   </div>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-        <a href="ebooks.html">電子書籍</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -52,6 +92,13 @@
   </footer>
 </div>
 
-<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+<script>
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('送信機能は準備中です。\n後日メール送信できるようバックエンドを接続します。');
+});
+</script>
 </body>
 </html>

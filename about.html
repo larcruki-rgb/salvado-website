@@ -1,78 +1,151 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="サルベド漫画のチャンネル紹介">
-<title>チャンネル紹介 — サルベド漫画</title>
-<link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<meta name="description" content="サルベド漫画について — ABOUT US">
+<title>ABOUT US — サルベド漫画</title>
+<link rel="stylesheet" href="style.css?v=2">
+<style>
+:root{
+  --hero-pad-top:36px;
+  --hero-title-fs:56px;
+  --hero-title-ls:12px;
+  --hero-mb:32px;
+  --intro-mt:12px;
+  --intro-mb:40px;
+  --intro-fs:14px;
+  --intro-lh:1.9;
+}
+.about-us-page{max-width:1100px;margin:0 auto;padding:var(--hero-pad-top) 32px 60px;width:100%!important;box-sizing:border-box;}
+
+.about-us-hero{text-align:center;margin-bottom:var(--hero-mb);}
+.about-us-hero h1{font-size:var(--hero-title-fs);font-weight:900;color:#1a1a1a;letter-spacing:var(--hero-title-ls);margin-bottom:10px;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;line-height:1.1;}
+.about-us-hero .sub{font-size:13px;color:#7A5D00;letter-spacing:8px;font-weight:800;}
+.about-us-hero .divider{width:60px;height:4px;background:#FDC06F;margin:26px auto 0;border-radius:2px;}
+
+.about-us-intro{max-width:760px;margin:var(--intro-mt) auto var(--intro-mb);text-align:center;line-height:var(--intro-lh);font-size:var(--intro-fs);color:#444;}
+.about-us-intro p{margin-bottom:16px;}
+
+:root{
+  --ci-size:180px;
+  --ci-gap:30px;
+  --ci-name-fs:14px;
+  --ci-name-ls:2px;
+  --ci-name-mt:13px;
+}
+.about-us-channels{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--ci-gap);max-width:1100px;margin:0 auto;justify-items:center;}
+.channel-icon{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:inherit;transition:transform 0.25s;}
+.channel-icon:hover{transform:translateY(-6px);}
+.channel-icon .icon-circle{width:var(--ci-size);height:var(--ci-size);border-radius:50%;overflow:hidden;margin-bottom:var(--ci-name-mt);box-shadow:0 4px 14px rgba(0,0,0,0.12);transition:box-shadow 0.25s;background:#f5f5f5;}
+.channel-icon:hover .icon-circle{box-shadow:0 12px 28px rgba(0,0,0,0.2);}
+.channel-icon .icon-circle img{width:100%;height:100%;object-fit:cover;display:block;}
+.channel-icon .name{font-size:var(--ci-name-fs);font-weight:800;color:#1a1a1a;letter-spacing:var(--ci-name-ls);text-align:center;font-family:'Murecho',sans-serif;}
+
+/* === サイズ調整パネル === */
+.size-panel{position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(255,255,255,0.98);border:1px solid #ccc;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,0.22);font-size:13px;width:320px;font-family:sans-serif;max-height:calc(100vh - 40px);overflow-y:auto;}
+.size-panel-toggle{background:#6FDFD6;color:#0a3d3a;border:none;width:100%;padding:12px;font-weight:800;cursor:pointer;border-radius:10px;font-size:15px;letter-spacing:2px;}
+.size-panel.open .size-panel-toggle{border-radius:10px 10px 0 0;}
+.size-panel-body{display:none;padding:16px;color:#333;}
+.size-panel.open .size-panel-body{display:block;}
+.sp-title{font-size:12px;font-weight:800;color:#6FDFD6;background:#0a3d3a;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;letter-spacing:2px;}
+.size-panel label{display:block;margin-bottom:14px;font-size:13px;}
+.size-panel .lbl{font-weight:700;color:#222;}
+.size-panel .val{font-weight:800;color:#0a3d3a;float:right;font-size:14px;background:#f0fdfb;padding:1px 8px;border-radius:3px;}
+.size-panel input[type=range]{width:100%;margin:8px 0 0;}
+
+@media(max-width:900px){
+  .about-us-channels{grid-template-columns:repeat(2,1fr);gap:36px;}
+}
+@media(max-width:600px){
+  .about-us-page{padding:40px 16px;}
+  .about-us-hero h1{font-size:38px;letter-spacing:7px;}
+  .about-us-hero .sub{font-size:11px;letter-spacing:5px;}
+  .channel-icon .icon-circle{width:140px;height:140px;}
+}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html">ホーム</a>
+<div id="sizePanel" class="size-panel">
+  <button class="size-panel-toggle" id="sizePanelToggle">⚙ サイズ調整</button>
+  <div class="size-panel-body">
+    <p class="sp-title">ABOUT US タイトル</p>
+    <label><span class="lbl">ページ上余白（タイトル位置）</span><span class="val" id="v-hero-pad-top">36</span>px<input type="range" min="0" max="200" step="2" value="36" data-var="--hero-pad-top" data-unit="px"></label>
+    <label><span class="lbl">タイトル文字サイズ</span><span class="val" id="v-hero-title-fs">56</span>px<input type="range" min="24" max="96" step="2" value="56" data-var="--hero-title-fs" data-unit="px"></label>
+    <label><span class="lbl">タイトル字間</span><span class="val" id="v-hero-title-ls">12</span>px<input type="range" min="0" max="30" step="1" value="12" data-var="--hero-title-ls" data-unit="px"></label>
+    <label><span class="lbl">タイトル⇔説明文の隙間</span><span class="val" id="v-hero-mb">32</span>px<input type="range" min="0" max="160" step="2" value="32" data-var="--hero-mb" data-unit="px"></label>
+    <p class="sp-title">説明文</p>
+    <label><span class="lbl">説明文の上余白（追加調整）</span><span class="val" id="v-intro-mt">12</span>px<input type="range" min="-40" max="80" step="2" value="12" data-var="--intro-mt" data-unit="px"></label>
+    <label><span class="lbl">説明文⇔アイコンの隙間</span><span class="val" id="v-intro-mb">40</span>px<input type="range" min="0" max="160" step="2" value="40" data-var="--intro-mb" data-unit="px"></label>
+    <label><span class="lbl">説明文文字サイズ</span><span class="val" id="v-intro-fs">14</span>px<input type="range" min="11" max="22" step="1" value="14" data-var="--intro-fs" data-unit="px"></label>
+    <label><span class="lbl">説明文行間</span><span class="val" id="v-intro-lh">1.9</span><input type="range" min="1.2" max="2.6" step="0.05" value="1.9" data-var="--intro-lh" data-unit=""></label>
+    <p class="sp-title">チャンネルアイコン</p>
+    <label><span class="lbl">アイコン円のサイズ</span><span class="val" id="v-ci-size">180</span>px<input type="range" min="80" max="280" step="2" value="180" data-var="--ci-size" data-unit="px"></label>
+    <label><span class="lbl">アイコン間の隙間</span><span class="val" id="v-ci-gap">30</span>px<input type="range" min="0" max="100" step="2" value="30" data-var="--ci-gap" data-unit="px"></label>
+    <label><span class="lbl">名前⇔アイコンの隙間</span><span class="val" id="v-ci-name-mt">13</span>px<input type="range" min="0" max="40" step="1" value="13" data-var="--ci-name-mt" data-unit="px"></label>
+    <label><span class="lbl">チャンネル名文字サイズ</span><span class="val" id="v-ci-name-fs">14</span>px<input type="range" min="10" max="24" step="1" value="14" data-var="--ci-name-fs" data-unit="px"></label>
+    <label><span class="lbl">チャンネル名文字間隔</span><span class="val" id="v-ci-name-ls">2</span>px<input type="range" min="0" max="6" step="0.5" value="2" data-var="--ci-name-ls" data-unit="px"></label>
+  </div>
+</div>
+
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html" class="active">チャンネル紹介</a>
     <a href="videos.html">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">作品・連載</a>
-    <a href="news.html">お知らせ</a>
-    <a href="contact.html">お問い合わせ</a>
   </nav>
-</aside>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
 
 <div class="main-wrap">
-  <div class="page-content">
-    <h1>チャンネル紹介</h1>
-
-    <h2>メインチャンネル</h2>
-
-    <div class="channel-card">
-      <h3>サルベド漫画</h3>
-      <p class="channel-desc">テンポのいいラブコメディが中心の、サルベド漫画のメインチャンネル！<br>サルベド語録はここからはじまった。</p>
-      <div class="popular-video"><iframe width="100%" height="315" src="https://www.youtube.com/embed/oys9pZGfkvo" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
-      <p><a href="https://www.youtube.com/@sarubedo_D" target="_blank" rel="noopener noreferrer">YouTubeで見る →</a></p>
+  <div class="about-us-page">
+    <div class="about-us-hero">
+      <h1>ABOUT US</h1>
+      <p class="sub">SARUBEDO MANGA</p>
+      <div class="divider"></div>
     </div>
 
-    <h2>サブチャンネル</h2>
-
-    <div class="channel-card">
-      <h3>サルベド漫画Emotional</h3>
-      <p class="channel-desc">本家よりもしっとりとした、重いストーリーが中心。<br>伏線あり、感動ありだが、時折コメディもしっかり忘れないのはサルベドクオリティ。</p>
-      <div class="popular-video"><iframe width="100%" height="315" src="https://www.youtube.com/embed/mU7wxeaFT_U" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
-      <p><a href="https://www.youtube.com/@sarubedomangaemotional" target="_blank" rel="noopener noreferrer">YouTubeで見る →</a></p>
+    <div class="about-us-intro">
+      <p>オリジナルラブコメ漫画動画を配信するYouTubeチャンネル</p>
+      <p>「感情が動く、気分が上がるオリジナル漫画をあなたにお届けしたい！」をモットーにコンテンツを作り続けています</p>
+      <p>現在4つのチャンネルを運営しております</p>
     </div>
 
-    <div class="channel-card">
-      <h3>サルベド漫画Fantasy</h3>
-      <p class="channel-desc">異世界、魔法、タイムリープにドラゴン…<br>現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</p>
-      <div class="popular-video"><iframe width="100%" height="315" src="https://www.youtube.com/embed/wmeMsUhmYE4" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
-      <p><a href="https://www.youtube.com/@%E3%82%B5%E3%83%AB%E3%83%99%E3%83%89%E6%BC%AB%E7%94%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC" target="_blank" rel="noopener noreferrer">YouTubeで見る →</a></p>
+    <div class="about-us-channels">
+      <a href="channel-main.html" class="channel-icon">
+        <div class="icon-circle"><img src="img/salvado-logo.png" alt="サルベド漫画"></div>
+        <span class="name">サルベド漫画</span>
+      </a>
+      <a href="channel-emotional.html" class="channel-icon">
+        <div class="icon-circle"><img src="img/emotional-icon.jpg" alt="サルベド漫画Emotional"></div>
+        <span class="name">サルベド漫画Emotional</span>
+      </a>
+      <a href="channel-fantasy.html" class="channel-icon">
+        <div class="icon-circle"><img src="img/fantasy-icon.png" alt="サルベド漫画Fantasy"></div>
+        <span class="name">サルベド漫画Fantasy</span>
+      </a>
+      <a href="channel-shinigami.html" class="channel-icon">
+        <div class="icon-circle"><img src="img/shinigami-icon.png" alt="死神少女"></div>
+        <span class="name">死神少女</span>
+      </a>
     </div>
-
-    <div class="channel-card">
-      <h3>死神少女</h3>
-      <p class="channel-desc">寿命と引き換えに願いを叶える力を持つ死神少女。<br>サブチャンネルの中で最も重いストーリーが展開される。</p>
-      <div class="popular-video"><iframe width="100%" height="315" src="https://www.youtube.com/embed/Dou84gVhWbI" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
-    <p><a href="https://www.youtube.com/@%E6%AD%BB%E7%A5%9E%E5%B0%91%E5%A5%B3-p3u" target="_blank" rel="noopener noreferrer">YouTubeで見る →</a></p>
-
   </div>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -81,6 +154,25 @@
   </footer>
 </div>
 
-<script>document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});</script>
+<script>
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+
+/* === サイズパネル開閉＋スライダー === */
+(function(){
+  var panel = document.getElementById('sizePanel');
+  var toggle = document.getElementById('sizePanelToggle');
+  if (panel && toggle) toggle.addEventListener('click', function(){ panel.classList.toggle('open'); });
+  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
+    s.addEventListener('input', function(){
+      var v = this.value;
+      var unit = this.dataset.unit !== undefined ? this.dataset.unit : 'px';
+      document.documentElement.style.setProperty(this.dataset.var, v + unit);
+      var id = 'v-' + this.dataset.var.replace('--','');
+      var el = document.getElementById(id);
+      if (el) el.textContent = v;
+    });
+  });
+})();
+</script>
 </body>
 </html>

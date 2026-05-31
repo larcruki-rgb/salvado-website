@@ -1,32 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="サルベド漫画の動画一覧">
 <title>動画一覧 — サルベド漫画</title>
-<link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css?v=2">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
-<button class="nav-toggle" aria-label="メニュー">☰</button>
-<aside class="sidebar">
-  <a href="index.html" class="logo">サルベド漫画</a>
-  <nav>
-    <a href="index.html">ホーム</a>
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
     <a href="about.html">チャンネル紹介</a>
     <a href="videos.html" class="active">動画一覧</a>
-    <a href="game.html">カードゲーム</a>
-    <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
     <a href="blog.html">作品・連載</a>
-    <a href="news.html">お知らせ</a>
-    <a href="contact.html">お問い合わせ</a>
   </nav>
-</aside>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
 
 <div class="main-wrap">
   <div class="page-content">
@@ -37,11 +38,6 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
-        <a href="about.html">チャンネル紹介</a>
-        <a href="videos.html">動画一覧</a>
-        <a href="game.html">カードゲーム</a>
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">グッズ</a>
-        <a href="ebooks.html">電子書籍</a>
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
       </div>
@@ -51,7 +47,7 @@
 </div>
 
 <script>
-document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelector(".sidebar").classList.toggle("open");});
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
 (function(){
   var channels = [
@@ -69,7 +65,7 @@ document.querySelector(".nav-toggle").addEventListener("click",function(){docume
     section.appendChild(heading);
     var grid = document.createElement('div');
     grid.className = 'video-grid';
-    grid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;">読み込み中...</div></div>';
+    grid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div>';
     section.appendChild(grid);
     var link = document.createElement('div');
     link.className = 'section-more';
@@ -98,13 +94,13 @@ document.querySelector(".nav-toggle").addEventListener("click",function(){docume
         } else if (retries > 0) {
           setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
         } else {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
+          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
         }
       }).catch(function() {
         if (retries > 0) {
           setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
         } else {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#1a1a2e;display:flex;align-items:center;justify-content:center;color:#666;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
+          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
         }
       });
     }

@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="サルベド漫画Fantasy サブチャンネル — サルベド漫画">
+<title>サルベド漫画Fantasy — サルベド漫画</title>
+<link rel="stylesheet" href="style.css?v=2">
+<style>
+@font-face{font-family:'KillgoU-NB';src:url('img/fonts/KillgoU-NB.ttf') format('truetype');font-display:swap;}
+.ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
+.ch-detail::before{content:'';position:absolute;inset:0;background:transparent;pointer-events:none;}
+.ch-detail > *{position:relative;z-index:1;}
+.ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
+.ch-detail-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;align-items:end;}
+.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:500;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
+.ch-detail-name{font-size:var(--name-fs,48px);font-weight:500;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
+.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:500;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
+.ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
+.ch-detail-video .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
+.ch-detail-video .video-thumb-poster:hover img{transform:scale(1.03);}
+.ch-detail-video .video-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:88px;height:62px;border-radius:14px;background:rgba(255,0,0,0.92);display:flex;align-items:center;justify-content:center;color:#fff;font-size:32px;padding-left:4px;box-shadow:0 4px 14px rgba(0,0,0,0.35);transition:background 0.2s;}
+.ch-detail-video:hover .video-play-btn{background:#FF0000;}
+.ch-detail-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;}
+.ch-detail-back{font-size:var(--back-fs,16px);color:#1a1a1a;font-weight:500;text-decoration:none;letter-spacing:var(--back-ls,2px);font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-back:hover{color:#00DFD8;}
+.ch-detail-more{background:#00DFD8;color:#fff;padding:var(--more-py,14px) var(--more-px,32px);border-radius:30px;font-size:var(--more-fs,14px);font-weight:500;letter-spacing:var(--more-ls,2px);text-decoration:none;box-shadow:0 4px 14px rgba(0,223,216,0.4);transition:all 0.2s;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-more:hover{background:#00C5BE;transform:translateY(-2px);color:#fff;box-shadow:0 8px 24px rgba(0,223,216,0.5);}
+
+@media(max-width:760px){
+  .ch-detail-header{grid-template-columns:1fr;gap:20px;}
+  .ch-detail-name{font-size:34px;padding-left:0;letter-spacing:4px;}
+  .ch-detail-category{font-size:14px;letter-spacing:3px;}
+  .ch-detail-desc{font-size:14px;}
+  .ch-detail-footer{flex-direction:column;gap:16px;}
+}
+
+/* === 位置・サイズ調整（各要素） === */
+:root{
+  /* 位置 X/Y */
+  --cat-x:96px;--cat-y:-39px;
+  --name-x:66px;--name-y:-38px;
+  --desc-x:19px;--desc-y:-22px;
+  --video-y:-16px;
+  --back-x:-23px;--back-y:-99px;
+  --more-x:48px;--more-y:-88px;
+  /* サイズ */
+  --cat-fs:18px;--cat-ls:5px;
+  --name-fs:36px;--name-ls:7px;--name-pl:40px;
+  --desc-fs:16px;--desc-ls:4.5px;
+  --video-w:680px;
+  --back-fs:16px;--back-ls:2px;
+  --more-fs:14px;--more-ls:2px;--more-px:32px;--more-py:14px;
+}
+.ch-detail-category{position:relative;left:var(--cat-x,0);top:var(--cat-y,0);}
+.ch-detail-name{position:relative;left:var(--name-x,0);top:var(--name-y,0);}
+.ch-detail-desc{position:relative;left:var(--desc-x,0);top:var(--desc-y,0);}
+.ch-detail-video{position:relative;top:var(--video-y,0);}
+.ch-detail-back{position:relative;left:var(--back-x,0);top:var(--back-y,0);}
+.ch-detail-more{position:relative;left:var(--more-x,0);top:var(--more-y,0);}
+
+/* === 調整パネル === */
+.size-panel{position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(255,255,255,0.98);border:1px solid #ccc;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,0.22);font-size:13px;width:340px;font-family:sans-serif;max-height:calc(100vh - 40px);overflow-y:auto;}
+.size-panel-toggle{background:#6FDFD6;color:#0a3d3a;border:none;width:100%;padding:12px;font-weight:800;cursor:grab;border-radius:10px;font-size:15px;letter-spacing:2px;position:sticky;top:0;z-index:1;user-select:none;-webkit-user-select:none;touch-action:none;}
+.size-panel-toggle:active{cursor:grabbing;}
+.size-panel-toggle::before{content:'⋮⋮ ';opacity:0.5;font-size:13px;letter-spacing:-2px;margin-right:6px;}
+.size-panel.open .size-panel-toggle{border-radius:10px 10px 0 0;}
+.size-panel-body{display:none;padding:14px;color:#333;}
+.size-panel.open .size-panel-body{display:block;}
+.sp-group{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee;}
+.sp-group:last-of-type{border-bottom:none;}
+.sp-title{font-size:11px;font-weight:800;color:#6FDFD6;background:#0a3d3a;padding:3px 10px;border-radius:3px;display:inline-block;margin-bottom:10px;letter-spacing:2px;}
+.size-panel label{display:block;margin-bottom:10px;font-size:12px;}
+.size-panel .lbl{font-weight:700;color:#222;}
+.size-panel .val{font-weight:800;color:#0a3d3a;float:right;font-size:13px;background:#f0fdfb;padding:1px 6px;border-radius:3px;}
+.size-panel input[type=range]{width:100%;margin:4px 0 0;}
+.size-panel .copy-btn{margin-top:8px;width:100%;padding:10px;background:#0a3d3a;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:800;letter-spacing:2px;}
+.size-panel .copy-btn:hover{background:#000;}
+.size-panel .baseline-btn{margin-top:6px;width:100%;padding:10px;background:#fff;color:#0a3d3a;border:2px dashed #0a3d3a;border-radius:6px;font-size:12px;cursor:pointer;font-weight:800;letter-spacing:1px;}
+.size-panel .baseline-btn.on{background:#0a3d3a;color:#fff;}
+.baseline-overlay{position:fixed;inset:0;width:100vw;height:100vh;border:0;pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:9998;display:none;}
+.baseline-overlay.on{display:block;opacity:0.35;}
+/* === アニメーション: 床魔法陣 → 光の柱召喚 === */
+.ch-detail{position:relative;overflow:hidden;perspective:1500px;}
+.ch-detail-inner{position:relative;z-index:3;}
+.sparkle{position:absolute;width:18px;height:18px;background:#FDD854;clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);filter:drop-shadow(0 0 6px rgba(255,255,255,0.9));opacity:0;z-index:9;pointer-events:none;animation:sparkleTwinkle 0.8s ease-out forwards;}
+.sparkle.s2{width:12px;height:12px;background:#fff;}
+.sparkle.s3{width:24px;height:24px;background:#FDC06F;}
+.ch-detail::before{opacity:0;animation:bgFadeIn 0.4s ease-out 0.1s forwards;}
+
+/* 魔法陣：床に投影（グロー無しでクッキリ） */
+.magic-circle{position:absolute;bottom:-220px;left:50%;width:760px;height:760px;background:url('img/magic-circle.png') center/contain no-repeat;opacity:0;pointer-events:none;z-index:0;transform:translateX(-50%) rotateX(72deg) scale(0);transform-origin:50% 100%;animation:circleFloor 1.0s ease-out 0.05s forwards;}
+
+/* 光の柱 */
+.light-pillar{position:absolute;bottom:0;left:50%;width:480px;height:0;background:linear-gradient(180deg,rgba(0,223,216,0) 0%,rgba(120,240,235,0.5) 30%,rgba(230,255,254,0.75) 100%);transform:translateX(-50%);filter:blur(12px);opacity:0;pointer-events:none;z-index:1;animation:pillarRise 0.8s ease-out 0.4s forwards;}
+
+/* テキスト・動画は光の柱から召喚 */
+.ch-detail-category,.ch-detail-name,.ch-detail-desc{opacity:1;}
+.ch-detail-category .title-text,.ch-detail-name .title-text,.ch-detail-desc .title-text{display:inline;opacity:1;}
+.ch-detail-category{animation:summonInLight 0.7s ease-out 0.7s backwards;}
+.ch-detail-name{animation:summonInLight 0.7s ease-out 0.75s backwards;}
+.ch-detail-desc{animation:summonInLight 0.7s ease-out 0.85s backwards;}
+.ch-detail-video{animation:summonInLight 0.7s ease-out 0.95s backwards;}
+.ch-detail-footer{animation:fadeUp 0.5s ease-out 1.2s backwards;}
+
+@keyframes bgFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes circleFloor{
+  0%{opacity:0;transform:translateX(-50%) rotateX(72deg) scale(0);}
+  30%{opacity:1;transform:translateX(-50%) rotateX(72deg) scale(1);}
+  100%{opacity:1;transform:translateX(-50%) rotateX(72deg) scale(1.04);}
+}
+@keyframes pillarRise{
+  0%{opacity:0;height:0;}
+  50%{opacity:1;height:520px;}
+  100%{opacity:0.45;height:520px;}
+}
+@keyframes summonInLight{
+  from{opacity:0;transform:translateY(200px) scale(0.55);filter:blur(8px) brightness(2.3);}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0) brightness(1);}
+}
+@keyframes sparkleTwinkle{
+  0%{opacity:0;transform:scale(0) rotate(0deg);}
+  40%{opacity:1;transform:scale(1.6) rotate(180deg);}
+  100%{opacity:0;transform:scale(0.4) rotate(360deg);}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
+</head>
+<body>
+
+<div id="sizePanel" class="size-panel">
+  <button class="size-panel-toggle" id="sizePanelToggle">⚙ サイズ調整</button>
+  <div class="size-panel-body">
+    <div class="sp-group">
+      <p class="sp-title">カテゴリ</p>
+      <label><span class="lbl">位置X</span><span class="val" id="v-cat-x">0</span>px<input type="range" min="-200" max="400" step="1" value="0" data-var="--cat-x" data-unit="px"></label>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-cat-y">-46</span>px<input type="range" min="-200" max="200" step="1" value="-46" data-var="--cat-y" data-unit="px"></label>
+      <label><span class="lbl">文字サイズ</span><span class="val" id="v-cat-fs">18</span>px<input type="range" min="10" max="48" step="1" value="18" data-var="--cat-fs" data-unit="px"></label>
+      <label><span class="lbl">字間</span><span class="val" id="v-cat-ls">5</span>px<input type="range" min="0" max="20" step="0.5" value="5" data-var="--cat-ls" data-unit="px"></label>
+    </div>
+    <div class="sp-group">
+      <p class="sp-title">タイトル</p>
+      <label><span class="lbl">位置X</span><span class="val" id="v-name-x">112</span>px<input type="range" min="-200" max="600" step="1" value="112" data-var="--name-x" data-unit="px"></label>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-name-y">-32</span>px<input type="range" min="-200" max="200" step="1" value="-32" data-var="--name-y" data-unit="px"></label>
+      <label><span class="lbl">文字サイズ</span><span class="val" id="v-name-fs">48</span>px<input type="range" min="20" max="120" step="1" value="48" data-var="--name-fs" data-unit="px"></label>
+      <label><span class="lbl">字間</span><span class="val" id="v-name-ls">7</span>px<input type="range" min="0" max="30" step="0.5" value="7" data-var="--name-ls" data-unit="px"></label>
+      <label><span class="lbl">左パディング</span><span class="val" id="v-name-pl">40</span>px<input type="range" min="0" max="200" step="1" value="40" data-var="--name-pl" data-unit="px"></label>
+    </div>
+    <div class="sp-group">
+      <p class="sp-title">説明文</p>
+      <label><span class="lbl">位置X</span><span class="val" id="v-desc-x">54</span>px<input type="range" min="-200" max="400" step="1" value="54" data-var="--desc-x" data-unit="px"></label>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-desc-y">-18</span>px<input type="range" min="-200" max="200" step="1" value="-18" data-var="--desc-y" data-unit="px"></label>
+      <label><span class="lbl">文字サイズ</span><span class="val" id="v-desc-fs">16</span>px<input type="range" min="10" max="32" step="1" value="16" data-var="--desc-fs" data-unit="px"></label>
+      <label><span class="lbl">字間</span><span class="val" id="v-desc-ls">1</span>px<input type="range" min="0" max="10" step="0.5" value="1" data-var="--desc-ls" data-unit="px"></label>
+    </div>
+    <div class="sp-group">
+      <p class="sp-title">動画</p>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-video-y">-10</span>px<input type="range" min="-200" max="200" step="1" value="-10" data-var="--video-y" data-unit="px"></label>
+      <label><span class="lbl">横幅</span><span class="val" id="v-video-w">680</span>px<input type="range" min="320" max="1200" step="10" value="680" data-var="--video-w" data-unit="px"></label>
+    </div>
+    <div class="sp-group">
+      <p class="sp-title">← 戻る</p>
+      <label><span class="lbl">位置X</span><span class="val" id="v-back-x">22</span>px<input type="range" min="-200" max="400" step="1" value="22" data-var="--back-x" data-unit="px"></label>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-back-y">-82</span>px<input type="range" min="-200" max="200" step="1" value="-82" data-var="--back-y" data-unit="px"></label>
+      <label><span class="lbl">文字サイズ</span><span class="val" id="v-back-fs">16</span>px<input type="range" min="10" max="32" step="1" value="16" data-var="--back-fs" data-unit="px"></label>
+      <label><span class="lbl">字間</span><span class="val" id="v-back-ls">2</span>px<input type="range" min="0" max="10" step="0.5" value="2" data-var="--back-ls" data-unit="px"></label>
+    </div>
+    <div class="sp-group">
+      <p class="sp-title">動画をもっと見る</p>
+      <label><span class="lbl">位置X</span><span class="val" id="v-more-x">48</span>px<input type="range" min="-200" max="400" step="1" value="48" data-var="--more-x" data-unit="px"></label>
+      <label><span class="lbl">位置Y</span><span class="val" id="v-more-y">-88</span>px<input type="range" min="-200" max="200" step="1" value="-88" data-var="--more-y" data-unit="px"></label>
+      <label><span class="lbl">文字サイズ</span><span class="val" id="v-more-fs">14</span>px<input type="range" min="10" max="32" step="1" value="14" data-var="--more-fs" data-unit="px"></label>
+      <label><span class="lbl">字間</span><span class="val" id="v-more-ls">2</span>px<input type="range" min="0" max="10" step="0.5" value="2" data-var="--more-ls" data-unit="px"></label>
+      <label><span class="lbl">左右パディング</span><span class="val" id="v-more-px">32</span>px<input type="range" min="10" max="80" step="1" value="32" data-var="--more-px" data-unit="px"></label>
+      <label><span class="lbl">上下パディング</span><span class="val" id="v-more-py">14</span>px<input type="range" min="6" max="40" step="1" value="14" data-var="--more-py" data-unit="px"></label>
+    </div>
+    <button class="copy-btn" onclick="copySizeValues()">📋 値をコピー</button>
+    <button class="baseline-btn" id="baselineBtn">👁 サルベド漫画を下敷きに表示</button>
+  </div>
+</div>
+
+<iframe class="baseline-overlay" id="baselineOverlay" src="channel-main.html?baseline=1" tabindex="-1" aria-hidden="true"></iframe>
+
+<header class="site-header">
+  <button class="nav-toggle" aria-label="メニュー">☰</button>
+  <nav class="nav-left">
+    <a href="about.html" class="active">チャンネル紹介</a>
+    <a href="videos.html">動画一覧</a>
+    <a href="blog.html">作品・連載</a>
+  </nav>
+  <a href="index.html" class="logo" aria-label="サルベド漫画">
+    <img src="img/salvado-logo.png" alt="サルベド漫画">
+  </a>
+  <nav class="nav-right">
+    <a href="game.html">カードゲーム</a>
+    <a href="goods.html">グッズ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
+  </nav>
+</header>
+
+<div class="main-wrap">
+  <section class="ch-detail" style="background-image:url('img/fantasy-bg.png');">
+    <div class="sparkle"     style="left:8%;top:25%;animation-delay:0.1s;"></div>
+    <div class="sparkle s2"  style="left:12%;top:60%;animation-delay:0.15s;"></div>
+    <div class="sparkle s3"  style="left:15%;top:80%;animation-delay:0.18s;"></div>
+    <div class="sparkle"     style="left:20%;top:15%;animation-delay:0.22s;"></div>
+    <div class="sparkle s2"  style="left:22%;top:45%;animation-delay:0.25s;"></div>
+    <div class="sparkle"     style="left:28%;top:70%;animation-delay:0.32s;"></div>
+    <div class="sparkle s3"  style="left:32%;top:30%;animation-delay:0.38s;"></div>
+    <div class="sparkle s2"  style="left:36%;top:55%;animation-delay:0.42s;"></div>
+    <div class="sparkle"     style="left:40%;top:20%;animation-delay:0.48s;"></div>
+    <div class="sparkle s3"  style="left:45%;top:75%;animation-delay:0.55s;"></div>
+    <div class="sparkle s2"  style="left:48%;top:40%;animation-delay:0.58s;"></div>
+    <div class="sparkle"     style="left:52%;top:65%;animation-delay:0.62s;"></div>
+    <div class="sparkle s3"  style="left:56%;top:18%;animation-delay:0.68s;"></div>
+    <div class="sparkle s2"  style="left:60%;top:50%;animation-delay:0.72s;"></div>
+    <div class="sparkle"     style="left:64%;top:78%;animation-delay:0.78s;"></div>
+    <div class="sparkle s3"  style="left:68%;top:28%;animation-delay:0.82s;"></div>
+    <div class="sparkle s2"  style="left:72%;top:60%;animation-delay:0.88s;"></div>
+    <div class="sparkle"     style="left:76%;top:42%;animation-delay:0.92s;"></div>
+    <div class="sparkle s3"  style="left:80%;top:72%;animation-delay:0.98s;"></div>
+    <div class="sparkle s2"  style="left:84%;top:22%;animation-delay:1.02s;"></div>
+    <div class="sparkle"     style="left:88%;top:55%;animation-delay:1.08s;"></div>
+    <div class="sparkle s3"  style="left:92%;top:38%;animation-delay:1.12s;"></div>
+    <!-- テキストワイプに合わせた追加キラキラ -->
+    <div class="sparkle s2"  style="left:6%;top:22%;animation-delay:0.7s;"></div>
+    <div class="sparkle"     style="left:18%;top:28%;animation-delay:0.9s;"></div>
+    <div class="sparkle s3"  style="left:26%;top:18%;animation-delay:1.1s;"></div>
+    <div class="sparkle s2"  style="left:14%;top:35%;animation-delay:1.2s;"></div>
+    <div class="sparkle"     style="left:8%;top:42%;animation-delay:1.0s;"></div>
+    <div class="sparkle s3"  style="left:30%;top:45%;animation-delay:1.4s;"></div>
+    <div class="sparkle s2"  style="left:42%;top:38%;animation-delay:1.6s;"></div>
+    <div class="sparkle"     style="left:22%;top:50%;animation-delay:1.8s;"></div>
+    <div class="sparkle s3"  style="left:56%;top:32%;animation-delay:1.5s;"></div>
+    <div class="sparkle s2"  style="left:68%;top:40%;animation-delay:1.7s;"></div>
+    <div class="sparkle"     style="left:78%;top:25%;animation-delay:1.9s;"></div>
+    <div class="sparkle s3"  style="left:86%;top:48%;animation-delay:2.1s;"></div>
+    <!-- 床魔法陣 → 光の柱召喚 -->
+    <div class="magic-circle"></div>
+    <div class="light-pillar"></div>
+    <div class="ch-detail-inner">
+      <div class="ch-detail-header">
+        <div>
+          <p class="ch-detail-category">
+            <span class="title-text">サブチャンネル</span>
+          </p>
+          <h1 class="ch-detail-name">
+            <span class="title-text">サルベド漫画Fantasy</span>
+          </h1>
+        </div>
+        <p class="ch-detail-desc">
+          <span class="title-text">異世界、魔法、タイムリープにドラゴン…現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</span>
+        </p>
+      </div>
+      <div class="ch-detail-video">
+        <div class="video-thumb-poster" data-id="wmeMsUhmYE4">
+          <img src="https://i.ytimg.com/vi/wmeMsUhmYE4/hqdefault.jpg" alt="サルベド漫画Fantasy 代表動画">
+          <div class="video-play-btn">▶</div>
+        </div>
+      </div>
+      <div class="ch-detail-footer">
+        <a href="about.html" class="ch-detail-back">← 戻る</a>
+        <a href="https://www.youtube.com/@%E3%82%B5%E3%83%AB%E3%83%99%E3%83%89%E6%BC%AB%E7%94%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC" target="_blank" rel="noopener noreferrer" class="ch-detail-more">動画をもっと見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+
+/* === サイズパネル：ドラッグ移動＋開閉 === */
+(function(){
+  var panel = document.getElementById('sizePanel');
+  var handle = document.getElementById('sizePanelToggle');
+  if (!panel || !handle) return;
+  var isDragging = false, dragMoved = false, startX, startY, startLeft, startTop;
+  function startDrag(x,y){ isDragging=true; dragMoved=false; startX=x; startY=y; var r=panel.getBoundingClientRect(); startLeft=r.left; startTop=r.top; panel.style.left=startLeft+'px'; panel.style.top=startTop+'px'; panel.style.right='auto'; panel.style.bottom='auto'; }
+  function moveDrag(x,y){ if(!isDragging)return; var dx=x-startX, dy=y-startY; if(Math.abs(dx)>4||Math.abs(dy)>4)dragMoved=true; panel.style.left=(startLeft+dx)+'px'; panel.style.top=(startTop+dy)+'px'; }
+  function endDrag(){ if(!isDragging)return; isDragging=false; if(!dragMoved)panel.classList.toggle('open'); }
+  handle.addEventListener('mousedown',function(e){startDrag(e.clientX,e.clientY);e.preventDefault();});
+  document.addEventListener('mousemove',function(e){moveDrag(e.clientX,e.clientY);});
+  document.addEventListener('mouseup',endDrag);
+  handle.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;startDrag(e.touches[0].clientX,e.touches[0].clientY);});
+  document.addEventListener('touchmove',function(e){if(!isDragging||e.touches.length!==1)return;moveDrag(e.touches[0].clientX,e.touches[0].clientY);e.preventDefault();},{passive:false});
+  document.addEventListener('touchend',endDrag);
+})();
+
+/* === スライダー入力 === */
+(function(){
+  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
+    /* 起動時：:root の現在値をスライダーに反映 */
+    var cur = getComputedStyle(document.documentElement).getPropertyValue(s.dataset.var).trim();
+    var n0 = parseFloat(cur);
+    if (!isNaN(n0)) {
+      s.value = n0;
+      var id0 = 'v-' + s.dataset.var.replace('--','');
+      var el0 = document.getElementById(id0);
+      if (el0) el0.textContent = n0;
+    }
+    s.addEventListener('input', function(){
+      var v = this.value;
+      var unit = this.dataset.unit !== undefined ? this.dataset.unit : 'px';
+      document.documentElement.style.setProperty(this.dataset.var, v + unit);
+      var id = 'v-' + this.dataset.var.replace('--','');
+      var el = document.getElementById(id);
+      if (el) el.textContent = v;
+    });
+  });
+})();
+/* === 下敷きトグル === */
+(function(){
+  var btn = document.getElementById('baselineBtn');
+  var ov = document.getElementById('baselineOverlay');
+  if (!btn || !ov) return;
+  btn.addEventListener('click', function(){
+    var on = ov.classList.toggle('on');
+    btn.classList.toggle('on', on);
+    btn.textContent = on ? '👁 下敷きを非表示' : '👁 サルベド漫画を下敷きに表示';
+  });
+})();
+
+function copySizeValues(){
+  var vals = [];
+  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
+    var unit = s.dataset.unit || 'px';
+    vals.push(s.dataset.var + ': ' + s.value + unit + ';');
+  });
+  var text = vals.join('\n');
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function(){ alert('コピーしました:\n\n' + text); }, function(){ prompt('コピーしてください:', text); });
+  } else {
+    prompt('コピーしてください:', text);
+  }
+}
+
+document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
+  poster.addEventListener('click', function(){
+    var id = this.dataset.id;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.setAttribute('allowfullscreen','');
+    iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('frameborder','0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    this.parentNode.replaceChild(iframe, this);
+  });
+});
+</script>
+</body>
+</html>
