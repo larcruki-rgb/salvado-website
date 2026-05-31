@@ -62,27 +62,6 @@
 .ch-detail-back{position:relative;left:var(--back-x,0);top:var(--back-y,0);}
 .ch-detail-more{position:relative;left:var(--more-x,0);top:var(--more-y,0);}
 
-/* === 調整パネル === */
-.size-panel{position:fixed;bottom:16px;right:16px;z-index:9999;background:rgba(255,255,255,0.98);border:1px solid #ccc;border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,0.22);font-size:13px;width:340px;font-family:sans-serif;max-height:calc(100vh - 40px);overflow-y:auto;}
-.size-panel-toggle{background:#6FDFD6;color:#0a3d3a;border:none;width:100%;padding:12px;font-weight:800;cursor:grab;border-radius:10px;font-size:15px;letter-spacing:2px;position:sticky;top:0;z-index:1;user-select:none;-webkit-user-select:none;touch-action:none;}
-.size-panel-toggle:active{cursor:grabbing;}
-.size-panel-toggle::before{content:'⋮⋮ ';opacity:0.5;font-size:13px;letter-spacing:-2px;margin-right:6px;}
-.size-panel.open .size-panel-toggle{border-radius:10px 10px 0 0;}
-.size-panel-body{display:none;padding:14px;color:#333;}
-.size-panel.open .size-panel-body{display:block;}
-.sp-group{margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #eee;}
-.sp-group:last-of-type{border-bottom:none;}
-.sp-title{font-size:11px;font-weight:800;color:#6FDFD6;background:#0a3d3a;padding:3px 10px;border-radius:3px;display:inline-block;margin-bottom:10px;letter-spacing:2px;}
-.size-panel label{display:block;margin-bottom:10px;font-size:12px;}
-.size-panel .lbl{font-weight:700;color:#222;}
-.size-panel .val{font-weight:800;color:#0a3d3a;float:right;font-size:13px;background:#f0fdfb;padding:1px 6px;border-radius:3px;}
-.size-panel input[type=range]{width:100%;margin:4px 0 0;}
-.size-panel .copy-btn{margin-top:8px;width:100%;padding:10px;background:#0a3d3a;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:800;letter-spacing:2px;}
-.size-panel .copy-btn:hover{background:#000;}
-.size-panel .baseline-btn{margin-top:6px;width:100%;padding:10px;background:#fff;color:#0a3d3a;border:2px dashed #0a3d3a;border-radius:6px;font-size:12px;cursor:pointer;font-weight:800;letter-spacing:1px;}
-.size-panel .baseline-btn.on{background:#0a3d3a;color:#fff;}
-.baseline-overlay{position:fixed;inset:0;width:100vw;height:100vh;border:0;pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:9998;display:none;}
-.baseline-overlay.on{display:block;opacity:0.35;}
 /* === アニメーション E: ケン・バーンズ === */
 .ch-detail{animation:kenBurns 7s ease-out forwards;}
 .ch-detail::before{opacity:0;animation:bgFadeIn 0.6s ease-out 0.35s forwards;}
@@ -99,59 +78,6 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
-
-<div id="sizePanel" class="size-panel">
-  <button class="size-panel-toggle" id="sizePanelToggle">⚙ サイズ調整</button>
-  <div class="size-panel-body">
-    <div class="sp-group">
-      <p class="sp-title">カテゴリ</p>
-      <label><span class="lbl">位置X</span><span class="val" id="v-cat-x">0</span>px<input type="range" min="-200" max="400" step="1" value="0" data-var="--cat-x" data-unit="px"></label>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-cat-y">-46</span>px<input type="range" min="-200" max="200" step="1" value="-46" data-var="--cat-y" data-unit="px"></label>
-      <label><span class="lbl">文字サイズ</span><span class="val" id="v-cat-fs">18</span>px<input type="range" min="10" max="48" step="1" value="18" data-var="--cat-fs" data-unit="px"></label>
-      <label><span class="lbl">字間</span><span class="val" id="v-cat-ls">5</span>px<input type="range" min="0" max="20" step="0.5" value="5" data-var="--cat-ls" data-unit="px"></label>
-    </div>
-    <div class="sp-group">
-      <p class="sp-title">タイトル</p>
-      <label><span class="lbl">位置X</span><span class="val" id="v-name-x">112</span>px<input type="range" min="-200" max="600" step="1" value="112" data-var="--name-x" data-unit="px"></label>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-name-y">-32</span>px<input type="range" min="-200" max="200" step="1" value="-32" data-var="--name-y" data-unit="px"></label>
-      <label><span class="lbl">文字サイズ</span><span class="val" id="v-name-fs">48</span>px<input type="range" min="20" max="120" step="1" value="48" data-var="--name-fs" data-unit="px"></label>
-      <label><span class="lbl">字間</span><span class="val" id="v-name-ls">7</span>px<input type="range" min="0" max="30" step="0.5" value="7" data-var="--name-ls" data-unit="px"></label>
-      <label><span class="lbl">左パディング</span><span class="val" id="v-name-pl">40</span>px<input type="range" min="0" max="200" step="1" value="40" data-var="--name-pl" data-unit="px"></label>
-    </div>
-    <div class="sp-group">
-      <p class="sp-title">説明文</p>
-      <label><span class="lbl">位置X</span><span class="val" id="v-desc-x">54</span>px<input type="range" min="-200" max="400" step="1" value="54" data-var="--desc-x" data-unit="px"></label>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-desc-y">-18</span>px<input type="range" min="-200" max="200" step="1" value="-18" data-var="--desc-y" data-unit="px"></label>
-      <label><span class="lbl">文字サイズ</span><span class="val" id="v-desc-fs">16</span>px<input type="range" min="10" max="32" step="1" value="16" data-var="--desc-fs" data-unit="px"></label>
-      <label><span class="lbl">字間</span><span class="val" id="v-desc-ls">1</span>px<input type="range" min="0" max="10" step="0.5" value="1" data-var="--desc-ls" data-unit="px"></label>
-    </div>
-    <div class="sp-group">
-      <p class="sp-title">動画</p>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-video-y">-10</span>px<input type="range" min="-200" max="200" step="1" value="-10" data-var="--video-y" data-unit="px"></label>
-      <label><span class="lbl">横幅</span><span class="val" id="v-video-w">680</span>px<input type="range" min="320" max="1200" step="10" value="680" data-var="--video-w" data-unit="px"></label>
-    </div>
-    <div class="sp-group">
-      <p class="sp-title">← 戻る</p>
-      <label><span class="lbl">位置X</span><span class="val" id="v-back-x">22</span>px<input type="range" min="-200" max="400" step="1" value="22" data-var="--back-x" data-unit="px"></label>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-back-y">-82</span>px<input type="range" min="-200" max="200" step="1" value="-82" data-var="--back-y" data-unit="px"></label>
-      <label><span class="lbl">文字サイズ</span><span class="val" id="v-back-fs">16</span>px<input type="range" min="10" max="32" step="1" value="16" data-var="--back-fs" data-unit="px"></label>
-      <label><span class="lbl">字間</span><span class="val" id="v-back-ls">2</span>px<input type="range" min="0" max="10" step="0.5" value="2" data-var="--back-ls" data-unit="px"></label>
-    </div>
-    <div class="sp-group">
-      <p class="sp-title">動画をもっと見る</p>
-      <label><span class="lbl">位置X</span><span class="val" id="v-more-x">48</span>px<input type="range" min="-200" max="400" step="1" value="48" data-var="--more-x" data-unit="px"></label>
-      <label><span class="lbl">位置Y</span><span class="val" id="v-more-y">-88</span>px<input type="range" min="-200" max="200" step="1" value="-88" data-var="--more-y" data-unit="px"></label>
-      <label><span class="lbl">文字サイズ</span><span class="val" id="v-more-fs">14</span>px<input type="range" min="10" max="32" step="1" value="14" data-var="--more-fs" data-unit="px"></label>
-      <label><span class="lbl">字間</span><span class="val" id="v-more-ls">2</span>px<input type="range" min="0" max="10" step="0.5" value="2" data-var="--more-ls" data-unit="px"></label>
-      <label><span class="lbl">左右パディング</span><span class="val" id="v-more-px">32</span>px<input type="range" min="10" max="80" step="1" value="32" data-var="--more-px" data-unit="px"></label>
-      <label><span class="lbl">上下パディング</span><span class="val" id="v-more-py">14</span>px<input type="range" min="6" max="40" step="1" value="14" data-var="--more-py" data-unit="px"></label>
-    </div>
-    <button class="copy-btn" onclick="copySizeValues()">📋 値をコピー</button>
-    <button class="baseline-btn" id="baselineBtn">👁 サルベド漫画を下敷きに表示</button>
-  </div>
-</div>
-
-<iframe class="baseline-overlay" id="baselineOverlay" src="channel-main.html?baseline=1" tabindex="-1" aria-hidden="true"></iframe>
 
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
@@ -207,71 +133,6 @@
 
 <script>
 document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
-
-/* === サイズパネル：ドラッグ移動＋開閉 === */
-(function(){
-  var panel = document.getElementById('sizePanel');
-  var handle = document.getElementById('sizePanelToggle');
-  if (!panel || !handle) return;
-  var isDragging = false, dragMoved = false, startX, startY, startLeft, startTop;
-  function startDrag(x,y){ isDragging=true; dragMoved=false; startX=x; startY=y; var r=panel.getBoundingClientRect(); startLeft=r.left; startTop=r.top; panel.style.left=startLeft+'px'; panel.style.top=startTop+'px'; panel.style.right='auto'; panel.style.bottom='auto'; }
-  function moveDrag(x,y){ if(!isDragging)return; var dx=x-startX, dy=y-startY; if(Math.abs(dx)>4||Math.abs(dy)>4)dragMoved=true; panel.style.left=(startLeft+dx)+'px'; panel.style.top=(startTop+dy)+'px'; }
-  function endDrag(){ if(!isDragging)return; isDragging=false; if(!dragMoved)panel.classList.toggle('open'); }
-  handle.addEventListener('mousedown',function(e){startDrag(e.clientX,e.clientY);e.preventDefault();});
-  document.addEventListener('mousemove',function(e){moveDrag(e.clientX,e.clientY);});
-  document.addEventListener('mouseup',endDrag);
-  handle.addEventListener('touchstart',function(e){if(e.touches.length!==1)return;startDrag(e.touches[0].clientX,e.touches[0].clientY);});
-  document.addEventListener('touchmove',function(e){if(!isDragging||e.touches.length!==1)return;moveDrag(e.touches[0].clientX,e.touches[0].clientY);e.preventDefault();},{passive:false});
-  document.addEventListener('touchend',endDrag);
-})();
-
-/* === スライダー入力 === */
-(function(){
-  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
-    /* 起動時：:root の現在値をスライダーに反映 */
-    var cur = getComputedStyle(document.documentElement).getPropertyValue(s.dataset.var).trim();
-    var n0 = parseFloat(cur);
-    if (!isNaN(n0)) {
-      s.value = n0;
-      var id0 = 'v-' + s.dataset.var.replace('--','');
-      var el0 = document.getElementById(id0);
-      if (el0) el0.textContent = n0;
-    }
-    s.addEventListener('input', function(){
-      var v = this.value;
-      var unit = this.dataset.unit !== undefined ? this.dataset.unit : 'px';
-      document.documentElement.style.setProperty(this.dataset.var, v + unit);
-      var id = 'v-' + this.dataset.var.replace('--','');
-      var el = document.getElementById(id);
-      if (el) el.textContent = v;
-    });
-  });
-})();
-/* === 下敷きトグル === */
-(function(){
-  var btn = document.getElementById('baselineBtn');
-  var ov = document.getElementById('baselineOverlay');
-  if (!btn || !ov) return;
-  btn.addEventListener('click', function(){
-    var on = ov.classList.toggle('on');
-    btn.classList.toggle('on', on);
-    btn.textContent = on ? '👁 下敷きを非表示' : '👁 サルベド漫画を下敷きに表示';
-  });
-})();
-
-function copySizeValues(){
-  var vals = [];
-  document.querySelectorAll('#sizePanel input[type=range]').forEach(function(s){
-    var unit = s.dataset.unit || 'px';
-    vals.push(s.dataset.var + ': ' + s.value + unit + ';');
-  });
-  var text = vals.join('\n');
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(function(){ alert('コピーしました:\n\n' + text); }, function(){ prompt('コピーしてください:', text); });
-  } else {
-    prompt('コピーしてください:', text);
-  }
-}
 
 document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
   poster.addEventListener('click', function(){
