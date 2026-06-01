@@ -57,12 +57,14 @@
 .carousel-dot.active{background:#6FDFD6;transform:scaleY(1.5);}
 
 @media(max-width:700px){
-  #latestVideos{padding:0 36px;}
-  #latestVideos .video-grid-track .video-card{flex:0 0 100%;}
-  #latestVideos .carousel-arrow{width:40px;height:40px;font-size:16px;}
-  #latestVideos .carousel-arrow.prev{left:0;}
-  #latestVideos .carousel-arrow.next{right:0;}
+  /* スマホ：余白ほぼ無し、カードはビューポート幅に合わせる（peek 残し） */
+  :root{
+    --thumb-edge:0px;
+    --card-w:88%;
+  }
 }
+/* 横方向はみ出し防止（スマホで marquee の長い track がスクロールバー出さないように） */
+html,body{overflow-x:hidden;}
 
 /* 動画背景を白に＆サイズ調整（index.html限定） */
 .main-video{background:#fff!important;}
