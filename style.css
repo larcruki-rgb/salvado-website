@@ -16,8 +16,8 @@ a:hover{color:#a8862e;}
   --nav-pad-x:14px;
   --nav-gap:4px;
   --logo-size:96px;
-  --moyou-size:580px;
-  --moyou-opacity:0.98;
+  --moyou-size:800px;
+  --moyou-opacity:1;
   /* 3ブロック個別の位置オフセット */
   --logo-offset-x:0px;
   --logo-offset-y:0px;
@@ -27,7 +27,7 @@ a:hover{color:#a8862e;}
   --nav-right-offset-y:26px;
 }
 .site-header{position:sticky;top:0;left:0;right:0;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.06);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--header-gap);padding:var(--header-pad-y) var(--header-pad-x);font-family:'Murecho','Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;font-weight:900;overflow:hidden;}
-.site-header::before{content:'';position:absolute;inset:0;background-image:url('img/moyou.png');background-size:var(--moyou-size,260px) auto;background-repeat:repeat;background-position:0 0;opacity:var(--moyou-opacity,0.12);pointer-events:none;z-index:0;}
+.site-header::before{content:'';position:absolute;inset:0;background-image:url('img/moyou-nyanko.png');background-size:var(--moyou-size,260px) auto;background-repeat:repeat;background-position:0 0;opacity:var(--moyou-opacity,0.12);pointer-events:none;z-index:0;}
 .site-header > *{position:relative;z-index:1;}
 .site-header nav{display:flex;flex-direction:row;align-items:center;gap:var(--nav-gap);flex-wrap:nowrap;}
 .site-header nav.nav-left{justify-self:end;transform:translate(var(--nav-left-offset-x,0),var(--nav-left-offset-y,0));}
