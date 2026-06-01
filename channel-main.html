@@ -14,10 +14,10 @@
 .ch-detail::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.28);pointer-events:none;}
 .ch-detail > *{position:relative;z-index:1;}
 .ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
-.ch-detail-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;align-items:end;}
-.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);}
-.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-header{display:grid;grid-template-columns:1fr max-content;gap:40px;margin-bottom:40px;align-items:end;}
+.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
+.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
+.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
 .ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
 .ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
 .ch-detail-video .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
@@ -103,7 +103,7 @@
           <p class="ch-detail-category">メインチャンネル</p>
           <h1 class="ch-detail-name">サルベド漫画</h1>
         </div>
-        <p class="ch-detail-desc">テンポのいいラブコメディが中心の、サルベド漫画のメインチャンネル！サルベド語録はここからはじまった。</p>
+        <p class="ch-detail-desc">テンポのいいラブコメディが中心の、サルベド漫画の<br>メインチャンネル！サルベド語録はここからはじまった。</p>
       </div>
       <div class="ch-detail-video">
         <div class="video-thumb-poster" data-id="oys9pZGfkvo">
