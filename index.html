@@ -165,13 +165,6 @@ body.splash-lock{overflow:hidden;}
 (function(){
   var splash = document.getElementById('splash');
   if (!splash) return;
-  // セッション中は1回だけ再生
-  if (sessionStorage.getItem('splashed')) {
-    splash.style.display='none';
-    document.body.classList.remove('splash-lock');
-    return;
-  }
-  sessionStorage.setItem('splashed','1');
   var layers = splash.querySelectorAll('.splash-layer');
   var gradient = document.getElementById('splashGradient');
   var streak = document.getElementById('splashStreak');
