@@ -125,7 +125,89 @@ html,body{overflow-x:hidden;}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
-<body>
+<body class="splash-lock">
+
+<!-- === スプラッシュ === -->
+<style>
+.splash{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.8s ease;}
+.splash.done{opacity:0;pointer-events:none;}
+.splash-stage{position:relative;width:72%;max-width:1100px;aspect-ratio:16/9;}
+@media(max-width:700px){.splash-stage{width:92%;}}
+.splash-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;}
+.splash-layer[data-dir="right"]{transform:translateX(85%);}
+.splash-layer[data-dir="left"]{transform:translateX(-85%);}
+.splash-layer.show{transform:translateX(0);opacity:1;}
+.splash-streak,.splash-cat{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:translateY(80%);transition:transform 0.55s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;}
+.splash-streak.show,.splash-cat.show{opacity:1;transform:translateY(0);}
+.splash-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(111,223,214,0.95) 0%,rgba(255,255,255,0.9) 18%,rgba(255,255,255,0.55) 55%,rgba(255,255,255,0) 95%);opacity:0;transform:translateY(80%);transition:transform 0.55s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;pointer-events:none;}
+.splash-gradient.show{opacity:1;transform:translateY(0);}
+.splash-manga{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(0.4);transition:transform 0.5s cubic-bezier(0.34,1.8,0.64,1),opacity 0.3s ease;}
+.splash-manga.show{opacity:1;transform:scale(1);}
+body.splash-lock{overflow:hidden;}
+</style>
+<div id="splash" class="splash">
+  <div class="splash-stage">
+    <img class="splash-layer" data-dir="right" src="img/splash/1.png" alt="">
+    <img class="splash-layer" data-dir="right" src="img/splash/1moji.png" alt="">
+    <img class="splash-layer" data-dir="left" src="img/splash/2.png" alt="">
+    <img class="splash-layer" data-dir="left" src="img/splash/2moji.png" alt="">
+    <img class="splash-layer" data-dir="right" src="img/splash/3.png" alt="">
+    <img class="splash-layer" data-dir="right" src="img/splash/3moji.png" alt="">
+    <img class="splash-layer" data-dir="left" src="img/splash/4.png" alt="">
+    <img class="splash-layer" data-dir="left" src="img/splash/4moji.png" alt="">
+    <div id="splashGradient" class="splash-gradient"></div>
+    <img id="splashStreak" class="splash-streak" src="img/splash/流線.png" alt="">
+    <img id="splashCat" class="splash-cat" src="img/splash/5.png" alt="">
+    <img id="splashManga" class="splash-manga" src="img/splash/漫画.png" alt="">
+  </div>
+</div>
+<script>
+(function(){
+  var splash = document.getElementById('splash');
+  if (!splash) return;
+  // セッション中は1回だけ再生
+  if (sessionStorage.getItem('splashed')) {
+    splash.style.display='none';
+    document.body.classList.remove('splash-lock');
+    return;
+  }
+  sessionStorage.setItem('splashed','1');
+  var layers = splash.querySelectorAll('.splash-layer');
+  var gradient = document.getElementById('splashGradient');
+  var streak = document.getElementById('splashStreak');
+  var cat = document.getElementById('splashCat');
+  var manga = document.getElementById('splashManga');
+  var STEP=350, PHASE_HOLD=350, P2_MANGA=500, FINAL_HOLD=1100, FADE=600;
+  var i=0;
+  function showPair(){
+    if (i < layers.length){
+      layers[i].classList.add('show');
+      if (layers[i+1]) layers[i+1].classList.add('show');
+      i += 2;
+      setTimeout(showPair, STEP);
+    } else {
+      setTimeout(phase2, PHASE_HOLD);
+    }
+  }
+  function phase2(){
+    gradient.classList.add('show');
+    streak.classList.add('show');
+    cat.classList.add('show');
+    setTimeout(function(){ manga.classList.add('show'); }, P2_MANGA);
+    setTimeout(finish, P2_MANGA + 500);
+  }
+  function finish(){
+    setTimeout(function(){
+      splash.classList.add('done');
+      setTimeout(function(){
+        splash.style.display='none';
+        document.body.classList.remove('splash-lock');
+      }, FADE);
+    }, FINAL_HOLD);
+  }
+  setTimeout(showPair, 150);
+})();
+</script>
 
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
