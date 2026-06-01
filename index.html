@@ -12,11 +12,11 @@
    ⚠ ここは絶対に変えない。他のCSSより最優先で動く。
    ======================================== */
 :root{
-  --thumb-edge:0px;   /* 画面端からの余白 */
+  --thumb-edge:500px;   /* 画面端からの余白 */
   --card-title-fs:14px;
   --card-chname-fs:13px;
   --header-to-videos:18px;  /* メニューバー⇔最新動画の間隔 */
-  --card-w:50%;          /* 1枚あたり幅（％ or px。％は表示エリア比） */
+  --card-w:68%;          /* 1枚あたり幅（％ or px。％は表示エリア比） */
   --vid-x:0px;           /* 動画エリアの左右オフセット */
   --vid-y:0px;           /* 動画エリアの上下オフセット */
 }
@@ -27,8 +27,10 @@
 #latestVideos .video-grid-track{display:flex!important;width:100%!important;gap:14px!important;animation:latestMarquee var(--marquee-duration,20s) linear infinite;}
 #latestVideos:hover .video-grid-track{animation-play-state:paused;}
 @keyframes latestMarquee{
-  from{transform:translateX(0);}
-  to{transform:translateX(calc(-1 * var(--marquee-count,4) * var(--card-w,30%) - var(--marquee-count,4) * 14px));}
+  /* 先頭：カード1をビューポート中央に */
+  from{transform:translateX(calc((100% - var(--card-w,68%)) / 2 - var(--card-w,68%) - 14px));}
+  /* 終端：カード1のクローンが中央（=スタート位置と見た目同一）→ 継ぎ目なしループ */
+  to{transform:translateX(calc((100% - var(--card-w,68%)) / 2 - (var(--marquee-count,4) + 1) * (var(--card-w,68%) + 14px)));}
 }
 #latestVideos .video-grid-track .video-card{flex:0 0 var(--card-w,30%)!important;width:var(--card-w,30%)!important;max-width:none!important;box-shadow:0 6px 18px rgba(0,0,0,0.18)!important;border-radius:12px!important;border:none!important;}
 #latestVideos .video-grid-track .video-card .video-thumb{width:100%!important;max-width:none!important;aspect-ratio:16/9!important;margin:0!important;position:relative!important;background:#000!important;overflow:hidden!important;}
@@ -65,6 +67,11 @@
 /* 動画背景を白に＆サイズ調整（index.html限定） */
 .main-video{background:#fff!important;}
 .video-stage{max-width:850px!important;aspect-ratio:21/9!important;}
+
+/* === 「すべての動画を見る」リンク（latest-title と同じ中央寄せ構造で揃える） === */
+.latest-more-wrap{padding:8px 32px 28px;text-align:center;}
+.latest-more-link{font-size:14px;color:#8a6d1e;text-decoration:none;letter-spacing:1px;}
+.latest-more-link:hover{color:#a8862e;}
 .video-title-bar{max-width:850px!important;}
 
 /* === お知らせ（上位3件） === */
@@ -80,7 +87,8 @@
 .blog-banner-wrap{max-width:1100px;padding:30px 32px;}
 .blog-banner{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
 .blog-banner:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
-.blog-banner-image{aspect-ratio:4/3;background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;}
+.blog-banner-image{aspect-ratio:4/3;background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;overflow:hidden;}
+.blog-banner-image img{width:100%;height:100%;object-fit:cover;display:block;}
 .blog-banner-placeholder{padding:24px;text-align:center;}
 .blog-banner-text{padding:32px 36px;display:flex;flex-direction:column;justify-content:center;}
 .blog-banner-label{font-size:11px;color:#888;letter-spacing:3px;margin-bottom:8px;font-weight:800;}
@@ -141,7 +149,9 @@
   <section class="section section-wide">
     <div class="video-grid" id="latestVideos">
     </div>
-    <div class="section-more"><a href="videos.html">すべての動画を見る →</a></div>
+  </section>
+  <section class="latest-more-wrap">
+    <a class="latest-more-link" href="videos.html">すべての動画を見る →</a>
   </section>
 
   <section class="section">
@@ -158,7 +168,7 @@
   <section class="section blog-banner-wrap">
     <a href="blog.html" class="blog-banner">
       <div class="blog-banner-image">
-        <span class="blog-banner-placeholder">バナー画像（仮）</span>
+        <img src="img/blog-banner.png" alt="作品・連載">
       </div>
       <div class="blog-banner-text">
         <p class="blog-banner-label">SARUBEDO MANGA / WORKS &amp; SERIES</p>
@@ -323,8 +333,11 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
     var realCount = container.children.length;
     if (realCount < 1) return;
 
-    // 継ぎ目なしマーキー：本物セットを末尾に複製
+    // 継ぎ目なしマーキー：
+    //   1) 末尾カードを先頭にも複製（センター開始時、左側に「前のカード」が見える状態を作る）
+    //   2) 本物セットを末尾に複製（ループ用）
     var originals = Array.prototype.slice.call(container.children);
+    container.insertBefore(originals[originals.length - 1].cloneNode(true), container.firstChild);
     originals.forEach(function(card){
       container.appendChild(card.cloneNode(true));
     });
