@@ -19,6 +19,7 @@
   --card-w:68%;          /* 1枚あたり幅（％ or px。％は表示エリア比） */
   --vid-x:0px;           /* 動画エリアの左右オフセット */
   --vid-y:0px;           /* 動画エリアの上下オフセット */
+  --mobile-banner-h:240px;  /* モバイル時のバナー画像高さ */
 }
 /* セクション全幅化 */
 .section-wide{max-width:none!important;padding:var(--header-to-videos) 0 20px!important;}
@@ -60,7 +61,7 @@
   /* スマホ：余白ほぼ無し、カードはビューポート幅に合わせる（peek 残し） */
   :root{
     --thumb-edge:0px;
-    --card-w:88%;
+    --card-w:50%;
   }
 }
 /* 横方向はみ出し防止（スマホで marquee の長い track がスクロールバー出さないように） */
@@ -115,10 +116,11 @@ html,body{overflow-x:hidden;}
 
 @media(max-width:760px){
   .blog-banner{grid-template-columns:1fr;}
-  .blog-banner-image{aspect-ratio:16/9;}
+  .blog-banner-image{aspect-ratio:auto;height:var(--mobile-banner-h,240px);}
   .blog-banner-text{padding:24px 22px;}
   .feature-3-grid{grid-template-columns:1fr;gap:16px;}
 }
+
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
