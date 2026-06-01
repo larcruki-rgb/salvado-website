@@ -36,6 +36,11 @@
   .ch-detail-footer{flex-direction:column;gap:16px;}
 }
 
+/* === 縦画面：背景のクロップ起点を左端に（キャラ見切れ防止） === */
+@media (orientation:portrait){
+  .ch-detail{background-position:0% center;}
+}
+
 /* === 位置・サイズ調整（各要素） === */
 :root{
   /* 位置 X/Y */
