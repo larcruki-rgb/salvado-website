@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
 <meta name="description" content="サルベド漫画Fantasy サブチャンネル — サルベド漫画">
 <title>サルベド漫画Fantasy — サルベド漫画</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 <style>
 @font-face{font-family:'KillgoU-NB';src:url('img/fonts/KillgoU-NB.ttf') format('truetype');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
@@ -24,9 +24,9 @@
 .ch-detail-video:hover .video-play-btn{background:#FF0000;}
 .ch-detail-footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;}
 .ch-detail-back{font-size:var(--back-fs,16px);color:#1a1a1a;font-weight:500;text-decoration:none;letter-spacing:var(--back-ls,2px);font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-detail-back:hover{color:#00DFD8;}
-.ch-detail-more{background:#00DFD8;color:#fff;padding:var(--more-py,14px) var(--more-px,32px);border-radius:30px;font-size:var(--more-fs,14px);font-weight:500;letter-spacing:var(--more-ls,2px);text-decoration:none;box-shadow:0 4px 14px rgba(0,223,216,0.4);transition:all 0.2s;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-detail-more:hover{background:#00C5BE;transform:translateY(-2px);color:#fff;box-shadow:0 8px 24px rgba(0,223,216,0.5);}
+.ch-detail-back:hover{color:#1B11FF;}
+.ch-detail-more{background:#1B11FF;color:#fff;padding:var(--more-py,14px) var(--more-px,32px);border-radius:30px;font-size:var(--more-fs,14px);font-weight:500;letter-spacing:var(--more-ls,2px);text-decoration:none;box-shadow:0 4px 14px rgba(27,17,255,0.4);transition:all 0.2s;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-more:hover{background:#1A0FD9;transform:translateY(-2px);color:#fff;box-shadow:0 8px 24px rgba(27,17,255,0.55);}
 
 @media(max-width:760px){
   .ch-detail-header{grid-template-columns:1fr;gap:20px;}
@@ -104,6 +104,51 @@
   40%{opacity:1;transform:scale(1.6) rotate(180deg);}
   100%{opacity:0;transform:scale(0.4) rotate(360deg);}
 }
+
+/* === モバイル専用 調整変数（サブ3ch 確定値） === */
+:root{
+  --vw-base:calc(100vw / 390);
+  --m-pad-top:calc(20 * var(--vw-base));
+  --m-pad-x:calc(32 * var(--vw-base));
+  --m-cat-fs:calc(14 * var(--vw-base));
+  --m-cat-ls:calc(3 * var(--vw-base));
+  --m-cat-mb:calc(6 * var(--vw-base));
+  --m-name-fs:calc(34 * var(--vw-base));
+  --m-name-ls:calc(4 * var(--vw-base));
+  --m-name-pl:0px;
+  --m-header-gap:calc(20 * var(--vw-base));
+  --m-header-mb:calc(40 * var(--vw-base));
+  --m-desc-fs:calc(14 * var(--vw-base));
+  --m-desc-ls:calc(1 * var(--vw-base));
+  --m-desc-lh:1.8;
+  --m-video-mb:calc(40 * var(--vw-base));
+  --m-footer-gap:calc(16 * var(--vw-base));
+  --m-back-fs:calc(14 * var(--vw-base));
+  --m-back-ls:calc(2 * var(--vw-base));
+  --m-back-y:0px;
+  --m-more-fs:calc(13 * var(--vw-base));
+  --m-more-ls:calc(2 * var(--vw-base));
+  --m-more-px:calc(24 * var(--vw-base));
+  --m-more-py:calc(12 * var(--vw-base));
+}
+@media (max-width:760px),(max-width:1100px) and (orientation:portrait){
+  .ch-detail{padding:var(--m-pad-top) var(--m-pad-x) var(--m-pad-top)!important;}
+  .ch-detail-header{grid-template-columns:1fr;gap:var(--m-header-gap);margin-bottom:var(--m-header-mb);}
+  .ch-detail-category{font-size:var(--m-cat-fs);letter-spacing:var(--m-cat-ls);margin-bottom:var(--m-cat-mb);left:0;top:0;}
+  .ch-detail-name{font-size:var(--m-name-fs);letter-spacing:var(--m-name-ls);padding-left:var(--m-name-pl);left:0;top:0;}
+  .ch-detail-desc{font-size:var(--m-desc-fs);letter-spacing:var(--m-desc-ls);line-height:var(--m-desc-lh);left:0;top:0;white-space:normal;}
+  .ch-detail-video{margin-bottom:var(--m-video-mb);top:0;}
+  .ch-detail-footer{flex-direction:column-reverse;gap:var(--m-footer-gap);}
+  .ch-detail-back{font-size:var(--m-back-fs);letter-spacing:var(--m-back-ls);left:0;top:var(--m-back-y,0);}
+  .ch-detail-more{font-size:var(--m-more-fs);letter-spacing:var(--m-more-ls);padding:var(--m-more-py) var(--m-more-px);left:0;top:0;}
+}
+
+/* === PC/モバイル説明文切り替え（title-text の display:inline に勝つよう詳細度上げ） === */
+.ch-detail-desc .desc-mb{display:none;}
+@media (max-width:760px),(max-width:1100px) and (orientation:portrait){
+  .ch-detail-desc .desc-pc{display:none;}
+  .ch-detail-desc .desc-mb{display:inline;}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
@@ -113,18 +158,18 @@
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
   <nav class="nav-left">
-    <a href="about.html" class="active">チャンネル<wbr>紹介</a>
-    <a href="videos.html">動画<wbr>一覧</a>
-    <a href="blog.html">作品・<wbr>連載</a>
+    <a href="about.html" class="active">チャンネル紹介</a>
+    <a href="videos.html">動画一覧</a>
+    <a href="blog.html">作品・連載</a>
   </nav>
   <a href="index.html" class="logo" aria-label="サルベド漫画">
     <img src="img/salvado-logo.png" alt="サルベド漫画">
   </a>
   <nav class="nav-right">
-    <a href="game.html">カード<wbr>ゲーム</a>
+    <a href="game.html">カードゲーム</a>
     <a href="goods.html">グッズ</a>
-    <a href="ebooks.html">電子<wbr>書籍</a>
-    <a href="news.html">お知<wbr>らせ</a>
+    <a href="ebooks.html">電子書籍</a>
+    <a href="news.html">お知らせ</a>
   </nav>
 </header>
 
@@ -179,7 +224,8 @@
           </h1>
         </div>
         <p class="ch-detail-desc">
-          <span class="title-text">異世界、魔法、タイムリープにドラゴン…現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</span>
+          <span class="title-text desc-pc">異世界、魔法、タイムリープにドラゴン…現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</span>
+          <span class="title-text desc-mb">異世界、魔法、タイムリープにドラゴン…<br>現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</span>
         </p>
       </div>
       <div class="ch-detail-video">
