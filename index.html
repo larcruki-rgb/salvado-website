@@ -86,11 +86,17 @@ html,body{overflow-x:hidden;}
 .news-top3 a{font-size:14px;color:#222;font-weight:600;flex:1;min-width:200px;}
 .news-top3 a:hover{color:#00DFD8;}
 
-/* === 作品・連載 誘導バナー（仮） === */
-.blog-banner-wrap{max-width:1100px;padding:30px 32px;}
-.blog-banner{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
-.blog-banner:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
-.blog-banner-image{aspect-ratio:4/3;background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;overflow:hidden;}
+/* === 作品・連載 誘導バナー（確定値） === */
+:root{
+  --bb-max-w:1090px;
+  --bb-pad-y:24px;
+  --bb-pad-x:26px;
+  --bb-aspect:3.7/1.8;
+  --bb-radius:17px;
+}
+.blog-banner-wrap{max-width:var(--bb-max-w);padding:var(--bb-pad-y) var(--bb-pad-x);}
+.blog-banner{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid #e0e0e0;border-radius:var(--bb-radius);overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+.blog-banner-image{aspect-ratio:var(--bb-aspect);background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;overflow:hidden;}
 .blog-banner-image img{width:100%;height:100%;object-fit:cover;display:block;}
 .blog-banner-placeholder{padding:24px;text-align:center;}
 .blog-banner-text{padding:32px 36px;display:flex;flex-direction:column;justify-content:center;}
@@ -99,20 +105,39 @@ html,body{overflow-x:hidden;}
 .blog-banner-desc{font-size:13px;color:#666;line-height:1.8;margin-bottom:18px;}
 .blog-banner-cta{font-size:13px;color:#00DFD8;font-weight:800;letter-spacing:2px;display:inline-flex;align-items:center;}
 
-/* === 3コンテンツ === */
-.feature-3-wrap{max-width:1100px;padding:50px 32px;}
+/* === 3コンテンツ（確定値） === */
+:root{
+  --f3-pad-y:0px;
+  --f3-pad-x:32px;
+  --f3-gap:24px;
+  --f3-radius:16px;
+  --f3-thumb-aspect:4/2;
+  --f3-body-pad-y:0px;
+  --f3-body-pad-x:22px;
+  --f3-tag-fs:8px;
+  --f3-tag-ls:2px;
+  --f3-h3-fs:23.5px;
+  --f3-h3-ls:2px;
+  --f3-h3-mb:0px;
+  --f3-p-fs:13.5px;
+  --f3-p-lh:1.7;
+  --f3-p-mb:14px;
+  --f3-cta-fs:11.5px;
+  --f3-cta-ls:1px;
+}
+.feature-3-wrap{max-width:1100px;padding:var(--f3-pad-y) var(--f3-pad-x);}
 .feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
-.feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.feature-3-card{background:#fff;border:1px solid #e0e0e0;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
+.feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--f3-gap);}
+.feature-3-card{background:#fff;border:1px solid #e0e0e0;border-radius:var(--f3-radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
 .feature-3-card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
-.feature-3-thumb{aspect-ratio:4/3;background:#f5f5f5;overflow:hidden;}
+.feature-3-thumb{aspect-ratio:var(--f3-thumb-aspect);background:#f5f5f5;overflow:hidden;}
 .feature-3-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
 .feature-3-card:hover .feature-3-thumb img{transform:scale(1.04);}
-.feature-3-body{padding:20px 22px;display:flex;flex-direction:column;flex:1;}
-.feature-3-tag{display:inline-block;font-size:10px;font-weight:900;background:#0a3d3a;color:#fff;padding:3px 10px;border-radius:3px;letter-spacing:2px;margin-bottom:10px;align-self:flex-start;}
-.feature-3-card h3{font-size:18px;font-weight:900;color:#1a1a1a;letter-spacing:2px;margin-bottom:8px;}
-.feature-3-card p{font-size:13px;color:#666;line-height:1.7;margin-bottom:14px;flex:1;}
-.feature-3-cta{font-size:12px;color:#00DFD8;font-weight:800;letter-spacing:1px;}
+.feature-3-body{padding:var(--f3-body-pad-y) var(--f3-body-pad-x);display:flex;flex-direction:column;flex:1;}
+.feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#0a3d3a;color:#fff;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-bottom:10px;align-self:flex-start;}
+.feature-3-card h3{font-size:var(--f3-h3-fs);font-weight:900;color:#1a1a1a;letter-spacing:var(--f3-h3-ls);margin-bottom:var(--f3-h3-mb);}
+.feature-3-card p{font-size:var(--f3-p-fs);color:#666;line-height:var(--f3-p-lh);margin-bottom:var(--f3-p-mb);flex:1;}
+.feature-3-cta{font-size:var(--f3-cta-fs);color:#00DFD8;font-weight:800;letter-spacing:var(--f3-cta-ls);}
 
 @media(max-width:760px){
   .blog-banner{grid-template-columns:1fr;}
@@ -125,82 +150,7 @@ html,body{overflow-x:hidden;}
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
-<body class="splash-lock">
-
-<!-- === スプラッシュ === -->
-<style>
-.splash{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.8s ease;}
-.splash.done{opacity:0;pointer-events:none;}
-.splash-stage{position:relative;width:72%;max-width:1100px;aspect-ratio:16/9;}
-@media(max-width:700px){.splash-stage{width:92%;}}
-.splash-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;}
-.splash-layer[data-dir="right"]{transform:translateX(85%);}
-.splash-layer[data-dir="left"]{transform:translateX(-85%);}
-.splash-layer.show{transform:translateX(0);opacity:1;}
-.splash-streak,.splash-cat{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:translateY(80%);transition:transform 0.55s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;}
-.splash-streak.show,.splash-cat.show{opacity:1;transform:translateY(0);}
-.splash-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(111,223,214,0.95) 0%,rgba(255,255,255,0.9) 18%,rgba(255,255,255,0.55) 55%,rgba(255,255,255,0) 95%);opacity:0;transform:translateY(80%);transition:transform 0.55s cubic-bezier(0.22,1,0.36,1),opacity 0.25s ease;pointer-events:none;}
-.splash-gradient.show{opacity:1;transform:translateY(0);}
-.splash-manga{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transform:scale(0.4);transition:transform 0.5s cubic-bezier(0.34,1.8,0.64,1),opacity 0.3s ease;}
-.splash-manga.show{opacity:1;transform:scale(1);}
-body.splash-lock{overflow:hidden;}
-</style>
-<div id="splash" class="splash">
-  <div class="splash-stage">
-    <img class="splash-layer" data-dir="right" src="img/splash/1.png" alt="">
-    <img class="splash-layer" data-dir="right" src="img/splash/1moji.png" alt="">
-    <img class="splash-layer" data-dir="left" src="img/splash/2.png" alt="">
-    <img class="splash-layer" data-dir="left" src="img/splash/2moji.png" alt="">
-    <img class="splash-layer" data-dir="right" src="img/splash/3.png" alt="">
-    <img class="splash-layer" data-dir="right" src="img/splash/3moji.png" alt="">
-    <img class="splash-layer" data-dir="left" src="img/splash/4.png" alt="">
-    <img class="splash-layer" data-dir="left" src="img/splash/4moji.png" alt="">
-    <div id="splashGradient" class="splash-gradient"></div>
-    <img id="splashStreak" class="splash-streak" src="img/splash/流線.png" alt="">
-    <img id="splashCat" class="splash-cat" src="img/splash/5.png" alt="">
-    <img id="splashManga" class="splash-manga" src="img/splash/漫画.png" alt="">
-  </div>
-</div>
-<script>
-(function(){
-  var splash = document.getElementById('splash');
-  if (!splash) return;
-  var layers = splash.querySelectorAll('.splash-layer');
-  var gradient = document.getElementById('splashGradient');
-  var streak = document.getElementById('splashStreak');
-  var cat = document.getElementById('splashCat');
-  var manga = document.getElementById('splashManga');
-  var STEP=240, PHASE_HOLD=250, P2_MANGA=250, FINAL_HOLD=1100, FADE=600;
-  var i=0;
-  function showPair(){
-    if (i < layers.length){
-      layers[i].classList.add('show');
-      if (layers[i+1]) layers[i+1].classList.add('show');
-      i += 2;
-      setTimeout(showPair, STEP);
-    } else {
-      setTimeout(phase2, PHASE_HOLD);
-    }
-  }
-  function phase2(){
-    gradient.classList.add('show');
-    streak.classList.add('show');
-    cat.classList.add('show');
-    setTimeout(function(){ manga.classList.add('show'); }, P2_MANGA);
-    setTimeout(finish, P2_MANGA + 500);
-  }
-  function finish(){
-    setTimeout(function(){
-      splash.classList.add('done');
-      setTimeout(function(){
-        splash.style.display='none';
-        document.body.classList.remove('splash-lock');
-      }, FADE);
-    }, FINAL_HOLD);
-  }
-  setTimeout(showPair, 150);
-})();
-</script>
+<body>
 
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
@@ -221,16 +171,50 @@ body.splash-lock{overflow:hidden;}
 </header>
 
 <div class="main-wrap">
-  <section class="latest-title">
-    <h2>最新動画</h2>
-    <p class="en">LATEST VIDEOS</p>
-  </section>
-  <section class="section section-wide">
-    <div class="video-grid" id="latestVideos">
+  <!-- 作品・連載 誘導バナー -->
+  <section class="section blog-banner-wrap">
+    <div class="blog-banner">
+      <div class="blog-banner-image">
+        <img src="img/blog-banner.png" alt="作品・連載">
+      </div>
+      <div class="blog-banner-text">
+        <p class="blog-banner-label">SARUBEDO MANGA / WORKS &amp; SERIES</p>
+        <h2>ホームページ限定作品、多数公開中！</h2>
+        <p class="blog-banner-desc">連載作品「死神少女」、作画担当・坂街透のブログ、ボツ作品集など。<br>サルベド漫画の作品世界の裏側へ。</p>
+      </div>
     </div>
   </section>
-  <section class="latest-more-wrap">
-    <a class="latest-more-link" href="videos.html">すべての動画を見る →</a>
+
+  <!-- 作品・連載 3カード -->
+  <section class="section feature-3-wrap">
+    <div class="feature-3-grid">
+      <a href="blog-sakamachi.html" class="feature-3-card">
+        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">坂街透 画像（仮）</span></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">BLOG</span>
+          <h3>坂街透</h3>
+          <p>作画担当・坂街透のブログ。制作の裏側、イラスト、お仕事のことなど。</p>
+        </div>
+      </a>
+      <a href="blog-shinigami.html" class="feature-3-card">
+        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">死神少女 画像（仮）</span></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">SERIES</span>
+          <h3>死神少女</h3>
+          <p>連載作品「死神少女」原稿Ver。寿命と引き換えに願いを叶える、シリーズの本編をここで。</p>
+          <span class="feature-3-cta">読みに行く →</span>
+        </div>
+      </a>
+      <a href="blog-botsu.html" class="feature-3-card">
+        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">ボツの館 画像（仮）</span></div>
+        <div class="feature-3-body">
+          <span class="feature-3-tag">BOTSU</span>
+          <h3>ボツの館</h3>
+          <p>世に出なかったボツ作品集。表に出るはずだった漫画たちの墓場。</p>
+          <span class="feature-3-cta">読みに行く →</span>
+        </div>
+      </a>
+    </div>
   </section>
 
   <section class="section">
@@ -243,19 +227,16 @@ body.splash-lock{overflow:hidden;}
     <div class="section-more"><a href="news.html">お知らせ一覧 →</a></div>
   </section>
 
-  <!-- 作品・連載 誘導バナー（仮レイアウト） -->
-  <section class="section blog-banner-wrap">
-    <a href="blog.html" class="blog-banner">
-      <div class="blog-banner-image">
-        <img src="img/blog-banner.png" alt="作品・連載">
-      </div>
-      <div class="blog-banner-text">
-        <p class="blog-banner-label">SARUBEDO MANGA / WORKS &amp; SERIES</p>
-        <h2>ホームページ限定作品、多数公開中！</h2>
-        <p class="blog-banner-desc">連載作品「死神少女」、作画担当・坂街透のブログ、ボツ作品集など。<br>サルベド漫画の作品世界の裏側へ。</p>
-        <span class="blog-banner-cta">読みに行く →</span>
-      </div>
-    </a>
+  <section class="latest-title">
+    <h2>最新動画</h2>
+    <p class="en">LATEST VIDEOS</p>
+  </section>
+  <section class="section section-wide">
+    <div class="video-grid" id="latestVideos">
+    </div>
+  </section>
+  <section class="latest-more-wrap">
+    <a class="latest-more-link" href="videos.html">すべての動画を見る →</a>
   </section>
 
   <!-- 3コンテンツ カードゲーム / 電子書籍 / グッズ -->
