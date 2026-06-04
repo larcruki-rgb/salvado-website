@@ -139,6 +139,33 @@ html,body{overflow-x:hidden;}
 .feature-3-card p{font-size:var(--f3-p-fs);color:#666;line-height:var(--f3-p-lh);margin-bottom:var(--f3-p-mb);flex:1;}
 .feature-3-cta{font-size:var(--f3-cta-fs);color:#00DFD8;font-weight:800;letter-spacing:var(--f3-cta-ls);}
 
+/* === トップ：死神少女スライダー（step方式） === */
+:root{
+  --tm-card-w:32%;
+  --tm-edge:0px;
+  --tm-gap:14px;
+  --tm-transition:0.6s;
+}
+.top-marquee-wrap{position:relative;width:100%;overflow:hidden;padding:8px var(--tm-edge) 0;box-sizing:border-box;}
+.top-marquee-track{display:flex;width:100%;gap:var(--tm-gap);transition:transform var(--tm-transition) cubic-bezier(0.4,0,0.2,1);}
+.top-marquee-card{flex:0 0 var(--tm-card-w);width:var(--tm-card-w);max-width:none;background:#000;border-radius:12px;overflow:hidden;text-decoration:none;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.25);position:relative;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
+.top-marquee-card img{width:100%;height:100%;object-fit:cover;display:block;}
+.top-marquee-card .tm-label{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);font-size:14px;font-weight:800;letter-spacing:2px;text-align:center;}
+.top-marquee-card.tm-intro{background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);padding:24px;text-align:center;}
+.top-marquee-card.tm-intro .tm-intro-label{font-size:11px;letter-spacing:4px;color:rgba(255,255,255,0.65);font-weight:800;margin-bottom:10px;}
+.top-marquee-card.tm-intro h3{font-size:22px;line-height:1.3;letter-spacing:2px;font-weight:900;color:#fff;}
+
+/* 矢印 */
+.tm-arrow{position:absolute;top:calc(50% - 8px);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.95);border:1px solid #e0e0e0;box-shadow:0 4px 14px rgba(0,0,0,0.18);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#333;z-index:3;transition:background 0.2s,transform 0.2s;}
+.tm-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06);}
+.tm-arrow.prev{left:12px;}
+.tm-arrow.next{right:12px;}
+/* ドット */
+.tm-dots{display:flex;justify-content:center;gap:6px;padding:14px 0 4px;flex-wrap:wrap;}
+.tm-dot{width:24px;height:4px;background:#ddd;border:none;cursor:pointer;border-radius:2px;transition:background 0.2s,transform 0.2s;padding:0;}
+.tm-dot:hover{background:#aaa;}
+.tm-dot.active{background:#6FDFD6;transform:scaleY(1.5);}
+
 @media(max-width:760px){
   .blog-banner{grid-template-columns:1fr;}
   .blog-banner-image{aspect-ratio:auto;height:var(--mobile-banner-h,240px);}
@@ -171,6 +198,125 @@ html,body{overflow-x:hidden;}
 </header>
 
 <div class="main-wrap">
+  <!-- トップ：死神少女マーキー -->
+  <section class="section section-wide top-marquee-wrap">
+    <div class="top-marquee-track" id="topMarqueeTrack">
+      <div class="top-marquee-card tm-intro">
+        <p class="tm-intro-label">SARUBEDO MANGA / WEB ORIGINAL</p>
+        <h3>ホームページ限定作品<br>多数公開中！</h3>
+      </div>
+      <a class="top-marquee-card" href="blog-shinigami-01.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第1話">
+        <div class="tm-label">死神少女 第1話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-02.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第2話">
+        <div class="tm-label">死神少女 第2話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-03.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第3話">
+        <div class="tm-label">死神少女 第3話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-04.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第4話">
+        <div class="tm-label">死神少女 第4話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-05.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第5話">
+        <div class="tm-label">死神少女 第5話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-06.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第6話">
+        <div class="tm-label">死神少女 第6話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-07.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第7話">
+        <div class="tm-label">死神少女 第7話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-08.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第8話">
+        <div class="tm-label">死神少女 第8話</div>
+      </a>
+      <a class="top-marquee-card" href="blog-shinigami-09.html">
+        <img src="img/shinigami-icon.png" alt="死神少女 第9話">
+        <div class="tm-label">死神少女 第9話</div>
+      </a>
+    </div>
+  </section>
+  <script>
+  (function(){
+    var track=document.getElementById('topMarqueeTrack');
+    if(!track) return;
+    var wrap=track.parentElement;
+    var originals=Array.prototype.slice.call(track.children);
+    var realCount=originals.length;
+    // 末尾を先頭に、先頭を末尾に複製（無限ループ用）
+    var firstClone=originals[0].cloneNode(true);
+    var lastClone=originals[originals.length-1].cloneNode(true);
+    track.appendChild(firstClone);
+    track.insertBefore(lastClone, track.firstChild);
+    // position: 0=末尾クローン, 1..realCount=本物, realCount+1=先頭クローン
+    var position=1;
+    var isAnimating=false;
+    var AUTO_INTERVAL=3000; // 自動進行間隔（ms）
+    function calcX(p){
+      // 中央寄せオフセット - p * (card_w + gap)
+      return 'calc((100% - var(--tm-card-w))/2 - '+p+' * (var(--tm-card-w) + var(--tm-gap)))';
+    }
+    function update(animate){
+      track.style.transition=animate?'transform var(--tm-transition) cubic-bezier(0.4,0,0.2,1)':'none';
+      track.style.transform='translateX('+calcX(position)+')';
+      var realIdx=position===0?realCount-1:(position===realCount+1?0:position-1);
+      Array.prototype.forEach.call(dots.children,function(d,i){d.classList.toggle('active',i===realIdx);});
+    }
+    function goTo(p){
+      if(isAnimating) return;
+      isAnimating=true;
+      position=p;
+      update(true);
+    }
+    // 矢印
+    var prev=document.createElement('button');
+    prev.className='tm-arrow prev';prev.textContent='◀';prev.setAttribute('aria-label','前へ');
+    var next=document.createElement('button');
+    next.className='tm-arrow next';next.textContent='▶';next.setAttribute('aria-label','次へ');
+    wrap.appendChild(prev);wrap.appendChild(next);
+    prev.addEventListener('click',function(){goTo(position-1);resetAuto();});
+    next.addEventListener('click',function(){goTo(position+1);resetAuto();});
+    // ドット
+    var dots=document.createElement('div');
+    dots.className='tm-dots';
+    for(var i=0;i<realCount;i++){
+      var d=document.createElement('button');
+      d.className='tm-dot'+(i===0?' active':'');
+      d.setAttribute('aria-label','スライド '+(i+1));
+      d.dataset.idx=i;
+      d.addEventListener('click',function(){goTo(parseInt(this.dataset.idx)+1);resetAuto();});
+      dots.appendChild(d);
+    }
+    wrap.parentElement.insertBefore(dots, wrap.nextSibling);
+    // 初期位置（本物先頭）にトランジション無しで配置
+    track.style.transition='none';
+    track.style.transform='translateX('+calcX(position)+')';
+    void track.offsetWidth;
+    // クローン位置に到達したら本物にジャンプ
+    track.addEventListener('transitionend',function(e){
+      if(e.propertyName!=='transform') return;
+      isAnimating=false;
+      if(position===0){position=realCount;update(false);}
+      else if(position===realCount+1){position=1;update(false);}
+    });
+    // 自動進行
+    var autoTimer=null;
+    function startAuto(){stopAuto();autoTimer=setInterval(function(){goTo(position+1);},AUTO_INTERVAL);}
+    function stopAuto(){if(autoTimer){clearInterval(autoTimer);autoTimer=null;}}
+    function resetAuto(){stopAuto();startAuto();}
+    wrap.addEventListener('mouseenter',stopAuto);
+    wrap.addEventListener('mouseleave',startAuto);
+    startAuto();
+  })();
+  </script>
+
   <!-- 作品・連載 誘導バナー -->
   <section class="section blog-banner-wrap">
     <div class="blog-banner">
