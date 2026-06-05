@@ -1,0 +1,2635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サルベド カードゲーム — 全カード使い方ガイド</title>
+<meta name="description" content="サルベド漫画オリジナルカードゲーム全62枚の使い方・強み・弱み・相性を1枚ずつ解説。デッキ構築と対戦の攻略ガイド。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-E6JYMJBJDL');</script>
+<style>
+
+  body {
+    background: #1a1a2e;
+    padding: 32px;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Yu Gothic', sans-serif;
+  }
+  .nav {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .nav a {
+    color: #f0e6d0;
+    border-radius: 10px;
+    padding: 40px 24px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #8a7d5a;
+    min-width: 180px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+  .nav a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 0;
+  }
+  .nav a span { position: relative; z-index: 1; }
+  .nav a:hover { transform: scale(1.05); border-color: #f0e6d0; }
+  .nav a:hover::before { background: rgba(0,0,0,0.3); }
+  .group { margin-bottom: 40px; }
+  .group-title {
+    color: #f0e6d0; font-size: 22px; font-weight: bold;
+    padding: 10px 20px; margin-bottom: 16px;
+    border-left: 4px solid #8a7d5a;
+    background: rgba(90,74,42,0.2); border-radius: 0 6px 6px 0;
+  }
+  .subgroup-title {
+    color: #c0b89a; font-size: 16px; font-weight: bold;
+    padding: 6px 16px; margin: 12px 0 12px 10px;
+    border-left: 3px solid #555;
+  }
+  .card-row {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 24px; margin-bottom: 16px;
+  }
+  .card {
+    width: 280px; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: relative;
+  }
+  .card-creature { background: linear-gradient(135deg, #2c2c3a, #3a3a50); border: 2px solid #666; }
+  .card-enchant { background: linear-gradient(135deg, #2a1a2e, #3e2a4a); border: 2px solid #9a5aaa; }
+  .card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; background: rgba(0,0,0,0.3);
+  }
+  .card-name { font-size: 16px; font-weight: bold; color: #f0e6d0; }
+  .card-cost {
+    background: #5a4a2a; color: #f0e6d0; border-radius: 50%;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: bold; border: 2px solid #8a7d5a;
+  }
+  .card-enchant .card-cost { background: #4a2a5a; border-color: #9a5aaa; }
+  .card-art {
+    height: 160px; background: #222233; display: flex; align-items: center; justify-content: center;
+    color: #555; font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .card-type {
+    padding: 6px 14px; font-size: 11px; color: #c0b89a;
+    background: rgba(0,0,0,0.25); border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .card-type .tag { display: inline-block; background: rgba(255,255,255,0.08); border-radius: 4px; padding: 2px 6px; margin-right: 4px; font-size: 10px; }
+  .card-type .tag-hero { border: 1px solid #d4a54a; color: #d4a54a; }
+  .card-type .tag-heroine { border: 1px solid #e06080; color: #e06080; }
+  .card-type .tag-normal { border: 1px solid #888; color: #aaa; }
+  .card-type .tag-enchant { border: 1px solid #9a5aaa; color: #b88ac8; }
+  .card-type .tag-support { border: 1px solid #5a8a5a; color: #7ab87a; }
+  .card-type .tag-evil { border: 1px solid #aa4444; color: #cc6666; }
+  .card-type .tag-kiyaku { border: 1px solid #cc6600; color: #ff8833; }
+  .card-text { padding: 10px 14px; font-size: 11px; color: #d0c8b0; line-height: 1.6; min-height: 80px; }
+  .card-text .keyword { color: #e8c060; font-weight: bold; }
+  .card-text .cost-inline { color: #aaa; font-style: italic; }
+  .card-footer { display: flex; justify-content: flex-end; padding: 8px 14px; background: rgba(0,0,0,0.3); }
+  .card-pt { background: #5a4a2a; color: #f0e6d0; border-radius: 6px; padding: 4px 12px; font-size: 18px; font-weight: bold; border: 2px solid #8a7d5a; }
+  .card-support { background: linear-gradient(135deg, #1a2e1a, #2a4a2a); border: 2px solid #5a8a5a; }
+  .card-support .card-cost { background: #2a4a2a; border-color: #5a8a5a; }
+  .card-evil { background: linear-gradient(135deg, #2e1a1a, #4a2a2a); border: 2px solid #aa4444; }
+  .card-evil .card-cost { background: #4a2a2a; border-color: #aa4444; }
+  .card-flavor { color: #888; font-size: 10px; font-style: italic; margin-top: 8px; }
+  .card-kiyaku { background: linear-gradient(135deg, #2e1a00, #4a2a00); border: 2px solid #cc6600; }
+  .card-kiyaku .card-cost { background: #4a2a00; border-color: #cc6600; }
+  @keyframes ur-outline {
+    0%{outline-color:#ff6080;}
+    25%{outline-color:#a060ff;}
+    50%{outline-color:#60c0ff;}
+    75%{outline-color:#60ffa0;}
+    100%{outline-color:#ff6080;}
+  }
+  .card.rarity-r,.card.rarity-ur{outline:4px solid #d4a54a;outline-offset:3px;animation:shine-shadow 3.5s ease-in-out infinite;}
+  .card.rarity-r .card-name{background:linear-gradient(90deg,#d4a54a,#f0d080,#d4a54a);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine-text 3s linear infinite;}
+  .card.rarity-ur .card-name{background:linear-gradient(90deg,#c8a070,#a0b080,#80a0b0,#b090b0,#c8a070);background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine-text 4s linear infinite;font-size:18px;}
+  @keyframes shine-text{0%{background-position:0% center;}100%{background-position:200% center;}}
+  @keyframes shine-shadow{0%{box-shadow:0 0 6px rgba(212,165,74,0.3);}50%{box-shadow:0 0 14px rgba(240,208,128,0.6);}100%{box-shadow:0 0 6px rgba(212,165,74,0.3);}}
+  .video-banner {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #5a4a2a;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+  .video-banner img {
+    width: 100%;
+    display: block;
+  }
+  .video-banner .play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; height: 60px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .video-banner .play-btn::after {
+    content: '';
+    border-style: solid;
+    border-width: 12px 0 12px 22px;
+    border-color: transparent transparent transparent #f0e6d0;
+    margin-left: 4px;
+  }
+  .video-banner:hover { border-color: #f0e6d0; }
+  .video-banner:hover .play-btn { background: rgba(212,165,74,0.8); }
+  .video-embed {
+    max-width: 480px;
+    margin: 0 auto 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #5a4a2a;
+  }
+  .video-embed iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    display: block;
+  }
+  @font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
+  .card-framed{position:relative;width:280px;height:401px;background:#fff;border:none;border-radius:10px;overflow:hidden;}
+  .card-frame-img{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;}
+  .card-frame-name{position:absolute;top:14px;left:7px;right:73px;z-index:3;font-size:15px;text-align:center;font-weight:bold;color:#2a2a3a;letter-spacing:1px;font-family:'SoeiKakuPop','Zen Maru Gothic',sans-serif;-webkit-text-stroke:0.3px #fff;text-shadow:0.5px 0.5px 0 rgba(0,51,102,0.5),-0.5px -0.5px 0 rgba(0,51,102,0.5),0.5px -0.5px 0 rgba(0,51,102,0.5),-0.5px 0.5px 0 rgba(0,51,102,0.5);}
+  .card-frame-cost{position:absolute;top:9px;right:19px;z-index:3;font-size:20px;font-weight:bold;color:#e06080;width:40px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'SoeiKakuPop','Zen Maru Gothic',sans-serif;-webkit-text-stroke:0.5px #fff;}
+  .card-frame-subtype{position:absolute;top:36px;left:12px;z-index:3;font-size:9px;font-weight:bold;font-family:'SoeiKakuPop','Zen Maru Gothic',sans-serif;display:flex;gap:3px;}
+  .card-frame-subtype .tag{display:inline-block;background:rgba(0,0,0,0.15);border-radius:3px;padding:1px 5px;color:#555;border:1px solid #ccc;}
+  .card-frame-subtype .tag-hero{color:#cc2222;border-color:#cc2222;background:rgba(204,34,34,0.2);}
+  .card-frame-subtype .tag-evil{color:#6622aa;border-color:#6622aa;background:rgba(102,34,170,0.2);}
+  .card-frame-art{position:absolute;top:49px;left:9px;width:262px;height:172px;z-index:1;overflow:hidden;background:#eee;}
+  .card-frame-textbox{position:absolute;top:229px;left:10px;width:260px;height:138px;z-index:3;padding:6px 10px;box-sizing:border-box;overflow:hidden;}
+  .card-frame-tags{margin-bottom:3px;}
+  .card-frame-tags .tag{display:inline-block;background:rgba(0,0,0,0.06);border-radius:3px;padding:2px 5px 0;margin-right:3px;font-size:10px;color:#555;border:1px solid #ccc;line-height:1;}
+  .card-frame-tags .tag-hero{color:#cc2222;border-color:#cc2222;background:rgba(204,34,34,0.08);}
+  .card-frame-tags .tag-evil{color:#6622aa;border-color:#6622aa;background:rgba(102,34,170,0.08);}
+  .card-frame-tags .tag-kiyaku{color:#cc6600;border-color:#cc6600;background:rgba(204,102,0,0.08);}
+  .card-frame-tags .tag-support{color:#2266aa;border-color:#2266aa;background:rgba(34,102,170,0.08);}
+  .card-frame-tags .tag-creator{color:#22aa44;border-color:#22aa44;background:rgba(34,170,68,0.08);}
+  .card-frame-tags .tag-enchant{color:#9a5aaa;border-color:#9a5aaa;background:rgba(154,90,170,0.08);}
+  .card-frame-desc{font-size:11px;color:#333;line-height:1.5;font-family:'Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;}
+  .card-frame-desc .keyword{color:#c04060;font-weight:bold;}
+  .card-frame-desc .cost-inline{color:#666;font-style:italic;}
+  .card-frame-desc .card-flavor{color:#888;font-size:10px;font-style:italic;margin-top:8px;display:block;}
+  .card-frame-footer{position:absolute;bottom:7px;left:30px;right:22px;z-index:3;display:flex;justify-content:space-between;font-weight:bold;font-family:'SoeiKakuPop','Zen Maru Gothic',sans-serif;}
+  .card-frame-atk{color:#cc2222;-webkit-text-stroke:0.5px #fff;}
+  .card-frame-atk .stat-label{font-size:12px;margin-right:2px;}
+  .card-frame-atk .stat-num{font-size:18px;}
+  .card-frame-hp{color:#22aa44;-webkit-text-stroke:0.5px #fff;}
+  .card-frame-hp .stat-label{font-size:12px;margin-right:2px;}
+  .card-frame-hp .stat-num{font-size:18px;}
+
+
+  /* === カード解説ページ専用 === */
+  .guide-intro { max-width: 760px; margin: 0 auto 36px; color: #d8d0bc; line-height: 1.9; font-size: 14px; }
+  .guide-intro h1 { color: #f0e6d0; font-size: 26px; margin: 0 0 16px; text-align: center; }
+  .guide-intro p { margin: 0 0 12px; }
+  .guide-group { max-width: 920px; margin: 0 auto 8px; }
+  .guide-item {
+    display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
+    max-width: 900px; margin: 0 auto 28px; padding: 24px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+  }
+  .guide-card-col { flex: 0 0 280px; }
+  .guide-text { flex: 1; min-width: 300px; }
+  .guide-name {
+    font-size: 20px; font-weight: bold; color: #f0e6d0; margin: 0 0 16px;
+    border-bottom: 1px solid rgba(240,230,208,0.2); padding-bottom: 8px;
+  }
+  .guide-block { margin-bottom: 14px; }
+  .guide-block .label {
+    display: inline-block; font-size: 12px; font-weight: bold; color: #1a1a2e;
+    border-radius: 4px; padding: 2px 10px; margin-bottom: 6px;
+  }
+  .label-summary { background: #c0b89a; }
+  .label-strength { background: #7ab87a; }
+  .label-usage { background: #d4a54a; }
+  .label-weakness { background: #cc6666; }
+  .label-synergy { background: #b88ac8; }
+  .guide-block p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.85; color: #d8d0bc; }
+  @media (max-width: 680px) {
+    body { padding: 16px; }
+    .guide-item { padding: 16px; gap: 18px; justify-content: center; }
+    .guide-card-col { flex: 0 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a href="#lovecome" style="background-image:url(https://game.sarubedo.jp/img/seitokaichou.png);"><span>サルベドラブコメ</span></a>
+  <a href="#fantasy" style="background-image:url(https://game.sarubedo.jp/img/maoria.png);"><span>サルベドファンタジー</span></a>
+  <a href="#creator" style="background-image:url(https://game.sarubedo.jp/img/salvado_cat.png);"><span>クリエイターチーム</span></a>
+  <a href="#channel_unei" style="background:linear-gradient(135deg,#2e1a00,#4a2a00);border-color:#cc6600;"><span>チャンネル運営</span></a>
+</div>
+
+<div class="guide-intro">
+  <h1>サルベド カードゲーム 全カード使い方ガイド</h1>
+  <p>サルベド漫画のキャラクターたちが集ったオリジナルカードゲーム。ここでは全62枚のカード1枚ずつに、<strong>ひとことで・強み・使い方・弱み・相性</strong>の5項目で詳しい解説をつけました。これからデッキを組む人も、対戦で迷っている人も、各カードの活かし方がひと目で分かります。</p>
+  <p>カードの効果テキストやステータスは実際のゲーム版と同期しています。気になったカードは <a href="cards.html" style="color:#e8c060;">カード一覧</a> や <a href="game.html" style="color:#e8c060;">ゲーム紹介ページ</a> もあわせてどうぞ。</p>
+</div>
+
+
+<div class="guide-group" id="g-lovecome">
+  <div class="group-title">サルベドラブコメ</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">生徒会長ヒロイン</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/seitokaichou.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc"><span class="keyword">油断しない</span>（攻撃してもタップしない）<br>登場時、カードを1枚ドローする。<br><br><span class="card-flavor">「規律は守ってもらいます」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">生徒会長ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100/HP100の投稿キャラ。登場時に1枚ドローするので、出しても手札は減らない。「油断しない」を持つため攻撃してもタップせず、自分のターンで殴ったあとそのまま相手ターンの守りにも回せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>出した瞬間に1ドローするので、盤面に戦力を1体増やしながら手札は減らない。「油断しない」で攻めと守りを両立できるため、低コストながら攻撃にもブロックにも気軽に使える優秀な序盤要員。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>コスト2と軽く視聴者3スタートのこのゲームでは1ターン目から普通に出せる。早めに出して1ドローを稼ぎ、盤面を作りつつ手札を整える展開役として使うのがおすすめ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100/HP100とスタッツが低く、相手はATK100以上のキャラをブロックや相殺に当てるだけで簡単に対処できる。登場時の1ドローは1回きりなので、HPの高いキャラが並ぶ後半は戦力として力不足になりやすい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>投げ銭やあかぽで一時的に攻撃を上げて殴っても、「油断しない」のおかげでそのまま守りに残せて無駄がない。木の精をつければブロック時に戦闘ダメージを受けなくなり、低いHPを補って攻守両立をさらに活かせる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">幼馴染ヒロイン</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/osananajimi.png?v=2" style="width:100%;height:100%;object-fit:cover;object-position:60% center;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc">登場時、デッキから主人公カードを1枚サーチして手札に加える。<br><br><span class="card-flavor">「昔から、ずっと一緒だったでしょ」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">幼馴染ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100 HP100の投稿キャラ。登場時にデッキから主人公カードを1枚サーチして手札に加える。場に100/100を1体並べながら、手札の枚数を減らさずに主人公を引き寄せられる軽量キャラだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>出すだけで主人公カードを手札に加えられて、実質アドバンテージが1枚増えるのが強み。コスト2と軽く、最初のターンから無理なく出せる。盤面に100/100を足しつつ、デッキの主人公にアクセスできるのが噛み合ってるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤に出して主人公を確保し、後続の動きに繋げるのが基本。サーチは候補から自分で選べないランダム効果だから、デッキの主人公カードを1〜2種類に絞っておくと欲しいカードが手に入りやすいよ。サーチ後の100/100は軽いブロック役・殴り役として盤面に残せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100 HP100とスタッツが低く、相手の投稿キャラと戦うと相殺・ブロックされやすい。登場時のサーチは1回きりで、ゲーム後半に出すと戦力としては力不足。サーチで複数候補があるとどれを持ってくるか自分では選べない点にも注意してね。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「青春詭弁」と相性が良い。サーチで手札に加えた主人公カードを、青春詭弁のコスト無視プレイで一気に場に出せるから、サーチ→踏み倒しの流れが繋がるよ。それ以外は連動が薄く、基本は単体で手札補充役として機能する。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">アイドル カナリア</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/kanaria.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc">【応援3】+T: デッキの一番上のカードを1枚、あなたの視聴者に加える。<br><br><span class="card-flavor">「アイドル辞めて烏丸さんと結婚しますっ！」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">アイドル カナリア</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3で出せる、応援(視聴者)を増やす加速役のヒロイン。【応援3】+Tでデッキの一番上を視聴者ゾーンに送り、使える応援の数を増やせる。高コストの大型カードや重い起動能力に早くたどり着くための土台を作るカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>毎ターン応援を1つずつ積み増せるので、放っておくと相手より早く高コスト帯や重い起動能力に到達できる。応援が伸びるほど後半の選択肢と爆発力が一気に上がる、息の長いエンジンだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したターンは攻撃できず、能力にも応援3が必要。だから早めに置いて、毎ターン能力を撃ち続けて応援を貯めるのが基本。ATK100で戦闘は不得意だから攻めには出さず、後ろで加速役に専念させるのがいいよ。能力起動でタップするから、撃ったターンはブロックにも使えない点だけ覚えておいて。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100 HP100と打たれ弱く、相手のアタッカーに殴られると戦闘であっさり落とされちゃう。加えて企画ボツやサルベド猫のやらかしで除去の的にもされやすい。消されると加速計画が止まるから、守りきれるかが弱点だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>貯めた応援を使い切る先が、のちの魔王マオリアや勇者トモといった高コストの大型フィニッシャー。応援5を要求するドラゴン娘ルシアや、応援4で全体除去級を撃つ賢者レイチェンの重い能力とも噛み合う。カナリアで土台を作り、重い切り札に繋げる動きが強いよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">女上司ヒロイン</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/onna_joushi.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc"><span class="keyword">油断しない</span>（攻撃してもタップしない）<br>登場時、自分のデッキの一番上を確認する。その後、デッキをシャッフルしてもよい。<br><br><span class="card-flavor">「仕事の後、少し付き合いなさい」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">女上司ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100/HP100の投稿キャラ。「油断しない」を持つので攻撃してもタップせず、攻めた後そのまま相手の攻撃をブロックできる、攻守を両立できるキャラだよ。登場時にデッキの一番上を確認し、要らないカードならシャッフルでめくり直せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>「油断しない」のおかげで、自分のターンに攻撃しても横向きにならず、相手ターンにそのまま守りに回れる。攻めと守りのどちらか一方を諦めなくていいのが強み。登場時にデッキトップを覗いて、悪いカードが見えたらシャッフルで仕込み直せるから、次のドローの事故を減らせる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>コスト2で、ゲーム開始時から視聴者3＝応援は十分あるので最初のターンから普通に出せる。早めに出して、毎ターン攻撃しつつそのままブロック役も兼ねさせれば、1枚で攻守の両方をこなしてくれる。登場時はデッキトップを確認し、欲しいカードが上ならそのまま、不要ならシャッフルして次のドローを良いものに変えよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100/HP100と数値が低いので、相手はATK100以上のキャラをぶつけるだけで相殺・ブロックでき、殴り合いでは力負けしやすい。登場時のデッキトップ確認も1回きりで、盤面が大きくなる後半は単体の戦力としては物足りなくなる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>登場時効果はデッキトップを「見て、必要ならシャッフルする」だけで、それ以上トップを参照・固定するわけではないので、特定カードとの強いコンボはない。ただ「油断しない」のおかげで単体で攻守両方をこなせるから、無理にコンボを狙わなくても序盤の攻守要員として十分機能するよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">妹系ヒロイン</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/imouto.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc"><span class="keyword">俊足</span>（出たターンから攻撃可能）<br><br><span class="card-flavor">「兄やん、来たよーーー！！」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">妹系ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で出せる俊足持ちの投稿キャラ。普通の投稿キャラは出したターン攻撃できないけど、この子は俊足だから出したその場ですぐ殴りに行ける。ATK100 HP100と数字は小さいけど、最速で相手のLPを削り始められる序盤の先兵だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは「コスト1で即攻撃」。コストが1だから最初の自分のターンから余裕で出せて、そのままLPに100ダメージを通せる。相手の盤面がまだ空っぽな序盤ほど、ブロックされずに直接顔を殴れるのが偉いんだ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤に出して、相手が守りを固める前にLPを削っていくのが基本。攻撃するとタップして守りには使えなくなるから、相手の盤面が育つ前に殴れるだけ殴るのが理想。後半は攻撃バフを乗せて、小さい体のまま一気に大ダメージを狙うのも手だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100 HP100とスタッツが低いのが弱点。相手がATK100以上のキャラを1体ブロックに置くだけで簡単に止まるし、相殺で倒されてしまう。盤面が整った後半は、この子単体で押し込む力はほとんどないと思っておこう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>出してすぐ攻撃できる俊足と、攻撃力を一時的に盛るカードの相性が抜群。割り込みで味方の攻撃を+500する「あかぽ」、攻撃とHPを+300する「投げ銭」を出したターンの攻撃に乗せれば、コスト1のこの子が一撃で大ダメージを叩き込める。常在で味方を底上げする「勇者の血族 ミリア」と並べれば、ATK200 HP200に強化された状態で毎ターン殴り続けられるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
+      <div class="card-frame-name">木の精</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/ki_no_sei.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラはブロック時、戦闘ダメージを受けない。<br><br><span class="card-flavor">「気のせい　木の精　ウッドエレメンタル」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">木の精</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2のエンチャント。味方の投稿キャラ1体に装備すると、そのキャラはブロックした時に戦闘ダメージを受けなくなる。相手の攻撃を受け止めても傷つかない、無敵の壁を作るカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>装備したキャラは、相手のどんな大型アタッカーをブロックしても一切ダメージを受けない。一方で戦闘は同時にダメージを与え合うから、ブロックするたびに相手キャラにこちらのATKが通る。HP100のキャラでも、これを付ければ攻撃力の高い相手を安全に止め続けられて、相手の戦力を一方的に削れるのが強みだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>攻めと守りのトレードオフがこのゲームの核だけど、このカードを付けたキャラは守りに専念させて壁にするのが基本。何度受けても壊れないから、相手は攻撃をためらうようになる。HPの高さは活きないので、もともとブロック役に置きたい安いキャラに付けて、相手のターンの守りを固めるのがいいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>効果は「ブロック時」だけ。こちらから攻撃する時は適用されず、攻撃側はブロックされれば普通にダメージを受けるから、攻めには貢献しない守り専用カードだよ。さらにエンチャントは装備先が破壊されると一緒に墓地へ行く。企画ボツやサルベド猫のやらかしで装備先を破壊されたり、水素水でナンパする男のように場のヒロインを手札に戻す効果でもエンチャントは破壊される。壁本体を狙われると一緒に剥がれるから過信は禁物だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>基本は単体で壁として機能するエンチャントだよ。ブロック時しか守れないから、夜しか眠れない健康的な生活でHPを盛っておくと、攻撃を受けた時や効果ダメージにも耐えられて壁としてさらに固くなる。あとはある程度ATKのあるキャラに付けるのがコツで、ブロックのたびに相手アタッカーへこちらのATK分の反撃ダメージを通せて、守りながら相手を削れる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">面接官ヒロイン</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/mensetsu_kan.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc">登場時、相手の場の<span class="keyword">主人公</span>カードを1体選んで破壊する。<br><br><span class="card-flavor">「私をフった理由を答えなさい」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">面接官ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3、ATK100/HP200の投稿キャラ。登場時に相手の場の主人公カードを1体選んで破壊する除去内蔵キャラだよ。HP200で殴られても耐えやすく、相手の主人公アタッカーを1体退かしつつ盤面に居座れる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは「登場するだけで相手の主人公を1体破壊できる」こと。戦闘を経由せず確実に1体退かせるから、相手の主力が主人公なら一方的に有利を取れる。しかも対象は「選んで破壊」だから、こっちが消したい主人公を狙い撃ちできる。HP200あるおかげで出したターンに殴られても耐えやすく、次のターンから攻撃役にもなれる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手の場に主人公カードが出てから投げるのが基本。先に出すと破壊対象がなくて、ただのATK100/HP200のキャラになる。相手の動きを見てから出すのがコツだよ。コスト3は序盤からそのまま出せるから、相手の主人公アタッカーを退かして序盤の主導権を取る1枚として使う。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>破壊効果は相手の場に主人公がいる時だけ機能する。主人公を使わないデッキ相手だと空振りして、ただの低スタッツキャラになる。素のATK100は攻め性能が低く、HP200あるとはいえ相手はATK200以上のキャラをブロックや相殺に当てれば戦闘で処理できる。ただし破壊は相手の主人公なら強さに関係なく通るので、後半に相手がアークやマオリアのような大型主人公を出してきても、面接官を出せば一方的に倒せる。腐るかどうかは相手が主人公を使うか次第なカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>基本は単体で機能するカード。味方と連動して伸びるタイプじゃなく、相手の主人公を見てから差し込む単独運用が前提だよ。強いて言えば、相手が主人公を並べた勝負どころで自分の攻め手と合わせれば、除去とビートで盤面差を一気に広げられる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">男装系ヒロイン</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/dansou.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援3】：</span>ターン終了時まで、このカードの攻撃を<span class="keyword">+200</span>する。<br><br><span class="card-flavor">「まぁ僕は女だけどね？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">男装系ヒロイン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3、ATK100・HP300の硬めの投稿キャラ。応援3を払うたびにそのターンの攻撃が+200される起動能力を持つ。素の打点は低いが、応援を注げば攻撃役に化ける一枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>HP300は同コスト帯では高く、ブロックしてもなかなか倒れない壁になる。応援を注ぐほど攻撃が伸び、応援3で+200、応援6で+400と打点を上げられる。守りでも攻めでも使える二面性が強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>壁として置いて相手の攻撃を受け止めつつ、応援3を1〜2回払って攻撃を200〜400に上げ、相手の守りが手薄なタイミングで一気に殴りにいこう。攻撃するとタップして次の相手ターンに守りへ使えなくなるので、殴るターンを見極めるのが大事。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>起動しないと攻撃100しかなく、自分から殴っても相手のキャラに簡単に止められる。攻撃を上げるには毎ターン応援3を払い続ける必要があり、その分ほかのカードに応援を回せなくなる。打点アップはそのターン限りで、毎回払い直しが必要な点も重い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>あかぽ（味方1体の攻撃+500の割り込み）や投げ銭（攻撃とHP+300の割り込み）を重ねれば、低めの素の打点を一気に押し上げて大きな一撃を狙える。木の精を装備すればブロック時に戦闘ダメージを受けなくなり、高いHPと合わせて落ちない壁として相手の攻撃を延々と受け止められる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">一般女子高生A</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/jk.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">一般人</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援3】：</span>攻撃100 HP100の女子高生トークンを1体生成する。<br><br><span class="card-flavor">「ねー、あの子も呼んでいいー？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">一般女子高生A</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100/HP100の投稿キャラ。【応援3】を払うと、攻撃100/HP100の女子高生トークンを1体生成する。1枚から盤面の頭数を毎ターン増やせる、数で攻めるためのエンジンだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは、応援3さえあればトークンを毎ターン増やし続けられること。視聴者は最初から3でスタートするから、本体を出した次のターンにはもう応援3に届く。本体とトークンで攻撃役と守り役を分担できるから、攻めと守りのトレードオフを自分だけ両立しやすい。頭数が増えるほど、全体強化や横並びの戦術が一気に活きてくるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤からコスト2で出して、次のターン以降に応援3でトークンを生成していくのが基本。生成したトークンを壁にして本体で殴る、または本体で守ってトークンで殴る、と状況で役割を切り替えよう。横に並べてから全体強化をかけて、まとめて押し込むのが理想の動きだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>本体もトークンもATK100/HP100と低く、1体ずつだと戦闘で簡単に相殺・ブロックされる。強化や数の暴力と組み合わせないと決め手にならない。そして本体はトークンを生み続けるエンジンだから、相手は「企画ボツ」「サルベド猫のやらかし」などの除去で本体を狙ってくる。本体を落とされるとトークンの供給が止まるので、本体を守る手段も意識したいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>頭数が増えるのが持ち味だから、味方全体を強化するカードと相性抜群。「勇者の血族 ミリア」は自分以外の全投稿キャラの攻撃とHPを+100、「まっきーに」は全投稿キャラを+300できて、並べたトークンがまとめて戦力化する。トークンも投稿キャラ扱いだから、どちらの強化もしっかり乗るよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-evil card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">ママチャリ暴走族</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/mamachari.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag tag-evil">悪</span></div>
+        <div class="card-frame-desc"><span class="keyword">俊足</span>（出たターンから攻撃可能）<br><br><span class="card-flavor">「ちゃりんちゃりん！！」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ママチャリ暴走族</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2でATK200・HP100、俊足を持つ前のめりなアタッカー。出したターンからすぐ200ダメージを叩き込めるのが最大の魅力で、序盤の押し込みやLP削りに向いている。能力はシンプルな分、どんなデッキにも入れやすい一枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>俊足のおかげで投稿したターンにそのまま攻撃でき、相手が守りを固める前に200ダメージを通せる。コスト2は視聴者3スタート＋フォロー1で初手から無理なく出せる軽さで、テンポよくLPを削っていける。タグに「悪」を持つので、悪デッキの頭数としても機能する。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したターンにすぐ攻撃する前提で使う。相手の盤面が空いている隙や、相手キャラがタップしている隙を狙ってLPに直接ダメージを通そう。攻撃するとタップして守りに使えなくなるので、自分から殴りにいく攻めの一手と割り切るのがいい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>HPが100しかなく、ATK100以上の相手キャラにブロックされれば相打ちか一方的に破壊される。素のスペックが低いため、ブロックや相殺で簡単に止められやすい。攻撃した後はタップして相手ターンに守れず、能力も俊足だけなので盤面が膠着した後半は決め手になりにくい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「あかぽ」で攻撃+500、「投げ銭」で攻撃とHP+300すれば、俊足で出たターンにそのまま大ダメージを通せる。タグ「悪」を持つので「Aレイスのボス」で攻撃とHPが+100され、200/100が300/200になって戦闘でも倒されにくくなる。「Aレイスの追手」と並べれば、ママチャリが場にいることで追手側の攻撃+100条件も満たせる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">キャマキリ</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/kyamakiri.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">昆虫</span></div>
+        <div class="card-frame-desc">攻撃時、ターン終了時まで攻撃を<span class="keyword">+200</span>する。<br><br><span class="card-flavor">「キャマキリィィィ！」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">キャマキリ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で出せる攻撃100/HP100の昆虫キャラ。攻撃時に攻撃が+200され、そのターンの攻撃は実質ATK300になる。たった1コストで300点の打点を出せる、序盤の攻めに強い軽量アタッカー。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト1という最軽量で、攻撃するたびにATKが100から300へ跳ね上がる。視聴者3スタートのこのゲームでは初手から余裕で出せて、相手にブロック役がいなければ毎ターン300点をLPに通せる。安いのに打点が大きい、コストパフォーマンスの高いカードだ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤に出して、相手の盤面が手薄なうちに攻撃を通していくのが基本。攻撃ボーナスは攻撃宣言したときに乗るので、ブロックされても相手キャラに300点を叩き込める。出したターンは攻撃できないので、1ターン待ってから殴り始めよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>HPは100のままなので、ATK100以上のキャラにブロック・相殺されるだけで簡単に倒される。攻撃ボーナスは攻撃したターンだけで、守りに回ると素のATK100/HP100の弱いキャラに戻る。打点は出るが場持ちしない、使い捨て気味のアタッカーだ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「投げ銭」や「あかぽ」は割り込みなので、攻撃宣言のあとに重ねて攻撃をさらに上乗せでき、1体で大ダメージを狙える。「夜しか眠れない健康的な生活」をつければHPが400になり、低HPで倒されやすい弱点を補える。「勇者の血族 ミリア」を並べれば全体強化でATK/HPが100ずつ底上げされ、戦闘で潰されにくくなる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support.png">
+      <div class="card-frame-name">思考盗聴された！</div>
+      <div class="card-frame-cost">0</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/shiko_touchou.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span></div>
+        <div class="card-frame-desc">相手の手札を全て確認する。<br><br><span class="card-flavor">「頭にアルミホイル巻かなきゃ！」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">思考盗聴された！</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト0で相手の手札をすべて見られるサポートカードだよ。応援を一切払わずに相手の作戦が丸見えになるから、軽い気持ちで使える情報カードなんだ。手札の中身がわかれば、相手が割り込み（カウンター）を持ってるか、強いキャラを抱えてるかを読んで動けるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みはコスト0で発動できること。応援を1つも使わずに撃てるから、自分のターンでやりたいことを邪魔せずサッと挟める。相手の手札を全部知れば、危険な割り込みや強力なアタッカーを警戒しながら安全に攻められるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>大事な攻撃を仕掛ける前や、強いカードを出す前に撃つのがコツ。相手が「動画削除」や「投げ銭」みたいな割り込みを持ってるか確認してから動けば、せっかくの一手を打ち消されずに済むよ。コスト0なので、迷ったらとりあえず先に撃って情報を取っておくのもアリ。ただし自分のターンにしか使えないから、相手の動きへの後出し読みには使えない点に注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>このカード自体は相手の盤面にもLPにも一切影響を与えない。手札を見るだけで、キャラを倒したり攻撃を防いだりはできないから、これ単体では勝ちに近づかないんだ。情報を得ても、それを活かす次の一手が用意できていないと、ただの1枚消費で終わっちゃうよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>相手の割り込みを事前に把握できるので、打ち消されたくないサポートを通す前の露払いとして相性がいい。なお「掃除屋アズサ」「死神少女」の手札破壊はランダムで捨てる札を選べないため、手札を見ても狙い撃ちには繋がらない。基本は情報カードとして単体で機能し、相手の手を読んで自分の攻め時を決めるために使うのが本筋だよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support.png">
+      <div class="card-frame-name">閑話休題</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/kanwa_kyuudai.png" style="width:100%;height:100%;object-fit:cover;object-position:center 80%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>全ての投稿キャラをタップする。<br><br><span class="card-flavor">「――閑話休題」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">閑話休題</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト5のサポート。場にいる全ての投稿キャラ（自分と相手の両方）をタップして行動済み（横向き）にする。「割り込み」を持つので、自分のターンだけでなく相手のターン中にも使える。タップされたキャラはブロックできなくなるのが最大のポイント。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>相手のターンに割り込みで撃てば、相手の投稿キャラを全てタップさせてブロック役を一気に潰せる。守りに残してあったアンタップのキャラまで横向きにできるので、次の自分のターンの攻撃をLPに通しやすい。自分の攻撃宣言の直前に撃てば、相手のブロッカーを根こそぎ封じて一斉攻撃を決められる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>基本は「自分が攻める直前」に撃ち、相手のブロッカーを全てタップしてから一気に殴り込む決め技として使う。割り込みなので、相手の攻撃宣言の直後に撃ってアタッカーをタップで止める使い方もできる。ただし自分の投稿キャラもまとめてタップされる点に注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>自分の投稿キャラも全てタップしてしまうため、撃った後はこちらもブロックできなくなる。攻め切れずに相手キャラが残ると、こちらは守りが効かないまま反撃を受ける。コスト5は視聴者を貯めないと撃てず、序盤の即撃ちには向かない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「油断しない」持ちでも、このカードのタップは攻撃によるものではなく直接タップなので無効化できず、自分のキャラも普通にタップされる点に注意（よくある勘違い）。むしろ単体で完結するカードで、特定のシナジー前提なしに「攻める直前に相手のブロッカーを消す」だけで機能する。あえて挙げるなら、開いた攻撃を「あかぽ」（割り込みで味方1体の攻撃+500）で伸ばし、止まらないアタッカーで一気に押し切る動きと噛み合う。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support_ur.png">
+      <div class="card-frame-name">99割間違いない</div>
+      <div class="card-frame-cost">9</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/99wari.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span></div>
+        <div class="card-frame-desc">LP900を支払う。相手の全ての投稿キャラを破壊し、相手の手札を全て捨てさせる。<br><br><span class="card-flavor">「9割の間違いじゃなくて…？」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">99割間違いない</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト9に加えてLP900を支払い、相手の投稿キャラを全て破壊し、相手の手札も全て捨てさせる超大型のサポート。盤面と手札を同時に壊滅させる、ラブコメの最強リセットカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>相手がどれだけキャラを並べて手札を抱えていても、これ1枚で盤面も手札もゼロにできる。形勢を一気に逆転させ、相手の準備を丸ごと無に帰せるのが最大の魅力だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手がキャラを多く並べ、手札も多く抱えている瞬間に撃つと効果が最大になる。コスト9は応援を毎ターン貯めてようやく届く重さだから、視聴者を伸ばしつつLPに余裕がある時を狙おう。殴り合いで押される前に盤面ごとリセットしたい場面が理想だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>コスト9に加えてLP900の支払いは非常に重く、撃てる場面が限られる。残りLPが少ない時は撃てないし、撃った直後はこちらも反撃を受けやすいから、タイミングを誤ると自分が先に倒れる。このカードは「打ち消されない」を持たないので、相手が割り込みの「動画削除」を構えていると、LP900を払った上で打ち消されて空振りする点に最も注意だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>盤面を一掃した後、「勇者 トモ」や「のちの魔王 マオリア」のような大型キャラで押し込めば、守りも手札もない相手は受けるしかなくなる。事前に「パン屋の娘 カエラ」「komi」「いちこ」でLPを回復しておくと、LP900の支払いを支えやすくなるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant_rare.png">
+      <div class="card-frame-name">頭にアルミホイルを巻く</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/alminium.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラは効果の対象にならない。<br><br><span class="card-flavor">「これで電波は遮断できる……！」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">頭にアルミホイルを巻く</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>味方の投稿キャラ1体に装備して、「効果の対象にならない」状態にするエンチャント。相手の除去・弱体化はもちろん、対象を選ぶあらゆる効果を一切受け付けないキャラに変える守りの装備だよ。コストは4。エンチャントなので装備先になる投稿キャラが場にいないと使えず、盤面が空の最初のターンには出せない点に注意してね。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>相手の「企画ボツ」「動画編集」「サルベド猫のやらかし」みたいに対象を選ぶ除去・弱体化を全部シャットアウトできるのが最大の強み。エースに付けておけば相手は戦闘でしか倒せなくなり、盤面の主導権を握れるよ。装備した瞬間から効果が続くから、守りたいキャラを長く生き残らせられる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>「効果の対象になると困る重要なキャラ」に付けるのが基本。勇者トモや元掃除屋アサキみたいな高スタッツのアタッカー、毎ターン働くエンジン系に装備して、相手の除去を腐らせよう。相手が除去を構えてそうなタイミングを読んで、エースを守る一手として出すのが理想だね。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>「対象を選ばない」効果には無力。「チャンネル削除」やドラゴン娘ルシアの全体ダメージ、アークの全体弱体化のような全体・選ばない効果には引っかからず、守ったキャラごと倒される。さらにエンチャントだから装備先が破壊されると一緒に墓地行きで、コスト4を払っても装備キャラのATK/HPは上がらない点も覚えておこう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>勇者トモ（800/800）や元掃除屋アサキ（400/400）に装備すれば、相手は除去も対象効果も使えず、まともに殴り合うしかなくなる。毎ターン働く賢者レイチェン（蓄積ダメージ消し・バーン）やアイドルカナリア（視聴者加速エンジン）に付けて、相手の除去から守り抜くのも噛み合うよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
+      <div class="card-frame-name">夜しか眠れない健康的な生活</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/healthy_sleep.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラのHPを<span class="keyword">+300</span>する。<br><br><span class="card-flavor">「すごく健康的だ…」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">夜しか眠れない健康的な生活</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で味方の投稿キャラ1体のHPを+300する、とても軽いエンチャント。視聴者は最初から3いるので1コストは初手から無理なく払え、序盤から気軽に耐久を底上げできるのが魅力。装備先が破壊されると一緒に墓地へ落ちる点だけ覚えておこう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みはコストの軽さに対する効果の大きさ。HP100のキャラがHP400になり、戦闘ダメージや能力ダメージを格段に受けにくくなる。攻撃やブロックで死ににくい壁が1コストで作れるので、盤面を長く維持したい時に効く。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>HPが上がると戦闘で生き残りやすくなるので、攻守の要にしたいキャラに付けるのが基本。特に「油断しない」を持つキャラ（女上司ヒロインや元掃除屋アサキなど）に付ければ、攻撃に使ってもタップせず守りにも回れるため、高HPがそのまま堅い壁になる。ブロック役に付けて相手の大型アタッカーを受け止める使い方も強い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>弱点はHPしか上がらず攻撃力は伸びないこと。耐久は上がっても自分から相手を倒す力は増えないので、付けただけでは決め手にならない。またエンチャント共通の弱みとして、装備先が破壊されるとこのカードも一緒に墓地へ行くため、企画ボツやサルベド猫のやらかしで装備先を除去されると2枚まとめて失う。価値の高いキャラに重ねるほどこのリスクは大きくなる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「アンドロイド ユリ」はエンチャントの数だけ攻撃とHPが上がるので、これを付けると本体の+300に加えてユリ自身の効果でさらに+100され、攻撃も伸びつつ一気に固くなる。攻撃力0で固いだけの「僧侶 ミーコ」（HP300→600）に付ければ、味方が破壊された時に蘇生する役を長く場に残せる。「ドラゴン娘 ルシア」のような自分から殴る中型キャラに付ければ、戦闘で討ち取られにくくなり攻め続けやすい。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">水素水でナンパする男</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/suisosui.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">一般人</span></div>
+        <div class="card-frame-desc">登場時:自分と相手の場にいる全ての<span class="keyword">ヒロイン</span>カードを持ち主の手札に戻す。（エンチャントは破壊される）<br><br><span class="card-flavor">「水素水の美味しいお店行かない？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">水素水でナンパする男</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100/HP100の投稿キャラ。登場した時、自分と相手の場にある全てのヒロインカードを持ち主の手札に戻す。戻るヒロインに装備されていたエンチャントは手札に戻らず破壊される。ヒロインだけを場から一掃する全体バウンス効果を持つ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト2と軽いのに、相手の場のヒロインを全部手札に戻して盤面を更地にできる。視聴者は最初から3いるので、自分の最初のターンから無理なく出せる。さらに戻るヒロインに付いたエンチャントは破壊されるので、装備で育てたヒロインをまとめて無力化できる。攻めてくるヒロインの壁を取り払い、こちらの攻撃を通すきっかけにもなる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手の場にヒロインが並び、エンチャントで強化されているタイミングで出すと効果が最大化する。コスト2なので序盤から気軽に投げられる。相手の盤面が整ったところに合わせて一掃しよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>戻せるのは「ヒロイン」だけで、主人公やそれ以外のタイプには効かない。手札に戻すだけなので相手はヒロインを出し直せて、完全な除去にはならない。自分の場のヒロインも巻き込んで戻してしまう点にも注意。本体はATK100/HP100と低く、登場後はすぐ戦闘で相殺・ブロックされやすい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>戻る対象は名前ではなく「ヒロイン」タグを持つカード（勇者の血族ミリア、賢者レイチェン、勇者トモ、アンドロイドユリなど）。名前に「ヒロイン」とあっても生徒会長ヒロインや面接官ヒロインはタグがないので戻らない点に注意。相手がヒロインタグのキャラを並べ、木の精や頭にアルミホイルを巻くで強化しているときに出せば、まとめて手札に戻しつつ装備エンチャントを破壊できる。ただし自分のヒロインタグのキャラも巻き込むので、自分の盤面にヒロインが少ないタイミングで撃つのがコツだよ。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="guide-group" id="g-fantasy">
+  <div class="group-title">サルベドファンタジー</div>
+  <div class="subgroup-title">漫画：マオリア</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">のちの魔王 マオリア</div>
+      <div class="card-frame-cost">7</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/maoria.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">勇者</span><span class="tag tag-hero">主人公</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援4】：</span>ターン終了時まで<span class="keyword">飛行</span>を得る。<br><span class="cost-inline">【応援3】+T：</span>投稿キャラ1体に、このカードのATK+300点のダメージを与える。<br><br><span class="card-flavor">「退屈なんだよ、俺はさ」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">500</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">500</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">のちの魔王 マオリア</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト7、ATK500/HP500のファンタジー上位の大型アタッカー。素のスタッツだけでこのゲームのほとんどのキャラを一方的に倒せる。さらに【応援3】+Tで「自分のATK+300＝800点」のダメージを好きな投稿キャラ1体に飛ばせる、攻撃役と除去役を兼ねた切り札。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>本体500/500に加え、【応援3】+Tの800ダメージで盤面のほぼ全てのキャラを能力だけで焼き切れる。500のATKで殴りつつ、別ターンには相手の重いキャラを能力で除去する、と攻めと制圧を両方こなせる。【応援4】で飛行を得れば、相手が飛行持ちのキャラを出していない限りブロックされず、500ダメージをLPに直接通せる。素のスタッツが高く戦闘では簡単に倒されないので、置いておくだけで盤面を制圧し続ける。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>基本は500/500のアタッカーとして殴り、倒したい大型キャラが出てきたら【応援3】+Tの800ダメージで処理する。能力を起動するとタップして攻撃にも守りにも回せなくなるので、「殴る」「焼く」「飛ばす」のどれを優先するかを毎ターン選ぶ。応援(視聴者)を多めに確保しておくと能力を遠慮なく撃てて動きが安定する。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>コスト7と重く、応援を貯めるまで時間がかかるため出せるのは中盤以降になりやすい。出したターンは攻撃できず、能力を使うとタップして守りに使えないので隙ができる。素のスタッツが高く戦闘では倒しにくい切り札なので、相手は企画ボツ・サルベド猫のやらかしといった除去を惜しまず撃ってくる。特にサルベド猫のやらかしは打ち消されず蘇生もできないため、出した瞬間に消されると痛い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>応援(視聴者)を直接増やすならアイドル カナリアが相性良く、【応援3】+Tの除去能力を毎ターン安定して撃てるようになる。投げ銭やあかぽで攻撃を上乗せすれば、能力ダメージは「ATK＋300」依存なので除去の威力も同時に伸びる。能力連打でタップして守りが薄くなる弱点は、攻撃できず戦闘ダメージを受けないダリアや、木の精を装備した壁役を別に立てておくとカバーできる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">勇者 トモ</div>
+      <div class="card-frame-cost">8</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/tomo.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">勇者</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc"><span class="keyword">油断しない</span>（攻撃してもタップしない）<br><span class="keyword">俊足</span>（出たターンから攻撃可能）<br><br><span class="card-flavor">「会いたかったよ、マオリア」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">800</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">800</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">勇者 トモ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト8、ATK800/HP800という最高クラスの数値を持つ大型アタッカー。「俊足」で出したターンからすぐ800ダメージで殴れて、「油断しない」で攻撃してもタップしないから、攻めた次の相手ターンもそのまま壁として守れる。1体で攻めと守りを同時にこなす切り札級のフィニッシャー。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>登場ターンに即800ダメージを叩き込め、ブロックされなければLP2000のうち800を一気に削れる。「油断しない」のおかげで攻撃後もアンタップのままだから、相手の反撃を800/800の巨体でブロックできる。攻めと守りのトレードオフを無視できる点が最大の強み。ATK800はほとんどの相手キャラを一撃で破壊し、HP800は通常の戦闘ではまず倒れない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したターンにそのまま攻撃するのが基本。HP800は並のキャラの戦闘では倒れないから、一度出せれば毎ターン800を刻みつつ守りも固められる。ATK800はほとんどの相手キャラを一撃で破壊するので、ブロックに来た相手を返り討ちにしながら盤面を制圧していこう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>コスト8が重く、応援(視聴者)を相当ためる必要があるので、登場は中盤以降になりやすい。戦闘では倒せない巨体だからこそ、相手は「企画ボツ」「サルベド猫のやらかし」「死神少女」のような戦闘を介さない除去を狙ってくる。これらで一発退場させられると、重いコストを払った見返りがゼロになるのが最大の弱点。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「頭にアルミホイルを巻く」を装備すれば効果の対象にならなくなり、最大の弱点である除去をシャットアウトできる。「あかぽ」で攻撃+500、「まっきーに」で攻撃+300すれば一撃の打点が跳ね上がり、相手のLPを一気に削り切れる。トモはヒロインタグを持つので、「青春詭弁」で手札からコストを支払わずにプレイでき、重いコスト8を踏み倒して着地させられる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">魔法使い イズナ</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/izuna.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">魔法使い</span></div>
+        <div class="card-frame-desc"><span class="keyword">飛行</span><br><span class="cost-inline">【応援2】+T：</span>対象の投稿キャラ1体に200点のダメージを与える。<br><br><span class="card-flavor">「これでもこの世界で最強の魔法使いと言われてるのよ！」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">300</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">魔法使い イズナ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3・ATK300/HP100の魔法使い。素のATK300は序盤としてはかなり高い。さらに飛行を持ち、【応援2】+Tで投稿キャラ1体に200ダメージを飛ばせる、攻め役と除去役を1枚で兼ねるキャラ。コスト3は視聴者3スタートの初手から普通に出せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>ATK300は序盤のキャラとしては破格で、HP300未満の相手キャラを戦闘で押し切れる。加えて【応援2】+Tで相手キャラに200ダメージを与えられるので、HP200までのキャラなら戦闘も手札も使わず一方的に処理できる。攻め役と除去役を1枚でこなせるのが強み。さらに飛行を持つので、相手も飛行持ちを出さない限りこのカードはブロックされず攻撃を通せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>初手から出して300の攻撃でプレッシャーをかけつつ、相手が嫌なキャラを出してきたら【応援2】+Tで200ダメージを与えて処理する。HP200までのキャラはこの能力1発で除去できる。能力で+Tするとタップして守りに使えなくなるので、攻めに回すか除去に回すかをよく選ぶこと。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>HP100しかないので非常に打たれ弱く、ATK100以上のキャラとぶつかればこちらが先に壊れる。能力を使うと+Tでタップし、相手ターンにブロックできず無防備になる。能力1回のダメージは200までなので、HP300以上のキャラは1発では倒せない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>HP100で打たれ弱いのが最大の弱点だから、HPを補うエンチャントと相性がいい。「戦術兵器スマッシャー」を装備すれば攻撃とHPが+100されてATK400/HP200になり、俊足も得て高火力アタッカーになる。「夜しか眠れない健康的な生活」ならHP+300でHP400になり、能力で除去を撃ちつつ生き残りやすくなる。単体でも攻め＋除去として機能するよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">僧侶 ミーコ</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/miiko.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">僧侶</span></div>
+        <div class="card-frame-desc">ミーコを除くあなたの投稿キャラが破壊されたとき、<span class="cost-inline">【応援2】</span>を支払うことでその投稿キャラを蘇生する。<br><br><span class="card-flavor">「もし死んでも蘇生しますから」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">0</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">僧侶 ミーコ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3、ATK0／HP300の壁・蘇生役。ミーコ以外の自分の投稿キャラが破壊されたとき、応援2を払えばその場で蘇生できる。攻撃力0なので殴る役ではなく、味方を守り続ける防衛・粘り担当のカード。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>破壊された味方を応援2で何度でも蘇らせられるのが最大の強み。相手の除去や戦闘で1体落とされても、応援さえあればすぐ復活させて盤面を立て直せる。HP300と硬く、ATK0でも壁としてブロックに回せる。コスト3なら自分の最初のターンから問題なく出せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>先に出しておき、味方アタッカーを並べてから戦わせるのが基本。相手の攻撃やブロックでこちらのキャラが倒れたら、応援2を払って蘇生し、ジリジリと盤面を維持する。蘇生を構えるため、毎ターン応援2ぶんは使わず残しておくと安心。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK0なので自分から攻撃できず、ミーコ単体では相手のLPを削れない。蘇生は応援2が必要で、応援が足りないターンは味方を守れない。何より蘇生エンジンとして居座る置物なので、相手が動画編集・企画ボツ・サルベド猫のやらかし等の除去をミーコに撃ってくる。ミーコ自身が破壊されると蘇生役がいなくなり、立て直し能力をまるごと失う。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>賢者レイチェンの蓄積ダメージリセット（応援1）や、komiの全体蓄積ダメージリセット＋LP300回復と組ませると強い。このゲームはダメージがターンをまたいで持ち越すため、レイチェンやkomiで味方の蓄積ダメージを消せば、そもそも破壊される前に守れる。守りきれず落ちた分はミーコが蘇生で拾う、という二段構えで壊れにくい盤面を作れる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
+      <div class="card-frame-name">魔の寄生体</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/parasite.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラの攻撃とHPを<span class="keyword">+200</span>する。<br>エンチャントされた投稿キャラに<span class="cost-inline">【応援1】：</span><span class="keyword">蘇生</span>を付与する。<br>あなたのターン開始時、攻撃100 HP100の魔物トークンを1体生成する。<br>あなたの場の魔物1体につき、ターン終了時に100点のライフを失う。<br>エンチャントされた投稿キャラが破壊されたとき、このカードをデッキに戻しシャッフルする。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">魔の寄生体</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>味方の投稿キャラ1体に装備して攻撃とHPを+200する強化エンチャント。装備したキャラに「応援1で蘇生」を付与し、自分のターン開始時に攻撃100 HP100の魔物トークンを毎ターン1体生み出す。ただし場の魔物1体につきターン終了時に100ライフを失う。装備先が破壊されると、このカードはデッキに戻ってシャッフルされる（墓地に落ちず再利用できる）。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト4で攻撃とHPを丸ごと+200し、さらに「応援1で蘇生」が付くので、装備したキャラが極めて倒れにくくなる。装備先が破壊されてもこのカード自体はデッキに戻るため、相手の除去でカード1枚ぶんの損を取られにくい。加えて毎ターン魔物トークンが勝手に増え、盤面の頭数も自動で稼げる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>長く生き残らせたいアタッカーに装備し、+200と蘇生でしぶとく殴り続けるのが基本。魔物トークンは数が増えるほどライフ消費も増えるので、トークンを攻撃やブロックに使って減らし、ライフ流出を管理しながら戦うのがコツ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>最大の欠点は自分のライフが毎ターン削れること。場の魔物1体ごとにターン終了時100ライフを失うので、トークンを放置するほど自滅が近づく。LP2000スタートのこのゲームでは無視できない負担で、長期戦になるほどこのデメリットが重くのしかかる。トークンを盤面処理に回し続けないと、自分の首を絞める置物になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「アンドロイド ユリ」はつけたエンチャントの数だけ攻撃とHPが+100するので、このカード自身の+200に加えてさらに+100が乗り、強化が二重になる。生まれた魔物トークンは「勇者の血族 ミリア」の全体+100で底上げでき、ライフ消費に見合う戦力に変えられる（「Aレイスのボス」は『悪』持ちしか強化せず、魔物トークンは『悪』を持たないため噛み合わない）。なお装備先が破壊されても、このカード自身が付与する『応援1で蘇生』で立て直せるので、蘇生役を別に用意する必要はないよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：掃除屋</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">元掃除屋 アサキ</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">暗殺者</span><span class="tag tag-hero">主人公</span></div>
+        <div class="card-frame-desc"><span class="keyword">油断しない</span>（攻撃してもタップしない）<br><span class="cost-inline">+T：</span>相手の手札を見る。<br><br><span class="card-flavor">「自由意志を持たない命は、死んでるも同じだ」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">400</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">400</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">元掃除屋 アサキ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト5でATK400/HP400という高いスタッツを持ち、「油断しない」で攻撃してもタップしないアタッカーだよ。自分のターンに400ダメージを叩き込みつつ、相手ターンには守りに回れて、攻めと守りを一人で両立できる。さらに+Tで相手の手札を見て、相手の動きを把握できる頭脳派でもある。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは「油断しない」とATK400/HP400の組み合わせ。普通のアタッカーは攻撃するとタップして守れなくなるけど、アサキは攻撃した後もアンタップのままだから、毎ターン殴りながらブロックもこなせる。HP400も高いから、相手のキャラとの戦闘でそう簡単には倒されない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>場に出して毎ターン400ダメージを刻んでいくのが基本。攻撃に使ってもタップしないから、相手の攻撃が来たらそのままブロック役にも回せる。手が空いてるターンは+Tで相手の手札を見て、割り込みや除去を持ってるか確認してから動くと事故を減らせる。コスト5は視聴者3スタート＋フォローで序盤から無理なく出せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>スタッツが高いぶん相手は戦闘では倒しきれないから、「企画ボツ」や「サルベド猫のやらかし」みたいな除去カードで狙われやすい。特に蘇生できない除去で消されると、コスト5ぶんの戦力が一気に飛ぶのが痛い。高スタッツで戦闘に強いカードほど、場に出すと相手の除去の的になりやすいので、除去対策とセットで運用したいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「頭にアルミホイルを巻く」を装備すると効果の対象にならなくなり、最大の弱点である「企画ボツ」などの対象を取る除去をシャットアウトできてアタッカーとして完成する。「夜しか眠れない健康的な生活」でHPを+300すれば700になり、戦闘でますます倒されにくくなる。どちらも除去・戦闘の両面からアサキを場に残す方向で噛み合うよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">掃除屋 アズサ</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">暗殺者</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援2】+T：</span>相手の手札からランダムに1枚捨てさせる。<br><br><span class="card-flavor">「掃除屋のわたしに目をつけられて、逃げられたやついないから」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">400</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">掃除屋 アズサ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>ATK400/HP300とコスト5相応の頼れる体格を持つアタッカーで、【応援2】+T能力で相手の手札をランダムに1枚捨てさせられる。盤面で殴りながら相手の手札も削れる、攻めとハンデスを両立した1枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>ATK400/HP300は戦闘で簡単には倒されない硬さで、殴り役としてそのまま機能する。さらに毎ターン応援2を払えば相手の手札を1枚ずつ落とせるので、相手の選択肢を継続的に奪い、長期戦を有利にできる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>中盤に出して、まずはアタッカーとして相手のLPを削っていこう。攻撃に使わないターンや相手の手を弱らせたいときに+T能力でハンデスを起動する。捨てるカードはランダムで選べないが、運任せでも相手の手数を1枚ずつ減らせる継続ダメージと考えるといい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ハンデス能力はタップを伴うため、能力を使ったターンはアズサで攻撃も守備もできなくなる。攻めとハンデスのどちらかしか選べない点が悩みどころ。またATK400の硬いアタッカーかつ毎ターン働くエンジンなので、相手は企画ボツやサルベド猫のやらかしといった除去で消しにくる。除去を当てられると盤面と継続効果を一気に失う。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>アイドル カナリアで視聴者を増やしておくと、攻撃しながらでも応援2のハンデスを毎ターン安定して回しやすくなる。アズサ自体がヒロインカードなので、ごもでデッキから選んで確実に手札へ持ってこられる。死神少女のハンデスと並べれば、相手の手札を複数方向から削り切れる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">パン屋の娘 カエラ</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">一般人</span></div>
+        <div class="card-frame-desc">登場時、あなたのライフを200点回復する。<br><br><span class="card-flavor">「ありがとう、アサキ」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">100</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">パン屋の娘 カエラ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で出せる100/100の投稿キャラ。登場時に自分のライフを200回復する。最初のターンから出せる軽さで、回復役と小さな盤面要員を兼ねる入門カードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト1の安さでライフ200回復が確定で付く。視聴者3スタートだから最初のターンから普通に出せて、削られたLPを取り返せる。100/100の体も残るので、回復したあとはブロック役や小さなアタッカーとしても使える。重いカードを出すターンに、余った応援で添えやすいのも強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>削られたLPを取り戻したいタイミングで出して、回復を取りつつ盤面に1体並べるのが基本。その後は100/100のブロック役として守りに回す。コスト1で軽いから、他の動きの「ついで」に絡めやすいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>回復は登場時の1回きりで、後には100/100の最低限の体しか残らない。ATK100しかないので、ATK100以上のキャラに簡単に相殺・ブロックされて戦闘では力不足。回復量200も、終盤の大ダメージの前では焼け石に水になりやすい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>同じく自分のLPを回復するkomi（LP300回復）やいちこ（LP500回復を選べる）と並べれば、回復を重ねて粘る防御寄りの動きが作れる。ただしカエラの回復は登場時1回きりなので、これらと組まなくても単体できちんと機能する軽量キャラだよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-evil card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">Aレイスの追手</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag tag-evil">悪</span></div>
+        <div class="card-frame-desc">攻撃時、他の「悪」を持つ投稿キャラがあなたの場にいる場合、攻撃を<span class="keyword">+100</span>する。</div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">Aレイスの追手</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2、ATK100・HP200の「悪」を持つアタッカー。攻撃するとき、自分の場に他の「悪」を持つ投稿キャラがいれば攻撃が+100されてATK200になる。コスト2と軽く、視聴者3スタートのこのゲームでは最初のターンから問題なく出せる攻め役だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>HP200あるからコスト2のキャラとしては場持ちがよく、相手のATK100の攻撃を受けても破壊されない。条件さえ整えばATK200で殴れるので、軽さのわりに攻撃力が伸びるのが強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>先に他の「悪」を持つ仲間を場に出してから攻撃に回すと、ちゃんと+100が乗る。攻撃時だけの判定だから、ブロックや守りに回した場面では強化されない点に注意してね。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>他の「悪」がいないと素のATK100どまりで、相手のATK100キャラと相殺されたりブロックで止められやすい。条件を満たすにはもう1体「悪」キャラを並べる必要があり、単体では火力が伸びないのが弱点だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>Aレイスのボスは「悪」を持つ投稿キャラ全体の攻撃とHPを+100するので、並べるだけで追手はATK200 HP300になり、しかも追手自身の+100条件も同時に満たして攻撃時にはATK300まで伸びる。「悪」を持つ仲間は他にママチャリ暴走族もいるので、ママチャリを並べても追手の攻撃+100条件を満たせるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-evil card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">Aレイスのボス</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag tag-evil">悪</span></div>
+        <div class="card-frame-desc">あなたの「悪」を持つ全ての投稿キャラの攻撃とHPを<span class="keyword">+100</span>する。</div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">Aレイスのボス</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4・ATK200/HP300の「悪」を持つ投稿キャラ。自分の場の「悪」持ち投稿キャラ全員の攻撃とHPを常時+100する全体強化役だよ。自身も「悪」を持つので強化対象に含まれ、実質ATK300/HP400として立つ。「悪」を横に並べるほど盤面全体が底上げされる司令塔ポジション。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>置いておくだけで「悪」持ち全員が常に+100されるから、複数並ぶと打点も耐久も跳ね上がる。相手は1体倒しても残りが強いまま、という厄介な盤面を作れる。コスト4は視聴者3スタート＋初手フォローで序盤から普通に出せるから、展開が遅れる心配もないよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>先に「悪」持ちアタッカーを並べてからこのボスを出すと全員が即+100されて攻めが加速する。逆にボスを先に置けば、後から出す「悪」も登場と同時に強化される。自身も+100を受けてATK300/HP400相当で立つので、壁としても攻め役としても腐らず働けるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>強化はこのカードが場に残っている間だけ。破壊されると味方全員が+100を失い盤面が一気に弱るから、相手はまずこのボスを狙ってくるよ。自身はATK300/HP400相当とそこそこ硬いけど、戦闘での相打ちや企画ボツ・サルベド猫のやらかしといった除去で落とされると、せっかく並べた「悪」たちの底上げがまとめて消えてしまう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>Aレイスの追手と噛み合う。追手は「他の悪が場にいると攻撃+100」だから、ボスの常時+100と合わせて打点が二重に伸びるし、ボスが並ぶことで追手の発動条件も満たせる相互強化だよ。除去を防ぎたいなら、頭にアルミホイルを巻く（効果の対象にならない）を付けて企画ボツなどの的にならないようにするのも有効。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">死神少女</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">死神少女</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/shinigami.png" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">死神</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">+T + LP300：</span>投稿キャラ1体を破壊する。それは蘇生できない。<br><span class="cost-inline">+T + LP200：</span>相手の手札からランダムに1枚捨てさせる。<br><span class="cost-inline">+T + LP500：</span>相手の発動した効果を1つ打ち消す。<br><br><span class="card-flavor">「寿命と引き換えに、願いを叶えてあげます」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">死神少女</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>LPを支払って3種類の妨害を撃ち分ける、コスト5の置物エンジン。ATK200／HP300とそこそこのスタッツを持ちつつ、+TとLPを払えば「投稿キャラ1体を蘇生不可で破壊」「相手の手札ランダム1枚破棄」「相手の効果を1つ打ち消し」をターンごとに選んで使える。場に置くだけで除去・ハンデス・カウンターを兼ねる、一人で何役もこなすカード。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みはLP300払いの破壊で、これは蘇生できない完全除去。ミーコや地縛霊レナで蘇る相手も確実に消せる。さらにLP500払いで相手の効果を打ち消せるので、相手の切り札を能動的に止められる。3つの能力すべて+Tを使うため1ターンに1つだけだが、その時いちばん効く妨害を毎ターン選べる柔軟さがある。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したターンは攻撃できないので、まず場に置いて次のターンから能力を回す。コストがLPなので、自分の残りLPと相談しながら撃つ。相手の強いアタッカーが出たらLP300で蘇生不可破壊、勝負どころで切り札が来たらLP500で打ち消す、と「今いちばん効く妨害」を選ぶのがコツ。妨害がいらないターンは+Tを使わず攻撃に回す手もある。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>能力のコストが全てLPなので、撃つほど自分の体力が削れて勝利が遠のく。特にLP500の打ち消しは重く、連発すると一気に危険域に入る。また能力は+Tを使うため、起動したターンはタップして攻撃にもブロックにも使えない。素のATK200はそこまで高くないので、自分から殴り役を張るより、毎ターン妨害を撃つ役回りが中心になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>ジュンは登場時にデッキから死神少女をサーチできる相棒で、死神少女は名前指定の1枚なので確実に手札へ呼び込める。LPを払って回すカードなので、komi（LP300回復）やパン屋の娘カエラ（登場時LP200回復）と組めば、払ったコストを取り戻しながら能力を回し続けられる。動画削除やいちこなど割り込みの妨害と並べれば、相手の動きを多角的に封じられる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">ジュン</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/jun.png" style="width:100%;height:100%;object-fit:cover;object-position:60% center;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag tag-hero">主人公</span></div>
+        <div class="card-frame-desc">登場時、デッキから「死神少女」を1枚サーチして手札に加える。<br><br><span class="card-flavor">「不審者がいる・・・」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">100</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ジュン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2で出せて、登場した瞬間にデッキから「死神少女」を手札に持ってくる呼び出し役だよ。サーチは候補を選べない引っ張り効果だけど、デッキに死神少女は1枚だけだから、結果として毎回その1枚が確実に手に入る。ジュン自身はATK100／HP200で硬めの壁にもなる主人公カードなんだ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>「死神少女」を確定で手札に持ってこられるのが最大の強み。死神少女はLPを払って相手キャラ破壊・手札破壊・効果打ち消しができる強力な妨害役で、それをコスト2のジュンから手繰り寄せられる。視聴者は最初から3スタートで、最初のターンに1枚フォローすれば応援4ぶん使えるから、ジュンはターン1から普通に出せる。HP200あるので序盤の小型アタッカーを受け止める壁にもなれるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>ゲーム開始時に視聴者3、最初のターンに1枚フォローすれば応援4だから、コスト2のジュンは序盤から問題なく出せる。早めに出して死神少女を手札に確保し、応援が貯まったら死神少女を出して相手の盤面を崩していくのが基本。ジュンはHP200の壁として場に残せるから無駄がないよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>ATK100と低いから、自分から殴っても相手キャラに簡単に相殺・ブロックされる。登場時のサーチは1回きりで、引き寄せた後はHP200の壁が残るだけだから、後半は力不足になりやすい。さらに死神少女がすでに手札やゴミ箱にあると、サーチが空振りしてただのコスト2バニラ同然になるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>相方はもちろん「死神少女」。ジュンで持ってきて、死神少女のLP払い能力で相手キャラ破壊・手札破壊・効果打ち消しと幅広く妨害できる。死神少女がゴミ箱に落ちた場合は「動画復元」で、コストを払わずゴミ箱から投稿し直すルートもあるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：アーク</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">魔王の血族 アーク</div>
+      <div class="card-frame-cost">8</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/ark.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">魔王</span><span class="tag tag-hero">主人公</span></div>
+        <div class="card-frame-desc">相手の全ての投稿キャラの攻撃とHPを<span class="keyword">-100</span>する。<br><br><span class="card-flavor">「どうして俺に剣を向けるんだ・・・？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">500</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">500</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">魔王の血族 アーク</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト8、ATK500/HP500の大型アタッカー。場に出ているだけで、相手のすべての投稿キャラの攻撃とHPを-100し続ける。出れば単体で殴り役と全体弱体化の両方をこなす切り札級の1枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>500/500の高スタッツで、ほとんどの相手キャラを戦闘で一方的に倒せる。さらに相手全体のHPを-100し続けるので、HP100のキャラは場に出た瞬間に勝手に破壊され、以後も出てくるたびに潰せる。攻撃も下げるため、相手の盤面を殴りと弱体化の両面から削れる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>コスト8と重いので、フォローで視聴者を増やして応援を貯めた中盤以降に出すのが基本。出すだけでHP100の相手キャラを除去できるため、小型キャラを横並べしてきた盤面に叩き込むと一掃に近い効果が出る。あとはその高いスタッツでLPを直接削りにいく。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>コスト8は重く、応援を貯めるまで手札で腐りやすい。500/500で戦闘では倒しにくいぶん、相手は企画ボツやサルベド猫のやらかしといった除去を使ってでも処理しにくる。除去1枚で盤面の主軸と全体弱体化を同時に失うので、出すタイミングは慎重に。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>勇者の血族 ミリア(味方全体+100)と組むと、相手を下げつつ味方を上げてスタッツ差をさらに広げられる。相手のHPを削った状態なら、魔法使い イズナや賢者 レイチェンの火力で確実に倒し切れる。重さを補うなら、デッキの上を視聴者に加えるアイドル カナリアで応援を加速し、早出しを狙える。アークは主人公タグを持つので、青春詭弁(コスト5)で重いコスト8を踏み倒し、応援を払わず着地させることもできるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">勇者の血族 ミリア</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/milia.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">勇者</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc">ミリアを除く、あなたの全ての投稿キャラの攻撃とHPを<span class="keyword">+100</span>する。<br><br><span class="card-flavor">「死ぬまで戦い続けるんだからな？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">300</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">勇者の血族 ミリア</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4でATK300/HP300。場に出ている間、ミリア以外の自分の投稿キャラ全員の攻撃とHPを+100する全体強化役。自分は強化されないが、素で300/300あるので戦力としても十分。視聴者は3スタートだから、初手にフォローを置いて応援4にすれば序盤から出せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>味方を横並びにするほど価値が跳ね上がる。3体並べていれば全員が+100されるので、盤面全体の打点と耐久が一気に底上げされる。ミリア自身も300/300と硬く、出した次のターンからは攻撃にも参加でき、出したターンも壁としてブロックに回せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>先に投稿キャラを何体か並べてからミリアを出すと、全員がまとめて強化されて攻めの圧力が一気に高まる。トークンを量産するカードと組み合わせると、安いトークンが100/100から200/200に化けて主力級になる。油断しない持ちの味方を一緒に並べれば、攻撃してもタップしないので、強化された打点で殴りつつ相手ターンの守りにも残せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>全体強化のエンジンなので、相手は戦闘で倒すより除去カードで真っ先に消したい標的になる。企画ボツやサルベド猫のやらかしで破壊されると、強化が一斉に消えて味方全体のATK/HPが100ずつ下がる。また味方が場にいなければ、ただの300/300にすぎず効果が活きない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>かとりーなの200/200 Vトークン2体や、一般女子高生Aが作る100/100の女子高生トークンを強化でき、安い駒を主力に変えられる。Aレイスのボスと並べれば「悪」を持つ味方に両方の+100が乗り、攻撃とHPがさらに伸びる。妹系ヒロインやママチャリ暴走族のような俊足アタッカーを先に並べてからミリアを出すと、強化された打点でそのまま攻め込める。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
+      <div class="card-frame-name">勇者の兄 ダリア</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/daria.png" style="width:100%;height:100%;object-fit:cover;object-position:20% 15%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">一般人</span></div>
+        <div class="card-frame-desc">攻撃できない。<br>ブロック時、この投稿キャラは戦闘ダメージを受けない。<br><br><span class="card-flavor">「……寄るなよ」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">0</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">500</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">勇者の兄 ダリア</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3でHP500、攻撃力0の完全な「壁」専門の投稿キャラ。自分から攻撃はできないけど、ブロックした時は戦闘ダメージを受けないから、何度ブロックしても破壊されない鉄壁の守り役だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>ブロック時に戦闘ダメージを受けないので、相手のATKがどれだけ高くても破壊されずに攻撃を止め続けられる。コスト3で序盤から普通に出せて、HP500の壁が毎ターン居座り、相手の攻撃を1体ぶん確実に無力化できる。戦闘では絶対に倒せないのが最大の強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤から出して相手のアタッカーの前に立たせ、毎ターンブロックで止めよう。自分のキャラは攻撃に専念させ、守りはダリアに任せる「攻めと守りの分業」が使い方の核。戦闘ダメージを受けないので、どんなに強いキャラの攻撃でも安心して受け止められる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>攻撃が0で自分から相手のLPを削れず、単体では勝てないので必ず別の攻め手とセットで使う。戦闘では絶対に倒れない代わりに、相手は企画ボツ・サルベド猫のやらかし・死神少女などの除去でまとめて消しにくる点に注意。ブロックは1ターンに1体ぶんしか受け止められないため、複数体で同時に攻められると壁をすり抜けられる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>攻撃役と組ませるのが基本。勇者トモやママチャリ暴走族のようなアタッカーを攻めに回し、守りをダリアに一任すると盤面が安定する。動画削除や動画復元といった割り込みを構えておけば、ダリアで時間を稼ぎながら戦況を作りやすい。勇者の血族ミリア（自分以外の投稿キャラの攻撃とHPを+100）と並べると、ダリアのATKが100になり、ブロックするたびに相手アタッカーへ100の反撃ダメージを通せるようになる（ダリアは攻撃はできないが、ブロック時の戦闘ダメージは相手に与えられる）。HPが600になる方は、ダリアは元々ブロック時に戦闘ダメージを受けないので、レイチェンなどの効果ダメージで落とされにくくなる程度の意味だよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：レイチェン</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">賢者 レイチェン</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/reichen.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">賢者</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援1】：</span>味方の投稿キャラ1体の蓄積ダメージを0にする。<br><span class="cost-inline">【応援4】+T：</span>相手の投稿キャラ1体に<span class="keyword">500ダメージ</span>を与える。</div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">300</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">賢者 レイチェン</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4・ATK200/HP300の投稿キャラ。2つの起動効果を持つサポート役で、【応援1】で味方1体の蓄積ダメージを0にして傷を癒やし、【応援4】+Tで相手の投稿キャラ1体に500ダメージを与えて除去できる。守りと除去を1枚でこなす便利屋。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>【応援1】の回復が非常に安く、ターンをまたいで溜まった蓄積ダメージを毎ターン消せるので、味方のアタッカーが落とされにくくなる。【応援4】+Tの500ダメージは相手の主力を一方的に焼ける高火力で、自分の戦力を減らさずに盤面を取れる。1枚で「延命」と「除去」を両立できるのが強い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>視聴者は最初から3、フォローを足せば4使えるので【応援4】の除去も序盤から狙えるが、レイチェン自身の登場にコスト4を使う関係で、出したターンに即除去まで回すなら応援の配分に注意。【応援4】+Tはタップするので、撃った後は守りに回せない点も意識する。普段は【応援1】の回復で盤面を支えつつ、相手の厄介なキャラが出たら500ダメージで焼くのが理想。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>素のATK200/HP300は中堅で、攻撃役としては力不足。真価は殴ることではなく、毎ターン除去と回復を撃ち続ける後方支援にあるので、生きている限り仕事をする。だから相手は企画ボツやサルベド猫のやらかしで真っ先に破壊しにくる。守ってあげないと能力を使う前に退場させられる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>頭にアルミホイルを巻くを装備すれば効果の対象にならなくなり、企画ボツやサルベド猫のやらかしといった除去をかわして能力を撃ち続けられる。また油断しない持ちの常時攻めるアタッカー（盗賊サギや元掃除屋アサキなど）と組ませると、攻撃で溜まった蓄積ダメージを【応援1】で毎ターン消して延命でき、攻め続けながら盤面を維持しやすい。単体でも除去エンジンとして機能する。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">盗賊 サギ</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/sagi.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">盗賊</span><span class="tag tag-hero">主人公</span></div>
+        <div class="card-frame-desc"><span class="keyword">俊足</span>, <span class="keyword">油断しない</span><br><span class="cost-inline">【応援3】+T+手札1枚：</span>相手の発動した効果を1つ打ち消す（自分の手札からランダムに1枚捨てる）。<br><span class="cost-inline">【応援4】：</span>自分のゴミ箱からカードを1枚選び、手札に加える。</div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">盗賊 サギ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4で攻撃200/HP200、俊足と油断しないを両方持つ主人公アタッカー。出たターンから攻撃でき、攻撃してもタップしないので攻めと守りを同時にこなせる。さらに相手の効果を打ち消す妨害と、ゴミ箱からカードを回収する2つの起動能力を持つ万能カード。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>俊足で出たターンから殴れて、油断しないので攻撃後もブロックに回れる。これだけで攻守両立の優秀な戦力。加えて【応援3】+T+手札1枚で相手の効果を打ち消せるため、相手の除去や強化に「待った」をかけられる。【応援4】でゴミ箱から好きなカードを1枚選んで回収できるので、使い終わった強いサポートやキャラを拾い直して使い回せる。コスト4は視聴者3スタート＋フォローで序盤から普通に出せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>自分のターンに出してすぐ攻撃、相手ターンはブロック役として置いておくのが基本。相手が企画ボツやサルベド猫のやらかしのような除去を撃ってきたら、手札1枚を払って打ち消す。打ち消しはタップして手札も消費するので、ここぞという場面で使う。盤面が落ち着いたら【応援4】でゴミ箱から強いカードを拾い、手札を補充しよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>攻撃力もHPも200と低く、自分から殴るタイプなので相手のブロックや相殺で止められやすい。能力をフル活用するには応援・タップ・手札を毎回消費し、特に打ち消しはタップを伴うので使った直後は守りに回れない。打ち消しも回収も1ターンに1回ぶんしか回らず、手札を切らすと息切れする。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>ゴミ箱回収【応援4】は使い切りの強力サポートと好相性で、まっきーにやサルベド猫を拾い直して再利用できる。打ち消し能力は割り込みの動画削除と役割が重なるので、両方構えれば相手の妨害をさらに弾きやすい。基本は2つの能力を自分で回す自己完結型のカードだよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：アンドロイド ユリ</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">アンドロイド ユリ</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/yuri.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">アンドロイド</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc">このカードの攻撃とHPは、このカードにつけられたエンチャントの数だけ<span class="keyword">+100</span>する。<br><br><span class="card-flavor">「ほら見てください。手首の関節を回転させられるんです」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">アンドロイド ユリ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3、素のステータスは攻撃200・HP200の投稿キャラ。つけられたエンチャント1つにつき、自身の攻撃とHPがそれぞれ+100される成長型アタッカー。エンチャントを重ねるほど数字が伸びていく、装備強化デッキの主役だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>エンチャント自身の強化に加えて、ユリ本体の+100が上乗せされるから、装備するたびに二重に強くなる。たとえば+200/+200のエンチャントをつければ、ユリの効果分も合わさって実質+300/+300。視聴者3スタートでコスト3は序盤から普通に出せるし、低コストのエンチャントを乗せれば早い段階で攻撃500オーバーの大型アタッカーに化けるのが強みだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したターンは攻撃できないから、まず場に置いてエンチャントを重ねていくのが基本。装備が増えるほど攻撃力もHPも上がるから、相手のキャラを殴り倒しつつLPも削れる主力になる。低コストのエンチャントから早めに乗せて、一気に育てよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>エンチャントを乗せて初めて真価を出すから、装備が1枚もないと200/200のただの中型キャラ。育てて大型化したユリは相手にとって厄介な存在になるぶん、企画ボツやサルベド猫のやらかしで1枚除去されると、つけたエンチャントごと墓地に送られて大損する。育てる前に動画編集で弱体化されるのも痛いよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>戦術兵器スマッシャーが最高の相棒。ユリに装備すると俊足と飛行を得て+200/+200され、さらにユリ自身の効果も乗るから、出したターンから即攻撃できる大型アタッカーになる。魔の寄生体（+200/+200）や夜しか眠れない健康的な生活（HP+300）もエンチャントとして数字を伸ばし、ユリの+100も加わる。木の精や地縛霊レナを乗せれば、強化に加えてブロック時の戦闘ダメージ無効や蘇生といった耐性も同時に得られるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant_rare.png">
+      <div class="card-frame-name">戦術兵器スマッシャー</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/smasher.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラは<span class="keyword">俊足</span>を持ち、攻撃とHPを<span class="keyword">+100</span>する。<br>エンチャントされたカードが<span class="keyword">アンドロイド ユリ</span>の場合、代わりに<span class="keyword">俊足</span>と<span class="keyword">飛行</span>を持ち、攻撃とHPを<span class="keyword">+200</span>する。<br><br><span class="card-flavor">「私専用に作られた戦闘用外部ユニット――識別名はスマッシャー」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">戦術兵器スマッシャー</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>味方の投稿キャラ1体に装備するコスト3のエンチャント。装備したキャラは俊足を得て、攻撃とHPが+100される。アンドロイド ユリに装備した場合だけ特別で、俊足に加えて飛行も得て、強化値が+200になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは俊足を付けられること。投稿したターンは普通攻撃できないが、これを装備すれば出したその場で殴れる。攻撃とHPも同時に+100されるので、攻め手を1ターン早めながらキャラを一回り強くできる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>攻撃したいキャラに装備して、出たターンから即攻撃を狙うのが基本。特にアンドロイド ユリに装備すると、ユリ自身が「装備の数だけ攻撃とHP+100」を持つため、スマッシャーの+200と合わせて一気に大型化し、さらに飛行と俊足まで得る最強の組み合わせになる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>エンチャント全般の弱点として、装備先のキャラが破壊されるとスマッシャーも一緒に墓地へ行くので、1枚で2枚分の損になりやすい。単体では何の効果もなく、必ず装備先の投稿キャラが場に必要なため、盤面にキャラがいないと腐る。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>最高の相棒はアンドロイド ユリ。装備すると飛行・俊足を得て、ユリ自身の「装備の数だけ+100」効果も乗るので合計+300ぶん強化される。さらにユリに頭にアルミホイルを巻くや夜しか眠れない健康的な生活など他のエンチャントを重ね張りすれば、その枚数ぶんユリの攻撃とHPはどんどん伸びる。それ以外でも、油断しない持ちでATK400/HP400の元掃除屋アサキに装備すれば、出たターンから即攻撃できて、しかも殴った後もタップせず守りに残れる攻守両立のアタッカーになる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：ドラゴン娘</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-creature card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
+      <div class="card-frame-name">ドラゴン娘 ルシア</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/lucia.png" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag">人間</span><span class="tag">ドラゴン</span><span class="tag tag-hero">ヒロイン</span></div>
+        <div class="card-frame-desc"><span class="cost-inline">【応援5】：</span>ターン終了時まで攻撃とHPを<span class="keyword">+300</span>し、<span class="keyword">飛行</span>を得る。<br><span class="cost-inline">【応援5】+T：</span>自身を除くフィールド上の全ての投稿キャラに<span class="keyword">200ダメージ</span>を与える。<br><br><span class="card-flavor">「なあ、アルス。こいつ食べていい？」</span></div>
+      </div>
+      <div class="card-frame-footer"><span class="card-frame-atk"><span class="stat-label">ATK</span><span class="stat-num">200</span></span><span class="card-frame-hp"><span class="stat-label">HP</span><span class="stat-num">200</span></span></div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ドラゴン娘 ルシア</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4・ATK200/HP200の投稿キャラで、応援5を払う2つの能力を使い分けられる。1つ目は自身を一時的に攻撃・HP+300＆飛行付与し、ATK500/HP500の強力アタッカーに変える。2つ目は自身を除くフィールド上の全投稿キャラに200ダメージを与える全体除去で、相手の盤面を一掃する。攻めにも盤面リセットにも回れる二刀流のカード。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>応援5+T能力は自身以外の全投稿キャラに200ダメージを与えるため、HP200以下の小型キャラで埋まった相手盤面をまとめて破壊できる。一方、応援5の強化能力ならATK500/HP500まで跳ね上がり、単体でフィニッシャーになる。状況に応じて全体除去とアタッカーを選べる柔軟さが最大の強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手が小型キャラを横並びにしてきたら、応援5+Tの全体200ダメージで一気に処理する。ただしこの効果は自分の味方も巻き込むので、HPに余裕がある味方だけ残すか、ルシア単体の時に撃つと無駄がない。盤面が拮抗していない時は強化能力でATK/HP+300・飛行を得て、攻め込むフィニッシャーとして使う。能力コストは応援5と重いので、視聴者を増やしてから構えるのがコツ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>どちらの能力も応援5が必要で、起動するターンは応援をほぼ使い切る。素のスタッツはATK200/HP200と並程度で、能力を使わなければ平凡な戦力。全体ダメージ能力は自分の味方も巻き込むため、自分の盤面が育っている時には撃ちづらい。さらに、能力を構えた置物として強力なぶん、相手は企画ボツやサルベド猫のやらかしといった除去で能力を使われる前に処理してくる。特にサルベド猫のやらかしは蘇生も封じるので、対策しにくい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>夜しか眠れない健康的な生活でHPを+300しておくと、全体200ダメージ後もルシア自身や味方が生き残りやすい。全体ダメージで味方を巻き込んでしまっても、僧侶ミーコ（破壊された味方を応援2で蘇生）や地縛霊レナ（装備した味方に応援3の蘇生を付与）と組めば立て直せる。応援5という重い起動コストを賄うには、アイドル カナリア（+Tでデッキトップを視聴者に加える）で応援を加速しておくと能力を早く構えられる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="subgroup-title">漫画：地縛霊</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-enchant card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
+      <div class="card-frame-name">地縛霊 レナ</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/rena.png" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-enchant">エンチャント</span></div>
+        <div class="card-frame-desc">エンチャントされた投稿キャラは<span class="keyword">飛行</span>を持ち、<span class="cost-inline">【応援3】：</span><span class="keyword">蘇生</span>を持つ。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">地縛霊 レナ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>味方の投稿キャラ1体に装備して「飛行」と「【応援3】：蘇生」を付与するコスト3のエンチャント。装備先が破壊されても応援3を払えば蘇らせられるので、エースキャラに粘り強さを与えられる。飛行も付くため攻めにも守りにも使える1枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは飛行を付与できること。装備したキャラは相手も飛行持ちでなければブロックされず、攻撃をLPに通しやすくなる。もう一つの【応援3】：蘇生は、装備先が倒れても応援3を払えば盤面に戻せる保険になるが、応援3はそこそこ重くて毎回は使いにくいので、あくまで飛行のおまけと考えるといいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>ATK/HPが高くて長く生き残ってほしいキャラ（勇者トモや元掃除屋アサキなど）に装備するのが基本。飛行が付くので、相手が飛行持ちを出していなければブロックされず攻撃を通しやすい。蘇生は応援3が必要なので、使うなら相手ターンに破壊された瞬間すぐ立て直せるよう応援を残しておくと安定する。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>エンチャント共通の弱点で、装備先が破壊されると蘇生を使わない限りレナも一緒に墓地へ行く。低スタッツのキャラに付けても相手は適当なキャラでブロック・相殺して処理できるため、付ける相手を選ばないと旨味が薄い。また蘇生は応援3を払えて初めて働くので、応援が足りないターンに破壊されると蘇生が間に合わない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>アンドロイド ユリは付いたエンチャントの数だけATK/HPが+100されるため、レナを装備すれば飛行と蘇生に加えて打点も伸びる。基本的には装備先1体さえいれば単体で機能するカード。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="guide-group" id="g-creator">
+  <div class="group-title">クリエイターチーム</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">サルベド猫</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/salvado_cat.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag">管理者</span></div>
+        <div class="card-frame-desc">このカードは打ち消されない。<br>デッキからクリエイターカードを3枚選び、ランダムで1枚をゴミ箱に捨て、残り2枚を手札に加える。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">サルベド猫</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト5のサポート。デッキからクリエイターカードを3枚選び、そのうち1枚はランダムでゴミ箱に落ちるが、残り2枚を手札に加えられるサーチカード。「選ぶ」効果なので3枚は自分で指定でき、欲しいクリエイターカードをほぼ狙い撃ちできる。さらに「打ち消されない」ので、動画削除や死神少女の打ち消しに邪魔されず確実に発動する。手札1枚から2枚を確保するので手札も増える。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>3枚を自分で選べるので、欲しいクリエイターカードをほぼ狙い撃ちできる（落ちるのは選んだ3枚のうち1枚だけ）。打ち消されないため確実に発動し、手札を整えられるのが最大の強み。クリエイターチームは強力なサポートが揃っており、その中から好きな2枚を抱えられる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札にクリエイターカードが足りず、次の動きの軸が欲しい時に撃つ。視聴者は開始時から3、自分のターンにフォローすれば4の応援が使えるので、コスト5は序盤を少し過ぎたあたりから無理なく発動できる。3枚を選ぶ時は「2枚揃えば最高、1枚落ちても困らない」組み合わせを意識すると、ランダムの没を気にせず使える。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>持ってこられるのはクリエイターカードだけ。投稿キャラ（戦力）やヒロイン・主人公は加えられない。あくまで手札を整える準備カードで、これ単体では盤面に戦力を出したりダメージを与えたりはできない。デッキにクリエイターカードが少ないと選択肢が狭まり、効果が薄くなる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>まっきーには手札からクリエイターカードを2枚捨てればコストなしで発動できるので、サルベド猫で増やした手札がそのまま燃料になる。猫自身もクリエイターカードを引っ張るので、青春詭弁やごもといった重めのクリエイターカードを確実に抱えたい時の橋渡しになる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">まっきーに</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/makkinii.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">ディレクター</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>手札からクリエイターカードを2枚捨てることでコストを支払わずに発動できる。<br>あなたの全ての投稿キャラの攻撃とHPをターン終了時まで<span class="keyword">+300</span>する。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">まっきーに</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>自分の場の全投稿キャラの攻撃とHPを、ターン終了時まで+300する全体強化サポート。コストは応援5だが、手札からクリエイターカードを2枚捨てれば応援を払わずに発動できる。さらに割り込みを持つので、相手のターンにも使える。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>場のキャラが多いほど効果が伸びる全体強化。2体並べれば合計+600ぶんの戦力アップになり、攻めにも守りにも使える。割り込み持ちなので、相手が攻撃してきた瞬間に発動して自分のキャラのHPを上げ、戦闘は同時ダメージだから返り討ちにできる。攻撃宣言やブロック宣言の直後に差し込めるのが強い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>投稿キャラを2体以上並べてから使うと効果が最大化する。攻めるターンに使えば一気に大ダメージを狙え、相手の攻撃宣言やブロック宣言の直後に割り込みで使えば戦闘の勝ち負けをひっくり返せる。クリエイターカードが手札に余っているなら2枚捨てて応援を温存し、同じターンに別のカードも動かせる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>効果はターン終了時までの一時的な強化で、盤面に投稿キャラがいないと意味がない。場が空のときに引いても腐るので、先にキャラを並べる必要がある。クリエイター2枚を捨てて撃つ場合、まっきーに自身と合わせて手札を計3枚も消費するので、手札が乏しいときの負担は大きい（応援5を普通に払って撃つ選択肢もある）。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>かとりーな(Vトークン2体を投稿)で横並びを作ってから撃つと、対象が増えて強化総量が跳ね上がる。あかぽ(味方1体に攻撃+500)やいちこ(全体攻撃+200)などの割り込み強化と同じターンに重ねれば、一撃で相手のLPを削り切る打点を作れる。捨てる弾になるクリエイターカードを供給するサルベド猫(クリエイターを手札に加える)・ななせ(ドロー補充)とも噛み合う。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">あかぽ</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/akapo.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>味方の投稿キャラ1体を選択し、ターン終了時まで攻撃を<span class="keyword">+500</span>する。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">あかぽ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2のサポートで、味方の投稿キャラ1体の攻撃をターン終了時まで+500する。割り込み持ちだから、相手ターンの戦闘中など好きなタイミングで撃てる。低コストで攻撃を一気に跳ね上げる、シンプルで強い火力カードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>+500はこのゲームではかなり大きな数字で、HPの低いキャラ1体を一撃で軽く吹き飛ばせる。割り込みだから、相手がブロックしてきた瞬間に撃って戦闘を一方的に勝ちにいったり、ブロックされなかった攻撃に乗せてLPを大きく削ったりできる。コスト2と軽いから、視聴者3スタートのこのゲームでは序盤から無理なく構えられるのも嬉しい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>基本は攻撃が通る瞬間や戦闘の真っ最中に割り込んで使う。相手がアンタップのキャラでブロックしてきたら、そこにあかぽを乗せて返り討ちにすると、相手の戦力だけ削れて自分はノーダメージで済む。逆にブロックされなかった攻撃に乗せれば、+500ぶんそのまま相手のLPに突き刺さるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>上がるのは攻撃だけで、HPは増えない。だから自分から殴る時に相手のキャラとぶつかると、相手の攻撃ぶんのダメージはきっちり受ける。使い切りの1回限りで、対象の投稿キャラがいないと撃てないから、盤面に味方がいない時は腐ってしまう点も注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>攻撃100のキャラに乗せれば一気に600になる。中でも油断しない（攻撃してもタップしない）を持つ生徒会長ヒロインや女上司ヒロインは、攻めても守りに残れるので、+500を乗せた一撃で相手を倒しつつ自分のターンの守りにも使えて相性抜群。キャマキリや男装系ヒロインのように自前で攻撃を伸ばすアタッカーに重ねれば、1体で相手の大型まで一撃圏内に届くよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">ななせ</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/nanase.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">手札が4枚になるようにカードをドローする。すでに4枚以上の場合はドローしない。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ななせ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>手札が4枚になるまでカードを引くコスト2のサポート。手札が減っているほど多く引けて、手札0枚なら一気に4枚補充できる。手札を吐き出した後の補給役として優秀な1枚だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>手札が少ないほど引ける枚数が増えるのが強み。攻めや効果起動でカードを使い切った直後に撃てば、たっぷり引いて盤面づくりを続けられる。コスト2は軽く、視聴者3スタートのこのゲームなら序盤から無理なく払えるから、どのタイミングでも腐りにくいよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札が0〜1枚まで減ったターンに使うのが一番おいしい。手札が3枚以上残っている時はほとんど引けないから、しっかり使い切ってから撃つのがコツ。投稿キャラを並べたり能力を起動したりして手札を出し切った後、補給する流れを意識しよう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>手札が既に4枚以上あると1枚も引けず、完全な無駄打ちになる。引く枚数を伸ばすには先に手札を消費しておく必要があるので、手札がだぶついている時は使いにくい。引く中身も選べないから、欲しいカードを狙って持ってくることはできないよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>手札を一気に空にするカードと噛み合う。「まっきーに」は割り込みで手札からクリエイターカードを2枚捨ててコストなしで撃てるので、捨てて減った手札をそのままななせで4枚まで補充できる。基本は手札を使い切ってから撃てば単体でしっかり機能するカードだよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">ごも</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/gomo.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">デッキから<span class="keyword">ヒロイン</span>カードを2枚選び、手札に加える。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ごも</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4のサポート。デッキからヒロインカードを2枚選んで手札に加える。「選ぶ」効果なので、ランダムではなく好きなヒロインを2枚確実に持ってこられる。ごも自身を1枚使うので手札の増減は実質+1枚だが、欲しいヒロインをピンポイントで揃えられる準備役だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>必要なヒロインを自分の意思で2枚選んで確保できるのが最大の強み。攻め役・守り役・登場時効果持ちなど、その時に欲しいヒロインを的確に揃えられる。ごも1枚と引き換えにヒロイン2枚なので手札枚数は実質+1だが、狙ったカードを確実に握れるので「引けない事故」を大きく減らせる。視聴者3スタートに1枚フォローすれば自分の最初のターンから応援4が使え、コスト4のごもは序盤から普通に撃てる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したいヒロインが手札に来ていない時に撃つ。たとえば勇者トモのような大型ヒロインアタッカー、賢者レイチェンのような効果持ちヒロインを狙って揃える。注意：対象は「ヒロイン」タグで判定するので、名前に「ヒロイン」とあっても生徒会長ヒロイン・面接官ヒロイン・幼馴染ヒロイン・女上司ヒロイン（tags=人間のみ）は持ってこられない。ヒロインを軸にしたデッキで手札を切らさない土台になるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>持ってこられるのはヒロインカードだけで、主人公・サポート・エンチャントは選べない。手札に2枚加えるだけで盤面には何も出ず、ごも自体は攻撃も防御もしない。デッキにヒロインが少ないと効果を活かしきれず、コスト4ぶんの応援が無駄になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>ごもで持ってきたヒロインを、青春詭弁でコストを払わず場に出せる（青春詭弁はコスト5なので、コスト8のトモのような重いヒロインを呼ぶと特に得。逆にコスト4以下のヒロインを踏み倒しても旨味は薄い）。「ヒロイン」タグを持つのはアイドルカナリア・ミリア・レイチェン・トモ・アズサ・ユリ・ドラゴン娘ルシアなどで、名前に「ヒロイン」とあるだけの生徒会長ヒロイン等は対象外な点に注意してね。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">komi</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/komi.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">自分の全ての投稿キャラの蓄積ダメージを0にする。自分のLPを300回復する。<br><br><span class="card-flavor">「肉まん食べたい」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">komi</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で「自分の全投稿キャラの蓄積ダメージを0にする」と「自分のLPを300回復する」を同時に行うサポート。このゲームは受けたダメージがターンをまたいで持ち越され、累積でHPに達すると破壊されるルールなので、瀕死のキャラをまとめて全快させて立て直せる。視聴者3スタートのこのゲームではコスト1は最序盤から無理なく撃てる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは「全体」のダメージリセット。何体が瀕死でも1枚で全員を綺麗な状態に戻せるので、殴り合いで損をしたターンを丸ごと取り返せる。おまけのLP300回復もあり、コスト1でこの仕事量は優秀。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>攻撃した側・された側のキャラに累積ダメージが溜まり、あと一撃で破壊される状況で撃つ。1体だけでは効果が薄いので、複数のキャラが瀕死になったタイミングまで待って使うと1枚で2体3体を救えて効率が跳ね上がる。LP300回復を生かして、自分のLPが減って危ない時の延命札として持っておくのもあり。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>蓄積ダメージが溜まったキャラがいなければただのLP300回復にしかならず、腐りやすい。消せるのはあくまで「持ち越したダメージ」だけ。その場で破壊されかかっている1撃自体を防いだり、企画ボツや動画編集のような除去・弱体化からキャラを守ったりはできない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>攻撃してもタップしない「油断しない」持ちで素のスタッツが高いアタッカーと特に噛み合う。勇者トモ(800/800)や元掃除屋アサキ(400/400)は攻めにも守りにも使われ累積ダメージを抱えやすいので、komiでリセットすれば何度でも前線に立ち続けられる。同じく蓄積ダメージを消せる賢者レイチェンは1体ずつだが、komiは1枚で味方全体を一気に回復できるのが差別点。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">山岩ヤシロ</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/yashiro.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">LP500を支払い、カードを3枚ドローする。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">山岩ヤシロ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>LP500を払ってカードを3枚ドローするサポートカード。ヤシロ自身を1枚使うので、手札の増加は実質+2枚。コスト4は応援(視聴者)で支払うコストで、それとは別にLP500も必要になる点に注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>一度に3枚引けるので手札が一気に潤い、欲しいパーツやアタッカーを引き込む確率が大きく上がる。攻め手が途切れて手札が細くなった時の立て直しに強い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札が少なくなって動きが止まった時に撃ち、3枚補充で選択肢を一気に広げるのが基本。LP500を払うので、LPに余裕がある序盤〜中盤に使うと安全。応援4を払って撃った後にさらに応援が残っていれば、引いたカードをそのターンに展開でき無駄がない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>LP500の支払いが重く、相手の攻撃でLPが削られている終盤に撃つと一気に負けに近づく。LP2000スタートなので、何度も連発できるカードではない。3枚引けても中身は運次第で、欲しいカードが確実に来る保証はない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>LPを払うリスクを、回復手段と組めば補える。パン屋の娘カエラ(登場時LP200回復)、komi(LP300回復)、いちこ(割り込みでLP500回復も選べる)と一緒に使えば、ヤシロで失ったLPを取り返してリスクを抑えられる。引いた3枚をそのターンに使い切れる、手札を溜め込まず展開するデッキとも相性が良い。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">かとりーな</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/katorina.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">攻撃200 HP200のVトークンを2体投稿する。<br><br><span class="card-flavor">「おつりーな、ごきげんよう！ばいばーい！」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">かとりーな</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4のサポートで、攻撃200・HP200のVトークンを2体まとめて場に出せる。カード1枚から戦力2体ぶんの盤面ができるので、攻めにも守りにも使える。1枚で合計ATK400・HP400ぶんの戦力になるのが強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>カード1枚で投稿キャラ2体を同時に展開でき、盤面の数で一気に相手を上回れる。トークンは攻撃200・HP200と素のサイズがそこそこあり、ブロック役にも攻撃役にも使える。数が多いほど価値が上がる全体強化と組むと、一気に爆発力が出る。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>視聴者は最初から3スタートで、自分のターンに1枚フォローすれば応援4が使える。コスト4のかとりーなは序盤からそのまま出せるので、早く盤面を作りたい時にプレイしよう。2体並ぶことで相手のブロックを分散させたり、片方を攻撃・片方を守りに回したりと柔軟に動ける。全体強化カードを使うターンの前に並べておくと火力が一気に伸びる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>サポートで生み出したトークンは投稿したばかり扱いになり、出したターンは攻撃できない（俊足は持たない）。1体ずつは攻撃200・HP200と中程度で、相手のATK200以上のキャラとブロックや相打ちで処理されやすい。ドラゴン娘ルシアやインプレッション制限のような全体ダメージ・全体弱体化で2体まとめて流されることもあるが、元々1枚で2体を出しているのでカードの損得はイーブン。むしろ全体強化と合わせて、流される前に攻めきりたい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>勇者の血族ミリア、まっきーに、いちこのように「自分の全投稿キャラを強化する」効果と相性が良く、トークン2体ぶん効果が乗って火力が倍化する。蓄積ダメージを消すkomiや賢者レイチェンと組めば、トークンを長く戦わせ続けられる。数を並べる戦い方を支える全体強化カード全般と噛み合う。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">坂街透</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/sakamachi.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">デッキからイラストレーターのカードを3枚選択し、その内2枚を手札に加え、残り1枚をゴミ箱に捨てる。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">坂街透</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3のサポートで、デッキからイラストレーターのカードを3枚選び、好きな2枚を手札に加え、残り1枚をゴミ箱に捨てる。「選ぶ」効果なので、欲しいカードを自分の意思で確実に手札へ持ってこられる。ゲーム開始時に視聴者3でスタートし、最初のターンに1枚フォローすれば応援4まで使えるため、コスト3のこのカードは序盤から無理なく撃てる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>3枚見て2枚を選んで手札に加えるため、必要なイラストレーターカードをほぼ確実に引き込める強力なサーチ役。ランダムではなく「選択」なので、その時の状況に一番合う2枚を狙って取れるのが最大の強み。デッキの引きムラを安定させ、欲しいカードに毎回アクセスできる土台になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>序盤に撃ってキーカードを手札に確保し、ゲームプランを作るのが基本の使い方。特定のイラストレーターカードを使うコンボを狙うとき、事前に挟むと安定する。残り1枚は捨てるので、3枚のうち本当に要らないものを捨て札に回すイメージで選ぶといい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>手札に加えるのはイラストレーターのカードに限られるため、デッキにイラストレーターカードを十分入れていないと空振りする。使い切りのサポートで盤面に戦力を出さないため、これ1枚では相手のLPを削れず、攻めにも守りにも直接貢献しない。引いたカードをすぐ使えないと、その分テンポを失う。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>イラストレーターカードを軸に組んだデッキで、そのキーパーツを確実に引き込むサーチエンジンとして働く。確保したいイラストレーターカードが多いデッキほど価値が上がる。逆に明確に連動する単体のパートナーはおらず、基本的には単体でサーチ役として機能するカード。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">ひかる</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/hikaru.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">カードを2枚ドローする。その後、あなたの全てのカードをタップする。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">ひかる</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2で2枚ドローできるクリエイターチームのサポート。ひかる自身を1枚使うので手札の増減は実質+1枚。その後「あなたの全てのカードをタップする」というデメリットがついてくる。投稿キャラだけでなく、応援を出すための視聴者まで全部タップされるので、撃ったターンは攻撃・ブロック・+T能力に加えて、追加の応援を使う動きまで止まるのが最大の特徴。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト2で2枚ドローでき、ひかる自身を差し引いても手札が実質1枚増える。手札の選択肢を広げたい時や、あと1枚パーツが欲しい時にサッと撃って次の動きを探せる。コストが軽いので、視聴者3スタートのこのゲームでは序盤から問題なく撃てる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>攻撃やブロックの予定がなく、この後に応援も使わないターンに撃つのが基本。場のキャラも視聴者も全部タップしてしまうので、まだ何も展開していない序盤や、今ターンは手札を整えるだけと決めた時に使うと無駄がない。逆に殴り合いの最中や、撃った後にまだ応援を使って動きたいターンに撃つと、攻めも守りも追加展開も全部止まるので注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>「あなたの全てのカードをタップする」がかなり重い。撃ったターンは投稿キャラで攻撃できず、相手ターンにブロックもできなくなる（タップ中はブロック不可）。さらにアンタップ状態の視聴者まで全部タップされるので、ドローした後すぐに別のカードをプレイしようとしても応援が足りなくなる。盤面と視聴者が整っている時ほど撃ちづらい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>妹系ヒロインやママチャリ暴走族のような俊足キャラとは相性が悪い。出してすぐ攻撃したいのに、ひかるを撃つとタップして攻撃できなくなる。逆に、すでに攻撃を終えてタップ済みのキャラしか場におらず、このターンもう応援を使わないなら、追加のデメリットがほぼ無く2枚ドローだけを得られる。基本は単体で手札を増やすカードとして機能する。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">おゆち</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/oyuchi.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">カードを1枚ドローする。引いたカードがイラストレーターカードだった場合、さらに1枚ドローしてもよい。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">おゆち</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で1枚ドローし、引いたカードがイラストレーターカードならさらに1枚ドローしてもよいサポート。1枚引いて1枚使うので手札の総数は減らず、当たりを引けば1枚増える、軽いカード補充役。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト1という最軽量で気軽に撃てるのが最大の強み。ゲーム開始時から視聴者3でスタートするので、最初のターンから応援1は問題なく払えて確実に発動できる。1枚引いて1枚消費するため手札は最低でも減らず、イラストレーターを引き当てれば手札がプラスになる。手札を回しながら欲しいカードに近づけられる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手が空いたターンや応援が余ったタイミングに撃って、デッキを掘り進めるのが基本。イラストレーターカードを多く積んだデッキなら追加ドローの当たり率が上がり、より強く使える。コストが軽いので、ほかのプレイの合間にも気軽に挟める。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>基本は1枚引いて1枚使うだけで、追加ドローが出なければ手札の総数は変わらない。イラストレーターカードが少ないデッキでは追加ドローがほぼ発動せず、ただの1ドローで終わる。盤面に直接干渉せず、攻撃にもブロックにも関われないため、これ1枚では試合を動かせない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>イラストレーターカードを多く積むほど追加ドローの条件を満たしやすくなり、おゆち自身もイラストレーターカードなので連鎖的に引きやすい。坂街透はデッキからイラストレーターを2枚手札に加えるため、イラストレーター比率を高めて当たり率を底上げできる。ななせや愛つばめといったドロー系サポートと組めば、軽いコストで手札を厚く回せる。単体でも問題なく機能し、軽さからどんなデッキにも入れやすい。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">NARI</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/nari.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">デッキの上から5枚を確認し、好きなカードを1枚手札に加えてもよい。その後デッキをシャッフルする。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">NARI</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2のサポート。デッキの上から5枚を見て、その中から好きな1枚を手札に加えられる（加えなくてもいい）。最後にデッキをシャッフルする。「サーチ」がランダムで持ってくるのに対し、NARIは見えた5枚から自分で選べるので、欲しいカードを狙って引き込める調整カードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>見えた5枚から「好きな1枚」を自分で選べるのが強み。ランダムなサーチと違って、その場面で一番欲しいカードを取りに行ける。コスト2と軽く、視聴者3スタートのこのゲームでは最初のターンから問題なく使えて、デッキの動きを安定させてくれる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>勝負を決めるフィニッシャーや、その場面で一番欲しいカードを探しに行く時に使う。序盤なら展開の起点、中盤以降なら詰めの一手と、状況に応じて役割が変わる便利屋だよ。手札が細い時の補充にも使える。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>手札の枚数は増えない（NARIを使って1枚加えるので差し引きゼロ）ので、手数を一気に増やしたい時には向かない。見えるのは上5枚だけなので、そこに欲しいカードが無ければ空振りで、コスト2を払っただけになる。狙ったカードを確実に持ってくる確定サーチではなく、あくまで確率を上げる札だと理解して使うこと。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>特定のカードに依存せず、どんなデッキに入れても「その時一番欲しい1枚」を探せる単体で完結した汎用安定札。勇者トモやのちの魔王マオリアのような重い切り札、青春詭弁で踏み倒したい主人公・ヒロインを探す動きにも使えるが、見えるのは上5枚だけなので確定サーチではなく、あくまで遭遇率を上げる役割と考えること。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">愛つばめ</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/ai_tsubame.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">イラストレーター</span></div>
+        <div class="card-frame-desc">カードを3枚ドローする。ドローしたカードを相手に公開し、相手が1枚選んでゴミ箱に捨てる。<br><br><span class="card-flavor">「ハッハッハッハッ　へっへっへっへっ　ワンッ！」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">愛つばめ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト3で3枚ドローし、その3枚を相手に見せて相手が1枚をゴミ箱に捨てさせるサポート。手札に残るのは2枚で、愛つばめ自身を1枚使うので、増えるのは実質+1枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>3枚見てから2枚を手札に残せる補給カード。愛つばめ自身を差し引くと増えるのは実質1枚だが、3枚の中身を一度に見られるので欲しいカードに触れる確率は高い。視聴者3スタート＋フォロー1で序盤から普通に撃てる軽さで、手札が細った時の潤滑になる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札が減ってきた自分のターンに撃って戦力を補充するのが基本。3枚引いた直後に相手がその場で1枚を選んで捨てるので、相手には一番通したくない切り札を抜かれる前提で使う。割り込みを持たないので自分のターン専用だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>捨てる1枚を選ぶのは相手なので、こちらの切り札を的確に抜かれやすい。割り込みを持たないため自分のターンにしか撃てず、ピンチの相手ターンには使えない。残るのは2枚なので、LPと引き換えに3枚丸ごと引ける山岩ヤシロなど、純粋なドロー枚数では上回るカードもある。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>特定のカードと組むタイプではなく、単体で手札を補給するドロー札。あえて言えば、相手に捨てられた1枚が強力なカードだった場合、動画復元（ゴミ箱から投稿キャラを復活）でそのまま拾い直す、といった逆用の狙い方ができる。捨て札を活かせる手段と一緒なら、相手の「捨てる」選択を逆手に取れるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">いちこ</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/ichiko.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">声優</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>以下から1つ選んでプレイする：<br>・相手のライフに300点のダメージ<br>・自分のライフを500点回復<br>・自分の全ての投稿キャラの攻撃をターン終了時まで<span class="keyword">+200</span>する<br>・相手の全ての投稿キャラの攻撃をターン終了時まで<span class="keyword">-100</span>する</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">いちこ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4のサポートで、4つの効果から1つを選んで使える万能カード。選べるのは「相手LPに300ダメージ」「自分LP500回復」「自分の全投稿キャラの攻撃+200」「相手の全投稿キャラの攻撃-100」の4つ。割り込みを持つので、自分のターンだけでなく相手のターン中、相手のプレイや攻撃宣言の直後にも差し込める。コスト4は視聴者3スタート＋フォローですぐ払えるので、序盤から問題なく使える。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>1枚で攻め・守り・詰めの仕事を状況に合わせて選べる柔軟さが最大の強み。割り込みで相手の攻撃宣言直後に「攻撃-100」を選べば、相手の攻めを弱めて被害を減らせる。逆に自分の攻撃前に「攻撃+200」を全体に乗せれば一気に押し込めるし、トドメに「相手LPに300ダメージ」を直接撃つ詰めの一手にもなる。手札に1枚あるだけで相手は迂闊に攻めにくくなる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札に温存しておき、相手の動きを見てから一番効く効果を選ぶのがコツ。盤面に味方が並んでいるなら攻撃+200で総攻撃の威力を底上げ、LPが残り少なくて危ない時は回復500、あと一押しで勝てる時は300ダメージ。相手のターンに割り込んで攻撃-100を当て、こちらのキャラが戦闘で相手を倒しつつ生き残るよう調整するのも強い使い方。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>どの効果も数値が控えめで、単発では試合をひっくり返すほどの爆発力はない。攻撃+200や攻撃-100はHPには影響しない「攻撃」だけの修正なので、相手キャラを破壊したり盤面を一掃する力はない。盤面に味方がいないと攻撃+200は無駄になり、選択肢が実質3つに減る点も注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>あかぽ（味方1体の攻撃+500）やまっきーに（全味方の攻撃HP+300）と攻撃修正を重ね掛けすれば、ブロックされても押し通る一撃を作れる。かとりーなのVトークン（200/200を2体）で盤面を並べてから攻撃+200を乗せると総ダメージが伸びる。同じ割り込み持ちの投げ銭（1体の攻撃HP+300）と合わせれば、相手の攻撃宣言に反応して攻撃-100で弱体化＋自軍の戦闘力を上げる守りの組み合わせも作れる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
+      <div class="card-frame-name">青春詭弁</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/seishun_kiben.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag tag-creator">ライター</span></div>
+        <div class="card-frame-desc">あなたの手札にある主人公またはヒロインカードを1枚、コストを支払わずにプレイしてもよい。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">青春詭弁</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト5のサポート。手札の主人公またはヒロイン（タグ）を1枚、そのコストを払わずに投稿できる。青春詭弁自体にコスト5がかかるので、踏み倒す相手のコストが5より重いほど得をする（コスト7のマオリアやコスト8のトモ・アークなら大きく節約できる）。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>重い主人公・ヒロインのコストを肩代わりできるのが強み。コスト7〜8の大型を実質コスト5で先出しできれば、本来より早く着地させられる。登場時効果を持つ大型ヒロインなら、効果と本体を一気に得られるのも嬉しい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札にコストの重い主人公・ヒロインがある状態で使う。マオリア(7)やトモ・アーク(8)、ドラゴン娘ルシアのような重いカードを早出しする一手だよ。逆にコスト5以下のカードに使ってもコストの節約にならないので狙わない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>自身のコスト5が重く、手札に主人公かヒロインがなければコスト5を無駄にする。踏み倒す相手のコストが5以下だと得をしない。また対象は「主人公」「ヒロイン」タグで判定するので、名前に「ヒロイン」とあるだけの生徒会長ヒロイン・面接官ヒロイン・幼馴染ヒロイン・女上司ヒロイン（tags=人間のみ）は対象外で出せない点に注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>コストの重いヒロイン・主人公と組むほど価値が上がる。トモ(8)・アーク(8)・マオリア(7)・ドラゴン娘ルシア、登場時効果持ちの大型を狙おう。手札にヒロイン（タグ）を供給する「ごも」（デッキからヒロイン2枚を選ぶ）と組めば、重いヒロインを持ってきて踏み倒す流れができる。なお名前だけヒロインのカードは対象にできないよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-support card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator_rare.png">
+      <div class="card-frame-name">サルベド猫のやらかし</div>
+      <div class="card-frame-cost">6</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/salvado_cat_yarakashi.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-creator">クリエイター</span><span class="tag">管理者</span></div>
+        <div class="card-frame-desc">このカードは打ち消されない。<br>投稿キャラ1体を破壊する。それは蘇生できない。<br><br><span class="card-flavor">「あれ？消えちゃったにゃ」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">サルベド猫のやらかし</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト6のサポート。投稿キャラ1体を破壊し、しかも蘇生できなくする確定除去。「このカードは打ち消されない」ので、相手の動画削除・盗賊サギ・死神少女といった打ち消しでも止められない。相手の切り札を確実に消し飛ばせる、信頼度の高い1枚。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>破壊した投稿キャラは蘇生できないので、僧侶ミーコや魔の寄生体、地縛霊レナといった蘇生手段を無視して完全に消せる。打ち消されないため、相手が打ち消しを構えていても確実に通る。HPがどれだけ高い大型キャラでも一撃で除去できるのが頼もしい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>勇者トモやのちの魔王マオリアのような、戦闘では倒しにくい高ATK・高HPのアタッカーや、盤面を支配する厄介な置物キャラに撃つのが基本。コスト6と重いので、視聴者を貯めて「これは絶対に消したい」という相手の本命が出た瞬間に撃つのが理想。蘇生封じが効くので、ミーコや魔の寄生体で守られた相手にこそ刺さる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>コスト6と重く、序盤の小型キャラに撃つと応援の無駄遣いになる。相手の場に投稿キャラがいないと撃てない単体除去なので、全体除去のような盤面のリセットはできない。あくまで相手の脅威を1体消すための札で、これ1枚では勝ちに直結しない。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>特定のカードと組むコンボはなく、単体で完結する確定除去。強いて使い所を挙げるなら、勇者の血族ミリアやAレイスのボスのように倒すと味方全体の強化が剥がれる相手や、ミーコ・魔の寄生体・地縛霊レナで蘇生して粘る相手に撃つと、蘇生を無視して消せるぶん効果が大きいよ。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="guide-group" id="g-channel_unei">
+  <div class="group-title">チャンネル運営</div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">動画削除</div>
+      <div class="card-frame-cost">3</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/douga_sakujo.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>発動された効果1つを打ち消す。<br><br><span class="card-flavor">「コミュニティガイドライン違反により削除されました」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">動画削除</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>相手が発動した効果を1つ打ち消す、コスト3の割り込みサポート。割り込み持ちだから相手のターンでも使える。相手の決め技や除去にピンポイントで合わせて無効化する、守りの一手だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト3と軽く、視聴者3スタートに自分のターンのフォロー1枚を足せばすぐ構えられる。相手の蘇生・全体強化・除去など、通したくない効果を狙い撃ちで止められる。相手の一番の山場を効果ごと崩せるのが強み。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>手札に握って相手のターンまで温存し、相手が大事な効果を発動した直後に割り込んで使うのが基本。投稿キャラの登場時効果や、応援を払って起動する能力に合わせると効果的。コスト3ぶんの視聴者を常に残しておけば、いつでも構えられるよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>打ち消せるのは「発動された効果」1つだけ。投稿キャラそのものの攻撃やスタッツには触れないから、効果に頼らず素のATKで殴ってくる相手には無力。手札に1枚しかないと、本命の前に軽い効果で釣り出される読み合いにも弱い。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>同じく相手の効果を打ち消せる盗賊サギ（応援3+T+手札1枚）や死神少女（+T+LP500）と並べれば、打ち消しの総数が増えて相手の決め技を確実に潰せる。ただしこの2枚は割り込みではなくタップ起動なので、即応性はこの動画削除が担う役割分担になる。なお、打ち消されない「サルベド猫」「サルベド猫のやらかし」には効かない点だけ注意。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">収益停止</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/shueki_teishi.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>相手をフォローしている全ての視聴者をタップする。<br><br><span class="card-flavor">「量産型のコンテンツです」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">収益停止</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4の割り込みサポート。相手をフォローしている視聴者を全てタップする。視聴者をタップするとその応援が相手の次のターン開始まで使えなくなるので、相手の応援(コスト)を一時的に封じる妨害カードだ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>割り込みなので相手のターンにも撃てる。相手の視聴者をまとめてタップすれば、相手が次の自分のターンに使える応援が減り、大型カードや【応援】能力の展開を遅らせられる。相手の動きの「前借り」を奪ってテンポを崩すカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手の視聴者が増えて重いカードを狙ってきそうなタイミングで撃ち、次のターンに使える応援を削るのが基本。すでに発動された能力やプレイそのものを打ち消すわけではないので、「止める」というより相手の次の動きを遅らせる妨害だと考えよう。タップは相手の次のターン開始時に戻るので、相手が応援を貯めて大技に届く直前を狙うと効く。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>妨害できるのは相手の応援(コスト)だけで、すでに場に出ているキャラや盤面には触れない。相手の視聴者が少ない時や、安いカードしか使わない相手には効果が薄い。タイミングを外すと視聴者はすぐ戻り、一時しのぎで終わる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>同じ割り込みで相手の効果を直接打ち消す「動画削除」と組めば、応援を削りつつ通したくない効果は打ち消す、と二段構えで相手のテンポを崩せる。単体では相手の応援を縛るだけの妨害なので、相手が応援を貯めて大型を狙うデッキにこそ刺さるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">企画ボツ</div>
+      <div class="card-frame-cost">4</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/kikaku_botsu.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc">フィールドの投稿キャラ1体を破壊する。<br><br><span class="card-flavor">「この企画、なしで」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">企画ボツ</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト4で、フィールドにいる投稿キャラを1体破壊するサポートカードです。相手だけでなく自分の場のキャラも対象に選べます。条件もタグ縛りもなく、どんなキャラでも問答無用で1体消せる、シンプルで素直な除去です。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>破壊する相手にATKやHPの制限がないので、勇者トモ（800/800）や元掃除屋アサキ（400/400）のような戦闘では倒しにくい大型アタッカーも、たった1枚で除去できます。さらに、毎ターン応援を増やすアイドルカナリアや全体強化の勇者の血族ミリアのような、殴ってこないけど置いておくと厄介なエンジン役も一掃できます。コスト4は、視聴者3スタート＋毎ターンのフォローで序盤から無理なく払える重さです。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手の一番危険なキャラを狙って撃つのが基本です。戦闘では対処しきれない大型アタッカーや、放置するとどんどん有利を広げる効果持ち（応援加速・全体強化・トークン増殖など）に当てると効果が最大になります。割り込みではないので使えるのは自分のターンだけ。相手の攻撃やプレイに合わせて撃てない点に注意してください。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>使えるのは自分のターンのみで、相手の攻撃に割り込んで防ぐことはできません。また「破壊」なので、蘇生効果を持つ相手（僧侶ミーコや、飛行と蘇生を付ける地縛霊レナを装備したキャラなど）には、倒してもすぐ戻されて1枚で消し切れないことがあります。さらに、頭にアルミホイルを巻くを装備したキャラは効果の対象にならないため、そもそも破壊できません。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>基本的に相手のキャラ1体を消すだけで完結する単体除去。あえて挙げるなら、自分の場のキャラも対象にできる点を活かし、動画復元で釣り上げたい大型キャラをあえて自分で破壊してゴミ箱へ送り込む、といった使い方ができます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku_rare.png">
+      <div class="card-frame-name">チャンネル削除</div>
+      <div class="card-frame-cost">6</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/channel_sakujo.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc">両運営者の視聴者以外の全てのカードを破壊し、手札を全て捨てる。その後、お互いにカードを7枚引き直す。<br><br><span class="card-flavor">「チャンネルが見つかりません」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">チャンネル削除</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト6で、視聴者ゾーン以外のすべてのカードを破壊し、両者の手札を全部捨てさせ、その後お互い7枚引き直すサポート。盤面も手札も丸ごとリセットして、ゲームを序盤の状態に戻す強力なリセットカードだよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>投稿キャラもエンチャントもまとめて消すので、相手が強力なアタッカーや盤面を作って押し込んできている時、一発でその努力をゼロに戻せる。手札も全部捨てさせて7枚引き直しなので、相手が温存していた切り札やコンボパーツも丸ごと流せるのが大きい。視聴者ゾーンは残るから、撃った後もすぐ自分の応援を再使用して動き直せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>自分の盤面が薄く、相手が盤面・手札ともに有利な時に撃って、状況を一気に振り出しに戻すのが基本。引き直しは両者7枚だから、引き直した後に自分が先に動ける状況を想定してから撃つと立て直しやすい。割り込みではないので、自分のターンにしか使えない点に注意。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>自分の場と手札も巻き込んで消える完全な諸刃の剣で、盤面有利な時に撃つと丸損になる。コスト6と重く、引き直し後は両者ほぼ五分になるので、これ1枚で勝てるわけではない。撃った後に自分が先んじて動くプランまで用意しておかないと、リセットしただけで終わる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>「動画復元」は割り込みでゴミ箱の投稿キャラをコストなしで投稿できるので、このカードで破壊して落とした自分の戦力を素早く盤面に戻せる。「盗賊サギ」の【応援4】もゴミ箱からカードを1枚選んで回収できるため、捨てた強カードを撃った後に拾い直せる。チャンネル削除は手札を全部捨てて7枚に引き直すカードだから、立て直しはドローで手札を増やすより、こうしたゴミ箱からの拾い直しの方が噛み合うよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">動画編集</div>
+      <div class="card-frame-cost">2</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/douga_henshuu.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc">投稿キャラ1体を選択し、ターン終了時まで攻撃とHPを<span class="keyword">-300</span>する。<br><br><span class="card-flavor">「カットだらけで原型がない」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">動画編集</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト2で投稿キャラ1体の攻撃とHPをターン終了時まで-300する弱体化サポート。HPが300以下のキャラなら、この1枚だけで破壊できる。軽いコストで序盤から撃てる便利な除去だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>コスト2と軽いのに-300は数値が大きく、HP300以下のキャラなら単独で破壊まで持っていける。自分のターンに相手のブロッカーを弱らせてから殴ったり、相手の主力のHPを削って戦闘で討ち取りやすくできる。視聴者は開始時から3あるので最初のターンから撃てるのも便利だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>自分のターンに、相手のアタッカーやブロッカーのHPを-300して処理するのが基本。HP300以下のキャラはそれだけで破壊できる。HPが高い相手には、自分のキャラの攻撃や蓄積ダメージと合わせて破壊ラインまで落とす。割り込みではないので相手ターンには撃てず、相手の攻撃に合わせた防御には使えない点に注意してね。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>効果はターン終了時までで、破壊できなければ相手は次の自分のターンに元の数値へ戻る。HP400以上のキャラには単体で決定打にならず、自分の攻撃や別の除去と組み合わせないと取りこぼす。割り込みを持たないので相手ターンの不意の攻撃には使えず、あくまで自分のターンの能動的な除去に限られるのが弱点だよ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>キャマキリやあかぽ、投げ銭、まっきーにで自分のアタッカーを強化して殴りつつ、動画編集で相手のHPを-300すれば、戦闘ダメージと合わせ技で大型キャラも破壊ラインに届く。受けたダメージはターンをまたいで持ち越すので、蓄積ダメージを稼いだ後にこのカードでHPを下げて落とす使い方も狙えるよ。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">投げ銭</div>
+      <div class="card-frame-cost">1</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/super_chat.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>投稿キャラ1体を選択し、ターン終了時まで攻撃とHPを<span class="keyword">+300</span>する。<br><br><span class="card-flavor">「赤スパきたーー！」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">投げ銭</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>コスト1で、投稿キャラ1体の攻撃とHPをターン終了時まで+300する超軽量サポート。割り込み持ちなので相手のターンにも撃てる。コスト1という安さで+300という大きな数字を動かせて、攻めにも守りにも効く便利カード。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>割り込みで相手ターンに使えるのが一番の強み。相手の攻撃宣言やブロック宣言の直後にブロック役へ撃てば、HP+300で生き残らせつつ攻撃+300で相手キャラを返り討ちにできる。コスト1なので応援1ぶんで気軽に撃て、戦闘の勝ち負けを一手でひっくり返せる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>攻めでは、あと一歩でブロックを突破できないアタッカーに撃って一気に押し込む。守りでは、相手の攻撃宣言の直後に割り込みで撃ち、ブロック役の攻撃とHPを盛って相打ちや一方的な勝ちに変える。相手にブロックされた瞬間や相手の攻撃が確定した瞬間を狙うのがコツ。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>効果はターン終了時までの一時的な強化で、ターンが終われば元の数字に戻る。対象がいないと撃てず、強化したキャラが破壊や効果で除かれると無駄になる。あくまで戦闘を補助するカードで、これ単体で盤面は作れない。撃つタイミングを読み違えると応援を空打ちしてしまう。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>同じ割り込みの「いちこ」と重ねれば、攻撃+200や相手攻撃-100を足して相手ターンの戦闘をさらに有利にできる。「あかぽ」（割り込みで攻撃+500）と合わせ撃ちすれば、ブロック役のATKを一気に800以上盛って相手の大型アタッカーも討ち取れる。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
+      <div class="card-frame-name">動画復元</div>
+      <div class="card-frame-cost">5</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/douga_fukugen.png" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>ゴミ箱から投稿キャラを1体選び、コストを支払わずに投稿する。</div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">動画復元</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>ゴミ箱（墓地）の投稿キャラを1体選び、その投稿コストを払わずに場へ出せる割り込みサポート。動画復元自体にはコスト5がかかるが、出す相手のコストは肩代わりするので、重いキャラを呼び戻すほど得をする。割り込みだから相手のターンにも使え、出すタイミングを自分で選べるのが大きい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>最大の強みは、重いキャラの投稿コストをコスト5で肩代わりできること。コスト8の勇者トモやコスト7のマオリアでも、一度ゴミ箱に入ればコスト5で復活させられ、本来より大幅に安く着地する。さらに割り込みなので、相手の攻撃宣言の直後にブロッカーとして呼び出す奇襲もできる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>出したい大型キャラがゴミ箱に落ちてから使うのが基本。相手が攻めてきた瞬間に割り込みで大型を出してブロックに回し、戦闘で逆転を狙うのが強い。ただし出したターンに攻撃したいなら、俊足を持つ勇者トモやママチャリ暴走族を選ぶこと。俊足のないキャラは出したターンは攻撃できないので、相手ターンに出してブロッカーにするのが噛み合う。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>弱点は、ゴミ箱に呼び戻したいキャラがいないと完全に腐ること。序盤の手札にあっても撃つ対象がなく、自分から投稿キャラを墓地へ送る手段も乏しいので、中盤以降向きのカードだよ。呼び戻すのが大型アタッカーなら、出した後に企画ボツや動画編集で除去されると一気に消耗する。逆に登場時効果（面接官ヒロインの相手主人公破壊など）目当てなら、出た瞬間に仕事が済むので除去されても損は小さい。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>勇者トモ・ママチャリ暴走族など俊足持ちを呼べば、出したターンから即攻撃できて噛み合う。面接官ヒロイン（登場時に相手の主人公を破壊）のような登場時効果持ちを呼べば、その効果をもう一度使える。逆にマオリアのように登場時効果がなく起動も重いキャラは、出してもすぐには働かないので動画復元の相手としては優先度が低い。ゴミ箱に大型を落とす手段（戦闘で倒される、チャンネル削除に自分のキャラを巻き込む等）とセットで立て直すのが強い。</p>
+      </div>
+    </div>
+  </div>
+  <div class="guide-item">
+    <div class="guide-card-col">
+    <div class="card card-kiyaku card-framed">
+      <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku_rare.png">
+      <div class="card-frame-name">インプレッション制限</div>
+      <div class="card-frame-cost">7</div>
+      <div class="card-frame-art"><img src="https://game.sarubedo.jp/img/impression_seigen.jpg" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-frame-textbox">
+        <div class="card-frame-tags"><span class="tag tag-support">サポート</span><span class="tag tag-kiyaku">規約</span></div>
+        <div class="card-frame-desc"><span class="keyword">割り込み</span><br>お互いの場にいる全ての投稿キャラの攻撃とHPをターン終了時まで<span class="keyword">-500</span>する。<br><br><span class="card-flavor">「そういえばしばらくおすすめ欄で見てないな…」</span></div>
+      </div>
+    </div>
+    </div>
+    <div class="guide-text">
+      <h2 class="guide-name">インプレッション制限</h2>
+      <div class="guide-block">
+        <span class="label label-summary">ひとことで</span>
+        <p>割り込みで使える全体弱体サポート。お互いの場の全投稿キャラの攻撃とHPをターン終了時まで-500する。自分のターンでも相手のターンでも撃てる、盤面リセット級の防御札。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-strength">強み</span>
+        <p>攻撃とHPを両方-500するので、HP500以下のキャラはその場でHP0になり破壊できる。並んだ盤面をまとめて崩せるため、相手が一気に攻めてきた時の防御として非常に強い。割り込みなので相手の攻撃宣言の直後に撃ち、アタッカーごと処理してダメージも止められる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-usage">使い方</span>
+        <p>相手の場にHP500以下のキャラが複数並んだ時、または相手が攻撃宣言してきた時に割り込みで撃つのが理想。自分の場が空、または後述の高HPキャラだけの状況なら一方的に得をする。相手ターンに応援7を構えておき、攻撃宣言に合わせて撃つと守りとして最大化できる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-weakness">弱み</span>
+        <p>効果が自分の場にも及ぶため、こちらも展開している場面では撃ちにくい。HP600以上のキャラは生き残るので、勇者トモ(800/800)などには破壊しきれない。コスト7と重く、応援7に届く中盤以降まで使えない。さらに「打ち消されない」を持たないため、動画削除・盗賊サギ・死神少女などで打ち消されると不発に終わる。</p>
+      </div>
+      <div class="guide-block">
+        <span class="label label-synergy">相性</span>
+        <p>自分の場を空にしてから撃つのが基本で、その場合は単体で完結する。盤面に残したいなら、-500を受けても生き残る高HPキャラ(勇者トモ800/800)や、夜しか眠れない健康的な生活(HP+300)で底上げしたキャラを置いてから撃つとよい。撃った後は動画復元でゴミ箱に落ちた味方を呼び戻せば盤面を立て直せる。なお飛行(マオリア・ルシア)や木の精・ダリアの「戦闘ダメージを受けない」は、能力によるステータス低下を防げないため、このカードからキャラを守る働きはしないよ。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+(function(){
+  var RARE = ['kanaria','alminium','99wari','maoria','tomo','asaki','azusa','shinigami','jun','ark','milia','reichen','sagi','yuri','smasher','lucia','salvado_cat_yarakashi','impression_seigen','channel_sakujo','suisosui'];
+  var UR = ['99wari'];
+  var NAME_TO_RARITY = {};
+  var CARD_NAMES = {kanaria:'アイドル カナリア',alminium:'頭にアルミホイルを巻く','99wari':'99割間違いない',maoria:'のちの魔王 マオリア',tomo:'勇者 トモ',asaki:'元掃除屋 アサキ',azusa:'掃除屋 アズサ',shinigami:'死神少女',jun:'ジュン',ark:'魔王の血族 アーク',milia:'勇者の血族 ミリア',reichen:'賢者 レイチェン',sagi:'盗賊 サギ',yuri:'アンドロイド ユリ',smasher:'戦術兵器スマッシャー',lucia:'ドラゴン娘 ルシア',salvado_cat_yarakashi:'サルベド猫のやらかし',impression_seigen:'インプレッション制限',channel_sakujo:'チャンネル削除',suisosui:'水素水でナンパする男'};
+  Object.keys(CARD_NAMES).forEach(function(id){
+    NAME_TO_RARITY[CARD_NAMES[id]] = UR.includes(id) ? 'rarity-ur' : 'rarity-r';
+  });
+  document.querySelectorAll('.card .card-name').forEach(function(el){
+    var r = NAME_TO_RARITY[el.textContent.trim()];
+    if(r) el.closest('.card').classList.add(r);
+  });
+})();
+function expandVideo(el, videoId) {
+  var embed = document.createElement('div');
+  embed.className = 'video-embed';
+  embed.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  el.replaceWith(embed);
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.card-frame-textbox').forEach(function(tb) {
+    var desc = tb.querySelector('.card-frame-desc');
+    if (!desc) return;
+    var sizes = [11, 10, 9, 8, 7];
+    for (var i = 0; i < sizes.length; i++) {
+      desc.style.fontSize = sizes[i] + 'px';
+      if (tb.scrollHeight <= tb.clientHeight) break;
+    }
+  });
+});
+
+</script>
+</body>
+</html>
