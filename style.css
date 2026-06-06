@@ -7,26 +7,27 @@ a:hover{color:#a8862e;}
 
 /* Top Header — サルベドカラー背景＋白文字＋中央円形ロゴ＋左右分割ナビ */
 :root{
-  --header-pad-y:8px;
-  --header-pad-x:32px;
-  --header-gap:52px;
+  --header-pad-y:7px;
+  --header-pad-x:20px;
+  --header-gap:46px;
   --nav-fs:17px;
   --nav-ls:2px;
   --nav-pad-y:8px;
   --nav-pad-x:14px;
   --nav-gap:4px;
-  --logo-size:96px;
+  --logo-size:92px;
   --moyou-size:800px;
   --moyou-opacity:1;
   /* 3ブロック個別の位置オフセット */
   --logo-offset-x:0px;
   --logo-offset-y:0px;
   --nav-left-offset-x:0px;
-  --nav-left-offset-y:26px;
+  --nav-left-offset-y:6px;
   --nav-right-offset-x:0px;
-  --nav-right-offset-y:26px;
+  --nav-right-offset-y:5px;
 }
-.site-header{position:sticky;top:0;left:0;right:0;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.06);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--header-gap);padding:var(--header-pad-y) var(--header-pad-x);font-family:'Murecho','Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;font-weight:900;overflow:hidden;}
+.site-header{position:sticky;top:0;left:0;right:0;background-color:#fff;border-bottom:1px solid rgba(0,0,0,0.06);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--header-gap);padding:var(--header-pad-y) var(--header-pad-x);font-family:'Murecho','Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;font-weight:900;}
+.site-header::before{clip-path:inset(0);}
 .site-header::before{content:'';position:absolute;inset:0;background-image:url('img/moyou-nyanko.png');background-size:var(--moyou-size,260px) auto;background-repeat:repeat;background-position:0 0;opacity:var(--moyou-opacity,0.12);pointer-events:none;z-index:0;}
 .site-header > *{position:relative;z-index:1;}
 .site-header nav{display:flex;flex-direction:row;align-items:center;gap:var(--nav-gap);flex-wrap:nowrap;}
@@ -38,6 +39,14 @@ a:hover{color:#a8862e;}
 .site-header .logo{justify-self:center;width:var(--logo-size);height:var(--logo-size);display:flex;align-items:center;justify-content:center;font-size:0;padding:0;text-decoration:none;transform:translate(var(--logo-offset-x,0),var(--logo-offset-y,0));}
 .site-header .logo img{width:100%;height:100%;object-fit:contain;display:block;}
 .nav-toggle{display:none;background:transparent;border:1px solid rgba(10,61,58,0.3);color:#0a3d3a;font-size:22px;cursor:pointer;padding:4px 10px;border-radius:6px;}
+
+/* === ナビ ドロップダウン === */
+.site-header nav .nav-item{position:relative;display:inline-flex;align-items:center;}
+.site-header nav .nav-sub{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.15);padding:6px 0;min-width:180px;opacity:0;visibility:hidden;transition:opacity 0.2s,transform 0.2s,visibility 0.2s;z-index:200;display:flex;flex-direction:column;}
+.site-header nav .nav-item:hover .nav-sub,.site-header nav .nav-item:focus-within .nav-sub,.site-header nav .nav-item.open .nav-sub{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.site-header nav .nav-sub a{display:block;padding:10px 20px;font-size:13px;font-weight:700;color:#0a3d3a;text-align:left;letter-spacing:1px;border-radius:0;white-space:nowrap;}
+.site-header nav .nav-sub a:hover{background:#f5fcfb;color:#00C5BE;}
+.site-header nav .nav-sub a.active{background:#6FDFD6;color:#fff;}
 
 /* Main */
 .main-wrap{margin-left:0;width:100%;flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh;}
@@ -204,6 +213,10 @@ footer{border-top:1px solid #e0e0e0;padding:32px 20px;text-align:center;backgrou
   .site-header nav a{padding:12px 20px;width:100%;text-align:center;border-bottom:none;border-radius:0;}
   .site-header nav a.active{background:#00DFD8;color:#fff;}
   .nav-toggle{display:block;position:absolute;top:12px;right:16px;}
+  /* モバイル：ドロップダウンをインライン展開 */
+  .site-header nav .nav-item{display:block;width:100%;}
+  .site-header nav .nav-sub{position:static;transform:none;box-shadow:none;border:none;background:rgba(0,0,0,0.03);border-radius:0;padding:0;opacity:1;visibility:visible;min-width:0;}
+  .site-header nav .nav-sub a{padding:10px 32px;border-radius:0;text-align:center;}
   .hero{padding:40px 16px 28px;}
   .hero h1{font-size:28px;}
   .hero-sub{font-size:14px;}
