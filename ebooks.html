@@ -72,7 +72,7 @@ function copyPg(){var v=[];document.querySelectorAll('#pgPanel input[type=range]
 
     <div class="ebook-grid">
       <div class="ebook-card">
-        <img class="ebook-cover" src="https://images-na.ssl-images-amazon.com/images/P/B0DR7CFBPM.09.LZZZZZZZ.jpg" alt="引っ込み思案の陰キャアイドルを褒めちぎったら「私、アイドルやめてアナタと結婚します！」">
+        <img class="ebook-cover" src="img/ebook-kindle-01.jpg" alt="引っ込み思案の陰キャアイドルを褒めちぎったら「私、アイドルやめてアナタと結婚します！」">
         <div class="ebook-info">
           <h3>引っ込み思案の陰キャアイドルを褒めちぎったら「私、アイドルやめてアナタと結婚します！」</h3>
           <div class="ebook-links">
@@ -93,13 +93,23 @@ function copyPg(){var v=[];document.querySelectorAll('#pgPanel input[type=range]
     </div>
   </div>
 
+  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <img src="img/scroll-top.png" alt="">
+    <span>TOP</span>
+  </a>
+  <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="derivative-works.html">二次創作ガイドライン</a>
+        <a href="company.html">会社情報</a>
       </div>
       <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+      <p class="footer-notice">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。</p>
     </div>
   </footer>
 </div>

@@ -112,6 +112,15 @@
   .ch-detail-more{font-size:var(--m-more-fs);letter-spacing:var(--m-more-ls);padding:var(--m-more-py) var(--m-more-px);left:0;top:0;}
 }
 
+
+/* === 上部白帯撤去：背景画像をトップバーまで伸ばす === */
+body{margin:0;padding:0;}
+.a7-topbar{position:absolute;top:0;left:0;right:0;z-index:50;}
+.main-wrap{margin-top:0;padding-top:0;}
+.ch-detail{padding-top:140px;min-height:100vh;margin-top:0;}
+@media(max-width:760px){
+  .ch-detail{padding-top:110px;}
+}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
@@ -158,13 +167,23 @@
     </div>
   </section>
 
+  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <img src="img/scroll-top.png" alt="">
+    <span>TOP</span>
+  </a>
+  <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="derivative-works.html">二次創作ガイドライン</a>
+        <a href="company.html">会社情報</a>
       </div>
       <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+      <p class="footer-notice">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。</p>
     </div>
   </footer>
 </div>

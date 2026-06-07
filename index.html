@@ -193,7 +193,6 @@ html,body{overflow-x:clip;}
 </head>
 <body>
 
-
 <!-- ヘッダーは一旦コメントアウト（デザイン作り直し中）
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
@@ -376,13 +375,23 @@ html,body{overflow-x:clip;}
     <a class="latest-more-link" href="videos.html">すべての動画を見る →</a>
   </section>
 
+  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <img src="img/scroll-top.png" alt="">
+    <span>TOP</span>
+  </a>
+  <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
+
   <footer>
     <div class="footer-inner">
       <div class="footer-links">
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="derivative-works.html">二次創作ガイドライン</a>
+        <a href="company.html">会社情報</a>
       </div>
       <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+      <p class="footer-notice">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。</p>
     </div>
   </footer>
 </div>
@@ -397,10 +406,10 @@ html,body{overflow-x:clip;}
       desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',
       cta:'読みに行く →',
       ctaHref:'blog.html',
-      ovalImg:'img/blog-banner.png',
+      ovalImg:'img/shinigami-oval.jpg',
       ovalNum:'01',
       ovalTtl:'HP 限定',
-      imgScale:1,imgX:0,imgY:0,
+      imgScale:1.3,imgX:0,imgY:0,
       href:'blog.html'
     },
     {
@@ -417,16 +426,16 @@ html,body{overflow-x:clip;}
     },
     {
       ribbon:'CARD GAME',
-      h2:'サルベドTCG<br>絶賛<span class="hl">配信</span>中',
-      desc:'サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べる、戦略バトルの世界へ。',
-      cta:'今すぐ遊ぶ →',
-      ctaHref:'https://game.sarubedo.jp',
-      ctaExt:true,
+      h2:'TCG<span class="hl">カード</span><br>使い方ガイド<br>公開',
+      desc:'全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」のガイドを公開！デュエリストの一歩を踏み出そう',
+      cta:'ガイドを見る →',
+      ctaHref:'card-guides.html',
+      ctaExt:false,
       ovalImg:'img/cardgame-oval.jpg',
       ovalNum:'03',
       ovalTtl:'TCG',
       imgScale:1,imgX:0,imgY:0,
-      href:'game.html'
+      href:'card-guides.html'
     },
     {
       ribbon:'4-KOMA MANGA',
