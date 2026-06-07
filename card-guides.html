@@ -10,9 +10,37 @@
 <style>
 
   body {
-    background: #1a1a2e;
+    background: #fff;
     padding: 32px;
     font-family: 'Hiragino Kaku Gothic Pro', 'Yu Gothic', sans-serif;
+    color: #1a1a1a;
+  }
+  .back-to-top {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    padding: 8px 18px 8px 10px;
+    text-decoration: none;
+    color: #0a3d3a;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 3px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    transition: transform 0.2s, background 0.2s;
+    font-family: 'Murecho', sans-serif;
+  }
+  .back-to-top img { width: 32px; height: 32px; display: block; }
+  .back-to-top:hover { transform: translateX(-3px); background: #6FDFD6; color: #0a3d3a; }
+  @media(max-width:600px){
+    .back-to-top { top: 10px; left: 10px; padding: 6px 14px 6px 8px; font-size: 10px; letter-spacing: 2px; }
+    .back-to-top img { width: 26px; height: 26px; }
   }
   .nav {
     display: flex;
@@ -50,15 +78,15 @@
   .nav a:hover::before { background: rgba(0,0,0,0.3); }
   .group { margin-bottom: 40px; }
   .group-title {
-    color: #f0e6d0; font-size: 22px; font-weight: bold;
+    color: #3a2e1a; font-size: 22px; font-weight: bold;
     padding: 10px 20px; margin-bottom: 16px;
     border-left: 4px solid #8a7d5a;
-    background: rgba(90,74,42,0.2); border-radius: 0 6px 6px 0;
+    background: rgba(90,74,42,0.08); border-radius: 0 6px 6px 0;
   }
   .subgroup-title {
-    color: #c0b89a; font-size: 16px; font-weight: bold;
+    color: #5a4a2a; font-size: 16px; font-weight: bold;
     padding: 6px 16px; margin: 12px 0 12px 10px;
-    border-left: 3px solid #555;
+    border-left: 3px solid #888;
   }
   .card-row {
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -200,33 +228,33 @@
 
 
   /* === カード解説ページ専用 === */
-  .guide-intro { max-width: 760px; margin: 0 auto 36px; color: #d8d0bc; line-height: 1.9; font-size: 14px; }
-  .guide-intro h1 { color: #f0e6d0; font-size: 26px; margin: 0 0 16px; text-align: center; }
+  .guide-intro { max-width: 760px; margin: 0 auto 36px; color: #3a2e1a; line-height: 1.9; font-size: 14px; }
+  .guide-intro h1 { color: #1a1a1a; font-size: 26px; margin: 0 0 16px; text-align: center; }
   .guide-intro p { margin: 0 0 12px; }
   .guide-group { max-width: 920px; margin: 0 auto 8px; }
   .guide-item {
     display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
     max-width: 900px; margin: 0 auto 28px; padding: 24px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    background: #f7f5ed; border: 1px solid rgba(0,0,0,0.08);
     border-radius: 14px;
   }
   .guide-card-col { flex: 0 0 280px; }
   .guide-text { flex: 1; min-width: 300px; }
   .guide-name {
-    font-size: 20px; font-weight: bold; color: #f0e6d0; margin: 0 0 16px;
-    border-bottom: 1px solid rgba(240,230,208,0.2); padding-bottom: 8px;
+    font-size: 20px; font-weight: bold; color: #1a1a1a; margin: 0 0 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.15); padding-bottom: 8px;
   }
   .guide-block { margin-bottom: 14px; }
   .guide-block .label {
-    display: inline-block; font-size: 12px; font-weight: bold; color: #1a1a2e;
+    display: inline-block; font-size: 12px; font-weight: bold; color: #fff;
     border-radius: 4px; padding: 2px 10px; margin-bottom: 6px;
   }
-  .label-summary { background: #c0b89a; }
-  .label-strength { background: #7ab87a; }
-  .label-usage { background: #d4a54a; }
-  .label-weakness { background: #cc6666; }
-  .label-synergy { background: #b88ac8; }
-  .guide-block p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.85; color: #d8d0bc; }
+  .label-summary { background: #8a7d5a; }
+  .label-strength { background: #4a8a4a; }
+  .label-usage { background: #c08530; }
+  .label-weakness { background: #b04040; }
+  .label-synergy { background: #8050a0; }
+  .guide-block p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.85; color: #3a2e1a; }
   @media (max-width: 680px) {
     body { padding: 16px; }
     .guide-item { padding: 16px; gap: 18px; justify-content: center; }
@@ -236,12 +264,10 @@
 </head>
 <body>
 
-<div class="nav">
-  <a href="#lovecome" style="background-image:url(https://game.sarubedo.jp/img/seitokaichou.png);"><span>サルベドラブコメ</span></a>
-  <a href="#fantasy" style="background-image:url(https://game.sarubedo.jp/img/maoria.png);"><span>サルベドファンタジー</span></a>
-  <a href="#creator" style="background-image:url(https://game.sarubedo.jp/img/salvado_cat.png);"><span>クリエイターチーム</span></a>
-  <a href="#channel_unei" style="background:linear-gradient(135deg,#2e1a00,#4a2a00);border-color:#cc6600;"><span>チャンネル運営</span></a>
-</div>
+<a href="index.html" class="back-to-top" aria-label="ホームへ戻る">
+  <img src="img/salvado-logo.png" alt="サルベド漫画">
+  <span>← TOP</span>
+</a>
 
 <div class="guide-intro">
   <h1>サルベド カードゲーム 全カード使い方ガイド</h1>

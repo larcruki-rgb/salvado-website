@@ -1,0 +1,12 @@
+samples/
+fv-local.mp4
+_apply_nav_dropdown.py
+# 開発時の試作・テンプレート（本番サイトでは未参照）
+overlap-shape.png
+羽.png
+img/oval-template-*
+img/oval-template.svg
+img/mini-circle-template-*
+img/shinigami-hero-template-*
+img/shinigami-small-template-*
+img/scythe.png

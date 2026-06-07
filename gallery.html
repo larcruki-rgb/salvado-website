@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
+<meta name="description" content="サルベド漫画 ギャラリー — キービジュアル・キャラクターイラスト集">
+<title>ギャラリー — サルベド漫画</title>
+<link rel="stylesheet" href="style.css?v=10">
+<style>
+.gallery-page{max-width:1440px;margin:0 auto;padding:24px 24px 80px;}
+.gallery-heading{text-align:center;margin-bottom:36px;}
+.gallery-heading h1{font-family:'Murecho',sans-serif;font-size:30px;font-weight:900;color:#0a3d3a;letter-spacing:10px;}
+.gallery-heading .en{font-size:10px;letter-spacing:6px;color:#888;font-weight:800;margin-top:10px;}
+
+/* サムネイル均一グリッド */
+.gallery-masonry{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.gallery-item{display:block;break-inside:avoid;border-radius:4px;overflow:hidden;text-decoration:none;color:inherit;background:#f0f0f0;transition:transform 0.2s,box-shadow 0.2s;position:relative;aspect-ratio:1;}
+.gallery-item:hover{transform:scale(1.04);box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:2;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
+
+@media(max-width:1100px){.gallery-masonry{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:760px){.gallery-masonry{grid-template-columns:repeat(3,1fr);gap:6px;}}
+@media(max-width:480px){
+  .gallery-page{padding:20px 12px 60px;}
+  .gallery-heading h1{font-size:22px;letter-spacing:5px;}
+  .gallery-masonry{grid-template-columns:repeat(2,1fr);}
+}
+
+/* ライトボックス */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:10000;opacity:0;transition:opacity 0.3s;}
+.lightbox.open{display:flex;opacity:1;}
+.lb-stage{max-width:92vw;max-height:88vh;display:flex;align-items:center;justify-content:center;}
+.lb-stage img{max-width:92vw;max-height:88vh;width:auto;height:auto;display:block;box-shadow:0 20px 60px rgba(0,0,0,0.5);border-radius:6px;}
+.lb-close{position:absolute;top:18px;right:24px;background:rgba(255,255,255,0.12);border:none;color:#fff;width:46px;height:46px;border-radius:50%;font-size:28px;font-weight:300;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;line-height:1;}
+.lb-close:hover{background:rgba(255,255,255,0.25);transform:scale(1.08);}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;width:54px;height:54px;border-radius:50%;font-size:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,transform 0.2s;line-height:1;padding:0;}
+.lb-nav:hover{background:rgba(255,255,255,0.25);}
+.lb-prev{left:24px;}
+.lb-prev:hover{transform:translateY(-50%) translateX(-3px);}
+.lb-next{right:24px;}
+.lb-next:hover{transform:translateY(-50%) translateX(3px);}
+.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:3px;font-weight:700;font-family:'Murecho',sans-serif;}
+@media(max-width:600px){
+  .lb-close{top:10px;right:10px;width:38px;height:38px;font-size:22px;}
+  .lb-nav{width:42px;height:42px;font-size:26px;}
+  .lb-prev{left:6px;}
+  .lb-next{right:6px;}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
+</head>
+<body>
+
+<!-- A7 トップバー（ホーム画面と同じ） -->
+<div class="a7-topbar">
+  <a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a>
+  <button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button>
+  <nav class="a7-nav">
+    <a href="index.html">TOP<span>ホーム</span></a>
+    <a href="about.html">ABOUT<span>紹介</span></a>
+    <a href="videos.html">VIDEOS<span>動画</span></a>
+    <a href="blog.html">SERIES<span>作品</span></a>
+    <a href="gallery.html" class="active">GALLERY<span>ギャラリー</span></a>
+    <a href="game.html">GAME<span>ゲーム</span></a>
+    <a href="goods.html">GOODS<span>グッズ</span></a>
+    <a href="ebooks.html">EBOOKS<span>電子書籍</span></a>
+    <a href="news.html">NEWS<span>お知らせ</span></a>
+  </nav>
+</div>
+
+<div class="main-wrap">
+  <div class="gallery-page">
+    <div class="gallery-heading">
+      <h1>ギャラリー</h1>
+      <div class="en">GALLERY</div>
+    </div>
+
+    <div class="gallery-masonry" id="galleryGrid">
+      <a class="gallery-item" href="img/gallery/halloween-2022.jpg"><img src="img/gallery/halloween-2022.jpg" alt="HAPPY HALLOWEEN 2022"></a>
+      <a class="gallery-item" href="img/gallery/newyear-2023.jpg"><img src="img/gallery/newyear-2023.jpg" alt="謹賀新年 2023"></a>
+      <a class="gallery-item" href="img/gallery/newyear-2024.jpg"><img src="img/gallery/newyear-2024.jpg" alt="謹賀新年 2024"></a>
+      <a class="gallery-item" href="img/gallery/anniv-5.jpg"><img src="img/gallery/anniv-5.jpg" alt="サルベド5周年"></a>
+      <a class="gallery-item" href="img/gallery/milestone-300k.jpg"><img src="img/gallery/milestone-300k.jpg" alt="30万人記念"></a>
+      <a class="gallery-item" href="img/gallery/anniversary-ol.png"><img src="img/gallery/anniversary-ol.png" alt="記念イラスト"></a>
+      <a class="gallery-item" href="img/gallery/namahousou.jpg"><img src="img/gallery/namahousou.jpg" alt="生放送"></a>
+      <a class="gallery-item" href="img/gallery/onichan-daisuki.jpg"><img src="img/gallery/onichan-daisuki.jpg" alt="oni-chan Daisuki"></a>
+    </div>
+  </div>
+
+  <!-- ライトボックス -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="閉じる">×</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="前の画像">‹</button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="次の画像">›</button>
+    <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <script>
+  (function(){
+    var items=Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .gallery-item'));
+    var lb=document.getElementById('lightbox');
+    var lbImg=document.getElementById('lbImg');
+    var lbCounter=document.getElementById('lbCounter');
+    var idx=0;
+    function open(i){
+      idx=i;
+      lbImg.src=items[idx].getAttribute('href');
+      lbCounter.textContent=(idx+1)+' / '+items.length;
+      lb.classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function close(){
+      lb.classList.remove('open');
+      document.body.style.overflow='';
+      setTimeout(function(){lbImg.src='';},300);
+    }
+    function next(){idx=(idx+1)%items.length;open(idx);}
+    function prev(){idx=(idx-1+items.length)%items.length;open(idx);}
+    items.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();open(i);});});
+    document.getElementById('lbClose').addEventListener('click',close);
+    document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();next();});
+    document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();prev();});
+    lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-stage'))close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowRight')next();
+      else if(e.key==='ArrowLeft')prev();
+    });
+  })();
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>

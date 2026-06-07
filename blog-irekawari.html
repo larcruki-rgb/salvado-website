@@ -26,23 +26,22 @@
 </head>
 <body>
 
-<header class="site-header">
-  <button class="nav-toggle" aria-label="メニュー">☰</button>
-  <nav class="nav-left">
-    <a href="about.html">チャンネル紹介</a>
-    <a href="videos.html">動画一覧</a>
-    <a href="blog.html" class="active">作品・連載</a>
+<!-- A7 トップバー（ホーム画面と同じ） -->
+<div class="a7-topbar">
+  <a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a>
+  <button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button>
+  <nav class="a7-nav">
+    <a href="index.html">TOP<span>ホーム</span></a>
+    <a href="about.html">ABOUT<span>紹介</span></a>
+    <a href="videos.html">VIDEOS<span>動画</span></a>
+    <a href="blog.html" class="active">SERIES<span>作品</span></a>
+    <a href="gallery.html">GALLERY<span>ギャラリー</span></a>
+    <a href="game.html">GAME<span>ゲーム</span></a>
+    <a href="goods.html">GOODS<span>グッズ</span></a>
+    <a href="ebooks.html">EBOOKS<span>電子書籍</span></a>
+    <a href="news.html">NEWS<span>お知らせ</span></a>
   </nav>
-  <a href="index.html" class="logo" aria-label="サルベド漫画">
-    <img src="img/salvado-logo.png" alt="サルベド漫画">
-  </a>
-  <nav class="nav-right">
-    <a href="game.html">カードゲーム</a>
-    <a href="goods.html">グッズ</a>
-    <a href="ebooks.html">電子書籍</a>
-    <a href="news.html">お知らせ</a>
-  </nav>
-</header>
+</div>
 
 <div class="main-wrap">
   <div class="page-content">
@@ -329,7 +328,7 @@
 </div>
 
 <script>
-document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
 var COMMENT_API = 'https://game.sarubedo.jp/comments';
 function renderComments(el, comments) {

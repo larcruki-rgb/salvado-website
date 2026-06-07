@@ -5,7 +5,7 @@
 <script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
 <meta name="description" content="死神少女 サブチャンネル — サルベド漫画">
 <title>死神少女 — サルベド漫画</title>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 <style>
 @font-face{font-family:'SoukouMincho';src:url('img/fonts/SoukouMincho.ttf') format('truetype');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
@@ -131,44 +131,22 @@
 </head>
 <body>
 
-<header class="site-header">
-  <button class="nav-toggle" aria-label="メニュー">☰</button>
-  <nav class="nav-left">
-    <div class="nav-item">
-      <a href="about.html" class="active">チャンネル紹介</a>
-      <div class="nav-sub">
-        <a href="channel-main.html">サルベド漫画</a>
-        <a href="channel-emotional.html">Emotional</a>
-        <a href="channel-fantasy.html">Fantasy</a>
-        <a href="channel-shinigami.html">死神少女</a>
-      </div>
-    </div>
-    <a href="videos.html">動画一覧</a>
-    <div class="nav-item">
-      <a href="blog.html">作品・連載</a>
-      <div class="nav-sub">
-        <a href="blog-shinigami.html">死神少女</a>
-        <a href="blog-botsu.html">ボツの館</a>
-        <a href="blog-sakamachi.html">坂街透</a>
-      </div>
-    </div>
+<!-- A7 トップバー（ホーム画面と同じ） -->
+<div class="a7-topbar">
+  <a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a>
+  <button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button>
+  <nav class="a7-nav">
+    <a href="index.html">TOP<span>ホーム</span></a>
+    <a href="about.html" class="active">ABOUT<span>紹介</span></a>
+    <a href="videos.html">VIDEOS<span>動画</span></a>
+    <a href="blog.html">SERIES<span>作品</span></a>
+    <a href="gallery.html">GALLERY<span>ギャラリー</span></a>
+    <a href="game.html">GAME<span>ゲーム</span></a>
+    <a href="goods.html">GOODS<span>グッズ</span></a>
+    <a href="ebooks.html">EBOOKS<span>電子書籍</span></a>
+    <a href="news.html">NEWS<span>お知らせ</span></a>
   </nav>
-  <a href="index.html" class="logo" aria-label="サルベド漫画">
-    <img src="img/salvado-logo.png" alt="サルベド漫画">
-  </a>
-  <nav class="nav-right">
-    <a href="game.html">カードゲーム</a>
-    <div class="nav-item">
-      <a href="goods.html">グッズ</a>
-      <div class="nav-sub">
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
-        <a href="https://store.line.me/stickershop/product/20622058/ja" target="_blank" rel="noopener noreferrer">LINEスタンプ</a>
-      </div>
-    </div>
-    <a href="ebooks.html">電子書籍</a>
-    <a href="news.html">お知らせ</a>
-  </nav>
-</header>
+</div>
 
 <div class="main-wrap">
   <section class="ch-detail" style="background-image:url('img/shinigami-bg.png');">
@@ -208,7 +186,7 @@
 </div>
 
 <script>
-document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
+document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
 document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
   poster.addEventListener('click', function(){

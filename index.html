@@ -5,7 +5,7 @@
 <script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
 <meta name="description" content="サルベド漫画 公式サイト — 漫画動画・カードゲーム・グッズ情報">
 <title>サルベド漫画 公式サイト</title>
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=10">
 <style>
 /* ========================================
    最新動画カルーセル — 全幅固定（こだわりサイズ）
@@ -65,7 +65,7 @@
   }
 }
 /* 横方向はみ出し防止（スマホで marquee の長い track がスクロールバー出さないように） */
-html,body{overflow-x:hidden;}
+html,body{overflow-x:clip;}
 
 /* 動画背景を白に＆サイズ調整（index.html限定） */
 .main-video{background:#fff!important;}
@@ -128,20 +128,23 @@ html,body{overflow-x:hidden;}
 .feature-3-wrap{max-width:1100px;padding:var(--f3-pad-y) var(--f3-pad-x);}
 .feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
 .feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--f3-gap);}
-.feature-3-card{background:#fff;border:1px solid #e0e0e0;border-radius:var(--f3-radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
-.feature-3-card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(0,0,0,0.12);border-color:#00DFD8;}
+.feature-3-card{background:#fff;border:3px solid #FF6B9C;border-radius:var(--f3-radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
+.feature-3-grid.feature-6-grid .feature-3-card:nth-child(even){border-color:#FDC06F;}
+.feature-3-grid.feature-6-grid .feature-3-card:nth-child(odd):hover{border-color:#FF4A85;box-shadow:0 14px 32px rgba(255,107,156,0.25);}
+.feature-3-grid.feature-6-grid .feature-3-card:nth-child(even):hover{border-color:#E8A04A;box-shadow:0 14px 32px rgba(253,192,111,0.3);}
+.feature-3-card:hover{transform:translateY(-5px);}
 .feature-3-thumb{aspect-ratio:var(--f3-thumb-aspect);background:#f5f5f5;overflow:hidden;}
 .feature-3-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
 .feature-3-card:hover .feature-3-thumb img{transform:scale(1.04);}
 .feature-3-body{padding:var(--f3-body-pad-y) var(--f3-body-pad-x);display:flex;flex-direction:column;flex:1;}
-.feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#0a3d3a;color:#fff;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-bottom:10px;align-self:flex-start;}
+.feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#6FDFD6;color:#0a3d3a;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-bottom:10px;align-self:flex-start;box-shadow:0 2px 6px rgba(111,223,214,0.4);}
 .feature-3-card h3{font-size:var(--f3-h3-fs);font-weight:900;color:#1a1a1a;letter-spacing:var(--f3-h3-ls);margin-bottom:var(--f3-h3-mb);}
 .feature-3-card p{font-size:var(--f3-p-fs);color:#666;line-height:var(--f3-p-lh);margin-bottom:var(--f3-p-mb);flex:1;}
 .feature-3-cta{font-size:var(--f3-cta-fs);color:#00DFD8;font-weight:800;letter-spacing:var(--f3-cta-ls);}
 
 /* === トップ：死神少女スライダー（step方式） === */
 :root{
-  --tm-card-w:32%;
+  --tm-card-w:39%;
   --tm-edge:0px;
   --tm-gap:14px;
   --tm-transition:0.6s;
@@ -173,12 +176,25 @@ html,body{overflow-x:hidden;}
   .feature-3-grid{grid-template-columns:1fr;gap:16px;}
 }
 
+/* === 右上固定オーバーレイ MENU（Porte風プロトタイプ） === */
+.floating-menu{position:fixed;top:18px;right:18px;z-index:9999;}
+.floating-menu-btn{width:78px;height:78px;background:#0a0a0a;color:#fff;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:'Murecho','Hiragino Kaku Gothic Pro','Yu Gothic',sans-serif;font-weight:900;letter-spacing:3px;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,0.3);transition:background 0.2s,transform 0.2s;clip-path:polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);}
+.floating-menu-btn:hover{background:#222;transform:translateY(-2px);}
+.floating-menu-btn .dots{display:grid;grid-template-columns:repeat(3,3px);grid-template-rows:repeat(3,3px);gap:2px;}
+.floating-menu-btn .dots span{width:3px;height:3px;background:#fff;border-radius:50%;}
+.floating-menu-panel{position:absolute;top:88px;right:0;width:280px;background:#0a0a0a;color:#fff;padding:24px;box-shadow:0 12px 36px rgba(0,0,0,0.4);opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity 0.25s,transform 0.25s,visibility 0.25s;clip-path:polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);}
+.floating-menu.open .floating-menu-panel{opacity:1;visibility:visible;transform:translateY(0);}
+.floating-menu-panel a{display:block;padding:10px 0;color:#fff;font-size:13px;letter-spacing:3px;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.1);}
+.floating-menu-panel a:last-child{border-bottom:none;}
+.floating-menu-panel a:hover{color:#6FDFD6;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 </head>
 <body>
 
+
+<!-- ヘッダーは一旦コメントアウト（デザイン作り直し中）
 <header class="site-header">
   <button class="nav-toggle" aria-label="メニュー">☰</button>
   <nav class="nav-left">
@@ -200,6 +216,7 @@ html,body{overflow-x:hidden;}
         <a href="blog-sakamachi.html">坂街透</a>
       </div>
     </div>
+    <a href="news.html">NEWS<span>お知らせ</span></a>
   </nav>
   <a href="index.html" class="logo" aria-label="サルベド漫画">
     <img src="img/salvado-logo.png" alt="サルベド漫画">
@@ -217,219 +234,135 @@ html,body{overflow-x:hidden;}
     <a href="news.html">お知らせ</a>
   </nav>
 </header>
+-->
+
 
 <div class="main-wrap">
-  <!-- トップ：死神少女マーキー -->
-  <section class="section section-wide top-marquee-wrap">
-    <div class="top-marquee-track" id="topMarqueeTrack">
-      <div class="top-marquee-card tm-intro">
-        <p class="tm-intro-label">SARUBEDO MANGA / WEB ORIGINAL</p>
-        <h3>ホームページ限定作品<br>多数公開中！</h3>
-      </div>
-      <a class="top-marquee-card" href="blog-shinigami-01.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第1話">
-        <div class="tm-label">死神少女 第1話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-02.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第2話">
-        <div class="tm-label">死神少女 第2話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-03.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第3話">
-        <div class="tm-label">死神少女 第3話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-04.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第4話">
-        <div class="tm-label">死神少女 第4話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-05.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第5話">
-        <div class="tm-label">死神少女 第5話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-06.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第6話">
-        <div class="tm-label">死神少女 第6話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-07.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第7話">
-        <div class="tm-label">死神少女 第7話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-08.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第8話">
-        <div class="tm-label">死神少女 第8話</div>
-      </a>
-      <a class="top-marquee-card" href="blog-shinigami-09.html">
-        <img src="img/shinigami-icon.png" alt="死神少女 第9話">
-        <div class="tm-label">死神少女 第9話</div>
+  <!-- A7: オーバルプロモ型 トップヒーロー -->
+  <div class="a7-topbar">
+    <a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a>
+    <button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button>
+  <nav class="a7-nav">
+      <a href="index.html" class="active">TOP<span>ホーム</span></a>
+        <a href="about.html">ABOUT<span>紹介</span></a>
+      <a href="videos.html">VIDEOS<span>動画</span></a>
+      <a href="blog.html">SERIES<span>作品</span></a>
+    <a href="gallery.html">GALLERY<span>ギャラリー</span></a>
+      <a href="game.html">GAME<span>ゲーム</span></a>
+      <a href="goods.html">GOODS<span>グッズ</span></a>
+      <a href="ebooks.html">EBOOKS<span>電子書籍</span></a>
+    </nav>
+  </div>
+  <div class="a7-stage" id="a7Stage">
+    <div class="a7-topics-bubble" aria-hidden="true">
+      <img src="img/topics-bubble.png" alt="">
+      <span class="a7-topics-text">TOPICS</span>
+    </div>
+    <div class="a7-promo">
+      <span class="ribbon" id="a7Ribbon">CARD GAME</span>
+      <h2 id="a7Title">サルベドTCG<br>絶賛<span class="hl">配信</span>中</h2>
+      <p id="a7Desc">サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べる、戦略バトルの世界へ。</p>
+      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="cta" id="a7Cta">今すぐ遊ぶ →</a>
+    </div>
+    <div class="a7-oval-wrap">
+      <a class="a7-oval" id="a7OvalLink" href="blog-shinigami-01.html">
+        <img src="img/shinigami-icon.png" alt="" id="a7OvalImg">
+        <div class="a7-oval-cap"><div class="num" id="a7OvalNum">01</div><div class="ttl" id="a7OvalTtl">第1話</div></div>
       </a>
     </div>
-  </section>
-  <script>
-  (function(){
-    var track=document.getElementById('topMarqueeTrack');
-    if(!track) return;
-    var wrap=track.parentElement;
-    var originals=Array.prototype.slice.call(track.children);
-    var realCount=originals.length;
-    // 末尾を先頭に、先頭を末尾に複製（無限ループ用）
-    var firstClone=originals[0].cloneNode(true);
-    var lastClone=originals[originals.length-1].cloneNode(true);
-    track.appendChild(firstClone);
-    track.insertBefore(lastClone, track.firstChild);
-    // position: 0=末尾クローン, 1..realCount=本物, realCount+1=先頭クローン
-    var position=1;
-    var isAnimating=false;
-    var AUTO_INTERVAL=3000; // 自動進行間隔（ms）
-    function calcX(p){
-      // 中央寄せオフセット - p * (card_w + gap)
-      return 'calc((100% - var(--tm-card-w))/2 - '+p+' * (var(--tm-card-w) + var(--tm-gap)))';
-    }
-    function update(animate){
-      track.style.transition=animate?'transform var(--tm-transition) cubic-bezier(0.4,0,0.2,1)':'none';
-      track.style.transform='translateX('+calcX(position)+')';
-      var realIdx=position===0?realCount-1:(position===realCount+1?0:position-1);
-      Array.prototype.forEach.call(dots.children,function(d,i){d.classList.toggle('active',i===realIdx);});
-    }
-    function goTo(p){
-      if(isAnimating) return;
-      isAnimating=true;
-      position=p;
-      update(true);
-    }
-    // 矢印
-    var prev=document.createElement('button');
-    prev.className='tm-arrow prev';prev.textContent='◀';prev.setAttribute('aria-label','前へ');
-    var next=document.createElement('button');
-    next.className='tm-arrow next';next.textContent='▶';next.setAttribute('aria-label','次へ');
-    wrap.appendChild(prev);wrap.appendChild(next);
-    prev.addEventListener('click',function(){goTo(position-1);resetAuto();});
-    next.addEventListener('click',function(){goTo(position+1);resetAuto();});
-    // ドット
-    var dots=document.createElement('div');
-    dots.className='tm-dots';
-    for(var i=0;i<realCount;i++){
-      var d=document.createElement('button');
-      d.className='tm-dot'+(i===0?' active':'');
-      d.setAttribute('aria-label','スライド '+(i+1));
-      d.dataset.idx=i;
-      d.addEventListener('click',function(){goTo(parseInt(this.dataset.idx)+1);resetAuto();});
-      dots.appendChild(d);
-    }
-    wrap.parentElement.insertBefore(dots, wrap.nextSibling);
-    // 初期位置（本物先頭）にトランジション無しで配置
-    track.style.transition='none';
-    track.style.transform='translateX('+calcX(position)+')';
-    void track.offsetWidth;
-    // クローン位置に到達したら本物にジャンプ
-    track.addEventListener('transitionend',function(e){
-      if(e.propertyName!=='transform') return;
-      isAnimating=false;
-      if(position===0){position=realCount;update(false);}
-      else if(position===realCount+1){position=1;update(false);}
-    });
-    // 自動進行
-    var autoTimer=null;
-    function startAuto(){stopAuto();autoTimer=setInterval(function(){goTo(position+1);},AUTO_INTERVAL);}
-    function stopAuto(){if(autoTimer){clearInterval(autoTimer);autoTimer=null;}}
-    function resetAuto(){stopAuto();startAuto();}
-    wrap.addEventListener('mouseenter',stopAuto);
-    wrap.addEventListener('mouseleave',startAuto);
-    startAuto();
-  })();
-  </script>
-
-  <!-- 作品・連載 誘導バナー -->
-  <section class="section blog-banner-wrap">
-    <div class="blog-banner">
-      <div class="blog-banner-image">
-        <img src="img/blog-banner.png" alt="作品・連載">
+    <div class="a7-side">
+      <button class="a7-prev-arrow" aria-label="前へ" id="a7PrevBtn" onclick="window.a7Prev&&window.a7Prev()">▲ PREV</button>
+      <div class="a7-mini-wrap" id="a7MiniWrap">
+        <div class="a7-mini">
+          <img src="img/shinigami-icon.png" alt="" id="a7MiniImg">
+          <div class="a7-mini-cap"><div class="num" id="a7MiniNum">05</div><div class="ttl" id="a7MiniTtl">前</div></div>
+        </div>
       </div>
-      <div class="blog-banner-text">
-        <p class="blog-banner-label">SARUBEDO MANGA / WORKS &amp; SERIES</p>
-        <h2>ホームページ限定作品、多数公開中！</h2>
-        <p class="blog-banner-desc">連載作品「死神少女」、作画担当・坂街透のブログ、ボツ作品集など。<br>サルベド漫画の作品世界の裏側へ。</p>
+      <div class="a7-mini-wrap" id="a7Mini2Wrap">
+        <div class="a7-mini">
+          <img src="img/shinigami-icon.png" alt="" id="a7Mini2Img">
+          <div class="a7-mini-cap"><div class="num" id="a7Mini2Num">02</div><div class="ttl" id="a7Mini2Ttl">次</div></div>
+        </div>
       </div>
+      <button class="a7-next-arrow" aria-label="次へ" id="a7NextBtn" onclick="window.a7Next&&window.a7Next()">NEXT ▼</button>
     </div>
-  </section>
+  </div>
 
-  <!-- 作品・連載 3カード -->
+  <!-- FV 直下：作品連載 + コンテンツ 統合 6カード -->
   <section class="section feature-3-wrap">
-    <div class="feature-3-grid">
+    <div class="contents-heading">
+      <span class="en">CONTENTS</span>
+      <h2>コンテンツ</h2>
+    </div>
+    <div class="feature-3-grid feature-6-grid">
       <a href="blog-sakamachi.html" class="feature-3-card">
-        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">坂街透 画像（仮）</span></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">BLOG</span>
-          <h3>坂街透</h3>
-          <p>作画担当・坂街透のブログ。制作の裏側、イラスト、お仕事のことなど。</p>
-        </div>
+        <div class="feature-3-thumb"><img src="img/blog/sakuga01_header.png" alt="作画裏話"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">BLOG</span><h3>作画裏話</h3></div>
       </a>
-      <a href="blog-shinigami.html" class="feature-3-card">
-        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">死神少女 画像（仮）</span></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">SERIES</span>
-          <h3>死神少女</h3>
-          <p>連載作品「死神少女」原稿Ver。寿命と引き換えに願いを叶える、シリーズの本編をここで。</p>
-          <span class="feature-3-cta">読みに行く →</span>
-        </div>
+      <a href="gallery.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img/gallery/newyear-2024.jpg" alt="ギャラリー"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">GALLERY</span><h3>ギャラリー</h3></div>
       </a>
       <a href="blog-botsu.html" class="feature-3-card">
-        <div class="feature-3-thumb"><span class="blog-banner-placeholder" style="color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;padding:24px;text-align:center;align-self:center;">ボツの館 画像（仮）</span></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">BOTSU</span>
-          <h3>ボツの館</h3>
-          <p>世に出なかったボツ作品集。表に出るはずだった漫画たちの墓場。</p>
-          <span class="feature-3-cta">読みに行く →</span>
-        </div>
+        <div class="feature-3-thumb"><img src="img/botsu-thumb.jpg" alt="ボツの館"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">BOTSU</span><h3>ボツの館</h3></div>
+      </a>
+      <a href="game.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img/cardgame-oval.jpg" alt="カードゲーム"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">GAME</span><h3>カードゲーム</h3></div>
+      </a>
+      <a href="ebooks.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img/ebooks-thumb.png" alt="電子書籍"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">BOOKS</span><h3>電子書籍</h3></div>
+      </a>
+      <a href="goods.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img-goods.png" alt="グッズ"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">GOODS</span><h3>グッズ</h3></div>
       </a>
     </div>
   </section>
 
+  <!-- お知らせ（3件） -->
   <section class="section">
     <h2>お知らせ</h2>
     <ul class="news-list news-top3" id="newsTop3">
       <li><span class="news-date">2026.06.06</span><span class="news-tag">ブログ</span><a href="blog-irekawari.html">恋愛漫画「毎日身体が入れ替わる幼馴染と俺」を公開しました</a></li>
       <li><span class="news-date">2026.06.06</span><span class="news-tag">ブログ</span><a href="blog-nyanko.html">4コマ漫画「サルベドニャンコ」を公開しました</a></li>
       <li><span class="news-date">2026.06.05</span><span class="news-tag">ゲーム</span><a href="card-guides.html">カードゲーム 全カードの使い方ガイドを公開しました</a></li>
-      <li><span class="news-date">2026.05.24</span><span class="news-tag">サイト</span><a href="contact.html">お問い合わせページを追加しました</a></li>
-      <li><span class="news-date">2026.05.24</span><span class="news-tag">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を各話個別ページに対応しました</a></li>
-      <li><span class="news-date">2026.05.23</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームのカードデザインリニューアル準備中</a></li>
     </ul>
     <div class="section-more"><a href="news.html">お知らせ一覧 →</a></div>
   </section>
 
-  <!-- 3コンテンツ カードゲーム / 電子書籍 / グッズ -->
-  <section class="section feature-3-wrap">
-    <h2 class="feature-3-heading">CONTENTS</h2>
-    <div class="feature-3-grid">
-      <a href="game.html" class="feature-3-card">
-        <div class="feature-3-thumb"><img src="img-card.png" alt="カードゲーム"></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">GAME</span>
-          <h3>カードゲーム</h3>
-          <p>サルベド漫画オリジナルのカードゲーム。遊び方や全カードの使い方ガイドはこちら。</p>
-          <span class="feature-3-cta">くわしく見る →</span>
+
+  <!-- 死神少女 9話（非対称：1ヒーロー＋8小） -->
+  <section class="shinigami-section" id="shinigamiSection">
+    <div class="shinigami-section-head">
+      <div class="shinigami-section-title">死神少女<span class="en">SHINIGAMI SHOJO</span></div>
+      <div style="text-align:center;"><a href="blog-shinigami.html" class="shinigami-section-more">全話を見る →</a></div>
+    </div>
+    <div class="sh-asym-layout">
+      <a class="sh-hero" href="blog-shinigami-01.html">
+        <img src="img/shinigami/ep1.jpg" alt="第1話">
+        <div class="sh-hero-overlay">
+          <span class="sh-hero-tag">FEATURED EPISODE</span>
+          <h3>第1話</h3>
+          <div class="sh-hero-sub">物語の幕開け、死神少女との出会い。</div>
+          <div class="sh-hero-date">2026.05.01</div>
         </div>
       </a>
-      <a href="ebooks.html" class="feature-3-card">
-        <div class="feature-3-thumb"><img src="https://images-na.ssl-images-amazon.com/images/P/B0DR7CFBPM.09.LZZZZZZZ.jpg" alt="電子書籍"></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">BOOKS</span>
-          <h3>電子書籍</h3>
-          <p>Kindle・各電子書店で配信中のサルベド漫画作品集。</p>
-          <span class="feature-3-cta">一覧を見る →</span>
-        </div>
-      </a>
-      <a href="goods.html" class="feature-3-card">
-        <div class="feature-3-thumb"><img src="img-goods.png" alt="グッズ"></div>
-        <div class="feature-3-body">
-          <span class="feature-3-tag">GOODS</span>
-          <h3>グッズ</h3>
-          <p>BOOTH・LINEスタンプで販売中のオフィシャルグッズ。</p>
-          <span class="feature-3-cta">ラインナップを見る →</span>
-        </div>
-      </a>
+      <div class="sh-side">
+        <a class="sh-small" href="blog-shinigami-02.html"><img src="img/shinigami/ep2.jpg" alt="第2話"><span class="sh-small-num">2話</span></a>
+        <a class="sh-small" href="blog-shinigami-03.html"><img src="img/shinigami/ep3.jpg" alt="第3話"><span class="sh-small-num">3話</span></a>
+        <a class="sh-small" href="blog-shinigami-04.html"><img src="img/shinigami/ep4.jpg" alt="第4話"><span class="sh-small-num">4話</span></a>
+        <a class="sh-small" href="blog-shinigami-05.html"><img src="img/shinigami/ep5.jpg" alt="第5話"><span class="sh-small-num">5話</span></a>
+        <a class="sh-small" href="blog-shinigami-06.html"><img src="img/shinigami/ep6.jpg" alt="第6話"><span class="sh-small-num">6話</span></a>
+        <a class="sh-small" href="blog-shinigami-07.html"><img src="img/shinigami/ep7.jpg" alt="第7話"><span class="sh-small-num">7話</span></a>
+        <a class="sh-small" href="blog-shinigami-08.html"><img src="img/shinigami/ep8.jpg" alt="第8話"><span class="sh-small-num">8話</span></a>
+        <a class="sh-small" href="blog-shinigami-09.html"><img src="img/shinigami/ep9.jpg" alt="第9話"><span class="sh-small-num">9話</span></a>
+      </div>
     </div>
   </section>
+
 
   <section class="latest-title">
     <h2>最新動画</h2>
@@ -455,7 +388,223 @@ html,body{overflow-x:hidden;}
 </div>
 
 <script>
+/* === A7: オーバルプロモ スライダー（コンテンツ：カードゲーム / 猫四コマ漫画） === */
+(function(){
+  var SLIDES=[
+    {
+      ribbon:'SARUBEDO MANGA',
+      h2:'ホームページ<br>限定作品<br><span class="hl">多数</span>公開中',
+      desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',
+      cta:'読みに行く →',
+      ctaHref:'blog.html',
+      ovalImg:'img/blog-banner.png',
+      ovalNum:'01',
+      ovalTtl:'HP 限定',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog.html'
+    },
+    {
+      ribbon:'SERIES',
+      h2:'死神少女<br><span class="hl">原稿</span>Ver<br>連載中',
+      desc:'寿命と引き換えに願いを叶える死神と、フリーター・ジュンの切ない物語。連作短編全 9 話、HP 限定の原稿バージョン。',
+      cta:'第1話を読む →',
+      ctaHref:'blog-shinigami-01.html',
+      ovalImg:'img/shinigami-icon.png',
+      ovalNum:'02',
+      ovalTtl:'死神少女',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-shinigami.html'
+    },
+    {
+      ribbon:'CARD GAME',
+      h2:'サルベドTCG<br>絶賛<span class="hl">配信</span>中',
+      desc:'サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べる、戦略バトルの世界へ。',
+      cta:'今すぐ遊ぶ →',
+      ctaHref:'https://game.sarubedo.jp',
+      ctaExt:true,
+      ovalImg:'img/cardgame-oval.jpg',
+      ovalNum:'03',
+      ovalTtl:'TCG',
+      imgScale:1,imgX:0,imgY:0,
+      href:'game.html'
+    },
+    {
+      ribbon:'4-KOMA MANGA',
+      h2:'サルベド<br><span class="hl">ニャンコ</span>',
+      desc:'サルベド漫画のマスコット「ニャンコ」たちのほのぼの 4 コマ漫画。日常のちょっとした幸せをお届け。',
+      cta:'読みに行く →',
+      ctaHref:'blog-nyanko.html',
+      ovalImg:'img/nyanko-slide.jpg',
+      ovalNum:'04',
+      ovalTtl:'ニャンコ',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-nyanko.html'
+    },
+    {
+      ribbon:'LOVECOMEDY',
+      h2:'毎日<br>入れ替わる<br><span class="hl">幼馴染</span>と俺',
+      desc:'落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。全54ページ＋フルボイス音声つき。',
+      cta:'読みに行く →',
+      ctaHref:'blog-irekawari.html',
+      ovalImg:'img/blog/irekawari/005.jpg',
+      ovalNum:'05',
+      ovalTtl:'入れ替わり',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-botsu.html'
+    }
+  ];
+  var idx=0,auto=null,AUTO=5000;
+  var lastDir=1; /* +1=次方向、-1=前方向 */
+  var slideType=localStorage.getItem('a7SlideType')||'fade';
+  /* fade / vertical / horizontal / zoom / rotate */
+  function applyHide(el, type, dir){
+    el.style.transition='none';
+    el.style.opacity='0';
+    if(type==='fade'){el.style.transform='scale(0.96)';}
+    else if(type==='vertical'){el.style.transform='translateY('+(dir>0?-30:30)+'px)';}
+    else if(type==='horizontal'){el.style.transform='translateX('+(dir>0?40:-40)+'px)';}
+    else if(type==='zoom'){el.style.transform='scale(0.7)';}
+    else if(type==='rotate'){el.style.transform='rotate('+(dir>0?-12:12)+'deg) scale(0.9)';}
+  }
+  function applyShow(el){
+    el.style.transition='opacity 0.45s ease, transform 0.55s cubic-bezier(0.34, 1.3, 0.5, 1)';
+    el.style.opacity='1';
+    el.style.transform='translate(0,0) scale(1) rotate(0)';
+  }
+  /* スロット風：カード枠は固定、中の画像だけ下から上に入れ替わる */
+  function imgExit(imgEl){
+    if(!imgEl) return;
+    imgEl.style.transition='transform 0.32s cubic-bezier(0.55, 0, 0.55, 1), opacity 0.28s ease-in';
+    imgEl.style.transform='translateY(-100%) scale(1)';
+    imgEl.style.opacity='0';
+  }
+  function imgEnter(imgEl){
+    if(!imgEl) return;
+    imgEl.style.transition='none';
+    imgEl.style.transform='translateY(100%) scale(1)';
+    imgEl.style.opacity='0.4';
+    void imgEl.offsetHeight;
+    imgEl.style.transition='transform 0.55s cubic-bezier(0.22, 0.85, 0.35, 1), opacity 0.42s ease-out';
+    imgEl.style.transform='translateY(0) scale(1)';
+    imgEl.style.opacity='1';
+  }
+  /* ラベル（番号・タイトル）も軽くフェード */
+  function labelFade(els){
+    els.forEach(function(el){if(!el)return;el.style.transition='opacity 0.2s ease';el.style.opacity='0.3';});
+    setTimeout(function(){els.forEach(function(el){if(!el)return;el.style.transition='opacity 0.4s ease';el.style.opacity='1';});}, 260);
+  }
+  function render(){
+    var c=SLIDES[idx];
+    var prevSlide=SLIDES[(idx-1+SLIDES.length)%SLIDES.length];
+    var nextSlide=SLIDES[(idx+1)%SLIDES.length];
+    var ovalLink=document.getElementById('a7OvalLink');if(!ovalLink) return;
+    var ovalImg=document.getElementById('a7OvalImg');
+    var miniImg=document.getElementById('a7MiniImg');
+    var mini2Img=document.getElementById('a7Mini2Img');
+    var m1=document.getElementById('a7MiniWrap');
+    var m2wrap=document.getElementById('a7Mini2Wrap');
+    var oval=document.querySelector('.a7-oval');
+
+    /* 順番：下ミニ → 中央 → 上ミニ */
+    var STAGGER=40; /* 順次発火の間隔 (ms) */
+
+    /* シンプルなフェードのみ（カード自体は動かない） */
+    function wrapExit(el){
+      if(!el) return;
+      el.style.transition='opacity 0.22s ease-in';
+      el.style.opacity='0';
+    }
+    function wrapEnter(el){
+      if(!el) return;
+      el.style.transition='opacity 0.28s ease-out';
+      el.style.opacity='1';
+      el.style.transform='';
+    }
+
+    /* Exit: 下ミニ → 中央 → 上ミニ */
+    setTimeout(function(){wrapExit(m2wrap);}, 0);
+    setTimeout(function(){wrapExit(oval);}, STAGGER);
+    setTimeout(function(){wrapExit(m1);}, STAGGER*2);
+
+    /* オーバル画像の拡大・位置（スライドごと） */
+    function applyOvalImgTransform(){
+      if(!ovalImg) return;
+      ovalImg.style.transformOrigin='center';
+      ovalImg.style.transform='scale('+(c.imgScale||1)+') translate('+(c.imgX||0)+'px,'+(c.imgY||0)+'px)';
+    }
+    /* パネルの画像スライダー初期値を現在スライドに合わせる */
+    var sScale=document.querySelector('#a7Panel [data-slide-img="scale"]');
+    var sX=document.querySelector('#a7Panel [data-slide-img="x"]');
+    var sY=document.querySelector('#a7Panel [data-slide-img="y"]');
+    if(sScale){sScale.value=c.imgScale||1;sScale.closest('label').querySelector('.v').textContent=(c.imgScale||1);}
+    if(sX){sX.value=c.imgX||0;sX.closest('label').querySelector('.v').textContent=(c.imgX||0);}
+    if(sY){sY.value=c.imgY||0;sY.closest('label').querySelector('.v').textContent=(c.imgY||0);}
+
+    setTimeout(function(){
+      /* 内容差し替え */
+      ovalLink.href=c.href;
+      if(ovalImg) ovalImg.src=c.ovalImg;
+      applyOvalImgTransform();
+      document.getElementById('a7OvalNum').textContent=c.ovalNum;
+      document.getElementById('a7OvalTtl').textContent=c.ovalTtl;
+      if(miniImg) miniImg.src=prevSlide.ovalImg;
+      document.getElementById('a7MiniNum').textContent=prevSlide.ovalNum;
+      document.getElementById('a7MiniTtl').textContent=prevSlide.ovalTtl;
+      if(m1) m1.onclick=function(){prev();reset();};
+      if(mini2Img){
+        mini2Img.src=nextSlide.ovalImg;
+        document.getElementById('a7Mini2Num').textContent=nextSlide.ovalNum;
+        document.getElementById('a7Mini2Ttl').textContent=nextSlide.ovalTtl;
+        if(m2wrap) m2wrap.onclick=function(){next();reset();};
+      }
+      /* Enter: 下ミニ → 中央 → 上ミニ */
+      setTimeout(function(){wrapEnter(m2wrap);}, 0);
+      setTimeout(function(){wrapEnter(oval);}, STAGGER);
+      setTimeout(function(){wrapEnter(m1);}, STAGGER*2);
+    }, 280 + STAGGER*2);
+    /* 左 promo 更新 */
+    document.getElementById('a7Ribbon').textContent=c.ribbon;
+    document.getElementById('a7Title').innerHTML=c.h2;
+    document.getElementById('a7Desc').textContent=c.desc;
+    var ctaEl=document.getElementById('a7Cta');
+    ctaEl.textContent=c.cta;
+    ctaEl.href=c.ctaHref;
+    if(c.ctaExt){ctaEl.target='_blank';ctaEl.rel='noopener noreferrer';}else{ctaEl.removeAttribute('target');ctaEl.removeAttribute('rel');}
+    /* 左 promo も軽くフェード */
+    var promo=document.querySelector('.a7-promo');
+    promo.style.opacity='0.5';
+    setTimeout(function(){promo.style.transition='opacity 0.4s';promo.style.opacity='1';},20);
+  }
+  var EPS=SLIDES;
+  var isAnimating=false;
+  function next(){if(isAnimating)return;isAnimating=true;lastDir=1;idx=(idx+1)%EPS.length;render();setTimeout(function(){isAnimating=false;},700);}
+  function prev(){if(isAnimating)return;isAnimating=true;lastDir=-1;idx=(idx-1+EPS.length)%EPS.length;render();setTimeout(function(){isAnimating=false;},700);}
+  function start(){stop();auto=setInterval(function(){isAnimating=false;next();},AUTO);}
+  function stop(){if(auto){clearInterval(auto);auto=null;}}
+  function reset(){stop();start();}
+  /* グローバル公開（onclick 属性から呼ぶ用） */
+  window.a7Prev=function(){prev();reset();};
+  window.a7Next=function(){next();reset();};
+  window.A7_SLIDES=SLIDES;
+  window.A7_IDX=function(){return idx;};
+  window.A7_PauseToggle=function(){
+    if(auto){stop();return true;}else{start();return false;}
+  };
+  window.A7_IsPaused=function(){return !auto;};
+  document.getElementById('a7NextBtn').addEventListener('click',function(){next();reset();});
+  var prevBtn=document.getElementById('a7PrevBtn');
+  if(prevBtn) prevBtn.addEventListener('click',function(){prev();reset();});
+  var stage=document.getElementById('a7Stage');
+  stage.addEventListener('mouseenter',stop);
+  stage.addEventListener('mouseleave',start);
+  render();start();
+})();
+
+/* nav-toggle と header 関連はヘッダーがコメントアウト中なので無効化
 document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelectorAll('.site-header nav').forEach(function(n){n.classList.toggle('open');});});
+(function(){var h=document.querySelector('.site-header');if(!h) return;function set(){document.documentElement.style.setProperty('--mega-top', h.getBoundingClientRect().height + 'px');}set();window.addEventListener('resize',set);window.addEventListener('load',set);})();
+*/
+
 
 /* === お知らせ：news.html から上位3件を取得 === */
 (function(){
