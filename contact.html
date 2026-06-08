@@ -53,32 +53,15 @@
 
     <p class="contact-note">頂いたお問い合わせには、内容を確認の上、順次ご返信いたします。<br>内容によってはご返信できかねる場合がございますので、あらかじめご了承ください。</p>
 
-    <form class="contact-form" id="contactForm">
-      <div class="field">
-        <label for="name">お名前<span class="req">必須</span></label>
-        <input type="text" id="name" name="name" required maxlength="60">
-      </div>
-      <div class="field">
-        <label for="email">メールアドレス<span class="req">必須</span></label>
-        <input type="email" id="email" name="email" required maxlength="120">
-      </div>
-      <div class="field">
-        <label for="subject">件名</label>
-        <select id="subject" name="subject">
-          <option value="ご感想">ご感想</option>
-          <option value="ご質問">ご質問</option>
-          <option value="お仕事のご依頼">お仕事のご依頼</option>
-          <option value="その他">その他</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="message">お問い合わせ内容<span class="req">必須</span></label>
-        <textarea id="message" name="message" required maxlength="3000"></textarea>
-      </div>
-      <div style="text-align:center;margin-top:24px;">
-        <button type="submit" class="submit-btn">送信する</button>
-      </div>
-    </form>
+    <div class="contact-mail-box" style="max-width:640px;margin:24px auto 0;text-align:center;padding:36px 24px;background:#f7f6f2;border-radius:12px;">
+      <p style="font-size:14px;color:#555;margin-bottom:14px;letter-spacing:1px;">お問い合わせは、以下のメールアドレスまでお願いいたします。</p>
+      <p style="margin-bottom:20px;">
+        <a href="mailto:mangaikimasu@gmail.com" style="font-size:20px;font-weight:800;color:#0a3d3a;letter-spacing:1px;text-decoration:none;border-bottom:2px solid #6FDFD6;padding-bottom:2px;">mangaikimasu@gmail.com</a>
+      </p>
+      <a href="mailto:mangaikimasu@gmail.com" class="submit-btn" style="display:inline-block;text-decoration:none;">メールを送る</a>
+    </div>
+
+    <p style="max-width:640px;margin:22px auto 0;font-size:13px;color:#777;line-height:1.9;">お問い合わせの際は、件名に「ご感想」「ご質問」「お仕事のご依頼」など、内容がわかるよう記載いただけますとスムーズです。お仕事・コラボレーションのご依頼も、こちらのアドレスにて承っております。</p>
   </div>
 
   <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
@@ -93,7 +76,6 @@
         <a href="contact.html">お問い合わせ</a>
         <a href="privacy.html">プライバシーポリシー</a>
         <a href="terms.html">利用規約</a>
-        <a href="derivative-works.html">二次創作ガイドライン</a>
         <a href="company.html">会社情報</a>
       </div>
       <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
@@ -104,11 +86,6 @@
 
 <script>
 document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
-
-document.getElementById('contactForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  alert('送信機能は準備中です。\n後日メール送信できるようバックエンドを接続します。');
-});
 </script>
 </body>
 </html>
