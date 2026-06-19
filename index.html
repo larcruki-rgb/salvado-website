@@ -684,19 +684,19 @@ document.querySelector('.nav-toggle').addEventListener('click',function(){docume
     return card;
   }
 
-  // クリック委譲：本物カードでもクローンでも .video-thumb-poster クリックで再生
-  container.addEventListener('click', function(e){
-    var poster = e.target.closest('.video-thumb-poster');
-    if (!poster) return;
-    var id = poster.dataset.id;
-    var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3';
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
-    iframe.setAttribute('frameborder', '0');
-    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
-    poster.parentNode.replaceChild(iframe, poster);
-  });
+  // ※ YouTube再生リンクは現在無効化中（サムネ表示のみ・クリックしても再生しない）
+  // container.addEventListener('click', function(e){
+  //   var poster = e.target.closest('.video-thumb-poster');
+  //   if (!poster) return;
+  //   var id = poster.dataset.id;
+  //   var iframe = document.createElement('iframe');
+  //   iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3';
+  //   iframe.setAttribute('allowfullscreen', '');
+  //   iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+  //   iframe.setAttribute('frameborder', '0');
+  //   iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+  //   poster.parentNode.replaceChild(iframe, poster);
+  // });
 
   Promise.all(channels.map(function(ch){ return fetchChannel(ch, ch.latestCount); }))
     .then(function(results){
