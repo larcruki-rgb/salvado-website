@@ -7,8 +7,47 @@
 <title>作品・連載 — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=11">
 <style>
+/* 横幅を800pxの制約から解放（最大1200px） */
+.page-content:has(.blog-mag-wrap){max-width:1200px!important;}
 .blog-mag-wrap{margin-top:-30px!important;}
 @media(max-width:760px){.blog-mag-wrap{margin-top:-10px!important;}}
+
+.blog-mag-head{padding:0 0 22px;}
+.blog-mag-issue{font-family:'Murecho',sans-serif;font-size:11px;letter-spacing:3px;color:#888;}
+
+/* === 付箋ボード（コルク風） === */
+.blog-mag-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:28px!important;padding:30px 26px 36px!important;background:linear-gradient(135deg,#f4ecd6,#e8dcc0)!important;border-radius:16px!important;box-shadow:inset 0 4px 12px rgba(120,90,30,0.15)!important;position:relative;}
+.blog-mag-grid::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,0.04) 1px,transparent 1px);background-size:6px 6px;pointer-events:none;border-radius:16px;}
+
+.blog-mag-entry{display:block!important;background:#fffce8!important;padding:14px 14px 18px!important;text-decoration:none!important;color:inherit!important;box-shadow:3px 5px 12px rgba(0,0,0,0.12)!important;transform:rotate(-1.2deg);transition:transform 0.3s,box-shadow 0.3s!important;position:relative;border:none!important;border-radius:2px!important;}
+.blog-mag-entry:nth-child(2n){transform:rotate(1deg);background:#fff2db!important;}
+.blog-mag-entry:nth-child(3n){transform:rotate(-0.6deg);background:#ffe5e0!important;}
+.blog-mag-entry:nth-child(4n){background:#e8f5d8!important;transform:rotate(0.9deg);}
+.blog-mag-entry:nth-child(5n){background:#e0eef5!important;transform:rotate(-1.4deg);}
+.blog-mag-entry:hover{transform:rotate(0deg) translateY(-6px)!important;box-shadow:6px 10px 20px rgba(0,0,0,0.18)!important;z-index:2;}
+.blog-mag-entry::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:56px;height:16px;background:rgba(180,140,80,0.55);border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,0.15);}
+
+.blog-mag-thumb{position:relative;aspect-ratio:1!important;border-radius:3px!important;background:#eee;overflow:hidden;margin-bottom:8px;}
+.blog-mag-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.blog-mag-thumb .blog-mag-num{position:absolute;top:6px;left:6px;background:rgba(255,255,255,0.9);color:#0a3d3a;font-size:11px;font-weight:900;padding:2px 7px;border-radius:3px;letter-spacing:1px;}
+.blog-mag-thumb .blog-mag-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;letter-spacing:2px;font-weight:800;background:linear-gradient(135deg,#FFE5EC,#FFC9D9);}
+.blog-mag-tag{display:inline-block;font-size:9px;background:#0a3d3a;color:#fff;padding:2px 8px;border-radius:3px;font-weight:900;letter-spacing:2px;margin:4px 0 4px;font-family:'Murecho',sans-serif;}
+.blog-mag-entry h3{font-size:13px;font-weight:900;margin:4px 0 4px;line-height:1.4;letter-spacing:0.5px;color:#1a1a1a;}
+.blog-mag-entry p{display:none!important;}
+.blog-mag-meta{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#888;margin-top:2px;flex-wrap:wrap;gap:4px;}
+.blog-mag-cta{font-size:10px;color:#0a3d3a;font-weight:800;letter-spacing:1px;}
+
+@media(max-width:980px){
+  .blog-mag-grid{grid-template-columns:repeat(3,1fr)!important;}
+}
+@media(max-width:760px){
+  .blog-mag-grid{grid-template-columns:repeat(2,1fr)!important;gap:22px!important;padding:24px 16px!important;}
+  .blog-mag-entry{padding:10px 10px 14px!important;}
+  .blog-mag-entry h3{font-size:12px;}
+}
+@media(max-width:420px){
+  .blog-mag-grid{grid-template-columns:1fr!important;}
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -46,9 +85,9 @@
         <a class="blog-mag-entry" href="blog-irekawari.html"><div class="blog-mag-thumb"><span class="blog-mag-num">01</span><img src="img/blog/irekawari/001.jpg" alt=""></div><span class="blog-mag-tag">LOVECOMEDY</span><h3>毎日身体が入れ替わる幼馴染と俺</h3><p>落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。</p><div class="blog-mag-meta">全54ページ ／ 音声つき<span class="blog-mag-cta">読みに行く →</span></div></a>
         <a class="blog-mag-entry" href="blog-nyanko.html"><div class="blog-mag-thumb"><span class="blog-mag-num">02</span><img src="img/blog/nyanko01_01.png" alt=""></div><span class="blog-mag-tag">4-KOMA</span><h3>サルベドニャンコ</h3><p>1P・2P・3P・4P——カラー違い4匹のにゃんこのゆるギャグ4コマ。</p><div class="blog-mag-meta">第1話 公開中<span class="blog-mag-cta">読みに行く →</span></div></a>
         <a class="blog-mag-entry" href="blog-sakamachi.html"><div class="blog-mag-thumb"><span class="blog-mag-num">03</span><img src="img/blog/sakuga01_header.png" alt=""></div><span class="blog-mag-tag">BLOG</span><h3>作画裏話</h3><p>キャラデザ・サムネ制作・服装デザインなど、作画担当ならではの裏話。</p><div class="blog-mag-meta">記事 2本<span class="blog-mag-cta">読みに行く →</span></div></a>
-        <a class="blog-mag-entry" href="gallery.html"><div class="blog-mag-thumb"><span class="blog-mag-num">04</span><img src="img/gallery/newyear-2024.jpg" alt=""></div><span class="blog-mag-tag">GALLERY</span><h3>ギャラリー</h3><p>サルベド漫画の記念イラストなどのアーカイブ。</p><div class="blog-mag-meta">イラスト掲載中<span class="blog-mag-cta">見に行く →</span></div></a>
-        <a class="blog-mag-entry" href="blog-shinigami.html"><div class="blog-mag-thumb"><span class="blog-mag-num">05</span><img src="img/blog/shinigami01_header.jpg" alt=""></div><span class="blog-mag-tag">SERIES</span><h3>死神少女【原稿Ver】</h3><p>寿命と引き換えに願いを叶える死神と、フリーター・ジュンを描く連作短編。</p><div class="blog-mag-meta">記事 9本 ／ HP限定<span class="blog-mag-cta">読みに行く →</span></div></a>
-        <a class="blog-mag-entry" href="blog-botsu.html"><div class="blog-mag-thumb"><span class="blog-mag-num">06</span><img src="img/botsu-thumb.jpg" alt=""></div><span class="blog-mag-tag">BOTSU</span><h3>ボツの館</h3><p>過去作で没になった構想・お蔵入りシナリオたちを供養する場所。</p><div class="blog-mag-meta">記事 2本<span class="blog-mag-cta">読みに行く →</span></div></a>
+        <a class="blog-mag-entry" href="blog-shinigami.html"><div class="blog-mag-thumb"><span class="blog-mag-num">04</span><img src="img/blog/shinigami01_header.jpg" alt=""></div><span class="blog-mag-tag">SERIES</span><h3>死神少女【原稿Ver】</h3><p>寿命と引き換えに願いを叶える死神と、フリーター・ジュンを描く連作短編。</p><div class="blog-mag-meta">記事 9本 ／ HP限定<span class="blog-mag-cta">読みに行く →</span></div></a>
+        <a class="blog-mag-entry" href="blog-botsu.html"><div class="blog-mag-thumb"><span class="blog-mag-num">05</span><img src="img/botsu-thumb.jpg" alt=""></div><span class="blog-mag-tag">BOTSU</span><h3>ボツの館</h3><p>過去作で没になった構想・お蔵入りシナリオたちを供養する場所。</p><div class="blog-mag-meta">記事 2本<span class="blog-mag-cta">読みに行く →</span></div></a>
+        <a class="blog-mag-entry" href="blog-harem.html"><div class="blog-mag-thumb"><span class="blog-mag-num">06</span><span class="blog-mag-ph">ハレ阻止！</span></div><span class="blog-mag-tag">LOVECOMEDY</span><h3>ハレ阻止！</h3><p>新コンテンツ準備中。続報をお待ちください。</p><div class="blog-mag-meta">準備中<span class="blog-mag-cta">読みに行く →</span></div></a>
       </div>
     </div>
 
