@@ -4,6 +4,7 @@ _apply_nav_dropdown.py
 _harem_publish.py
 _harem_drafts/
 _harem_config.txt
+_harem_auto.log
 ハレ阻止_公開.bat
 # 開発時の試作・テンプレート（本番サイトでは未参照）
 overlap-shape.png
