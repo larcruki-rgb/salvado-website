@@ -130,10 +130,7 @@ document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").add
     grid.className = 'video-grid';
     grid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div>';
     section.appendChild(grid);
-    var link = document.createElement('div');
-    link.className = 'section-more';
-    link.innerHTML = '<a href="' + ch.url + '" target="_blank" rel="noopener noreferrer">チャンネルで見る →</a>';
-    section.appendChild(link);
+    // チャンネルへの外部リンクは無効化中
     container.appendChild(section);
 
     function loadFeed(chId, targetGrid, retries) {
@@ -150,7 +147,8 @@ document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").add
             var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
             var card = document.createElement('div');
             card.className = 'video-card';
-            card.innerHTML = '<div class="video-thumb"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen loading="lazy"></iframe></div>' +
+            // YouTube埋め込みは無効化中。サムネ画像のみ表示（クリックしても再生しない）
+            card.innerHTML = '<div class="video-thumb" style="aspect-ratio:16/9;overflow:hidden;background:#000;"><img src="https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://i.ytimg.com/vi/' + videoId + '/mqdefault.jpg\'"></div>' +
               '<p class="video-title" style="font-size:13px;margin-top:6px;">' + title + '</p>';
             targetGrid.appendChild(card);
           }
