@@ -39,13 +39,64 @@
 .lb-prev:hover{transform:translateY(-50%) translateX(-3px);}
 .lb-next{right:24px;}
 .lb-next:hover{transform:translateY(-50%) translateX(3px);}
-.lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:3px;font-weight:700;font-family:'Murecho',sans-serif;}
+.lb-counter{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.7);font-size:13px;letter-spacing:3px;font-weight:700;font-family:'Murecho',sans-serif;}
+/* 画像＋右側パネル */
+.lb-content{display:flex;align-items:center;justify-content:center;gap:28px;max-width:94vw;max-height:90vh;}
+.lb-content.no-panel{gap:0;}
+.lb-content .lb-stage{max-width:66vw;max-height:88vh;flex-shrink:0;}
+.lb-content.no-panel .lb-stage{max-width:92vw;}
+.lb-content .lb-stage img{max-width:66vw;max-height:88vh;}
+.lb-content.no-panel .lb-stage img{max-width:92vw;}
+.lb-panel{width:300px;max-height:84vh;overflow-y:auto;color:#fff;font-family:'Murecho',sans-serif;text-align:left;flex-shrink:0;}
+.lb-panel.empty{display:none;}
+.lb-artist{font-size:17px;font-weight:800;letter-spacing:1px;display:none;flex-direction:column;gap:2px;margin-bottom:8px;}
+.lb-artist.show{display:flex;}
+.lb-artist .lb-artist-label{font-size:10px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:3px;}
+.lb-date{font-size:13px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-bottom:14px;}
+.lb-date:empty{display:none;margin-bottom:0;}
+.lb-desc{font-size:14px;font-weight:500;line-height:1.7;color:rgba(255,255,255,0.92);white-space:pre-wrap;}
+.lb-desc:empty{display:none;}
+@media(max-width:820px){
+  .lb-content{flex-direction:column;gap:14px;max-height:92vh;}
+  .lb-content .lb-stage,.lb-content.no-panel .lb-stage{max-width:92vw;max-height:60vh;}
+  .lb-content .lb-stage img{max-width:92vw;max-height:60vh;}
+  .lb-content.no-panel .lb-stage img{max-height:86vh;}
+  .lb-panel{width:88vw;max-height:26vh;}
+}
 @media(max-width:600px){
   .lb-close{top:10px;right:10px;width:38px;height:38px;font-size:22px;}
   .lb-nav{width:42px;height:42px;font-size:26px;}
   .lb-prev{left:6px;}
   .lb-next{right:6px;}
 }
+
+/* === 並べ替え編集モード（#edit のときだけ） === */
+.edit-mode .gallery-item{cursor:grab;}
+.edit-mode .gallery-item:hover{transform:none;box-shadow:0 0 0 2px #6FDFD6;}
+.edit-mode .gallery-item.dragging{opacity:0.35;cursor:grabbing;}
+.edit-mode .gallery-item.sel{box-shadow:0 0 0 3px #FDC06F;}
+.edit-mode .gallery-item::after{content:attr(data-pos);position:absolute;top:3px;left:3px;background:rgba(10,61,58,0.85);color:#fff;font-size:11px;font-weight:800;padding:1px 6px;border-radius:8px;z-index:3;pointer-events:none;}
+.edit-mode .gallery-item[data-artist]:not([data-artist=""])::before{content:"✎ " attr(data-artist);position:absolute;bottom:0;left:0;right:0;background:rgba(253,192,111,0.95);color:#5a3300;font-size:10px;font-weight:800;padding:2px 4px;z-index:3;pointer-events:none;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.edit-bar .eb-fields{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:20px;flex-wrap:wrap;}
+.edit-bar .eb-fields input{border:none;border-radius:14px;padding:7px 12px;font-size:13px;font-weight:700;font-family:inherit;}
+.edit-bar .eb-fields #ebArtist{width:120px;}
+.edit-bar .eb-fields #ebDate{width:120px;}
+.edit-bar .eb-fields #ebDesc{width:240px;}
+.edit-bar .eb-fields input:disabled{opacity:0.5;}
+.edit-bar .eb-fields .eb-sel-name{font-size:12px;opacity:0.85;font-weight:600;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:9998;background:rgba(10,61,58,0.96);color:#fff;display:flex;align-items:center;gap:14px;padding:12px 18px;font-size:13px;font-weight:700;letter-spacing:1px;box-shadow:0 -4px 18px rgba(0,0,0,0.3);flex-wrap:wrap;}
+.edit-bar button{background:#6FDFD6;color:#0a3d3a;border:none;font-weight:800;font-size:13px;padding:10px 22px;border-radius:24px;cursor:pointer;letter-spacing:1px;}
+.edit-bar button:hover{filter:brightness(1.07);}
+.edit-bar .eb-note{opacity:0.85;font-weight:600;}
+.edit-out{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:24px;}
+.edit-out.open{display:flex;}
+.edit-out-inner{background:#fff;border-radius:10px;max-width:760px;width:100%;padding:20px;box-sizing:border-box;}
+.edit-out-inner h4{margin:0 0 10px;color:#0a3d3a;font-size:15px;}
+.edit-out-inner textarea{width:100%;height:260px;box-sizing:border-box;font-family:monospace;font-size:12px;border:1.5px solid #ccc;border-radius:6px;padding:10px;}
+.edit-out-inner .eo-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end;}
+.edit-out-inner .eo-actions button{padding:9px 20px;border-radius:20px;border:none;font-weight:800;cursor:pointer;}
+.eo-copy{background:#6FDFD6;color:#0a3d3a;}
+.eo-close{background:#eee;color:#333;}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -76,60 +127,77 @@
     </div>
 
     <div class="gallery-masonry" id="galleryGrid">
-      <a class="gallery-item" href="img/gallery/halloween-2022.jpg"><img src="img/gallery/halloween-2022.jpg" alt="HAPPY HALLOWEEN 2022"></a>
-      <a class="gallery-item" href="img/gallery/newyear-2023.jpg"><img src="img/gallery/newyear-2023.jpg" alt="謹賀新年 2023"></a>
-      <a class="gallery-item" href="img/gallery/newyear-2024.jpg"><img src="img/gallery/newyear-2024.jpg" alt="謹賀新年 2024"></a>
-      <a class="gallery-item" href="img/gallery/anniv-5.jpg"><img src="img/gallery/anniv-5.jpg" alt="サルベド5周年"></a>
-      <a class="gallery-item" href="img/gallery/milestone-200k.jpg"><img src="img/gallery/milestone-200k.jpg" alt="20万人記念"></a>
-      <a class="gallery-item" href="img/gallery/milestone-300k.jpg"><img src="img/gallery/milestone-300k.jpg" alt="30万人記念"></a>
-      <a class="gallery-item" href="img/gallery/milestone-400k.jpg"><img src="img/gallery/milestone-400k.jpg" alt="40万人記念"></a>
-      <a class="gallery-item" href="img/gallery/newyear-2024-dragon.png"><img src="img/gallery/newyear-2024-dragon.png" alt="2024年新年"></a>
-      <a class="gallery-item" href="img/gallery/thanks-2022.png"><img src="img/gallery/thanks-2022.png" alt="2022年ありがとう"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-1mview.png"><img src="img/gallery/aitubame-1mview.png" alt="100万回再生記念"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-400k.png"><img src="img/gallery/aitubame-400k.png" alt="40万人"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-valentine.png"><img src="img/gallery/aitubame-valentine.png" alt="バレンタイン"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-housou.png"><img src="img/gallery/aitubame-housou.png" alt="放送"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-ouen-1.png"><img src="img/gallery/aitubame-ouen-1.png" alt="応援"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-ouen-2.png"><img src="img/gallery/aitubame-ouen-2.png" alt="応援2"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-ouen-3.png"><img src="img/gallery/aitubame-ouen-3.png" alt="応援3"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-ouen-4.png"><img src="img/gallery/aitubame-ouen-4.png" alt="応援4"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-skeb-20240229.png"><img src="img/gallery/aitubame-skeb-20240229.png" alt="skeb 2024.02.29"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-skeb-20240902.png"><img src="img/gallery/aitubame-skeb-20240902.png" alt="skeb 2024.09.02"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-20250521.png"><img src="img/gallery/aitubame-20250521.png" alt="2025.05.21"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-20250529.png"><img src="img/gallery/aitubame-20250529.png" alt="2025.05.29"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-20250601.png"><img src="img/gallery/aitubame-20250601.png" alt="2025.06.01"></a>
-      <a class="gallery-item" href="img/gallery/aitubame-illust1.jpg"><img src="img/gallery/aitubame-illust1.jpg" alt="イラスト"></a>
-      <a class="gallery-item" href="img/gallery/hikaru-mengen.png"><img src="img/gallery/hikaru-mengen.png" alt="ひかる"></a>
-      <a class="gallery-item" href="img/gallery/hikaru-naynn.jpg"><img src="img/gallery/hikaru-naynn.jpg" alt="ひかる"></a>
-      <a class="gallery-item" href="img/gallery/hikaru-sanshuu.jpg"><img src="img/gallery/hikaru-sanshuu.jpg" alt="ひかる"></a>
-      <a class="gallery-item" href="img/gallery/hikaru-tibi.jpg"><img src="img/gallery/hikaru-tibi.jpg" alt="ひかる ちび"></a>
-      <a class="gallery-item" href="img/gallery/hikaru-namaho.png"><img src="img/gallery/hikaru-namaho.png" alt="ひかる 生放送"></a>
-      <a class="gallery-item" href="img/gallery/anniv-5-namahousou.png"><img src="img/gallery/anniv-5-namahousou.png" alt="5周年 生放送"></a>
-      <a class="gallery-item" href="img/gallery/toru-newyear-2023.png"><img src="img/gallery/toru-newyear-2023.png" alt="2023 年賀（透）"></a>
-      <a class="gallery-item" href="img/gallery/namahousou-katori-otsu.jpg"><img src="img/gallery/namahousou-katori-otsu.jpg" alt="生放送 おたのしみに"></a>
-      <a class="gallery-item" href="img/gallery/milestone-300k-sakamachi.jpg"><img src="img/gallery/milestone-300k-sakamachi.jpg" alt="30万人 ありがとう"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-01.jpg"><img src="img/gallery/ruuto-01.jpg" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-02.png"><img src="img/gallery/ruuto-02.png" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-03.png"><img src="img/gallery/ruuto-03.png" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-04.png"><img src="img/gallery/ruuto-04.png" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-05.png"><img src="img/gallery/ruuto-05.png" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/ruuto-06.png"><img src="img/gallery/ruuto-06.png" alt="るうと"></a>
-      <a class="gallery-item" href="img/gallery/nanase.png"><img src="img/gallery/nanase.png" alt="ななせ"></a>
-      <a class="gallery-item" href="img/gallery/oyuti-01.png"><img src="img/gallery/oyuti-01.png" alt="おゆち"></a>
-      <a class="gallery-item" href="img/gallery/oyuti-02.jpg"><img src="img/gallery/oyuti-02.jpg" alt="おゆち"></a>
-      <a class="gallery-item" href="img/gallery/oyuti-03.png"><img src="img/gallery/oyuti-03.png" alt="おゆち"></a>
-      <a class="gallery-item" href="img/gallery/oyuti-04.png"><img src="img/gallery/oyuti-04.png" alt="おゆち"></a>
-      <a class="gallery-item" href="img/gallery/nekohara-1mview.jpg"><img src="img/gallery/nekohara-1mview.jpg" alt="100万回再生（猫原しぐね）"></a>
-      <a class="gallery-item" href="img/gallery/drive3-anniv3-akasaka.jpg"><img src="img/gallery/drive3-anniv3-akasaka.jpg" alt="3周年 アカサカさん"></a>
-      <a class="gallery-item" href="img/gallery/drive3-azumino.jpg"><img src="img/gallery/drive3-azumino.jpg" alt="アズミノ"></a>
-      <a class="gallery-item" href="img/gallery/drive3-komoyuu-fa.jpg"><img src="img/gallery/drive3-komoyuu-fa.jpg" alt="コモユウFA"></a>
-      <a class="gallery-item" href="img/gallery/drive3-zenmei-fa.jpg"><img src="img/gallery/drive3-zenmei-fa.jpg" alt="ゼンメイFA"></a>
-      <a class="gallery-item" href="img/gallery/drive3-souchio-fa.jpg"><img src="img/gallery/drive3-souchio-fa.jpg" alt="ソウチオFA"></a>
-      <a class="gallery-item" href="img/gallery/drive3-tadayuu-4koma.jpg"><img src="img/gallery/drive3-tadayuu-4koma.jpg" alt="タダユウ4コマ"></a>
-      <a class="gallery-item" href="img/gallery/drive3-touyae-fa.jpg"><img src="img/gallery/drive3-touyae-fa.jpg" alt="トウヤエFA"></a>
-      <a class="gallery-item" href="img/gallery/anniversary-ol.png"><img src="img/gallery/anniversary-ol.png" alt="記念イラスト"></a>
-      <a class="gallery-item" href="img/gallery/namahousou.jpg"><img src="img/gallery/namahousou.jpg" alt="生放送"></a>
-      <a class="gallery-item" href="img/gallery/onichan-daisuki.jpg"><img src="img/gallery/onichan-daisuki.jpg" alt="oni-chan Daisuki"></a>
+      <a class="gallery-item" href="img/gallery/drive3-tadayuu-4koma.jpg" data-artist="かとりーな" data-date="2026.05" data-desc="ファンアート"><img src="img/gallery/drive3-tadayuu-4koma.jpg" alt="タダユウ4コマ"></a>
+      <a class="gallery-item" href="img/gallery/drive3-touyae-fa.jpg" data-artist="かとりーな" data-date="2026.04" data-desc="ファンアート"><img src="img/gallery/drive3-touyae-fa.jpg" alt="トウヤエFA"></a>
+      <a class="gallery-item" href="img/gallery/oyuti-02.jpg" data-artist="おゆち" data-date="2025.12" data-desc="冬コミ応援イラスト"><img src="img/gallery/oyuti-02.jpg" alt="おゆち"></a>
+      <a class="gallery-item" href="img/gallery/namahousou.jpg" data-artist="坂街　透" data-date="2025.12" data-desc="冬コミ前生放送記念イラスト"><img src="img/gallery/namahousou.jpg" alt="生放送"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20251205.jpg" data-artist="ちず" data-date="2025.12" data-desc="ファンアート"><img src="img/gallery/chizu-20251205.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/chizu-maina.jpg" data-artist="ちず" data-desc="ファンアート"><img src="img/gallery/chizu-maina.jpg" alt="ちず イラスト あまみやすずは"></a>
+      <a class="gallery-item" href="img/gallery/drive3-zenmei-fa.jpg" data-artist="かとりーな" data-date="2025.09"><img src="img/gallery/drive3-zenmei-fa.jpg" alt="ゼンメイFA"></a>
+      <a class="gallery-item" href="img/gallery/hikaru-sanshuu.jpg" data-artist="ひかる" data-date="2025.06" data-desc="ひかるさん　3年目記念イラスト"><img src="img/gallery/hikaru-sanshuu.jpg" alt="ひかる"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-20250601.png" data-artist="愛ツバメ" data-date="2025.06" data-desc="ファンアート"><img src="img/gallery/aitubame-20250601.png" alt="2025.06.01"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-20250521.png" data-artist="愛ツバメ" data-date="2025.05"><img src="img/gallery/aitubame-20250521.png" alt="2025.05.21"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-20250529.png" data-artist="愛ツバメ" data-date="2025.05" data-desc="ファンアート"><img src="img/gallery/aitubame-20250529.png" alt="2025.05.29"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-400k.png" data-artist="愛ツバメ" data-date="2025.03" data-desc="登録者40万人記念イラスト"><img src="img/gallery/aitubame-400k.png" alt="40万人"></a>
+      <a class="gallery-item" href="img/gallery/milestone-400k.jpg" data-artist="ひかる" data-date="2025.03" data-desc="登録者40万人記念イラスト"><img src="img/gallery/milestone-400k.jpg" alt="40万人記念"></a>
+      <a class="gallery-item" href="img/gallery/oyuti-01.png" data-artist="おゆち" data-date="2025.03" data-desc="登録者40万人記念生放送イラスト"><img src="img/gallery/oyuti-01.png" alt="おゆち"></a>
+      <a class="gallery-item" href="img/gallery/drive3-souchio-fa.jpg" data-artist="かとりーな" data-date="2025.03" data-desc="ファンアート"><img src="img/gallery/drive3-souchio-fa.jpg" alt="ソウチオFA"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-ouen-4.png" data-artist="愛ツバメ" data-date="2025.02" data-desc="東京コミティア応援イラスト"><img src="img/gallery/aitubame-ouen-4.png" alt="応援4"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-ouen-3.png" data-artist="愛ツバメ" data-date="2025.02" data-desc="東京コミティア応援イラスト"><img src="img/gallery/aitubame-ouen-3.png" alt="応援3"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-ouen-2.png" data-artist="愛ツバメ" data-date="2025.02" data-desc="東京コミティア応援イラスト"><img src="img/gallery/aitubame-ouen-2.png" alt="応援2"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-ouen-1.png" data-artist="愛ツバメ" data-date="2025.02" data-desc="東京コミティア応援イラスト"><img src="img/gallery/aitubame-ouen-1.png" alt="応援"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20250111.jpg" data-artist="ちず" data-date="2025.01"><img src="img/gallery/chizu-20250111.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/anniv-5-namahousou.png" data-artist="あかぽ＆おゆち＆坂街　透＆ひかる＆山岩　ヤシロ" data-date="2024.12" data-desc="５周年記念生放送イラスト"><img src="img/gallery/anniv-5-namahousou.png" alt="5周年 生放送"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-housou.png" data-artist="愛ツバメ" data-date="2024.12" data-desc="５周年記念生放送イラスト"><img src="img/gallery/aitubame-housou.png" alt="放送"></a>
+      <a class="gallery-item" href="img/gallery/anniv-5.jpg" data-artist="あかぽ" data-date="2024.12" data-desc="５周年記念イラスト"><img src="img/gallery/anniv-5.jpg" alt="サルベド5周年"></a>
+      <a class="gallery-item" href="img/gallery/hikaru-naynn.jpg" data-artist="ひかる" data-date="2024.10" data-desc="ハロウィン記念イラスト"><img src="img/gallery/hikaru-naynn.jpg" alt="ひかる"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-skeb-20240902.png" data-artist="愛ツバメ" data-date="2024.10" data-desc="ファンアート"><img src="img/gallery/aitubame-skeb-20240902.png" alt="skeb 2024.09.02"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20240929.jpg" data-artist="ちず" data-date="2024.09"><img src="img/gallery/chizu-20240929.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20240715.jpg" data-artist="ちず" data-date="2024.07"><img src="img/gallery/chizu-20240715.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/milestone-300k.jpg" data-artist="あかぽ" data-date="2024.05" data-desc="登録者３０万人記念イラスト"><img src="img/gallery/milestone-300k.jpg" alt="30万人記念"></a>
+      <a class="gallery-item" href="img/gallery/milestone-300k-sakamachi.jpg" data-artist="坂街　透" data-date="2024.05" data-desc="登録者３０万人記念イラスト"><img src="img/gallery/milestone-300k-sakamachi.jpg" alt="30万人 ありがとう"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20240424.jpg" data-artist="ちず" data-date="2024.04"><img src="img/gallery/chizu-20240424.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/drive3-komoyuu-fa.jpg" data-artist="かとりーな" data-date="2024.04" data-desc="ファンアート　本人コメント：「コカゲ氏、最初は「ウワ！個人的に苦手な性格の男だ！」と思ってたんですが、本人もその性格のデメリットをちゃんと把握してるし、ヒナタさんとの出会いによって少しずつ人間味を増していくのか…と考えると、未来に期待しかできなくなりました。このふたり…推せる…！」"><img src="img/gallery/drive3-komoyuu-fa.jpg" alt="コモユウFA"></a>
+      <a class="gallery-item" href="img/gallery/drive3-anniv3-akasaka.jpg" data-artist="かとりーな" data-date="2024.04" data-desc="ファンアート"><img src="img/gallery/drive3-anniv3-akasaka.jpg" alt="3周年 アカサカさん"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-01.jpg" data-artist="凹野るうと" data-date="2024.03"><img src="img/gallery/ruuto-01.jpg" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/yutaka-202403.jpg" data-artist="ゆたか" data-date="2024.03"><img src="img/gallery/yutaka-202403.jpg" alt="ゆたか イラスト"></a>
+      <a class="gallery-item" href="img/gallery/nekohara-1mview.jpg" data-artist="猫原しぐれ" data-date="2024.03" data-desc="猫原しぐれさん担当動画100万再生記念イラスト　本人コメント：こんにちは！作画担当の猫原しぐれです 100万回再生突破ありがとうございます！！  実は100万回再生は今年の目標だったのですが、 とてもありがたいことに見てくださる皆様やシナリオライター様、サルベドの猫さんのおかげで早々に叶ってしまったので次は1000万回再生目指したいと思います() みんな！！オラに画力を分けてくれ！たのむ！  今後ともよろしくお願いいたします！"><img src="img/gallery/nekohara-1mview.jpg" alt="100万回再生（猫原しぐね）"></a>
+      <a class="gallery-item" href="img/gallery/nanase.png" data-artist="ななせ" data-date="2024.03" data-desc="ファンアート"><img src="img/gallery/nanase.png" alt="ななせ"></a>
+      <a class="gallery-item" href="img/gallery/oyuti-03.png" data-artist="おゆち" data-date="2024.02" data-desc="猫の日記念イラスト"><img src="img/gallery/oyuti-03.png" alt="おゆち"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-valentine.png" data-artist="愛ツバメ" data-date="2024.02" data-desc="バレンタイン記念イラスト"><img src="img/gallery/aitubame-valentine.png" alt="バレンタイン"></a>
+      <a class="gallery-item" href="img/gallery/waata-202402.png" data-artist="waata" data-date="2024.02" data-desc="サムネ別イラスト"><img src="img/gallery/waata-202402.png" alt="waata イラスト"></a>
+      <a class="gallery-item" href="img/gallery/hikaru-tibi.jpg" data-artist="ひかる" data-date="2024.02" data-desc="ファンアート"><img src="img/gallery/hikaru-tibi.jpg" alt="ひかる ちび"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-02.png" data-artist="凹野るうと" data-date="2024.04"><img src="img/gallery/ruuto-02.png" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/newyear-2024-dragon.png" data-artist="ひかる" data-date="2024.01" data-desc="新年イラスト　本人コメント：あけましておめでとうございます！ 皆様は今年の抱負は決めましたか？ 私は2023年は体調を崩しがちだったので、とにかく健康第一で1年を過ごそうと思います。  そして元旦から悲しいニュースが続きましたが 視聴者の皆様に笑いと胸きゅんをお届けできるように頑張ります！ 2024年もサルベド漫画をよろしくお願い致します！"><img src="img/gallery/newyear-2024-dragon.png" alt="2024年新年"></a>
+      <a class="gallery-item" href="img/gallery/newyear-2024.jpg" data-artist="あかぽ" data-date="2024.01" data-desc="新年イラスト　本人コメント：あけましておめでとうございます！ 本年もサルベド漫画をどうぞよろしくお願いいたします。 最近存在感が薄い絵師のあかぽです。 昨年は自身の体調不良と、精神的なものから筆が進まず苦しい1年でした。 しかし夏ごろから始めた筋トレとプロテインのおかげか、半年近く続けた今では体調もすこぶる良くなりそれに併せて精神的にも前向きになってきました！ そろそろ久しぶりの新作をお届けすることができると思います。 今回はお正月記念として年賀状絵を描き下ろしました！ キャラ古いですが覚えてる方いられたら嬉しいです。 それでは、皆様も健康には十分気を付けて、サルベド漫画を楽しんでください。  P.S.筋トレは全てを解決する。これマジ。"><img src="img/gallery/newyear-2024.jpg" alt="謹賀新年 2024"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-04.png" data-artist="凹野るうと" data-date="2023.12" data-desc="ファンアート"><img src="img/gallery/ruuto-04.png" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/oyuti-04.png" data-artist="おゆち" data-date="2023.12" data-desc="ファンアート"><img src="img/gallery/oyuti-04.png" alt="おゆち"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-illust1.jpg" data-artist="愛ツバメ" data-date="2023.11" data-desc="ファンアート　本人コメント：いちこさんのおまけパートで「３人で初めてのコスプレイベント」という結末がすごくおもしろかったので、ファンアート？を描きました！"><img src="img/gallery/aitubame-illust1.jpg" alt="イラスト"></a>
+      <a class="gallery-item" href="img/gallery/chizu-20231128.jpg" data-artist="ちず" data-date="2023.11" data-desc="ファンアート"><img src="img/gallery/chizu-20231128.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-06.png" data-artist="凹野るうと" data-date="2023.08" data-desc="ファンアート"><img src="img/gallery/ruuto-06.png" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/milestone-200k.jpg" data-artist="04Law" data-date="2023.06" data-desc="登録者20万人記念イラスト"><img src="img/gallery/milestone-200k.jpg" alt="20万人記念"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-03.png" data-artist="凹野るうと" data-date="2023.04" data-desc="ファンアート"><img src="img/gallery/ruuto-03.png" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/ruuto-05.png" data-artist="凹野るうと" data-date="2023.04" data-desc="ファンアート差分"><img src="img/gallery/ruuto-05.png" alt="るうと"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-1mview.png" data-artist="愛ツバメ" data-date="2023.08" data-desc="愛ツバメさん担当動画100万再生記念イラスト"><img src="img/gallery/aitubame-1mview.png" alt="100万回再生記念"></a>
+      <a class="gallery-item" href="img/gallery/hikaru-namaho.png" data-artist="ひかる" data-date="2023.02" data-desc="生放送記念イラスト"><img src="img/gallery/hikaru-namaho.png" alt="ひかる 生放送"></a>
+      <a class="gallery-item" href="img/gallery/drive3-azumino.jpg" data-artist="かとりーな" data-date="2023.01" data-desc="ファンアート"><img src="img/gallery/drive3-azumino.jpg" alt="アズミノ"></a>
+      <a class="gallery-item" href="img/gallery/au-202301.jpg" data-artist="逢" data-date="2023.01"><img src="img/gallery/au-202301.jpg" alt="逢 イラスト"></a>
+      <a class="gallery-item" href="img/gallery/au-202301-namahousou.jpg" data-artist="逢" data-date="2023.01" data-desc="生放送告知"><img src="img/gallery/au-202301-namahousou.jpg" alt="逢 イラスト 生放送告知"></a>
+      <a class="gallery-item" href="img/gallery/toru-newyear-2023.png" data-artist="坂街　透" data-date="2023.01" data-desc="新年イラスト"><img src="img/gallery/toru-newyear-2023.png" alt="2023 年賀（透）"></a>
+      <a class="gallery-item" href="img/gallery/newyear-2023.jpg" data-artist="あかぽ" data-date="2023.01" data-desc="新年イラスト"><img src="img/gallery/newyear-2023.jpg" alt="謹賀新年 2023"></a>
+      <a class="gallery-item" href="img/gallery/chizu-68951883.jpg" data-artist="ちず" data-date="2023.01" data-desc="ファンアート"><img src="img/gallery/chizu-68951883.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/thanks-2022.png" data-artist="ひかる" data-date="2022.12" data-desc="ファンアート"><img src="img/gallery/thanks-2022.png" alt="2022年ありがとう"></a>
+      <a class="gallery-item" href="img/gallery/halloween-2022.jpg" data-artist="あかぽ" data-date="2022.10" data-desc="ハロウィン記念イラスト"><img src="img/gallery/halloween-2022.jpg" alt="HAPPY HALLOWEEN 2022"></a>
+      <a class="gallery-item" href="img/gallery/au-202210.jpg" data-artist="逢" data-date="2022.10"><img src="img/gallery/au-202210.jpg" alt="逢 イラスト"></a>
+      <a class="gallery-item" href="img/gallery/au-ayano-sumire.png" data-artist="綾野スミレ" data-date="2022.09" data-desc="ファンアート　メイドロボ：セツ"><img src="img/gallery/au-ayano-sumire.png" alt="綾乃スミレ メイド ゼノちゃん（逢さん）"></a>
+      <a class="gallery-item" href="img/gallery/onichan-daisuki.jpg" data-artist="坂街　透" data-date="2022.06"><img src="img/gallery/onichan-daisuki.jpg" alt="oni-chan Daisuki"></a>
+      <a class="gallery-item" href="img/gallery/anniversary-ol.png" data-artist="坂街　透" data-date="2022.05" data-desc="ファンアート"><img src="img/gallery/anniversary-ol.png" alt="記念イラスト"></a>
+      <a class="gallery-item" href="img/gallery/aitubame-skeb-20240229.png" data-artist="愛ツバメ"><img src="img/gallery/aitubame-skeb-20240229.png" alt="skeb 2024.02.29"></a>
+      <a class="gallery-item" href="img/gallery/chizu-img4287.jpg" data-artist="ちず" data-date="2022.03" data-desc="ファンアート"><img src="img/gallery/chizu-img4287.jpg" alt="ちず イラスト"></a>
+      <a class="gallery-item" href="img/gallery/au-202202.jpg" data-artist="逢" data-date="2022.02" data-desc="登録者10万人記念生放送イラスト"><img src="img/gallery/au-202202.jpg" alt="逢 イラスト"></a>
+      <a class="gallery-item" href="img/gallery/hikaru-mengen.png" data-artist="ひかる"><img src="img/gallery/hikaru-mengen.png" alt="ひかる"></a>
+      <a class="gallery-item" href="img/gallery/suiri-202206.jpg" data-artist="翠璃" data-date="2022.06"><img src="img/gallery/suiri-202206.jpg" alt="翠璃 イラスト"></a>
+      <a class="gallery-item" href="img/gallery/au-illust-01.png" data-artist="逢" data-date="2021.05" data-desc="初一般公開配信イラスト"><img src="img/gallery/au-illust-01.png" alt="逢さん イラスト リクエスト御礼"></a>
     </div>
   </div>
 
@@ -138,21 +206,72 @@
     <button class="lb-close" id="lbClose" aria-label="閉じる">×</button>
     <button class="lb-nav lb-prev" id="lbPrev" aria-label="前の画像">‹</button>
     <button class="lb-nav lb-next" id="lbNext" aria-label="次の画像">›</button>
-    <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-content" id="lbContent">
+      <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+      <aside class="lb-panel" id="lbPanel">
+        <div class="lb-artist" id="lbArtist"><span class="lb-artist-label">illustrator</span><span id="lbArtistName"></span></div>
+        <div class="lb-date" id="lbDate"></div>
+        <div class="lb-desc" id="lbDesc"></div>
+      </aside>
+    </div>
     <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <!-- 並べ替え編集モード UI（#edit のときだけ表示） -->
+  <div class="edit-bar" id="editBar" style="display:none;">
+    <span class="eb-head">🖱 ドラッグで並べ替え／クリックで選択</span>
+    <span class="eb-fields">
+      <span class="eb-sel-name" id="ebSelName">画像を選択</span>
+      <input id="ebArtist" type="text" placeholder="絵師名" disabled>
+      <input id="ebDate" type="text" placeholder="日付 例:2022.10" disabled>
+      <input id="ebDesc" type="text" placeholder="一言・絵の説明" disabled>
+    </span>
+    <button id="ebExport">📋 コピー</button>
+    <span class="eb-note">Enterで次の画像へ／終えたら「コピー」→ サマンサに貼ってね</span>
+  </div>
+  <div class="edit-out" id="editOut">
+    <div class="edit-out-inner">
+      <h4>この内容をまるごとコピーしてサマンサに貼ってください</h4>
+      <textarea id="editOutText" readonly></textarea>
+      <div class="eo-actions">
+        <button class="eo-copy" id="eoCopy">📋 コピー</button>
+        <button class="eo-close" id="eoClose">閉じる</button>
+      </div>
+    </div>
   </div>
 
   <script>
   (function(){
-    var items=Array.prototype.slice.call(document.querySelectorAll('#galleryGrid .gallery-item'));
+    var grid=document.getElementById('galleryGrid');
+    var items=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item'));
+    var EDIT=location.hash==='#edit';
+
+    /* ===== ライトボックス（通常モード） ===== */
     var lb=document.getElementById('lightbox');
     var lbImg=document.getElementById('lbImg');
     var lbCounter=document.getElementById('lbCounter');
+    var lbContent=document.getElementById('lbContent');
+    var lbPanel=document.getElementById('lbPanel');
+    var lbArtist=document.getElementById('lbArtist');
+    var lbArtistName=document.getElementById('lbArtistName');
+    var lbDate=document.getElementById('lbDate');
+    var lbDesc=document.getElementById('lbDesc');
     var idx=0;
     function open(i){
       idx=i;
-      lbImg.src=items[idx].getAttribute('href');
+      var it=items[idx];
+      lbImg.src=it.getAttribute('href');
       lbCounter.textContent=(idx+1)+' / '+items.length;
+      var artist=it.getAttribute('data-artist');
+      var date=it.getAttribute('data-date')||'';
+      var desc=it.getAttribute('data-desc')||'';
+      if(artist){lbArtistName.textContent=artist;lbArtist.classList.add('show');}
+      else{lbArtist.classList.remove('show');}
+      lbDate.textContent=date;
+      lbDesc.textContent=desc;
+      var hasInfo=!!(artist||date||desc);
+      lbPanel.classList.toggle('empty',!hasInfo);
+      lbContent.classList.toggle('no-panel',!hasInfo);
       lb.classList.add('open');
       document.body.style.overflow='hidden';
     }
@@ -163,7 +282,7 @@
     }
     function next(){idx=(idx+1)%items.length;open(idx);}
     function prev(){idx=(idx-1+items.length)%items.length;open(idx);}
-    items.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();open(i);});});
+    items.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();if(!EDIT)open(i);});});
     document.getElementById('lbClose').addEventListener('click',close);
     document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();next();});
     document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();prev();});
@@ -174,6 +293,136 @@
       else if(e.key==='ArrowRight')next();
       else if(e.key==='ArrowLeft')prev();
     });
+
+    if(!EDIT)return;
+
+    /* ===== 並べ替え編集モード ===== */
+    document.body.classList.add('edit-mode');
+    document.getElementById('editBar').style.display='flex';
+    grid.style.paddingBottom='70px';
+
+    function renumber(){
+      Array.prototype.slice.call(grid.querySelectorAll('.gallery-item')).forEach(function(it,i){
+        it.setAttribute('data-pos',i+1);
+      });
+    }
+    renumber();
+
+    var dragEl=null;
+    grid.querySelectorAll('.gallery-item').forEach(function(it){it.setAttribute('draggable','true');});
+
+    grid.addEventListener('dragstart',function(e){
+      var it=e.target.closest('.gallery-item');if(!it)return;
+      dragEl=it;it.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+      try{e.dataTransfer.setData('text/plain','');}catch(_){}
+    });
+    grid.addEventListener('dragend',function(){
+      if(dragEl)dragEl.classList.remove('dragging');
+      dragEl=null;renumber();
+    });
+    grid.addEventListener('dragover',function(e){
+      e.preventDefault();if(!dragEl)return;
+      var after=getAfter(e.clientX,e.clientY);
+      if(after==null){grid.appendChild(dragEl);}
+      else if(after!==dragEl){grid.insertBefore(dragEl,after);}
+    });
+
+    /* マウス位置から「この要素の前に入れる」対象を求める（グリッド対応） */
+    function getAfter(x,y){
+      var els=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item:not(.dragging)'));
+      var closest=null,closestDist=Infinity;
+      els.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        var cx=r.left+r.width/2, cy=r.top+r.height/2;
+        var d=Math.pow(x-cx,2)+Math.pow(y-cy,2);
+        if(d<closestDist){
+          closestDist=d;
+          /* カーソルが中心より左/上なら、その要素の前に入れる */
+          if(y<cy-2 || (Math.abs(y-cy)<=r.height/2 && x<cx)){closest=el;}
+          else{closest=el.nextElementSibling;}
+        }
+      });
+      return closest;
+    }
+
+    /* ===== クリックで選択 → 絵師名・日付・説明を入力 ===== */
+    var selEl=null;
+    var artistInput=document.getElementById('ebArtist');
+    var dateInput=document.getElementById('ebDate');
+    var descInput=document.getElementById('ebDesc');
+    var selNameLabel=document.getElementById('ebSelName');
+    var fields=[
+      {el:artistInput,attr:'data-artist'},
+      {el:dateInput,attr:'data-date'},
+      {el:descInput,attr:'data-desc'}
+    ];
+    function selectItem(it){
+      if(selEl)selEl.classList.remove('sel');
+      selEl=it;it.classList.add('sel');
+      fields.forEach(function(f){
+        f.el.disabled=false;
+        f.el.value=it.getAttribute(f.attr)||'';
+      });
+      selNameLabel.textContent='選択中 #'+it.getAttribute('data-pos');
+      artistInput.focus();artistInput.select();
+      it.scrollIntoView({block:'nearest'});
+    }
+    grid.addEventListener('click',function(e){
+      var it=e.target.closest('.gallery-item');if(!it)return;
+      e.preventDefault();
+      selectItem(it);
+    });
+    function gotoNext(){
+      var all=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item'));
+      var i=all.indexOf(selEl);
+      if(i>=0&&i<all.length-1)selectItem(all[i+1]);
+    }
+    fields.forEach(function(f){
+      f.el.addEventListener('input',function(){
+        if(!selEl)return;
+        var v=this.value.trim();
+        if(v)selEl.setAttribute(f.attr,v);
+        else selEl.removeAttribute(f.attr);
+      });
+      /* Enter で次の画像へジャンプ（連続入力用） */
+      f.el.addEventListener('keydown',function(e){
+        if(e.key!=='Enter')return;
+        e.preventDefault();gotoNext();
+      });
+    });
+
+    /* ===== 並び順＋絵師名・日付・説明を出力 ===== */
+    function attr(a,name){
+      var v=a.getAttribute(name);
+      return v?(' '+name+'="'+v.replace(/"/g,'&quot;')+'"'):'';
+    }
+    function buildHTML(){
+      var lines=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item')).map(function(a){
+        var href=a.getAttribute('href');
+        var img=a.querySelector('img');
+        var src=img.getAttribute('src');
+        var alt=(img.getAttribute('alt')||'').replace(/"/g,'&quot;');
+        return '      <a class="gallery-item" href="'+href+'"'+attr(a,'data-artist')+attr(a,'data-date')+attr(a,'data-desc')+'><img src="'+src+'" alt="'+alt+'"></a>';
+      });
+      return lines.join('\n');
+    }
+    var outBox=document.getElementById('editOut');
+    var outText=document.getElementById('editOutText');
+    document.getElementById('ebExport').addEventListener('click',function(){
+      outText.value=buildHTML();
+      outBox.classList.add('open');
+      outText.focus();outText.select();
+    });
+    document.getElementById('eoCopy').addEventListener('click',function(){
+      outText.select();
+      var ok=false;
+      try{ok=document.execCommand('copy');}catch(_){}
+      if(navigator.clipboard){navigator.clipboard.writeText(outText.value).then(function(){alert('コピーしました。サマンサに貼ってね。');},function(){if(ok)alert('コピーしました。サマンサに貼ってね。');});}
+      else if(ok){alert('コピーしました。サマンサに貼ってね。');}
+    });
+    document.getElementById('eoClose').addEventListener('click',function(){outBox.classList.remove('open');});
+    outBox.addEventListener('click',function(e){if(e.target===outBox)outBox.classList.remove('open');});
   })();
   </script>
 
