@@ -543,3 +543,6 @@ footer{border-top:1px solid #e0e0e0;padding:32px 20px;text-align:center;backgrou
   .site-header{padding:12px 20px;}
   .site-header nav a{padding:8px 10px;font-size:13px;}
 }
+
+/* === VIDEOS メニュー 一時非表示（復活させる時はこのブロックを削除） === */
+.a7-nav a[href="videos.html"]{display:none!important;}
