@@ -140,6 +140,63 @@ body{margin:0;padding:0;}
   .ch-stories-title{font-size:22px;letter-spacing:2px;}
   .ch-stories-grid{grid-template-columns:1fr;gap:18px;}
 }
+
+/* === せり上がり：紹介を背面に固定し、年表→代表作が順にせり上がって覆う === */
+/* （neo-porte / natori 方式。元に戻す時はこのブロックを削除） */
+.ch-detail{                     /* 背面：チャンネル紹介。固定して待つ */
+  position:sticky;top:0;
+  height:100vh;min-height:0;
+  z-index:1;
+}
+.ch-timeline{                   /* 年表：紹介の上にせり上がり、中身は最後まで全部スクロール表示 */
+  position:relative;
+  z-index:2;
+  border-radius:26px 26px 0 0;
+  box-shadow:0 -18px 44px rgba(0,0,0,0.20);
+}
+.ch-stories{                    /* 代表作：年表に続けてさらにせり上がる */
+  position:relative;
+  z-index:3;
+  border-radius:26px 26px 0 0;
+  box-shadow:0 -18px 44px rgba(0,0,0,0.20);
+}
+footer{
+  position:relative;
+  z-index:4;
+}
+
+/* === 年表セクション === */
+.ch-timeline{background:#ffffff;padding:64px 24px 72px;}
+.ch-timeline-inner{max-width:780px;margin:0 auto;}
+.ch-timeline-title{font-size:26px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-timeline-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;}
+.tl{list-style:none;margin:0;padding:0;position:relative;}
+.tl::before{content:'';position:absolute;left:96px;top:8px;bottom:8px;width:3px;background:linear-gradient(#6FDFD6,#d4efed);}
+.tl-item{position:relative;display:grid;grid-template-columns:80px 1fr;gap:34px;padding-bottom:30px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:90px;top:4px;width:15px;height:15px;border-radius:50%;background:#6FDFD6;border:3px solid #fff;box-shadow:0 0 0 2px #6FDFD6;}
+.tl-year{font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:17px;color:#0a3d3a;text-align:right;line-height:1.4;}
+.tl-body{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:14px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
+.tl-body h3{font-size:16px;color:#0a3d3a;margin:0 0 6px;line-height:1.5;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.tl-body p{font-size:14px;line-height:1.9;color:#333;margin:0;}
+@media(max-width:760px){
+  .ch-timeline{padding:48px 18px 56px;}
+  .ch-timeline-title{font-size:22px;letter-spacing:2px;}
+  .tl::before{left:7px;}
+  .tl-item{grid-template-columns:1fr;gap:6px;padding-left:30px;padding-bottom:24px;}
+  .tl-item::before{left:1px;top:6px;}
+  .tl-year{text-align:left;font-size:15px;}
+}
+
+/* === 「動画をもっと見る」ボタンのみ一時非表示（戻す時はこの2行を削除） === */
+.ch-detail-more[href="videos.html"]{display:none!important;}
+/* === スクロールダウン猫（「もっと知る」ボタンの置き換え／戻す時はこのブロックを削除） === */
+.ch-scroll-cat{position:absolute;right:0px;bottom:50px;z-index:3;display:flex;flex-direction:column;align-items:center;gap:0;text-decoration:none;color:#1a1a1a;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-scroll-cat img{width:86px;height:auto;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.18));animation:catBob 1.9s ease-in-out infinite;}
+.ch-scroll-cat span{font-size:13px;letter-spacing:3px;margin-top:2px;text-shadow:0 1px 3px #fff,0 0 5px #fff,0 0 5px #fff;}
+.ch-scroll-cat:hover img{filter:drop-shadow(0 7px 13px rgba(0,0,0,0.28));}
+@keyframes catBob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+@media(max-width:760px){.ch-scroll-cat{right:16px;bottom:10px;}.ch-scroll-cat img{width:66px;}.ch-scroll-cat span{font-size:11px;}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -184,11 +241,33 @@ body{margin:0;padding:0;}
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
         <a href="videos.html" class="ch-detail-more">動画をもっと見る →</a>
+        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-timeline').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
       </div>
     </div>
   </section>
 
-  <!-- 代表作紹介（SEO向け 独自テキスト） -->
+  <!-- サルベド年表（2層目・せり上がり／※中身は仮。本物の年表をもらったら差し替え） -->
+  <section class="ch-timeline">
+    <div class="ch-timeline-inner">
+      <h2 class="ch-timeline-title">サルベド年表</h2>
+      <p class="ch-timeline-lead">
+        サルベド漫画のこれまでの歩み。チャンネル開設から今日まで、節目の出来事をたどります。
+      </p>
+      <ol class="tl">
+        <li class="tl-item"><span class="tl-year">2019.12</span><div class="tl-body"><h3>サルベド漫画 チャンネル開設</h3><p>サルベドシリーズ最古のチャンネル。ライターの青春詭弁・まっきーにが参戦し、今もほぼ全作品の脚本を二人が手がける。ファンに「サルベド語録」と呼ばれる名言の多くは、青春詭弁の脚本から生まれている。</p></div></li>
+        <li class="tl-item"><span class="tl-year">開設当初</span><div class="tl-body"><h3>ラブコメ特化へ／声優・いちこ参入</h3><p>当初はあらゆるジャンルを幅広く扱っていたが、コミュニティのアンケートでラブコメを求める声が多く、ラブコメ特化に。同じ頃に声優のいちこが参入し、「サルベドと言えばこの声」と呼ばれる存在となる。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2020〜21頃</span><div class="tl-body"><h3>イラストレーター拡大、今の原型へ</h3><p>開設1年ほどで作画陣を拡大。まず かとりーな・あかぽ・ちず・雪雪崩 が加入し、続いて komi・ひかる・愛ツバメ・山岩ヤシロ・歩吉・坂街透・waata が加入して、現在のサルベド漫画の原型が完成。サムネの特徴的な帯文字は雪雪崩によるデザイン。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2023頃</span><div class="tl-body"><h3>チャンネルを分割（Emotional 誕生）</h3><p>コメディ寄りの青春詭弁脚本と、しっとりしたまっきーに脚本が混在していたチャンネルを分割。しっとり系はサブチャンネル「サルベド漫画Emotional」へ。本家はコメディ系が中心に（稀に両者が逆のチャンネルに顔を出すことも）。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2024.02</span><div class="tl-body"><h3>ネットプリント第一弾を販売</h3><p>サルベド史上初の、YouTube以外でのコンテンツ販売。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2024.10</span><div class="tl-body"><h3>ネットプリント第二弾＋初の電子書籍</h3><p>ハロウィンをモチーフにしたネットプリント第二弾を販売。直後に、サルベド漫画初の電子書籍を公開。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2025.02</span><div class="tl-body"><h3>アプリゲームコラボ／初の紙の本</h3><p>有名アプリゲームとのコラボ動画を投稿。同月の東京コミティアに参加し、サルベド初の紙の本を販売。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2025.08・12</span><div class="tl-body"><h3>コミックマーケット参戦・グッズ展開</h3><p>東京コミックマーケットに出展。本に加え、アクリルキーホルダーやスタンドなどのグッズも販売。</p></div></li>
+        <li class="tl-item"><span class="tl-year">2026.05</span><div class="tl-body"><h3>関西コミティア参戦</h3><p>関西コミティアにも出展し、YouTube以外での活躍の幅をさらに拡大中。</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 代表作紹介（3層目・せり上がり／SEO向け 独自テキスト） -->
   <section class="ch-stories">
     <div class="ch-stories-inner">
       <h2 class="ch-stories-title">メインチャンネルの代表作</h2>
@@ -261,5 +340,6 @@ document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").add
 //   });
 // });
 </script>
+
 </body>
 </html>
