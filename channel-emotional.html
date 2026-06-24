@@ -129,9 +129,10 @@ body{margin:0;padding:0;}
 .ch-stories-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:820px;margin:0 auto 46px;}
 .ch-stories-lead a{color:#0a8f86;text-decoration:underline;}
 .ch-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:22px 24px;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
-.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 0 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0;}
+.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
+.ch-story-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;margin:0 0 16px;}
+.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 24px 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0 24px;}
 @media(max-width:760px){
   .ch-stories{padding:48px 18px 60px;}
   .ch-stories-title{font-size:22px;letter-spacing:2px;}
@@ -227,28 +228,34 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       </p>
       <div class="ch-stories-grid">
         <article class="ch-story">
-          <h3>3人と交わした「再会したら結婚」の約束</h3>
-          <p>引っ越すたびに「再会できたら結婚しようね」と約束を交わしてきた俺。やがて進学した大学で、なんとその3人全員と再会してしまう。忘れていた約束が一気に押し寄せる、甘くもほろ苦い再会物語。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/mU7wxeaFT_U/hqdefault.jpg" alt="仕方なく引き取った10歳の女の子と、不器用な俺の距離" loading="lazy">
+          <h3>仕方なく引き取った10歳の女の子と、不器用な俺の距離</h3>
+          <p>遠縁の事情で、10歳の女の子を仕方なく引き取ることになった俺。「飯だけは用意してやる。あとは勝手にしろ」——突き放すような態度で始まった二人暮らし。それでも少しずつ縮まっていく距離が、じんと胸に沁みる物語。</p>
         </article>
         <article class="ch-story">
-          <h3>お見合い相手は、まさかの国民的女優</h3>
-          <p>フリーターの自分なんかと釣り合うはずがない——わざと失望させようと正直に振る舞った俺。だが車内でサングラスを外した相手は、誰もが知る超有名女優だった。予想を超える出会いが静かに動き出す。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/LYajhQ3gkoI/hqdefault.jpg" alt="嫌われていたはずの義妹が、俺の不在で見せた本音" loading="lazy">
+          <h3>嫌われていたはずの義妹が、俺の不在で見せた本音</h3>
+          <p>義妹に嫌われ、突き放されてばかりの俺。気分転換にと、何も言わず友人と二泊三日の旅行へ。帰宅した俺を待っていたのは、いつもとはまるで違う義妹の姿だった——。すれ違う家族の本当の気持ちが胸を打つ一編。</p>
         </article>
         <article class="ch-story">
-          <h3>氷の女王と呼ばれる女優の、もう一つの顔</h3>
-          <p>テレビでは“氷の女王”と恐れられる超有名女優。けれどその素顔は、幼馴染の俺の前ではデレデレで、「荷物持ちでもなんでもする！」と一生懸命に尽くしてしまう。ギャップが愛おしい一編です。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/q41xkerWbwM/hqdefault.jpg" alt="女社長に勧められ、その娘とお見合いすることになった俺" loading="lazy">
+          <h3>女社長に勧められ、その娘とお見合いすることになった俺</h3>
+          <p>「あんた独身だろ？うちの娘なんかどうだ？」——女社長からの思わぬ提案で、その娘とお見合いすることになった俺。戸惑いから始まった縁が、やがてかけがえのない関係へと変わっていく。じんわり温かいラブストーリー。</p>
         </article>
         <article class="ch-story">
-          <h3>「血、繋がってなかったの？」義妹が隠していた涙</h3>
-          <p>海外留学する義妹に、素っ気なく別れを告げた俺。だが彼女は陰で「血が繋がってなかったなら、結婚できたじゃん…！」と号泣していた。すれ違う想いが切ない、じれったい家族の物語。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/OqGYPgz0tZ0/hqdefault.jpg" alt="上司と入った店で、別れた元カノに再会してしまった" loading="lazy">
+          <h3>上司と入った店で、別れた元カノに再会してしまった</h3>
+          <p>上司に連れられて入ったお店で、まさかの別れた元カノと再会。とっさに放った「チェンジで」に、元カノは「むりでーす」と返してきて——。気まずさの中でもう一度動き出す、ほろ苦くも温かい再会の物語。</p>
         </article>
         <article class="ch-story">
-          <h3>底辺配信者のオフ会に現れた、気難しい上司</h3>
-          <p>いつも厳しい会社の上司。細々と活動していた配信者としての俺の引退オフ会に、なぜか俺のグッズを大量に身につけて現れて——。意外な一面に胸が熱くなる感動エピソード。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/sqq0Ua4BmYs/hqdefault.jpg" alt="合コンで再会した元カノは、立派な女社長になっていた" loading="lazy">
+          <h3>合コンで再会した元カノは、立派な女社長になっていた</h3>
+          <p>合コンで再会したのは、かつて俺をフった元カノ。独立して女社長となった彼女と、変われない自分。「随分差をつけられたな」——周囲の声が刺さる。それでも見えてくる、二人のあいだに残っていたものとは。</p>
         </article>
         <article class="ch-story">
-          <h3>金目当てだったはずの妻の、本当の想い</h3>
-          <p>「早く稼いで楽させてよね」——金目当てで結婚したと思っていた妻。ところがフリーランスの俺に大口案件が次々と舞い込む。その裏にあった、妻の隠れた行動と本当の気持ちとは。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/KzmzJHPQ_eU/hqdefault.jpg" alt="罰ゲームの告白に付き合ったフリ。別れを切り出したら…" loading="lazy">
+          <h3>罰ゲームの告白に付き合ったフリ。別れを切り出したら…</h3>
+          <p>罰ゲームで告白されたと気づいていた俺は、あえて付き合うフリを選ぶ。そして一週間後、自分から別れを切り出したそのとき——相手が見せた予想外の反応に、心が揺れる。切なさと温かさが交差する物語。</p>
         </article>
       </div>
     </div>

@@ -166,9 +166,10 @@ body{margin:0;padding:0;}
 .ch-stories-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:820px;margin:0 auto 46px;}
 .ch-stories-lead a{color:#0a8f86;text-decoration:underline;}
 .ch-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:22px 24px;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
-.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 0 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0;}
+.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
+.ch-story-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;margin:0 0 16px;}
+.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 24px 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0 24px;}
 @media(max-width:760px){
   .ch-stories{padding:48px 18px 60px;}
   .ch-stories-title{font-size:22px;letter-spacing:2px;}
@@ -309,28 +310,34 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       </p>
       <div class="ch-stories-grid">
         <article class="ch-story">
-          <h3>最強の幼馴染に並ぶため修行した果てに</h3>
-          <p>「私が守ってあげるからね」と言う最強の幼馴染。彼女に釣り合いたくて修行に明け暮れた俺は、いつの間にか“世界を滅ぼす魔王”へと覚醒していた。剣を向け合う二人の行方を描く異世界ファンタジー。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/wmeMsUhmYE4/hqdefault.jpg" alt="追放された盗賊の俺に、最強賢者の王女がついてきた" loading="lazy">
+          <h3>追放された盗賊の俺に、最強賢者の王女がついてきた</h3>
+          <p>役立たずと見なされ、勇者パーティを追放された盗賊の俺。ところが、勇者から想いを寄せられていたはずの“最強賢者の王女”が、なぜか俺の後を追ってついてきて——。追放から始まる、痛快な異世界逆転ファンタジー。</p>
         </article>
         <article class="ch-story">
-          <h3>毎日飲んだくれる女の、まさかの正体</h3>
-          <p>魔物の襲来に「この店も終わりか…」と絶望する店主。だが、毎日酒場で飲んだくれていた一人の女こそ、最強と謳われる魔王だった。痛快な逆転が待つ異世界譚です。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/JwQ78CWLTSs/hqdefault.jpg" alt="魔王の俺が気まぐれで育てた幼女が、まさかの“勇者”に" loading="lazy">
+          <h3>魔王の俺が気まぐれで育てた幼女が、まさかの“勇者”に</h3>
+          <p>魔王である俺が、ほんの気まぐれで拾い育てた一人の幼女。すくすく育った彼女は、よりによって人類の希望——“勇者”になってしまった。魔王と勇者、立場を超えた絆が試される異世界ファンタジー。</p>
         </article>
         <article class="ch-story">
-          <h3>「トカゲしか出せない」と笑われた俺の召喚</h3>
-          <p>「あんたに召喚できるのはトカゲだけ」と見下す幼馴染。しかし“自分を最も慕う幻獣”を呼び出す儀式で現れたのは——最強と名高いその幼馴染本人だった。予想外の召喚が起こす波乱。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/cNWDKFNYhRo/hqdefault.jpg" alt="傲慢な最強吸血鬼が、俺の“短い寿命”を知って急変した" loading="lazy">
+          <h3>傲慢な最強吸血鬼が、俺の“短い寿命”を知って急変した</h3>
+          <p>傲慢でプライドの高い最強の吸血鬼。見下していた人類の俺の寿命が、自分よりずっと短いと知った瞬間、その態度は一変する。永い時を生きる者と、限りある命——切なさを孕んだ異世界ファンタジー。</p>
         </article>
         <article class="ch-story">
-          <h3>底辺の俺が、なぜか副会長に選ばれた理由</h3>
-          <p>成績底辺で「なぜお前が副会長？」と雑魚扱いされる俺。ついに決闘を迫られるが、生徒会長は涼しい顔でこう言い放つ。「彼を助ける必要なんてないわ。私より強いんだから」。隠された実力が暴かれる。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/pjrel5bQBck/hqdefault.jpg" alt="時を操る彼女の告白を振ったら、幼少期にタイムリープした" loading="lazy">
+          <h3>時を操る彼女の告白を振ったら、幼少期にタイムリープした</h3>
+          <p>時間を操る力を持つ少女の告白を、俺は断ってしまう。その直後、気づけば俺は幼少期へとタイムリープさせられていた——。やり直しの人生で再び交差していく想いを描く、予測不能の時間ファンタジー。</p>
         </article>
         <article class="ch-story">
-          <h3>「応援」しかしてくれない聖女の秘密</h3>
-          <p>「後方支援は任せて！」と頼もしく宣言した聖女。ところが魔王を前に、彼女がしてくれるのは“応援”だけ。その不思議な理由の裏に隠された真実とは。クスッと笑える異世界コメディ。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/P_oiwAvZylo/hqdefault.jpg" alt="追放された勇者が田舎へ。そこでは魔王が畑を耕していた" loading="lazy">
+          <h3>追放された勇者が田舎へ。そこでは魔王が畑を耕していた</h3>
+          <p>「勇者なんていらない」と王様に追放された俺。失意のまま辿り着いた田舎で目にしたのは、なんと畑を耕してのんびり暮らす魔王の姿だった——。勇者と魔王の、ゆるくも心温まるスローライフ異世界譚。</p>
         </article>
         <article class="ch-story">
-          <h3>何度もループした果てに再会した幼馴染</h3>
-          <p>「惚れた、ちょろい」——命を救った美少女は、実は俺をずっと待ち続けた幼馴染だった。何度も時を巻き戻してたどり着いた、最悪で最高の結末を描く感動ファンタジー。</p>
+          <img class="ch-story-thumb" src="https://i.ytimg.com/vi/Lc30GhuLBl0/hqdefault.jpg" alt="追い詰めた魔王の正体は、未練タラタラの“元カノ”だった" loading="lazy">
+          <h3>追い詰めた魔王の正体は、未練タラタラの“元カノ”だった</h3>
+          <p>異世界に転生し、仲間とともに魔王討伐の旅へ。ついに追い詰めた魔王が見せた素顔は、なんと俺に未練たっぷりの元カノだった。「…女連れでずいぶん楽しそうね？」修羅場と冒険が交差する、異世界ラブコメ。</p>
         </article>
       </div>
     </div>
