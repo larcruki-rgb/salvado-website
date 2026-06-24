@@ -165,27 +165,64 @@ footer{
   z-index:4;
 }
 
-/* === 年表セクション === */
-.ch-timeline{background:#ffffff;padding:64px 24px 72px;}
-.ch-timeline-inner{max-width:780px;margin:0 auto;}
-.ch-timeline-title{font-size:26px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
-.ch-timeline-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;}
+/* === 年表セクション（P1：ポップ吹き出し／にゃんこ模様背景） === */
+/* 背景模様を変えたい時は url() を差し替え。白オーバーレイ(0.20)で濃さ調整 */
+.ch-timeline{
+  background-color:#ffffff;
+  --pat-size:700px;   /* 模様の大きさ */
+  --pat-op:0.25;       /* 模様の不透明度 */
+  padding:64px 24px 76px;
+}
+.ch-timeline::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+  background-image:url('img/moyou-nyanko.png');
+  background-repeat:repeat;
+  background-size:var(--pat-size) auto;
+  background-position:top center;
+  opacity:var(--pat-op);
+}
+.ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
+.ch-timeline-title{font-size:26px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
+.ch-timeline-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;text-shadow:0 1px 6px #fff;}
 .tl{list-style:none;margin:0;padding:0;position:relative;}
-.tl::before{content:'';position:absolute;left:96px;top:8px;bottom:8px;width:3px;background:linear-gradient(#6FDFD6,#d4efed);}
-.tl-item{position:relative;display:grid;grid-template-columns:80px 1fr;gap:34px;padding-bottom:30px;}
-.tl-item:last-child{padding-bottom:0;}
-.tl-item::before{content:'';position:absolute;left:90px;top:4px;width:15px;height:15px;border-radius:50%;background:#6FDFD6;border:3px solid #fff;box-shadow:0 0 0 2px #6FDFD6;}
-.tl-year{font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:17px;color:#0a3d3a;text-align:right;line-height:1.4;}
-.tl-body{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:14px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
-.tl-body h3{font-size:16px;color:#0a3d3a;margin:0 0 6px;line-height:1.5;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
-.tl-body p{font-size:14px;line-height:1.9;color:#333;margin:0;}
+.tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;border-left:4px dashed #6FDFD6;transform:translateX(-50%);}
+.tl-item{position:relative;width:50%;padding:0 40px 34px 0;}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 34px 40px;}
+/* ライン上の色ドット（4色ローテ） */
+.tl-item::before{content:'';position:absolute;top:8px;right:-11px;width:18px;height:18px;border-radius:50%;background:#6FDFD6;border:4px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.18);z-index:3;}
+.tl-item:nth-child(even)::before{right:auto;left:-11px;}
+.tl-item:nth-child(4n+2)::before{background:#FF6B9C;}
+.tl-item:nth-child(4n+3)::before{background:#FDC06F;}
+.tl-item:nth-child(4n)::before{background:#7EC8F0;}
+/* 年号ピル（吹き出しの中） */
+.tl-year{display:inline-block;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:12px;color:#fff;background:#6FDFD6;padding:3px 13px;border-radius:20px;margin-bottom:9px;line-height:1.4;}
+.tl-item:nth-child(4n+2) .tl-year{background:#FF6B9C;}
+.tl-item:nth-child(4n+3) .tl-year{background:#FDC06F;color:#7a5200;}
+.tl-item:nth-child(4n) .tl-year{background:#7EC8F0;}
+/* 吹き出しカード */
+.tl-body{position:relative;background:#fff;border:3px solid #6FDFD6;border-radius:18px;padding:14px 18px;box-shadow:0 6px 0 rgba(111,223,214,.35);}
+.tl-item:nth-child(4n+2) .tl-body{border-color:#FF6B9C;box-shadow:0 6px 0 rgba(255,107,156,.30);}
+.tl-item:nth-child(4n+3) .tl-body{border-color:#FDC06F;box-shadow:0 6px 0 rgba(253,192,111,.42);}
+.tl-item:nth-child(4n) .tl-body{border-color:#7EC8F0;box-shadow:0 6px 0 rgba(126,200,240,.38);}
+/* 吹き出しのしっぽ：奇数=左列(右向き) / 偶数=右列(左向き) */
+.tl-body::after{content:'';position:absolute;top:16px;right:-15px;border:8px solid transparent;border-left-color:#6FDFD6;}
+.tl-item:nth-child(even) .tl-body::after{right:auto;left:-15px;border-left-color:transparent;border-right-color:#6FDFD6;}
+.tl-item:nth-child(4n+3) .tl-body::after{border-left-color:#FDC06F;}
+.tl-item:nth-child(4n+2) .tl-body::after{border-right-color:#FF6B9C;}
+.tl-item:nth-child(4n) .tl-body::after{border-right-color:#7EC8F0;}
+.tl-body h3{font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:14px;color:#0a3d3a;margin:0 0 6px;line-height:1.45;}
+.tl-body p{font-size:12.5px;line-height:1.82;color:#444;margin:0;}
 @media(max-width:760px){
-  .ch-timeline{padding:48px 18px 56px;}
+  .ch-timeline{padding:48px 16px 56px;}
   .ch-timeline-title{font-size:22px;letter-spacing:2px;}
-  .tl::before{left:7px;}
-  .tl-item{grid-template-columns:1fr;gap:6px;padding-left:30px;padding-bottom:24px;}
-  .tl-item::before{left:1px;top:6px;}
-  .tl-year{text-align:left;font-size:15px;}
+  .tl::before{left:9px;}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 30px 30px;}
+  .tl-item::before,.tl-item:nth-child(even)::before{left:-1px;right:auto;}
+  /* スマホは全部左列＝しっぽ左向き */
+  .tl-body::after{right:auto;left:-15px;border-left-color:transparent;border-right-color:#6FDFD6;}
+  .tl-item:nth-child(4n+2) .tl-body::after{border-right-color:#FF6B9C;}
+  .tl-item:nth-child(4n+3) .tl-body::after{border-right-color:#FDC06F;}
+  .tl-item:nth-child(4n) .tl-body::after{border-right-color:#7EC8F0;}
 }
 
 /* === 「動画をもっと見る」ボタンのみ一時非表示（戻す時はこの2行を削除） === */
@@ -197,6 +234,9 @@ footer{
 .ch-scroll-cat:hover img{filter:drop-shadow(0 7px 13px rgba(0,0,0,0.28));}
 @keyframes catBob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
 @media(max-width:760px){.ch-scroll-cat{right:16px;bottom:10px;}.ch-scroll-cat img{width:66px;}.ch-scroll-cat span{font-size:11px;}}
+
+/* === 動画サムネの再生ボタン(▶)を非表示（戻す時はこの2行を削除） === */
+.ch-detail-video .video-play-btn{display:none!important;}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
