@@ -10,16 +10,39 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
 <style>
-.vid-lead{max-width:880px;margin:14px auto 40px;font-size:15px;line-height:2;color:#333;text-align:center;}
-.vid-channels{max-width:1000px;margin:54px auto 20px;display:grid;gap:28px;}
-.vid-ch{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:14px;padding:26px 28px;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
-.vid-ch h2{font-size:21px;color:#0a3d3a;margin:0 0 8px;letter-spacing:1px;}
-.vid-ch-genre{font-size:14px;line-height:1.9;color:#444;margin:0 0 14px;}
-.vid-ch-list{margin:0 0 18px;padding-left:1.1em;}
-.vid-ch-list li{font-size:14px;line-height:1.95;color:#333;margin-bottom:9px;}
-.vid-ch-more{display:inline-block;background:#6FDFD6;color:#0a3d3a;padding:10px 22px;border-radius:24px;font-size:13px;text-decoration:none;font-weight:bold;letter-spacing:1px;}
-.vid-ch-more:hover{background:#5BC9C0;}
-@media(max-width:760px){.vid-channels{margin-top:36px;}.vid-ch{padding:20px 18px;}.vid-ch h2{font-size:18px;}}
+/* === 動画一覧：漫画・コミック風 === */
+/* タイトル＋紹介文を1つのパネルに */
+.vid-intro{max-width:920px;margin:14px auto 48px;background:#fff;border:4px solid #111;border-radius:14px;padding:28px 34px 30px;box-shadow:7px 7px 0 #111;background-image:radial-gradient(#e7e7e7 1.4px,transparent 1.6px);background-size:11px 11px;text-align:center;}
+.vid-intro h1{font-family:'Murecho',sans-serif;font-weight:900;font-size:38px;letter-spacing:6px;color:#111;text-align:center;text-shadow:3px 3px 0 #6FDFD6;-webkit-text-stroke:0;margin:0 0 16px;}
+.vid-intro p{max-width:780px;margin:0 auto;font-size:15px;line-height:2;color:#222;font-weight:500;}
+
+/* チャンネル最新動画セクションの見出し（JS生成の<h2>） */
+#channelVideos h2{display:inline-block;background:#111;color:#fff;font-family:'Murecho',sans-serif;font-weight:900;font-size:20px;letter-spacing:2px;padding:8px 22px;transform:rotate(-1deg);box-shadow:4px 4px 0 #6FDFD6;margin:0 0 16px;}
+/* 動画サムネ＝コマ枠 */
+.page-content .video-thumb{border:3px solid #111;border-radius:6px;box-shadow:3px 3px 0 rgba(17,17,17,0.25);}
+.page-content .video-title{font-weight:700;color:#222;}
+
+/* チャンネル紹介パネル */
+.vid-channels{max-width:1000px;margin:60px auto 20px;display:grid;gap:34px;}
+.vid-ch{position:relative;background:#fff;border:4px solid #111;border-radius:10px;padding:30px 30px 28px;box-shadow:7px 7px 0 #111;background-image:radial-gradient(#e4e4e4 1.4px,transparent 1.6px);background-size:11px 11px;}
+.vid-ch h2{display:inline-block;background:#FDD854;border:3px solid #111;color:#111;font-family:'Murecho',sans-serif;font-size:20px;font-weight:900;padding:5px 18px;margin:0 0 14px;letter-spacing:1px;transform:rotate(-1.2deg);box-shadow:3px 3px 0 #111;}
+.vid-ch-latest{margin:4px 0 18px;}
+.vid-ch-block-label{display:inline-block;background:#111;color:#fff;font-family:'Murecho',sans-serif;font-weight:900;font-size:12px;letter-spacing:2px;padding:3px 12px;margin:0 0 10px;transform:rotate(-1deg);box-shadow:2px 2px 0 #6FDFD6;}
+.vid-ch-latest .video-grid{margin-top:2px;}
+.vid-ch-genre{font-size:14px;line-height:1.9;color:#222;margin:0 0 14px;font-weight:500;}
+.vid-ch-list{margin:0 0 20px;padding-left:0;list-style:none;}
+.vid-ch-list li{font-size:14px;line-height:1.7;color:#222;margin-bottom:10px;padding:8px 12px 8px 34px;background:rgba(255,255,255,0.85);border:2px solid #111;border-radius:6px;position:relative;}
+.vid-ch-list li::before{content:"▶";position:absolute;left:12px;top:8px;color:#6FDFD6;font-size:12px;-webkit-text-stroke:0.4px #111;}
+.vid-ch-more{display:inline-block;background:#FDD854;color:#111;padding:11px 26px;border:3px solid #111;border-radius:30px;font-size:13px;text-decoration:none;font-weight:900;letter-spacing:1px;box-shadow:4px 4px 0 #111;transition:transform .12s,box-shadow .12s;}
+.vid-ch-more:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #111;background:#FDD854;}
+@media(max-width:760px){
+  .vid-intro{padding:22px 18px 24px;box-shadow:5px 5px 0 #111;}
+  .vid-intro h1{font-size:28px;letter-spacing:4px;}
+  .vid-intro p{font-size:14px;}
+  .vid-channels{margin-top:40px;gap:26px;}
+  .vid-ch{padding:22px 18px;box-shadow:5px 5px 0 #111;}
+  .vid-ch h2{font-size:17px;}
+}
 </style>
 </head>
 <body>
@@ -41,49 +64,70 @@
 
 <div class="main-wrap">
   <div class="page-content">
-    <h1>動画一覧</h1>
-    <p class="vid-lead">サルベド漫画はYouTubeで4つのチャンネルを運営し、ラブコメディ・感動ドラマ・異世界ファンタジー・命を見つめる人間ドラマまで、毎日オリジナルの漫画動画をお届けしています。各チャンネルの最新動画は下に表示され、それぞれの作風と代表作は本ページ下部でご紹介しています。</p>
-    <div id="channelVideos"></div>
+    <div class="vid-intro">
+      <h1>動画一覧</h1>
+      <p>サルベド漫画はYouTubeで4つのチャンネルを運営し、ラブコメディ・感動ドラマ・異世界ファンタジー・命を見つめる人間ドラマまで、毎日オリジナルの漫画動画をお届けしています。各チャンネルの作風・最新動画・代表作を、下にチャンネルごとにまとめてご紹介します。</p>
+    </div>
 
     <section class="vid-channels">
       <div class="vid-ch">
         <h2>サルベド漫画（メインチャンネル）</h2>
         <p class="vid-ch-genre">テンポのいいラブコメディが中心。クールな相手の隠れた本音や意外な正体が明かされる、予想を裏切るどんでん返しが魅力です。</p>
+        <span class="vid-ch-block-label">代表作</span>
         <ul class="vid-ch-list">
           <li>再会した女性の正体は、10年前に別れた元カノの妹だった——先の読めないどんでん返しラブコメ。</li>
           <li>「データは押収します」記者からカメラを奪った有名モデルの、意外すぎる本当の狙い。</li>
           <li>「あんたじゃ釣り合わない」と俺を笑う幼馴染が、俺を侮辱する女子たちにガチギレする痛快な一編。</li>
         </ul>
+        <div class="vid-ch-latest">
+          <span class="vid-ch-block-label">最新動画</span>
+          <div class="video-grid" data-channel="UCd8vNU9GdaDJF-jLDyWWvMw"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        </div>
         <a class="vid-ch-more" href="channel-main.html">サルベド漫画の作品紹介を見る →</a>
       </div>
       <div class="vid-ch">
         <h2>サルベド漫画Emotional</h2>
         <p class="vid-ch-genre">すれ違いや切ない別れ、思いがけない再会を描く感動・じれ恋系。胸が締めつけられたり、ほっと温かくなったりする物語が揃います。</p>
+        <span class="vid-ch-block-label">代表作</span>
         <ul class="vid-ch-list">
           <li>「再会できたら結婚しようね」と約束した3人と、大学でまさかの全員再会。</li>
           <li>フリーターの俺のお見合い相手は、サングラスを外すと誰もが知る国民的女優だった。</li>
           <li>テレビでは“氷の女王”の女優が、幼馴染の俺の前でだけ見せるデレ。</li>
         </ul>
+        <div class="vid-ch-latest">
+          <span class="vid-ch-block-label">最新動画</span>
+          <div class="video-grid" data-channel="UCXU7pjSKDNHAFKf36YxntMw"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        </div>
         <a class="vid-ch-more" href="channel-emotional.html">Emotionalの作品紹介を見る →</a>
       </div>
       <div class="vid-ch">
         <h2>サルベド漫画Fantasy</h2>
         <p class="vid-ch-genre">剣と魔法の異世界ファンタジーが中心。最強への覚醒、正体を隠した魔王や聖女、予想を裏切る大逆転とクスッと笑えるデレが同居します。</p>
+        <span class="vid-ch-block-label">代表作</span>
         <ul class="vid-ch-list">
           <li>最強の幼馴染に並ぶため修行した果てに、“世界を滅ぼす魔王”へと覚醒してしまった俺。</li>
           <li>毎日酒場で飲んだくれていた女の正体は、最強と謳われる魔王だった。</li>
           <li>「後方支援は任せて」と言った聖女が、魔王を前に“応援”しかしてくれない理由。</li>
         </ul>
+        <div class="vid-ch-latest">
+          <span class="vid-ch-block-label">最新動画</span>
+          <div class="video-grid" data-channel="UCZRD5bbun-Dgxj2AG2PKbjg"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        </div>
         <a class="vid-ch-more" href="channel-fantasy.html">Fantasyの作品紹介を見る →</a>
       </div>
       <div class="vid-ch">
         <h2>死神少女</h2>
         <p class="vid-ch-genre">“寿命と引き換えに、どんな願いも叶える”死神少女が、人生の岐路に立つ人々を訪れる連作シリーズ。命の重さと本当の願いを静かに問いかけます。</p>
+        <span class="vid-ch-block-label">代表作</span>
         <ul class="vid-ch-list">
           <li>「寿命40年、いただきます」死神少女が持ちかける、最初の取引【1話】。</li>
           <li>離れ離れの娘に会いたい母に告げられた、あまりにも大きな代償【2話】。</li>
           <li>余命3年の少年が死神に願った、切なすぎる“最後の願い”。</li>
         </ul>
+        <div class="vid-ch-latest">
+          <span class="vid-ch-block-label">最新動画</span>
+          <div class="video-grid" data-channel="UCfQc3kV_jTqhbUInszNxArA"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        </div>
         <a class="vid-ch-more" href="channel-shinigami.html">死神少女の物語を読む →</a>
       </div>
     </section>
@@ -113,59 +157,41 @@
 document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
 (function(){
-  var channels = [
-    { id: 'UCd8vNU9GdaDJF-jLDyWWvMw', name: 'サルベド漫画', url: 'https://www.youtube.com/@sarubedo_D' },
-    { id: 'UCXU7pjSKDNHAFKf36YxntMw', name: 'サルベド漫画Emotional', url: 'https://www.youtube.com/@sarubedomangaemotional' },
-    { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画Fantasy', url: 'https://www.youtube.com/@%E3%82%B5%E3%83%AB%E3%83%99%E3%83%89%E6%BC%AB%E7%94%BB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC' },
-    { id: 'UCfQc3kV_jTqhbUInszNxArA', name: '死神少女', url: 'https://www.youtube.com/@%E6%AD%BB%E7%A5%9E%E5%B0%91%E5%A5%B3-p3u' }
-  ];
-  var container = document.getElementById('channelVideos');
-  channels.forEach(function(ch) {
-    var section = document.createElement('div');
-    section.style.marginBottom = '40px';
-    var heading = document.createElement('h2');
-    heading.textContent = ch.name;
-    section.appendChild(heading);
-    var grid = document.createElement('div');
-    grid.className = 'video-grid';
-    grid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div>';
-    section.appendChild(grid);
-    // チャンネルへの外部リンクは無効化中
-    container.appendChild(section);
-
-    function loadFeed(chId, targetGrid, retries) {
-      var feedUrl = 'https://game.sarubedo.jp/yt-feed?id=' + chId;
-      fetch(feedUrl).then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function(xml) {
-        var doc = new DOMParser().parseFromString(xml, 'text/xml');
-        var entries = doc.querySelectorAll('entry');
-        var count = Math.min(entries.length, 3);
-        if (count > 0) {
-          targetGrid.innerHTML = '';
-          for (var i = 0; i < count; i++) {
-            var entry = entries[i];
-            var videoId = entry.querySelector('videoId') ? entry.querySelector('videoId').textContent : '';
-            var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
-            var card = document.createElement('div');
-            card.className = 'video-card';
-            // YouTube埋め込みは無効化中。サムネ画像のみ表示（クリックしても再生しない）
-            card.innerHTML = '<div class="video-thumb" style="aspect-ratio:16/9;overflow:hidden;background:#000;"><img src="https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://i.ytimg.com/vi/' + videoId + '/mqdefault.jpg\'"></div>' +
-              '<p class="video-title" style="font-size:13px;margin-top:6px;">' + title + '</p>';
-            targetGrid.appendChild(card);
-          }
-        } else if (retries > 0) {
-          setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
-        } else {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
+  function loadFeed(chId, targetGrid, retries) {
+    var feedUrl = 'https://game.sarubedo.jp/yt-feed?id=' + chId;
+    fetch(feedUrl).then(function(r) { if (!r.ok) throw new Error(r.status); return r.text(); }).then(function(xml) {
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var entries = doc.querySelectorAll('entry');
+      var count = Math.min(entries.length, 3);
+      if (count > 0) {
+        targetGrid.innerHTML = '';
+        for (var i = 0; i < count; i++) {
+          var entry = entries[i];
+          var videoId = entry.querySelector('videoId') ? entry.querySelector('videoId').textContent : '';
+          var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
+          var card = document.createElement('div');
+          card.className = 'video-card';
+          // YouTube埋め込みは無効化中。サムネ画像のみ表示（クリックしても再生しない）
+          card.innerHTML = '<div class="video-thumb" style="aspect-ratio:16/9;overflow:hidden;background:#000;"><img src="https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://i.ytimg.com/vi/' + videoId + '/mqdefault.jpg\'"></div>' +
+            '<p class="video-title" style="font-size:13px;margin-top:6px;">' + title + '</p>';
+          targetGrid.appendChild(card);
         }
-      }).catch(function() {
-        if (retries > 0) {
-          setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
-        } else {
-          targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
-        }
-      });
-    }
-    loadFeed(ch.id, grid, 3);
+      } else if (retries > 0) {
+        setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
+      } else {
+        targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
+      }
+    }).catch(function() {
+      if (retries > 0) {
+        setTimeout(function() { loadFeed(chId, targetGrid, retries - 1); }, 5000);
+      } else {
+        targetGrid.innerHTML = '<div class="video-card"><div class="video-thumb" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;cursor:pointer;" onclick="location.reload()">タップして再読み込み</div></div>';
+      }
+    });
+  }
+  // 各チャンネルパネル内の最新動画枠に振り分けて読み込む
+  document.querySelectorAll('.video-grid[data-channel]').forEach(function(grid) {
+    loadFeed(grid.getAttribute('data-channel'), grid, 3);
   });
 })();
 </script>

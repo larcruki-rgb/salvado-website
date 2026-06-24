@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>作品・連載一覧：オフィスラブコメ路線 サンプル集</title>
+<link rel="stylesheet" href="style.css?v=11">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Shippori+Mincho:wght@600;700&family=Murecho:wght@400;700;800;900&family=Rampart+One&display=swap" rel="stylesheet">
+<style>
+:root{ --teal:#6FDFD6; --teal2:#00DFD8; --dark:#0a3d3a; --ink:#1a1a1a; --pink:#FF6B9C; --pink2:#FF4A85; --yellow:#FDD854;
+  --char:#2b2f36; --navy:#26303f; --paper:#f4f5f7; --line:#dfe3e8; }
+body{background:#e4e7ec;font-family:'Murecho',sans-serif;}
+.samp-wrap{max-width:1120px;margin:0 auto;padding:24px 18px 140px;}
+.samp-lead{background:#fff;border:2px dashed var(--teal2);border-radius:14px;padding:20px 24px;margin-bottom:8px;}
+.samp-lead h1{font-weight:900;font-size:22px;letter-spacing:1px;color:var(--ink);margin-bottom:8px;}
+.samp-lead p{font-size:13.5px;line-height:1.85;color:#444;}
+.samp-lead .small{font-size:12px;color:#888;margin-top:8px;}
+.samp-nav{position:sticky;top:0;z-index:50;background:rgba(38,48,63,0.97);backdrop-filter:blur(6px);border-radius:10px;padding:8px;margin:16px 0 30px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.18);}
+.samp-nav a{font-weight:800;font-size:12px;letter-spacing:1px;color:#fff;text-decoration:none;padding:7px 12px;border-radius:6px;transition:background .2s,color .2s;}
+.samp-nav a:hover{background:var(--teal2);color:var(--navy);}
+.samp-head{margin:56px 0 22px;}
+.samp-head .badge{display:inline-block;background:var(--char);color:#fff;font-weight:900;font-size:12px;letter-spacing:3px;padding:5px 14px;border-radius:4px;}
+.samp-head .scale{display:inline-block;background:var(--teal);color:var(--dark);font-weight:900;font-size:10px;letter-spacing:1px;padding:4px 10px;border-radius:4px;margin-left:6px;}
+.samp-head h2{font-weight:900;font-size:24px;letter-spacing:1px;color:var(--ink);margin:12px 0 6px;}
+.samp-head p{font-size:13px;color:#555;line-height:1.8;max-width:790px;}
+.ph{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-weight:900;letter-spacing:1px;text-align:center;line-height:1.2;}
+
+/* ============================================================
+   A — 名刺ホルダー（ビジネスカード）
+   ============================================================ */
+.oA-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.oA-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px 22px;text-decoration:none;color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s;overflow:hidden;}
+.oA-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--teal2);}
+.oA-card:nth-child(2n)::before{background:var(--pink);}
+.oA-card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.13);}
+.oA-logo{font-weight:900;font-size:11px;letter-spacing:2px;color:#aaa;}
+.oA-logo b{color:var(--dark);}
+.oA-dept{font-size:11px;color:#888;margin-top:14px;letter-spacing:1px;}
+.oA-role{font-size:11px;color:var(--teal2);font-weight:800;}
+.oA-main{display:flex;align-items:center;gap:14px;margin:4px 0 12px;}
+.oA-name{font-weight:900;font-size:22px;letter-spacing:1px;line-height:1.25;}
+.oA-name small{display:block;font-size:10px;color:#aaa;font-weight:400;letter-spacing:2px;}
+.oA-face{flex:0 0 54px;width:54px;height:54px;border-radius:6px;overflow:hidden;background:#000;margin-left:auto;}
+.oA-face img,.oA-face .ph{width:100%;height:100%;object-fit:cover;font-size:9px;}
+.oA-contact{border-top:1px solid var(--line);padding-top:10px;font-size:11.5px;color:#666;display:flex;gap:18px;flex-wrap:wrap;}
+.oA-contact span::before{content:'▪';color:var(--teal2);margin-right:5px;}
+.oA-ghost{border-style:dashed;color:#bbb;}.oA-ghost::before{background:#ccc;}
+
+/* ============================================================
+   B — 社員証（IDストラップ）
+   ============================================================ */
+.oB-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 18px;padding-top:14px;}
+.oB-card{position:relative;background:#fff;border-radius:10px;text-decoration:none;color:var(--ink);box-shadow:0 6px 16px rgba(0,0,0,.12);margin-top:14px;transition:transform .2s;}
+.oB-card:hover{transform:translateY(-4px);}
+.oB-clip{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:34px;height:16px;background:linear-gradient(#cfd4da,#9aa2ac);border-radius:4px 4px 0 0;box-shadow:0 1px 3px rgba(0,0,0,.3);}
+.oB-clip::after{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #9aa2ac;}
+.oB-band{height:8px;border-radius:10px 10px 0 0;background:var(--teal2);}
+.oB-card:nth-child(4n-2) .oB-band{background:var(--pink);}.oB-card:nth-child(4n-1) .oB-band{background:var(--yellow);}.oB-card:nth-child(4n) .oB-band{background:var(--orange,#FDC06F);}
+.oB-photo{aspect-ratio:1;margin:14px 14px 8px;border-radius:6px;overflow:hidden;background:#000;}
+.oB-photo img,.oB-photo .ph{width:100%;height:100%;object-fit:cover;font-size:10px;}
+.oB-info{padding:0 14px 14px;text-align:center;}
+.oB-info .dept{font-size:9px;color:#999;letter-spacing:1px;}
+.oB-info .nm{font-weight:900;font-size:13px;line-height:1.3;margin:3px 0;}
+.oB-info .no{font-size:10px;color:#bbb;letter-spacing:1px;}
+.oB-ghost{box-shadow:none;border:2px dashed var(--line);}
+.oB-ghost .oB-photo{border:1px dashed var(--line);} .oB-ghost .nm{color:#bbb;}
+
+/* ============================================================
+   C — タイムカード（勤怠ラック）
+   ============================================================ */
+.oC{background:linear-gradient(#3a3f47,#2b2f36);padding:18px;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,.25);}
+.oC-rack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.oC-card{position:relative;background:#f3ead5;border-radius:2px;padding:12px 14px 14px;text-decoration:none;color:var(--ink);box-shadow:0 3px 8px rgba(0,0,0,.3);clip-path:polygon(0 0,100% 0,100% 100%,12px 100%,0 calc(100% - 12px));transition:transform .2s;}
+.oC-card:hover{transform:translateY(-4px);}
+.oC-head{display:flex;align-items:center;gap:10px;border-bottom:2px solid #c3b48c;padding-bottom:8px;margin-bottom:8px;}
+.oC-head .im{flex:0 0 34px;width:34px;height:34px;border-radius:4px;overflow:hidden;background:#000;}
+.oC-head .im img,.oC-head .im .ph{width:100%;height:100%;object-fit:cover;font-size:7px;}
+.oC-head .nm{font-weight:900;font-size:12.5px;line-height:1.2;}
+.oC-head .no{font-size:9px;color:#998a5a;}
+.oC-punch{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:11px;color:#5a4a22;font-family:'Murecho',sans-serif;}
+.oC-punch .t{color:#c0303a;font-weight:800;letter-spacing:1px;justify-self:end;}
+.oC-status{margin-top:8px;text-align:right;}
+.oC-status span{font-weight:900;font-size:10px;letter-spacing:1px;color:#fff;background:var(--teal2);padding:2px 8px;border-radius:3px;}
+.oC-ghost{background:#e7ddc6;color:#aaa;}.oC-ghost .oC-status span{background:#bbb;}
+
+/* ============================================================
+   D — オフィス俯瞰（デスク島レイアウト）
+   ============================================================ */
+.oD{background:#dde1e6;padding:24px;border-radius:8px;box-shadow:inset 0 0 40px rgba(0,0,0,.06);position:relative;}
+.oD-note{position:absolute;top:14px;right:18px;font-size:11px;color:#9aa2ac;letter-spacing:1px;}
+.oD-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.oD-desk{background:#fff;border-radius:4px;padding:8px;text-decoration:none;color:var(--ink);box-shadow:0 3px 8px rgba(0,0,0,.12);border-top:4px solid var(--char);position:relative;transition:transform .2s;}
+.oD-desk:hover{transform:translateY(-3px);}
+.oD-mon{aspect-ratio:16/10;border-radius:3px;overflow:hidden;background:#000;border:2px solid #2b2f36;}
+.oD-mon img,.oD-mon .ph{width:100%;height:100%;object-fit:cover;font-size:8px;}
+.oD-plate{margin-top:7px;background:var(--navy);color:#fff;border-radius:2px;text-align:center;padding:5px 4px;font-weight:800;font-size:10.5px;line-height:1.25;}
+.oD-plate small{display:block;font-weight:400;font-size:8px;color:var(--teal);}
+.oD-chair{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:22px;height:8px;background:#9aa2ac;border-radius:0 0 6px 6px;}
+.oD-ghost{border-top-color:#bbb;}.oD-ghost .oD-mon{background:#e7eaee;border-color:#cfd4da;}.oD-ghost .oD-plate{background:#bbb;}
+
+/* ============================================================
+   E — 企画書（社内決裁・ハンコリレー）
+   ============================================================ */
+.oE{display:flex;flex-direction:column;gap:14px;}
+.oE-doc{position:relative;background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px 20px;display:grid;grid-template-columns:64px 1fr 200px;gap:18px;align-items:center;text-decoration:none;color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.07);transition:transform .2s;}
+.oE-doc:hover{transform:translateY(-3px);}
+.oE-im{width:64px;height:64px;overflow:hidden;background:#000;border-radius:4px;}
+.oE-im img,.oE-im .ph{width:100%;height:100%;object-fit:cover;font-size:9px;}
+.oE-body .lbl{font-size:10px;font-weight:800;letter-spacing:2px;color:var(--teal2);}
+.oE-body .nm{font-weight:900;font-size:18px;line-height:1.3;margin:3px 0 4px;}
+.oE-body .meta{font-size:11.5px;color:#888;}
+.oE-stamps{display:flex;gap:8px;justify-content:flex-end;}
+.oE-stamp{width:46px;height:46px;border:1.5px solid #c0303a;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#c0303a;font-size:8px;line-height:1.1;transform:rotate(-5deg);}
+.oE-stamp small{font-size:11px;font-weight:800;}
+.oE-stamp:nth-child(2){transform:rotate(3deg);}
+.oE-stamp.ok{border-color:var(--teal2);color:var(--teal2);}
+.oE-ghost{opacity:.55;border-style:dashed;}.oE-ghost .nm{color:#bbb;}
+
+/* ============================================================
+   F — 社内チャット（メッセージUI）
+   ============================================================ */
+.oF{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.12);}
+.oF-head{background:var(--navy);color:#fff;padding:13px 18px;font-weight:900;font-size:14px;letter-spacing:1px;display:flex;justify-content:space-between;align-items:center;}
+.oF-head small{font-weight:400;font-size:11px;color:var(--teal);}
+.oF-row{display:flex;align-items:center;gap:13px;padding:13px 18px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);transition:background .15s;}
+.oF-row:hover{background:#f4f8fb;}
+.oF-av{flex:0 0 46px;width:46px;height:46px;border-radius:50%;overflow:hidden;background:#000;position:relative;}
+.oF-av img,.oF-av .ph{width:100%;height:100%;object-fit:cover;font-size:8px;}
+.oF-av::after{content:'';position:absolute;right:1px;bottom:1px;width:11px;height:11px;border-radius:50%;background:#2ecc71;border:2px solid #fff;}
+.oF-tx{flex:1;min-width:0;}
+.oF-tx .top{display:flex;justify-content:space-between;align-items:baseline;}
+.oF-tx .nm{font-weight:900;font-size:14px;}
+.oF-tx .time{font-size:10px;color:#aaa;}
+.oF-tx .msg{font-size:12px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;}
+.oF-badge{flex:0 0 auto;background:var(--pink2);color:#fff;font-weight:900;font-size:11px;min-width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;padding:0 6px;}
+.oF-ghost .oF-av{background:#e7eaee;}.oF-ghost .oF-av::after{background:#ccc;}.oF-ghost .nm{color:#bbb;}
+
+@media(max-width:760px){
+  .oA-grid{grid-template-columns:1fr;}
+  .oB-grid,.oD-grid{grid-template-columns:repeat(2,1fr);}
+  .oC-rack{grid-template-columns:1fr 1fr;}
+  .oE-doc{grid-template-columns:48px 1fr;} .oE-stamps{grid-column:1/-1;justify-content:flex-start;}
+}
+</style>
+</head>
+<body>
+<div class="samp-wrap">
+
+  <div class="samp-lead">
+    <h1>「作品・連載一覧」をオフィスラブコメ路線にすると</h1>
+    <p>舞台を学園から会社に。サルベド漫画＝「サルベド株式会社」に見立てて、作品を“社員”や“社内文書”に乗せた <b>6パターン</b>。学園のゆるカラフルに対して、こっちは大人っぽくスタイリッシュ（チャコール＋ティール差し色）に振ってある。全部スケール対応・末尾に空き枠つき。</p>
+    <p class="small">※ 比較用の試作。サイト未反映。サムネ現行流用（ハレ阻止のみプレースホルダー）。</p>
+  </div>
+
+  <nav class="samp-nav">
+    <a href="#A">A. 名刺</a>
+    <a href="#B">B. 社員証</a>
+    <a href="#C">C. タイムカード</a>
+    <a href="#D">D. オフィス俯瞰</a>
+    <a href="#E">E. 企画書・決裁</a>
+    <a href="#F">F. 社内チャット</a>
+  </nav>
+
+  <div class="samp-head" id="A">
+    <span class="badge">SAMPLE A</span><span class="scale">SCALE◎</span>
+    <h2>名刺ホルダー（ビジネスカード）</h2>
+    <p>作品を“名刺”に。会社名・部署・役職・連絡先のフォーマットで、いちばん大人で洗練された印象。左の差し色ラインで作品ごとの色分けも可。名刺ファイルに増やしていくだけで拡張OK。</p>
+  </div>
+  <div class="oA-grid" id="gridA"></div>
+
+  <div class="samp-head" id="B">
+    <span class="badge">SAMPLE B</span><span class="scale">SCALE◎</span>
+    <h2>社員証（IDストラップ）</h2>
+    <p>首から下げる社員証スタイル。クリップ＋部署カラーのバンドで、IDカードよりオフィス感が強い。顔写真・社員番号・所属でビシッと整列、タイル状に無限に増やせる。</p>
+  </div>
+  <div class="oB-grid" id="gridB"></div>
+
+  <div class="samp-head" id="C">
+    <span class="badge">SAMPLE C</span><span class="scale">SCALE◎</span>
+    <h2>タイムカード（勤怠ラック）</h2>
+    <p>作品を“タイムカード”に。出勤スタンプの打刻、在席ステータス。クラフト紙の打刻カードがラックに並ぶ、レトロ寄りのオフィス感。公開日や更新日を打刻に流用できて情報も載る。</p>
+  </div>
+  <div class="oC"><div class="oC-rack" id="rackC"></div></div>
+
+  <div class="samp-head" id="D">
+    <span class="badge">SAMPLE D</span><span class="scale">SCALE◎</span>
+    <h2>オフィス俯瞰（デスク島レイアウト）</h2>
+    <p>オフィスを上から見た配置図。各デスクのモニターにサムネ、ネームプレートに作品名。机を足すと島が広がる。座席表のオフィス版、働く現場っぽさが出る。</p>
+  </div>
+  <div class="oD"><span class="oD-note">▢ サルベド株式会社 編集フロア</span><div class="oD-grid" id="gridD"></div></div>
+
+  <div class="samp-head" id="E">
+    <span class="badge">SAMPLE E</span><span class="scale">SCALE◎◎</span>
+    <h2>企画書・社内決裁（ハンコリレー）</h2>
+    <p>作品を“企画書”として、係長→課長→部長の承認印リレー。最後がティールの「承認」印。横長の決裁書類が縦に積まれる、情報量が多く拡張も完璧な実用型。大人の社内文書感。</p>
+  </div>
+  <div class="oE" id="listE"></div>
+
+  <div class="samp-head" id="F">
+    <span class="badge">SAMPLE F</span><span class="scale">SCALE◎◎</span>
+    <h2>社内チャット（メッセージUI）</h2>
+    <p>作品を“同僚との会話”に。アバター＋未読バッジ＋最終メッセージで、Slack/Teams風のいちばん今っぽい見せ方。行が増えるだけで拡張、スマホでも自然。「社内恋愛のDM」っぽさでラブコメと相性◎。</p>
+  </div>
+  <div class="oF"><div class="oF-head">サルベド社内チャット<small>● 全員オンライン</small></div><div id="listF"></div></div>
+
+</div>
+
+<script>
+const WORKS=[
+ {ttl:'死神少女【原稿Ver】',kana:'SHINIGAMI',dept:'ドラマ事業部',role:'エース',ext:'内線 9',meta:'全9話 ／ HP限定',q:'寿命と引き換えに、願い叶えます。',time:'5:25',img:'img/blog/shinigami01_header.jpg',href:'blog-shinigami.html'},
+ {ttl:'毎日身体が入れ替わる幼馴染と俺',kana:'IREKAWARI',dept:'ラブコメ開発部',role:'主任',ext:'内線 54',meta:'全54ページ ／ 音声つき',q:'今日もまた入れ替わってる…！',time:'6:06',img:'img/blog/irekawari/001.jpg',href:'blog-irekawari.html'},
+ {ttl:'ハレ阻止！',kana:'HARE-SOSHI',dept:'ラブコメ開発部',role:'新人',ext:'内線 2',meta:'第2話まで公開中',q:'ハーレム、全力で阻止します。',time:'6:19',img:null,ph:{bg:'linear-gradient(135deg,#FFE5EC,#FFC9D9)',fg:'#FF4A85',label:'ハレ阻止！'},href:'blog-harem.html'},
+ {ttl:'白黒漫画',kana:'MONOCHROME',dept:'モノクロ制作部',role:'読切担当',ext:'内線 5',meta:'5作品 公開中',q:'2ページで効かせます。',time:'6:20',img:'img/blog/monochrome/gokon-madonna_01.png',href:'blog-monochrome.html'},
+ {ttl:'サルベドニャンコ',kana:'NYANKO',dept:'広報部',role:'看板猫',ext:'内線 4',meta:'第1話 公開中',q:'にゃー（癒やし担当です）',time:'昨日',img:'img/blog/nyanko01_01.png',href:'blog-nyanko.html'},
+ {ttl:'作画裏話',kana:'URABANASHI',dept:'制作管理部',role:'記録係',ext:'内線 0',meta:'記事 2本',q:'裏側、こっそり書いてます。',time:'昨日',img:'img/blog/sakuga01_header.png',href:'blog-sakamachi.html'},
+ {ttl:'ボツの館',kana:'BOTSU',dept:'資料室',role:'供養担当',ext:'地下',meta:'記事 3本',q:'没ネタ、ここで眠ってます。',time:'先週',img:'img/botsu-thumb.jpg',href:'blog-botsu.html'}
+];
+const pic=w=> w.img? `<img src="${w.img}" alt="${w.ttl}">` : `<span class="ph" style="background:${w.ph.bg};color:${w.ph.fg};">${w.ph.label}</span>`;
+
+/* A 名刺 */
+(function(){
+ let h=WORKS.map(w=>
+  `<a class="oA-card" href="${w.href}"><div class="oA-logo">SARUBEDO <b>Inc.</b></div>
+   <div class="oA-dept">${w.dept}　<span class="oA-role">${w.role}</span></div>
+   <div class="oA-main"><div class="oA-name">${w.ttl}<small>${w.kana}</small></div><div class="oA-face">${pic(w)}</div></div>
+   <div class="oA-contact"><span>${w.ext}</span><span>${w.meta}</span></div></a>`).join('');
+ h+=`<div class="oA-card oA-ghost"><div class="oA-logo">SARUBEDO Inc.</div><div class="oA-dept">— 募集中 —</div><div class="oA-main"><div class="oA-name">次回作 準備中<small>COMING SOON</small></div></div><div class="oA-contact"><span>—</span></div></div>`;
+ document.getElementById('gridA').innerHTML=h;
+})();
+
+/* B 社員証 */
+(function(){
+ let h=WORKS.map((w,i)=>
+  `<a class="oB-card" href="${w.href}"><span class="oB-clip"></span><div class="oB-band"></div>
+   <div class="oB-photo">${pic(w)}</div>
+   <div class="oB-info"><div class="dept">${w.dept}</div><div class="nm">${w.ttl}</div><div class="no">No. 2026-${('00'+(i+1)).slice(-3)}</div></div></a>`).join('');
+ h+=`<div class="oB-card oB-ghost"><span class="oB-clip"></span><div class="oB-band" style="background:#ccc;"></div><div class="oB-photo"></div><div class="oB-info"><div class="dept">—</div><div class="nm">次回作 準備中</div><div class="no">No. ———</div></div></div>`;
+ document.getElementById('gridB').innerHTML=h;
+})();
+
+/* C タイムカード */
+(function(){
+ const punch=[['出勤','08:55'],['退勤','22:10'],['残業','3:15']];
+ let h=WORKS.map((w,i)=>
+  `<a class="oC-card" href="${w.href}"><div class="oC-head"><span class="im">${pic(w)}</span><div><div class="nm">${w.ttl}</div><div class="no">社員No.${('00'+(i+1)).slice(-3)} ／ ${w.dept}</div></div></div>
+   <div class="oC-punch">${punch.map(p=>`<span>${p[0]}</span><span class="t">${p[1]}</span>`).join('')}</div>
+   <div class="oC-status"><span>在席中</span></div></a>`).join('');
+ h+=`<div class="oC-card oC-ghost"><div class="oC-head"><span class="im"></span><div><div class="nm">次回作 準備中</div><div class="no">社員No.———</div></div></div><div class="oC-status"><span>採用予定</span></div></div>`;
+ document.getElementById('rackC').innerHTML=h;
+})();
+
+/* D オフィス俯瞰 */
+(function(){
+ let h=WORKS.map(w=>
+  `<a class="oD-desk" href="${w.href}"><div class="oD-mon">${pic(w)}</div><div class="oD-plate">${w.ttl}<small>${w.dept}</small></div><span class="oD-chair"></span></a>`).join('');
+ h+=`<div class="oD-desk oD-ghost"><div class="oD-mon"><span class="ph" style="background:#e7eaee;color:#aaa;">空席</span></div><div class="oD-plate">次回作 準備中</div><span class="oD-chair"></span></div>`;
+ document.getElementById('gridD').innerHTML=h;
+})();
+
+/* E 企画書・決裁 */
+(function(){
+ const seals=['係長','課長','部長'];
+ let h=WORKS.map(w=>
+  `<a class="oE-doc" href="${w.href}"><div class="oE-im">${pic(w)}</div>
+   <div class="oE-body"><div class="lbl">企 画 書 ／ ${w.dept}</div><div class="nm">${w.ttl}</div><div class="meta">${w.meta}　—　${w.q}</div></div>
+   <div class="oE-stamps">${seals.map((s,k)=>`<span class="oE-stamp${k===2?' ok':''}"><small>${k===2?'承認':'印'}</small>${s}</span>`).join('')}</div></a>`).join('');
+ h+=`<div class="oE-doc oE-ghost"><div class="oE-im"></div><div class="oE-body"><div class="lbl">企 画 書</div><div class="nm">次回作 準備中</div><div class="meta">起案中…</div></div><div class="oE-stamps"><span class="oE-stamp" style="border-color:#ccc;color:#ccc;"><small>—</small>未</span></div></div>`;
+ document.getElementById('listE').innerHTML=h;
+})();
+
+/* F 社内チャット */
+(function(){
+ const unread=[3,5,2,1,'',2,''];
+ let h=WORKS.map((w,i)=>
+  `<a class="oF-row" href="${w.href}"><div class="oF-av">${pic(w)}</div>
+   <div class="oF-tx"><div class="top"><span class="nm">${w.ttl}</span><span class="time">${w.time}</span></div><div class="msg">${w.q}</div></div>
+   ${unread[i]?`<span class="oF-badge">${unread[i]}</span>`:''}</a>`).join('');
+ h+=`<div class="oF-row oF-ghost"><div class="oF-av"></div><div class="oF-tx"><div class="top"><span class="nm">次回作 準備中</span><span class="time">—</span></div><div class="msg">近日入社予定です…</div></div></div>`;
+ document.getElementById('listF').innerHTML=h;
+})();
+</script>
+</body>
+</html>

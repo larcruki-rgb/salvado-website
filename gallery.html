@@ -26,6 +26,17 @@
   .gallery-masonry{grid-template-columns:repeat(2,1fr);}
 }
 
+/* イラストレーター絞り込み */
+.gallery-filter{max-width:1000px;margin:0 auto 26px;}
+.gf-search{text-align:center;margin-bottom:14px;}
+.gf-search input{width:min(360px,90%);padding:11px 18px;border:2px solid #e2e2e2;border-radius:30px;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s;color:#333;}
+.gf-search input:focus{border-color:#6FDFD6;}
+.gf-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.gf-chip{background:#f2f2f2;color:#444;border:none;font-family:inherit;font-size:13px;font-weight:700;padding:7px 16px;border-radius:20px;cursor:pointer;transition:background .15s,color .15s;letter-spacing:.5px;}
+.gf-chip:hover{background:#dff6f4;}
+.gf-chip.active{background:#6FDFD6;color:#0a3d3a;}
+.gf-empty{text-align:center;color:#888;font-size:14px;margin:36px 0;}
+
 /* ライトボックス */
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.92);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:10000;opacity:0;transition:opacity 0.3s;}
 .lightbox.open{display:flex;opacity:1;}
@@ -125,6 +136,12 @@
       <h1>ギャラリー</h1>
       <div class="en">GALLERY</div>
     </div>
+
+    <div class="gallery-filter" id="galleryFilter">
+      <div class="gf-search"><input type="text" id="gfInput" placeholder="イラストレーター名で検索…"></div>
+      <div class="gf-chips" id="gfChips"></div>
+    </div>
+    <p class="gf-empty" id="gfEmpty" hidden>該当するイラストはありません</p>
 
     <div class="gallery-masonry" id="galleryGrid">
       <a class="gallery-item" href="img/gallery/drive3-tadayuu-4koma.jpg" data-artist="かとりーな" data-date="2026.05" data-desc="ファンアート"><img src="img/gallery/drive3-tadayuu-4koma.jpg" alt="タダユウ4コマ"></a>
@@ -257,11 +274,13 @@
     var lbDate=document.getElementById('lbDate');
     var lbDesc=document.getElementById('lbDesc');
     var idx=0;
+    var curList=items;
+    function visibleItems(){return items.filter(function(it){return it.style.display!=='none';});}
     function open(i){
       idx=i;
-      var it=items[idx];
+      var it=curList[idx];
       lbImg.src=it.getAttribute('href');
-      lbCounter.textContent=(idx+1)+' / '+items.length;
+      lbCounter.textContent=(idx+1)+' / '+curList.length;
       var artist=it.getAttribute('data-artist');
       var date=it.getAttribute('data-date')||'';
       var desc=it.getAttribute('data-desc')||'';
@@ -280,9 +299,9 @@
       document.body.style.overflow='';
       setTimeout(function(){lbImg.src='';},300);
     }
-    function next(){idx=(idx+1)%items.length;open(idx);}
-    function prev(){idx=(idx-1+items.length)%items.length;open(idx);}
-    items.forEach(function(a,i){a.addEventListener('click',function(e){e.preventDefault();if(!EDIT)open(i);});});
+    function next(){idx=(idx+1)%curList.length;open(idx);}
+    function prev(){idx=(idx-1+curList.length)%curList.length;open(idx);}
+    items.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(EDIT)return;curList=visibleItems();open(curList.indexOf(a));});});
     document.getElementById('lbClose').addEventListener('click',close);
     document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();next();});
     document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();prev();});
@@ -293,6 +312,59 @@
       else if(e.key==='ArrowRight')next();
       else if(e.key==='ArrowLeft')prev();
     });
+
+    /* ===== イラストレーター絞り込み ===== */
+    (function(){
+      var filterWrap=document.getElementById('galleryFilter');
+      var emptyEl=document.getElementById('gfEmpty');
+      if(EDIT){filterWrap.style.display='none';return;}
+      var chipsEl=document.getElementById('gfChips');
+      var input=document.getElementById('gfInput');
+      /* 個々の絵師を集計（＆の連名は分解） */
+      var counts={};
+      items.forEach(function(it){
+        var a=(it.getAttribute('data-artist')||'').trim();
+        if(!a)return;
+        a.split('＆').forEach(function(name){
+          name=name.trim();if(!name)return;
+          counts[name]=(counts[name]||0)+1;
+        });
+      });
+      var names=Object.keys(counts).sort(function(x,y){return x.localeCompare(y,'ja');});
+      function makeChip(label,value){
+        var b=document.createElement('button');
+        b.className='gf-chip';b.setAttribute('data-value',value);
+        b.textContent=label;
+        b.addEventListener('click',function(){input.value='';setActive(b);applyFilter(value);});
+        return b;
+      }
+      var allChip=makeChip('すべて','');
+      allChip.classList.add('active');
+      chipsEl.appendChild(allChip);
+      names.forEach(function(n){chipsEl.appendChild(makeChip(n,n));});
+
+      function setActive(chip){
+        chipsEl.querySelectorAll('.gf-chip').forEach(function(c){c.classList.remove('active');});
+        if(chip)chip.classList.add('active');
+      }
+      function applyFilter(f){
+        f=(f||'').trim();
+        var shown=0;
+        items.forEach(function(it){
+          var a=it.getAttribute('data-artist')||'';
+          var match=!f||a.indexOf(f)>=0;
+          it.style.display=match?'':'none';
+          if(match)shown++;
+        });
+        emptyEl.hidden=shown!==0;
+      }
+      input.addEventListener('input',function(){
+        var v=this.value.trim();
+        var hit=v?chipsEl.querySelector('.gf-chip[data-value="'+v.replace(/"/g,'\\"')+'"]'):allChip;
+        setActive(hit||null);
+        applyFilter(v);
+      });
+    })();
 
     if(!EDIT)return;
 

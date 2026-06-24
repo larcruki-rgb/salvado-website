@@ -7,11 +7,46 @@
 <title>カードゲーム — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=11">
 <style>
-.game-page{margin-top:-60px;}
-.game-title{text-align:center;font-family:'Murecho',sans-serif;letter-spacing:6px;}
-.game-link-highlight{display:inline-block;font-weight:900;font-size:1.08em;color:#fff;background:linear-gradient(135deg,#FDC06F 0%,#FDD854 100%);padding:3px 16px;margin:0 4px;border-radius:6px;text-decoration:none;box-shadow:0 3px 10px rgba(253,192,111,0.4);transition:transform 0.2s,box-shadow 0.2s;letter-spacing:2px;}
+.game-page{margin-top:-40px;}
+
+/* ヒーロー */
+.game-hero{position:relative;background:linear-gradient(135deg,#6FDFD6 0%,#58cfc4 100%);border-radius:26px;padding:52px 28px 46px;text-align:center;margin:8px 0 44px;box-shadow:0 14px 34px rgba(111,223,214,0.38);overflow:hidden;}
+.game-hero::before{content:"";position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(255,255,255,0.18);border-radius:50%;}
+.game-hero::after{content:"";position:absolute;bottom:-60px;left:-30px;width:150px;height:150px;background:rgba(255,255,255,0.12);border-radius:50%;}
+.game-hero-inner{position:relative;z-index:1;}
+.game-hero .tag{display:inline-block;background:rgba(255,255,255,0.9);color:#0a7d74;font-size:12px;font-weight:900;letter-spacing:3px;padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+.game-hero h1{font-family:'Murecho',sans-serif;font-size:42px;font-weight:900;letter-spacing:8px;margin:0 0 18px;color:#0a3d3a;text-shadow:0 2px 6px rgba(255,255,255,0.3);}
+.game-hero .lead{font-size:19px;font-weight:800;line-height:1.85;margin:0 0 30px;color:#0d4d49;}
+.game-hero .btn-play{display:inline-block;background:#fff;color:#0a3d3a;font-weight:900;font-size:20px;padding:17px 52px;border-radius:40px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,0.2);letter-spacing:3px;transition:transform .2s,box-shadow .2s;}
+.game-hero .btn-play:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 28px rgba(0,0,0,0.28);}
+.game-hero .btn-note{margin:14px 0 0;font-size:12px;font-weight:700;color:#0d4d49;opacity:0.8;letter-spacing:1px;}
+
+/* セクション見出し */
+.game-h2{font-family:'Murecho',sans-serif;font-size:25px;font-weight:900;color:#0a3d3a;letter-spacing:2px;border-left:7px solid #6FDFD6;padding-left:15px;margin:50px 0 22px;}
+
+/* 遊び方：特徴カード */
+.game-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}
+.game-feature{background:#fff;border:2px solid #eef1f0;border-radius:18px;padding:28px 20px;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.game-feature:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(0,0,0,0.09);border-color:#6FDFD6;}
+.game-feature .ico{font-size:38px;line-height:1;margin-bottom:12px;}
+.game-feature h3{font-size:16px;font-weight:900;color:#0a3d3a;margin:0 0 8px;letter-spacing:1px;}
+.game-feature p{font-size:13px;color:#777;line-height:1.7;margin:0;}
+
+/* カード一覧 呼び出し */
+.game-callout{background:#FEF5E3;border:2px solid #FDD854;border-radius:16px;padding:22px 26px;text-align:center;font-size:15px;font-weight:700;color:#6a5526;line-height:1.8;margin:18px 0;}
+
+.game-link-highlight{display:inline-block;font-weight:900;font-size:1.05em;color:#fff;background:linear-gradient(135deg,#FDC06F 0%,#FDD854 100%);padding:3px 16px;margin:0 4px;border-radius:6px;text-decoration:none;box-shadow:0 3px 10px rgba(253,192,111,0.4);transition:transform 0.2s,box-shadow 0.2s;letter-spacing:2px;}
 .game-link-highlight:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(253,192,111,0.55);color:#fff;}
-@media(max-width:760px){.game-page{margin-top:-30px;}.game-title{font-size:24px;letter-spacing:4px;}}
+
+@media(max-width:760px){
+  .game-page{margin-top:-20px;}
+  .game-hero{padding:40px 20px 36px;border-radius:20px;}
+  .game-hero h1{font-size:30px;letter-spacing:5px;}
+  .game-hero .lead{font-size:16px;}
+  .game-hero .btn-play{font-size:18px;padding:15px 40px;}
+  .game-h2{font-size:21px;}
+  .game-features{grid-template-columns:1fr;gap:12px;}
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -36,26 +71,46 @@
 
 <div class="main-wrap">
   <div class="page-content game-page">
-    <h1 class="game-title">サルベドTCG</h1>
-    <p style="text-align:center;">サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べます。</p>
-
-    <div style="text-align:center;margin:32px 0;">
-      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:18px;padding:16px 40px;">今すぐ遊ぶ</a>
+    <!-- ヒーロー -->
+    <div class="game-hero">
+      <div class="game-hero-inner">
+        <span class="tag">SALVADO TCG</span>
+        <h1>サルベドTCG</h1>
+        <p class="lead">サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。<br>ブラウザだけで今すぐ遊べます。</p>
+        <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="btn-play">▶ 今すぐ遊ぶ</a>
+        <p class="btn-note">インストール不要・無料</p>
+      </div>
     </div>
 
-    <h2>遊び方</h2>
-    <ul>
-      <li>ブラウザでアクセスするだけ。インストール不要</li>
-      <li>オンライン対戦・AI対戦に対応</li>
-      <li>デッキ構築で自分だけの戦略を組み立てよう</li>
-    </ul>
+    <!-- 遊び方 -->
+    <h2 class="game-h2">遊び方</h2>
+    <div class="game-features">
+      <div class="game-feature">
+        <div class="ico">🌐</div>
+        <h3>インストール不要</h3>
+        <p>ブラウザでアクセスするだけ。スマホでもPCでもすぐ遊べる。</p>
+      </div>
+      <div class="game-feature">
+        <div class="ico">⚔️</div>
+        <h3>オンライン／AI対戦</h3>
+        <p>みんなと対戦も、ひとりでAI相手の練習も。好きなスタイルで。</p>
+      </div>
+      <div class="game-feature">
+        <div class="ico">🃏</div>
+        <h3>デッキ構築</h3>
+        <p>カードを組み合わせて、自分だけの戦略を作り上げよう。</p>
+      </div>
+    </div>
 
-    <h2>カード一覧</h2>
-    <p>ゲーム内に登場する全カードの一覧は<a href="cards.html" class="game-link-highlight">こちら</a>から確認できます。</p>
+    <!-- カード一覧 -->
+    <h2 class="game-h2">カード一覧</h2>
+    <div class="game-callout">
+      ゲーム内に登場する全カードの一覧は<a href="cards.html" class="game-link-highlight">こちら</a>から確認できます。
+    </div>
 
     <!-- PICKUP START -->
-    <h2>全カード使い方ガイド</h2>
-    <p>全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」の解説をつけています。まずは各陣営の代表カードを4枚ピックアップ。</p>
+    <h2 class="game-h2">全カード使い方ガイド</h2>
+    <p style="line-height:1.9;">全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」の解説をつけています。まずは各陣営の代表カードを4枚ピックアップ。</p>
       <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;border:1px solid #e6e6e6;border-radius:14px;padding:20px;margin:18px 0;background:#fafafa;">
         <img src="https://game.sarubedo.jp/img/seitokaichou.png" alt="生徒会長ヒロイン" style="width:120px;flex:0 0 auto;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.12);">
         <div style="flex:1;min-width:240px;">
@@ -96,8 +151,8 @@
           <p style="margin:0;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#cc6666;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">弱み</strong>戻せるのは「ヒロイン」だけで、主人公やそれ以外のタイプには効かない。手札に戻すだけなので相手はヒロインを出し直せて、完全な除去にはならない。自分の場のヒロインも巻き込んで戻してしまう点にも注意。本体はATK100/HP100と低く、登場後はすぐ戦闘で相殺・ブロックされやすい。</p>
         </div>
       </div>
-    <div style="text-align:center;margin:32px 0;">
-      <a href="card-guides.html" class="btn btn-primary" style="font-size:17px;padding:14px 36px;">全62枚の使い方ガイドを見る →</a>
+    <div style="text-align:center;margin:40px 0 12px;">
+      <a href="card-guides.html" style="display:inline-block;background:linear-gradient(135deg,#6FDFD6,#58cfc4);color:#0a3d3a;font-weight:900;font-size:17px;padding:16px 40px;border-radius:40px;text-decoration:none;box-shadow:0 8px 20px rgba(111,223,214,0.4);letter-spacing:2px;transition:transform .2s,box-shadow .2s;">全62枚の使い方ガイドを見る →</a>
     </div>
     <!-- PICKUP END -->
   </div>
