@@ -6,7 +6,9 @@
 <meta name="description" content="サルベドTCG — ブラウザで遊べるオンライン対戦カードゲーム">
 <title>カードゲーム — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=12">
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
 .game-page{margin-top:-40px;}
 
 /* トップロゴ */
@@ -20,23 +22,38 @@
 .game-intro .lead{font-size:19px;font-weight:800;line-height:1.85;margin:0 0 26px;color:#0d4d49;}
 .game-intro .btn-play{display:inline-block;background:linear-gradient(135deg,#6FDFD6 0%,#58cfc4 100%);color:#0a3d3a;font-weight:900;font-size:17px;padding:16px 38px;border-radius:40px;text-decoration:none;box-shadow:0 8px 20px rgba(111,223,214,0.4);letter-spacing:1.5px;transition:transform .2s,box-shadow .2s;}
 .game-intro .btn-play:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 28px rgba(111,223,214,0.55);}
-.game-intro .btn-static{cursor:default;}
-.game-intro .btn-static:hover{transform:none;box-shadow:0 8px 20px rgba(111,223,214,0.4);}
+.game-intro .btn-static{display:inline-flex;align-items:center;gap:10px;cursor:default;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-weight:400;font-size:17px;color:#fff;background:linear-gradient(180deg,#ffb24d,#fb9a2e);border:4px solid #fff;border-radius:34px;padding:13px 32px;letter-spacing:1.5px;box-shadow:0 5px 0 #d9791a,0 11px 16px rgba(0,0,0,0.16);text-shadow:0 1px 2px rgba(0,0,0,0.12);}
+.game-intro .btn-static::before{content:'🐾';font-size:18px;-webkit-text-stroke:0;}
+.game-intro .btn-static:hover{transform:none;box-shadow:0 5px 0 #d9791a,0 11px 16px rgba(0,0,0,0.16);}
 .game-intro .btn-note{margin:14px 0 0;font-size:12px;font-weight:700;color:#0d4d49;opacity:0.8;letter-spacing:1px;}
 
-/* セクション見出し */
-.game-h2{font-family:'Murecho',sans-serif;font-size:25px;font-weight:900;color:#0a3d3a;letter-spacing:2px;border-left:7px solid #6FDFD6;padding-left:15px;margin:50px 0 22px;}
+/* セクション見出し（ロゴ調：ぷっくりポップ＋白フチ） */
+.game-page .game-h2{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:27px;font-weight:400;color:#13b3a6;letter-spacing:2px;margin:52px 0 24px;border-left:none;padding-left:0;-webkit-text-stroke:5px #fff;paint-order:stroke fill;text-shadow:0 3px 0 rgba(58,163,154,0.3);}
 
-/* 遊び方：特徴カード */
-.game-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}
-.game-feature{background:#fff;border:2px solid #eef1f0;border-radius:18px;padding:28px 20px;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s;}
-.game-feature:hover{transform:translateY(-5px);box-shadow:0 10px 24px rgba(0,0,0,0.09);border-color:#6FDFD6;}
-.game-feature .ico{font-size:38px;line-height:1;margin-bottom:12px;}
-.game-feature h3{font-size:16px;font-weight:900;color:#0a3d3a;margin:0 0 8px;letter-spacing:1px;}
-.game-feature p{font-size:13px;color:#777;line-height:1.7;margin:0;}
+/* 遊び方：特徴（カラフルなフチ付きブロック／ロゴ色 オレンジ・イエロー・ピンク／アイコンは白丸） */
+.game-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0;}
+.game-feature{text-align:center;padding:30px 18px 26px;border-radius:24px;border:3px solid #FDB55A;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,0.06);}
+.game-feature:nth-child(2){border-color:#F5C320;}
+.game-feature:nth-child(3){border-color:#FF8FC0;}
+.game-feature .ico{height:84px;display:flex;align-items:center;justify-content:center;margin:0 0 14px;}
+.game-feature .ico img{height:auto!important;max-height:66px!important;width:auto!important;max-width:74px!important;vertical-align:middle;}
+.game-feature h3{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:16px;margin:0 0 8px;letter-spacing:1px;color:#cc7d18;}
+.game-feature:nth-child(2) h3{color:#a8862e;}
+.game-feature:nth-child(3) h3{color:#d6589a;}
+.game-feature p{font-size:13px;color:#555;line-height:1.7;margin:0;}
 
-/* カード一覧 呼び出し */
-.game-callout{background:#FEF5E3;border:2px solid #FDD854;border-radius:16px;padding:22px 26px;text-align:center;font-size:15px;font-weight:700;color:#6a5526;line-height:1.8;margin:18px 0;}
+/* カード一覧 呼び出しバナー */
+.game-cards-cta{background:linear-gradient(135deg,#f1fbfa 0%,#e6f8f5 100%);border:2px solid #cdeeeb;border-radius:22px;padding:30px 24px 28px;text-align:center;box-shadow:0 6px 20px rgba(111,223,214,0.13);margin:18px 0;}
+.cards-fan{display:flex;justify-content:center;align-items:flex-end;margin:0 0 20px;}
+.cards-fan img{height:124px;width:auto;border-radius:8px;box-shadow:0 5px 14px rgba(0,0,0,0.22);margin:0 -12px;transition:transform .2s;}
+.cards-fan img:nth-child(1){transform:rotate(-13deg) translateY(8px);}
+.cards-fan img:nth-child(2){transform:rotate(-6deg) translateY(2px);}
+.cards-fan img:nth-child(3){transform:rotate(0);z-index:2;}
+.cards-fan img:nth-child(4){transform:rotate(6deg) translateY(2px);}
+.cards-fan img:nth-child(5){transform:rotate(13deg) translateY(8px);}
+.cards-cta-text{font-size:15px;font-weight:800;color:#0a3d3a;margin:0 0 16px;letter-spacing:1px;}
+.cards-cta-btn{display:inline-block;background:linear-gradient(135deg,#6FDFD6,#58cfc4);color:#0a3d3a;font-weight:900;font-size:15px;padding:13px 34px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(111,223,214,0.4);letter-spacing:1.5px;transition:transform .2s,box-shadow .2s;}
+.cards-cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(111,223,214,0.55);}
 
 .game-link-highlight{display:inline-block;font-weight:900;font-size:1.05em;color:#fff;background:linear-gradient(135deg,#FDC06F 0%,#FDD854 100%);padding:3px 16px;margin:0 4px;border-radius:6px;text-decoration:none;box-shadow:0 3px 10px rgba(253,192,111,0.4);transition:transform 0.2s,box-shadow 0.2s;letter-spacing:2px;}
 .game-link-highlight:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(253,192,111,0.55);color:#fff;}
@@ -45,7 +62,7 @@
   .game-page{margin-top:-20px;}
   .game-intro .lead{font-size:16px;}
   .game-intro .btn-play{font-size:14px;padding:14px 24px;letter-spacing:1px;}
-  .game-h2{font-size:21px;}
+  .game-page .game-h2{font-size:22px;-webkit-text-stroke-width:4px;}
   .game-features{grid-template-columns:1fr;gap:12px;}
 }
 </style>
@@ -85,17 +102,17 @@
     <h2 class="game-h2">遊び方</h2>
     <div class="game-features">
       <div class="game-feature">
-        <div class="ico">🌐</div>
+        <div class="ico"><img src="img/icon-phone.png" alt="" style="height:74px;width:auto;vertical-align:middle;"></div>
         <h3>インストール不要</h3>
         <p>ブラウザでアクセスするだけ。スマホでもPCでもすぐ遊べる。</p>
       </div>
       <div class="game-feature">
-        <div class="ico"><img src="img/icon-sword.png" alt="" style="height:46px;width:auto;vertical-align:middle;"></div>
+        <div class="ico"><img src="img/icon-sword.png" alt="" style="height:62px;width:auto;vertical-align:middle;"></div>
         <h3>オンライン／AI対戦</h3>
         <p>みんなと対戦も、ひとりでAI相手の練習も。好きなスタイルで。</p>
       </div>
       <div class="game-feature">
-        <div class="ico">🃏</div>
+        <div class="ico"><img src="img/icon-card.png" alt="" style="height:74px;width:auto;vertical-align:middle;"></div>
         <h3>デッキ構築</h3>
         <p>カードを組み合わせて、自分だけの戦略を作り上げよう。</p>
       </div>
@@ -103,8 +120,16 @@
 
     <!-- カード一覧 -->
     <h2 class="game-h2">カード一覧</h2>
-    <div class="game-callout">
-      ゲーム内に登場する全カードの一覧は<a href="cards.html" class="game-link-highlight">こちら</a>から確認できます。
+    <div class="game-cards-cta">
+      <div class="cards-fan">
+        <img src="img/card-seitokai.png" alt="生徒会長ヒロイン" loading="lazy">
+        <img src="img/card-kenkou.png" alt="夜しか眠れない健康的な生活" loading="lazy">
+        <img src="img/card-maoria.png" alt="のちの魔王 マオリア" loading="lazy">
+        <img src="img/card-suisosui.png" alt="水素水でナンパする男" loading="lazy">
+        <img src="img/card-yarakashi.png" alt="サルベド猫のやらかし" loading="lazy">
+      </div>
+      <p class="cards-cta-text">ゲームに登場する全カードをチェック！</p>
+      <a href="cards.html" class="cards-cta-btn">カード一覧を見る →</a>
     </div>
 
     <!-- PICKUP START -->
