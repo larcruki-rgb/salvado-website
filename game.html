@@ -55,6 +55,14 @@
 .cards-cta-btn{display:inline-block;background:linear-gradient(135deg,#6FDFD6,#58cfc4);color:#0a3d3a;font-weight:900;font-size:15px;padding:13px 34px;border-radius:30px;text-decoration:none;box-shadow:0 6px 16px rgba(111,223,214,0.4);letter-spacing:1.5px;transition:transform .2s,box-shadow .2s;}
 .cards-cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(111,223,214,0.55);}
 
+/* 全カード使い方ガイド：card-guides風 色分けブロック */
+.gp-block{padding:9px 13px 11px;border-left:4px solid #ccc;border-radius:0 8px 8px 0;margin:0 0 8px;}
+.gp-block .gl{display:inline-block;font-size:11px;font-weight:bold;color:#fff;border-radius:5px;padding:2px 10px;letter-spacing:1px;}
+.gp-block p{margin:5px 0 0;font-size:13px;line-height:1.8;color:#2e2e2e;}
+.gp-sum{border-left-color:#5a9a94;background:#f1f9f8;}.gp-sum .gl{background:#5a9a94;}
+.gp-str{border-left-color:#4a8a4a;background:#f1f8f1;}.gp-str .gl{background:#4a8a4a;}
+.gp-wk{border-left-color:#b04040;background:#fbf1f1;}.gp-wk .gl{background:#b04040;}
+
 .game-link-highlight{display:inline-block;font-weight:900;font-size:1.05em;color:#fff;background:linear-gradient(135deg,#FDC06F 0%,#FDD854 100%);padding:3px 16px;margin:0 4px;border-radius:6px;text-decoration:none;box-shadow:0 3px 10px rgba(253,192,111,0.4);transition:transform 0.2s,box-shadow 0.2s;letter-spacing:2px;}
 .game-link-highlight:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(253,192,111,0.55);color:#fff;}
 
@@ -140,9 +148,9 @@
         <div style="flex:1;min-width:240px;">
           <h3 style="margin:0 0 4px;font-size:18px;">生徒会長ヒロイン</h3>
           <p style="margin:0 0 12px;font-size:12px;color:#888;letter-spacing:1px;">コスト2　ATK 100 / HP 100</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#c0b89a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">ひとことで</strong>コスト2、ATK100/HP100の投稿キャラ。登場時に1枚ドローするので、出しても手札は減らない。「油断しない」を持つため攻撃してもタップせず、自分のターンで殴ったあとそのまま相手ターンの守りにも回せる。</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#5a9a5a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">強み</strong>出した瞬間に1ドローするので、盤面に戦力を1体増やしながら手札は減らない。「油断しない」で攻めと守りを両立できるため、低コストながら攻撃にもブロックにも気軽に使える優秀な序盤要員。</p>
-          <p style="margin:0;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#cc6666;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">弱み</strong>ATK100/HP100とスタッツが低く、相手はATK100以上のキャラをブロックや相殺に当てるだけで簡単に対処できる。登場時の1ドローは1回きりなので、HPの高いキャラが並ぶ後半は戦力として力不足になりやすい。</p>
+          <div class="gp-block gp-sum"><span class="gl">ひとことで</span><p>コスト2、ATK100/HP100の投稿キャラ。登場時に1枚ドローするので、出しても手札は減らない。「油断しない」を持つため攻撃してもタップせず、自分のターンで殴ったあとそのまま相手ターンの守りにも回せる。</p></div>
+          <div class="gp-block gp-str"><span class="gl">強み</span><p>出した瞬間に1ドローするので、盤面に戦力を1体増やしながら手札は減らない。「油断しない」で攻めと守りを両立できるため、低コストながら攻撃にもブロックにも気軽に使える優秀な序盤要員。</p></div>
+          <div class="gp-block gp-wk"><span class="gl">弱み</span><p>ATK100/HP100とスタッツが低く、相手はATK100以上のキャラをブロックや相殺に当てるだけで簡単に対処できる。登場時の1ドローは1回きりなので、HPの高いキャラが並ぶ後半は戦力として力不足になりやすい。</p></div>
         </div>
       </div>
       <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;border:1px solid #e6e6e6;border-radius:14px;padding:20px;margin:18px 0;background:#fafafa;">
@@ -150,9 +158,9 @@
         <div style="flex:1;min-width:240px;">
           <h3 style="margin:0 0 4px;font-size:18px;">のちの魔王 マオリア</h3>
           <p style="margin:0 0 12px;font-size:12px;color:#888;letter-spacing:1px;">コスト7　ATK 500 / HP 500</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#c0b89a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">ひとことで</strong>コスト7、ATK500/HP500のファンタジー上位の大型アタッカー。素のスタッツだけでこのゲームのほとんどのキャラを一方的に倒せる。さらに【応援3】+Tで「自分のATK+300＝800点」のダメージを好きな投稿キャラ1体に飛ばせる、攻撃役と除去役を兼ねた切り札。</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#5a9a5a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">強み</strong>本体500/500に加え、【応援3】+Tの800ダメージで盤面のほぼ全てのキャラを能力だけで焼き切れる。500のATKで殴りつつ、別ターンには相手の重いキャラを能力で除去する、と攻めと制圧を両方こなせる。【応援4】で飛行を得れば、相手が飛行持ちのキャラを出していない限りブロックされず、500ダメージをLPに直接通せる。素のスタッツが高く戦闘では簡単に倒されないので、置いておくだけで盤面を制圧し続ける。</p>
-          <p style="margin:0;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#cc6666;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">弱み</strong>コスト7と重く、応援を貯めるまで時間がかかるため出せるのは中盤以降になりやすい。出したターンは攻撃できず、能力を使うとタップして守りに使えないので隙ができる。素のスタッツが高く戦闘では倒しにくい切り札なので、相手は企画ボツ・サルベド猫のやらかしといった除去を惜しまず撃ってくる。特にサルベド猫のやらかしは打ち消されず蘇生もできないため、出した瞬間に消されると痛い。</p>
+          <div class="gp-block gp-sum"><span class="gl">ひとことで</span><p>コスト7、ATK500/HP500のファンタジー上位の大型アタッカー。素のスタッツだけでこのゲームのほとんどのキャラを一方的に倒せる。さらに【応援3】+Tで「自分のATK+300＝800点」のダメージを好きな投稿キャラ1体に飛ばせる、攻撃役と除去役を兼ねた切り札。</p></div>
+          <div class="gp-block gp-str"><span class="gl">強み</span><p>本体500/500に加え、【応援3】+Tの800ダメージで盤面のほぼ全てのキャラを能力だけで焼き切れる。500のATKで殴りつつ、別ターンには相手の重いキャラを能力で除去する、と攻めと制圧を両方こなせる。【応援4】で飛行を得れば、相手が飛行持ちのキャラを出していない限りブロックされず、500ダメージをLPに直接通せる。素のスタッツが高く戦闘では簡単に倒されないので、置いておくだけで盤面を制圧し続ける。</p></div>
+          <div class="gp-block gp-wk"><span class="gl">弱み</span><p>コスト7と重く、応援を貯めるまで時間がかかるため出せるのは中盤以降になりやすい。出したターンは攻撃できず、能力を使うとタップして守りに使えないので隙ができる。素のスタッツが高く戦闘では倒しにくい切り札なので、相手は企画ボツ・サルベド猫のやらかしといった除去を惜しまず撃ってくる。特にサルベド猫のやらかしは打ち消されず蘇生もできないため、出した瞬間に消されると痛い。</p></div>
         </div>
       </div>
       <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;border:1px solid #e6e6e6;border-radius:14px;padding:20px;margin:18px 0;background:#fafafa;">
@@ -160,9 +168,9 @@
         <div style="flex:1;min-width:240px;">
           <h3 style="margin:0 0 4px;font-size:18px;">サルベド猫のやらかし</h3>
           <p style="margin:0 0 12px;font-size:12px;color:#888;letter-spacing:1px;">コスト6　効果カード</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#c0b89a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">ひとことで</strong>コスト6のサポート。投稿キャラ1体を破壊し、しかも蘇生できなくする確定除去。「このカードは打ち消されない」ので、相手の動画削除・盗賊サギ・死神少女といった打ち消しでも止められない。相手の切り札を確実に消し飛ばせる、信頼度の高い1枚。</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#5a9a5a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">強み</strong>破壊した投稿キャラは蘇生できないので、僧侶ミーコや魔の寄生体、地縛霊レナといった蘇生手段を無視して完全に消せる。打ち消されないため、相手が打ち消しを構えていても確実に通る。HPがどれだけ高い大型キャラでも一撃で除去できるのが頼もしい。</p>
-          <p style="margin:0;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#cc6666;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">弱み</strong>コスト6と重く、序盤の小型キャラに撃つと応援の無駄遣いになる。相手の場に投稿キャラがいないと撃てない単体除去なので、全体除去のような盤面のリセットはできない。あくまで相手の脅威を1体消すための札で、これ1枚では勝ちに直結しない。</p>
+          <div class="gp-block gp-sum"><span class="gl">ひとことで</span><p>コスト6のサポート。投稿キャラ1体を破壊し、しかも蘇生できなくする確定除去。「このカードは打ち消されない」ので、相手の動画削除・盗賊サギ・死神少女といった打ち消しでも止められない。相手の切り札を確実に消し飛ばせる、信頼度の高い1枚。</p></div>
+          <div class="gp-block gp-str"><span class="gl">強み</span><p>破壊した投稿キャラは蘇生できないので、僧侶ミーコや魔の寄生体、地縛霊レナといった蘇生手段を無視して完全に消せる。打ち消されないため、相手が打ち消しを構えていても確実に通る。HPがどれだけ高い大型キャラでも一撃で除去できるのが頼もしい。</p></div>
+          <div class="gp-block gp-wk"><span class="gl">弱み</span><p>コスト6と重く、序盤の小型キャラに撃つと応援の無駄遣いになる。相手の場に投稿キャラがいないと撃てない単体除去なので、全体除去のような盤面のリセットはできない。あくまで相手の脅威を1体消すための札で、これ1枚では勝ちに直結しない。</p></div>
         </div>
       </div>
       <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;border:1px solid #e6e6e6;border-radius:14px;padding:20px;margin:18px 0;background:#fafafa;">
@@ -170,9 +178,9 @@
         <div style="flex:1;min-width:240px;">
           <h3 style="margin:0 0 4px;font-size:18px;">水素水でナンパする男</h3>
           <p style="margin:0 0 12px;font-size:12px;color:#888;letter-spacing:1px;">コスト2　ATK 100 / HP 100</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#c0b89a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">ひとことで</strong>コスト2、ATK100/HP100の投稿キャラ。登場した時、自分と相手の場にある全てのヒロインカードを持ち主の手札に戻す。戻るヒロインに装備されていたエンチャントは手札に戻らず破壊される。ヒロインだけを場から一掃する全体バウンス効果を持つ。</p>
-          <p style="margin:0 0 8px;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#5a9a5a;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">強み</strong>コスト2と軽いのに、相手の場のヒロインを全部手札に戻して盤面を更地にできる。視聴者は最初から3いるので、自分の最初のターンから無理なく出せる。さらに戻るヒロインに付いたエンチャントは破壊されるので、装備で育てたヒロインをまとめて無力化できる。攻めてくるヒロインの壁を取り払い、こちらの攻撃を通すきっかけにもなる。</p>
-          <p style="margin:0;font-size:13.5px;line-height:1.8;color:#333;"><strong style="display:inline-block;background:#cc6666;color:#fff;font-size:11px;border-radius:4px;padding:1px 8px;margin-right:6px;">弱み</strong>戻せるのは「ヒロイン」だけで、主人公やそれ以外のタイプには効かない。手札に戻すだけなので相手はヒロインを出し直せて、完全な除去にはならない。自分の場のヒロインも巻き込んで戻してしまう点にも注意。本体はATK100/HP100と低く、登場後はすぐ戦闘で相殺・ブロックされやすい。</p>
+          <div class="gp-block gp-sum"><span class="gl">ひとことで</span><p>コスト2、ATK100/HP100の投稿キャラ。登場した時、自分と相手の場にある全てのヒロインカードを持ち主の手札に戻す。戻るヒロインに装備されていたエンチャントは手札に戻らず破壊される。ヒロインだけを場から一掃する全体バウンス効果を持つ。</p></div>
+          <div class="gp-block gp-str"><span class="gl">強み</span><p>コスト2と軽いのに、相手の場のヒロインを全部手札に戻して盤面を更地にできる。視聴者は最初から3いるので、自分の最初のターンから無理なく出せる。さらに戻るヒロインに付いたエンチャントは破壊されるので、装備で育てたヒロインをまとめて無力化できる。攻めてくるヒロインの壁を取り払い、こちらの攻撃を通すきっかけにもなる。</p></div>
+          <div class="gp-block gp-wk"><span class="gl">弱み</span><p>戻せるのは「ヒロイン」だけで、主人公やそれ以外のタイプには効かない。手札に戻すだけなので相手はヒロインを出し直せて、完全な除去にはならない。自分の場のヒロインも巻き込んで戻してしまう点にも注意。本体はATK100/HP100と低く、登場後はすぐ戦闘で相殺・ブロックされやすい。</p></div>
         </div>
       </div>
     <div style="text-align:center;margin:40px 0 12px;">
