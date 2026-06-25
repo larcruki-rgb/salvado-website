@@ -210,6 +210,12 @@ footer{                         /* 最下部でヒーローの裏に隠れない
   .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
   .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
 }
+
+/* 日付項目だけ：細ピルを軸（線上）に乗せ、丸点は消す */
+.tl-item.is-date::before{display:none;}
+.tl-item.is-date .tl-year{position:absolute;top:3px;margin-bottom:0;font-size:11px;padding:3px 12px;border-radius:14px;border:2px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.2);white-space:nowrap;z-index:4;line-height:1.3;}
+.tl-item.is-date:nth-child(odd) .tl-year{right:0;transform:translateX(50%);}
+.tl-item.is-date:nth-child(even) .tl-year{left:0;transform:translateX(-50%);}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -263,7 +269,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <h2 class="ch-timeline-title">Emotionalチャンネル年表</h2>
       <p class="ch-timeline-lead">2024年4月に誕生した、サルベド初のサブチャンネル。しっとり系のストーリーを中心に届ける「サルベド漫画Emotional」の成り立ちと魅力をご紹介します。</p>
       <ol class="tl">
-        <li class="tl-item"><span class="tl-year">2024.04</span><div class="tl-body"><h3>サルベド初のサブチャンネルとして開設</h3><p>2024年4月に開設された、サルベド初のサブチャンネル。コメディ重視の本家サルベドと異なり、こちらはしっとりとしたストーリーが多く展開される。メインライターはまっきーにが務める。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2024.04</span><div class="tl-body"><h3>サルベド初のサブチャンネルとして開設</h3><p>2024年4月に開設された、サルベド初のサブチャンネル。コメディ重視の本家サルベドと異なり、こちらはしっとりとしたストーリーが多く展開される。メインライターはまっきーにが務める。</p></div></li>
         <li class="tl-item"><span class="tl-year">住み分け</span><div class="tl-body"><h3>本家とEmotionalのジャンル区分け</h3><p>この頃から完全に本家は青春詭弁中心のラブコメディ、Emotionalはまっきーに中心のしっとり系、という区分けがされるようになった。</p></div></li>
         <li class="tl-item"><span class="tl-year">変わらないもの</span><div class="tl-body"><h3>ジャンルは違えど“サルベドらしさ”は同じ</h3><p>ただどちらのチャンネルも恋愛がメインであり、キャラクター同士がテンポのいい会話を繰り広げるサルベドらしさは変わらない。ジャンル分けはされたものの、サルベドファンの方であればどちらも楽しめるように、という思いを込めて作られたチャンネルである。</p></div></li>
         <li class="tl-item"><span class="tl-year">投稿スタイル</span><div class="tl-body"><h3>週1本・じっくり長めのボリューム</h3><p>投稿頻度は控えめで1週間に1本。基本的には週末付近に投稿される。その分、動画時間は比較的長め。週に1本でも満足できるように、とボリュームにこだわって作っている。</p></div></li>

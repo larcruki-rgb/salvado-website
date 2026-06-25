@@ -230,6 +230,12 @@ footer{                         /* 最下部でヒーローの裏に隠れない
   .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
   .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
 }
+
+/* 日付項目だけ：細ピルを軸（線上）に乗せ、丸点は消す */
+.tl-item.is-date::before{display:none;}
+.tl-item.is-date .tl-year{position:absolute;top:3px;margin-bottom:0;font-size:11px;padding:3px 12px;border-radius:14px;border:2px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.2);white-space:nowrap;z-index:4;line-height:1.3;}
+.tl-item.is-date:nth-child(odd) .tl-year{right:0;transform:translateX(50%);}
+.tl-item.is-date:nth-child(even) .tl-year{left:0;transform:translateX(-50%);}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -286,7 +292,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <h2 class="ch-timeline-title">死神少女チャンネル年表</h2>
       <p class="ch-timeline-lead">2024年12月に最初の動画が投稿された、サルベドシリーズの中で最も異色なチャンネル。総集編の特典から専用チャンネルへと生まれ変わった「死神少女」の歩みをご紹介します。</p>
       <ol class="tl">
-        <li class="tl-item"><span class="tl-year">2024.12</span><div class="tl-body"><h3>最初の動画が本家サルベドに登場</h3><p>2024年12月に最初の動画が投稿された、サルベドシリーズの中では最も異色なチャンネル。元々は本家サルベドに投稿されていたシリーズで、初めて第一話が投稿された時は、まだサルベドがラブコメジャンル以外にも手を出していた時期だった。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2024.12</span><div class="tl-body"><h3>最初の動画が本家サルベドに登場</h3><p>2024年12月に最初の動画が投稿された、サルベドシリーズの中では最も異色なチャンネル。元々は本家サルベドに投稿されていたシリーズで、初めて第一話が投稿された時は、まだサルベドがラブコメジャンル以外にも手を出していた時期だった。</p></div></li>
         <li class="tl-item"><span class="tl-year">ジャンル違い</span><div class="tl-body"><h3>総集編の“特典”という立ち位置へ</h3><p>しかしそこからラブコメジャンルに舵を切ったことで死神少女はジャンル違いとなり、第二話以降は総集編の最後に特典的な感じでつけられるようになった。</p></div></li>
         <li class="tl-item"><span class="tl-year">ファンの声</span><div class="tl-body"><h3>「死神少女だけでまとめてほしい」</h3><p>死神少女目的で総集編を見てくれるファンの方も多くいて、「死神少女だけでまとめてほしい」という声が複数上がったことでチャンネル化を決意。</p></div></li>
         <li class="tl-item"><span class="tl-year">リニューアル</span><div class="tl-body"><h3>専用チャンネルとして生まれ変わる</h3><p>脚本はそのままに、イラスト、声優を全てリニューアルする形で専用チャンネルとして生まれ変わった。</p></div></li>

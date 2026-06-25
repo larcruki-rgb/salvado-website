@@ -227,6 +227,12 @@ footer{
 
 /* === 動画サムネの再生ボタン(▶)を非表示（戻す時はこの2行を削除） === */
 .ch-detail-video .video-play-btn{display:none!important;}
+
+/* 日付項目だけ：細ピルを軸（線上）に乗せ、丸点は消す */
+.tl-item.is-date::before{display:none;}
+.tl-item.is-date .tl-year{position:absolute;top:3px;margin-bottom:0;font-size:11px;padding:3px 12px;border-radius:14px;border:2px solid #fff;box-shadow:0 2px 7px rgba(0,0,0,.2);white-space:nowrap;z-index:4;line-height:1.3;}
+.tl-item.is-date:nth-child(odd) .tl-year{right:0;transform:translateX(50%);}
+.tl-item.is-date:nth-child(even) .tl-year{left:0;transform:translateX(-50%);}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -285,15 +291,15 @@ footer{
         サルベド漫画のこれまでの歩み。チャンネル開設から今日まで、節目の出来事をたどります。
       </p>
       <ol class="tl">
-        <li class="tl-item"><span class="tl-year">2019.12</span><div class="tl-body"><h3>サルベド漫画 チャンネル開設</h3><p>サルベドシリーズ最古のチャンネル。ライターの青春詭弁・まっきーにが参戦し、今もほぼ全作品の脚本を二人が手がける。ファンに「サルベド語録」と呼ばれる名言の多くは、青春詭弁の脚本から生まれている。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2019.12</span><div class="tl-body"><h3>サルベド漫画 チャンネル開設</h3><p>サルベドシリーズ最古のチャンネル。ライターの青春詭弁・まっきーにが参戦し、今もほぼ全作品の脚本を二人が手がける。ファンに「サルベド語録」と呼ばれる名言の多くは、青春詭弁の脚本から生まれている。</p></div></li>
         <li class="tl-item"><span class="tl-year">開設当初</span><div class="tl-body"><h3>ラブコメ特化へ／声優・いちこ参入</h3><p>当初はあらゆるジャンルを幅広く扱っていたが、コミュニティのアンケートでラブコメを求める声が多く、ラブコメ特化に。同じ頃に声優のいちこが参入し、「サルベドと言えばこの声」と呼ばれる存在となる。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2020〜21頃</span><div class="tl-body"><h3>イラストレーター拡大、今の原型へ</h3><p>開設1年ほどで作画陣を拡大。まず かとりーな・あかぽ・ちず・雪雪崩 が加入し、続いて komi・ひかる・愛ツバメ・山岩ヤシロ・歩吉・坂街透・waata が加入して、現在のサルベド漫画の原型が完成。サムネの特徴的な帯文字は雪雪崩によるデザイン。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2023頃</span><div class="tl-body"><h3>チャンネルを分割（Emotional 誕生）</h3><p>コメディ寄りの青春詭弁脚本と、しっとりしたまっきーに脚本が混在していたチャンネルを分割。しっとり系はサブチャンネル「サルベド漫画Emotional」へ。本家はコメディ系が中心に（稀に両者が逆のチャンネルに顔を出すことも）。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2024.02</span><div class="tl-body"><h3>ネットプリント第一弾を販売</h3><p>サルベド史上初の、YouTube以外でのコンテンツ販売。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2024.10</span><div class="tl-body"><h3>ネットプリント第二弾＋初の電子書籍</h3><p>ハロウィンをモチーフにしたネットプリント第二弾を販売。直後に、サルベド漫画初の電子書籍を公開。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2025.02</span><div class="tl-body"><h3>アプリゲームコラボ／初の紙の本</h3><p>有名アプリゲームとのコラボ動画を投稿。同月の東京コミティアに参加し、サルベド初の紙の本を販売。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2025.08・12</span><div class="tl-body"><h3>コミックマーケット参戦・グッズ展開</h3><p>東京コミックマーケットに出展。本に加え、アクリルキーホルダーやスタンドなどのグッズも販売。</p></div></li>
-        <li class="tl-item"><span class="tl-year">2026.05</span><div class="tl-body"><h3>関西コミティア参戦</h3><p>関西コミティアにも出展し、YouTube以外での活躍の幅をさらに拡大中。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2020〜21頃</span><div class="tl-body"><h3>イラストレーター拡大、今の原型へ</h3><p>開設1年ほどで作画陣を拡大。まず かとりーな・あかぽ・ちず・雪雪崩 が加入し、続いて komi・ひかる・愛ツバメ・山岩ヤシロ・歩吉・坂街透・waata が加入して、現在のサルベド漫画の原型が完成。サムネの特徴的な帯文字は雪雪崩によるデザイン。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2023頃</span><div class="tl-body"><h3>チャンネルを分割（Emotional 誕生）</h3><p>コメディ寄りの青春詭弁脚本と、しっとりしたまっきーに脚本が混在していたチャンネルを分割。しっとり系はサブチャンネル「サルベド漫画Emotional」へ。本家はコメディ系が中心に（稀に両者が逆のチャンネルに顔を出すことも）。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2024.02</span><div class="tl-body"><h3>ネットプリント第一弾を販売</h3><p>サルベド史上初の、YouTube以外でのコンテンツ販売。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2024.10</span><div class="tl-body"><h3>ネットプリント第二弾＋初の電子書籍</h3><p>ハロウィンをモチーフにしたネットプリント第二弾を販売。直後に、サルベド漫画初の電子書籍を公開。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2025.02</span><div class="tl-body"><h3>アプリゲームコラボ／初の紙の本</h3><p>有名アプリゲームとのコラボ動画を投稿。同月の東京コミティアに参加し、サルベド初の紙の本を販売。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2025.08・12</span><div class="tl-body"><h3>コミックマーケット参戦・グッズ展開</h3><p>東京コミックマーケットに出展。本に加え、アクリルキーホルダーやスタンドなどのグッズも販売。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2026.05</span><div class="tl-body"><h3>関西コミティア参戦</h3><p>関西コミティアにも出展し、YouTube以外での活躍の幅をさらに拡大中。</p></div></li>
       </ol>
     </div>
   </section>

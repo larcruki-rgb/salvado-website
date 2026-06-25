@@ -6,6 +6,7 @@
 <meta name="description" content="サルベド漫画Fantasy サブチャンネル — サルベド漫画">
 <title>サルベド漫画Fantasy — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=12">
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'KillgoU-NB';src:url('img/fonts/KillgoU-NB.ttf') format('truetype');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
@@ -234,16 +235,21 @@ footer{
 
 .ch-belowfold{background:linear-gradient(180deg,#eef1ff 0%,#f3eeff 55%,#fff7ef 100%)!important;}
 .ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;background-image:radial-gradient(1.6px 1.6px at 25% 25%,rgba(255,210,120,.55),transparent),radial-gradient(1.6px 1.6px at 75% 65%,rgba(120,140,255,.5),transparent),radial-gradient(1.2px 1.2px at 50% 85%,rgba(150,120,255,.45),transparent);background-size:120px 120px,160px 160px,90px 90px;background-repeat:repeat;}
-.ch-timeline-title{font-size:27px;text-align:center;letter-spacing:3px;margin:0 0 14px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;text-shadow:0 2px 10px #fff;}
+.ch-timeline-title{font-size:27px;text-align:center;letter-spacing:3px;margin:0 0 14px;font-family:'DotGothic16','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;text-shadow:0 2px 10px #fff;}
 .ch-timeline-lead{font-size:14px;line-height:1.95;color:#4a447a;text-align:center;max-width:720px;margin:0 auto 46px;text-shadow:0 1px 6px #fff;}
 .tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;width:4px;transform:translateX(-50%);background:linear-gradient(#8e7bff,#c9a14a);border-radius:4px;box-shadow:0 0 10px rgba(142,123,255,.6);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);}
 .tl-item::before{right:-9px;width:16px;height:16px;background:#6b5cff;border-radius:50%;box-shadow:0 0 0 3px #fff,0 0 10px rgba(107,92,255,.9);transform:rotate(45deg);}
 .tl-item:nth-child(even)::before{right:auto;left:-9px;background:#c9a14a;box-shadow:0 0 0 3px #fff,0 0 10px rgba(201,161,74,.9);}
-.tl-year{font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#fff;background:linear-gradient(135deg,#6b5cff,#241b9c);}
+.tl-year{font-family:'DotGothic16','Hiragino Kaku Gothic Pro',sans-serif;color:#fff;background:linear-gradient(135deg,#6b5cff,#241b9c);}
 .tl-item:nth-child(even) .tl-year{background:linear-gradient(135deg,#c9a14a,#9c7a1f);}
+/* 日付項目だけ：細ピルを軸（線上）に乗せ、丸点は消す */
+.tl-item.is-date::before{display:none;}
+.tl-item.is-date .tl-year{position:absolute;top:3px;margin-bottom:0;font-size:11px;padding:3px 12px;border-radius:14px;border:2px solid #fff;box-shadow:0 2px 7px rgba(80,70,180,.32);white-space:nowrap;z-index:4;line-height:1.3;}
+.tl-item.is-date:nth-child(odd) .tl-year{right:0;transform:translateX(50%);}
+.tl-item.is-date:nth-child(even) .tl-year{left:0;transform:translateX(-50%);}
 .tl-body{background:rgba(255,255,255,.85);border:2px solid #6b5cff;box-shadow:0 6px 18px rgba(80,70,180,.18);backdrop-filter:blur(2px);}
 .tl-item:nth-child(even) .tl-body{border-color:#c9a14a;box-shadow:0 6px 18px rgba(160,130,50,.2);}
-.tl-body h3{font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;}
+.tl-body h3{font-family:'DotGothic16','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;}
 .tl-body p{color:#3a3760;}
 @media(max-width:760px){
   .ch-timeline{padding:48px 16px 44px;}
@@ -350,11 +356,11 @@ footer{
       <h2 class="ch-timeline-title">ファンタジーチャンネル年表</h2>
       <p class="ch-timeline-lead">2025年6月に誕生した、サルベド漫画のファンタジー系チャンネル。剣と魔法から殺し屋・タイムリープまで、現実では味わえない世界を届ける「サルベド漫画Fantasy」の歩みと魅力をご紹介します。</p>
       <ol class="tl">
-        <li class="tl-item"><span class="tl-year">2025.06</span><div class="tl-body"><h3>ファンタジー系チャンネルとして開設</h3><p>2025年6月に開設された、ファンタジー系のサルベドチャンネル。剣と魔法、勇者と魔王といった異世界系のストーリーだけでなく、殺し屋、タイムリープ、ヒーローもの等、現実世界だと味わえないジャンルを幅広く投稿している。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2025.06</span><div class="tl-body"><h3>ファンタジー系チャンネルとして開設</h3><p>2025年6月に開設された、ファンタジー系のサルベドチャンネル。剣と魔法、勇者と魔王といった異世界系のストーリーだけでなく、殺し屋、タイムリープ、ヒーローもの等、現実世界だと味わえないジャンルを幅広く投稿している。</p></div></li>
         <li class="tl-item"><span class="tl-year">サルベドらしさ</span><div class="tl-body"><h3>ジャンルは多彩でも、根っこはラブコメ</h3><p>こちらもサルベドファンの方が違和感なく楽しめるように、内容はあくまでラブコメ系。しかし、本家やEmotionalにはない激しい戦闘シーンや、複雑な世界観設定を味わうことができるのが最大の魅力。</p></div></li>
         <li class="tl-item"><span class="tl-year">ライター</span><div class="tl-body"><h3>脚本は青春詭弁・まっきーに</h3><p>こちらもメインのライターは青春詭弁、まっきーにが担当している。Fantasyで最もメジャーな魔法【モルティス・イグニス】は青春詭弁が生み出したアイデア。まっきーにを含む他のライターも、この魔法を各作品で流用している。</p></div></li>
         <li class="tl-item"><span class="tl-year">TCG</span><div class="tl-body"><h3>サルベドTCG誕生のきっかけ</h3><p>TCG化との相性が最も良いチャンネルでもあり、最初に作るゲームでTCGを思いついたきっかけはこのチャンネルがあったから、というのはまっきーに談。</p></div></li>
-        <li class="tl-item"><span class="tl-year">二度楽しめる</span><div class="tl-body"><h3>新作がそのままカードになることも</h3><p>新しい動画が投稿されるたび、新規カードとして採用される可能性がある。サルベド漫画Fantasyのファンであり、且つサルベドTCGも楽しんでくれるファンの方からすれば、1つの作品で2度楽しむことができる。</p></div></li>
+        <li class="tl-item"><span class="tl-year">二度楽しめる</span><div class="tl-body"><h3>TCG化の道</h3><p>新しい動画が投稿されるたび、新規カードとして採用される可能性がある。サルベド漫画Fantasyのファンであり、且つサルベドTCGも楽しんでくれるファンの方からすれば、1つの作品で2度楽しむことができる。</p></div></li>
       </ol>
     </div>
   </section>
