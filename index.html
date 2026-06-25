@@ -196,20 +196,23 @@ html,body{overflow-x:clip;}
 @font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
 /* === コミック回転トップ（FV差し替え） === */
 .cnavwrap{position:absolute;top:14px;right:26px;z-index:30;display:flex;align-items:center;gap:14px;}
-.cnav{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.85);border-radius:40px;padding:7px 16px;box-shadow:0 4px 14px rgba(0,0,0,.08);}
-.cnav a{text-decoration:none;text-align:center;padding:5px 13px;border-radius:20px;color:#3a4a55;}
-.cnav a .en{display:block;font-family:'Poppins','Murecho',sans-serif;font-size:13px;letter-spacing:1px;}
-.cnav a .ja{display:block;font-size:9px;color:#8a98a2;}
-.cnav a.on{background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.1);}
-.cnav a.on .en{color:#1aa39a;}
+.cnav{display:flex;align-items:stretch;gap:2px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:50px;padding:6px 8px;box-shadow:0 4px 18px rgba(0,0,0,0.08);font-family:'Murecho',sans-serif;}
+.cnav a{display:flex;flex-direction:column;align-items:center;justify-content:center;text-decoration:none;padding:8px 16px;color:#1a1a1a;font-size:12px;font-weight:900;letter-spacing:2px;border-radius:30px;line-height:1;transition:background .2s,color .2s;}
+.cnav a .en{display:block;font-size:12px;letter-spacing:2px;}
+.cnav a .ja{display:block;font-size:9px;letter-spacing:2px;color:#888;font-weight:700;margin-top:5px;}
+.cnav a:hover{background:rgba(111,223,214,0.2);color:#0a3d3a;}
+.cnav a:hover .ja{color:#0a3d3a;}
+.cnav a.on{background:#6FDFD6;color:#0a3d3a;}
+.cnav a.on .ja{color:#0a3d3a;}
 .cnavlogo{width:76px;height:76px;flex:0 0 auto;}
 .cnavlogo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.18));}
 .main-wrap{margin:0!important;padding:0!important;}
 .ctop{position:relative;width:100vw;left:50%;margin-left:-50vw;margin-top:0;margin-bottom:50px;}
 .cstage{position:relative;width:100%;height:740px;overflow:hidden;}
+.cdial{position:relative;transform:translateX(var(--dx,21px)) scale(var(--ds,1.13));transform-origin:420px 388px;}
 .ccirc{position:absolute;border-radius:50%;overflow:hidden;border:6px solid #1a1a1a;background:#fff;box-shadow:0 8px 0 rgba(0,0,0,.10);text-decoration:none;display:block;z-index:4;}
 .ccirc img{width:100%;height:100%;object-fit:cover;}
-.ccirc .ccap{position:absolute;left:0;right:0;bottom:0;background:rgba(20,20,20,.62);color:#fff;text-align:center;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;padding:8px 4px;letter-spacing:1px;}
+.ccirc .ccap{display:none;}
 .cgo{position:absolute;z-index:8;width:58px;height:58px;border-radius:50%;background:#6FDFD6;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:26px;font-weight:900;line-height:1;transition:transform .12s,background .12s;}
 .cgo:hover{transform:scale(1.08);background:#5fd0c6;}
 .cico{display:block;}
@@ -227,6 +230,7 @@ html,body{overflow-x:clip;}
 @keyframes cpop{0%{transform:scale(.84);opacity:.35;}60%{transform:scale(1.04);}100%{transform:scale(1);opacity:1;}}
 /* === モバイル：中央1枚＋下に紹介文のシンプルカルーセル === */
 @media(max-width:1023px){
+  .cdial{transform:none!important;}
   .ctop{height:auto;margin-bottom:24px;}
   .cstage{height:auto;overflow:visible;padding:54px 0 4px;}
   .cnavwrap{top:8px;right:10px;gap:6px;z-index:40;}
@@ -299,12 +303,14 @@ html,body{overflow-x:clip;}
 <div class="main-wrap">
   <div class="ctop" id="ctop"><div class="cnavwrap"><a class="cnavlogo" href="#"><img src="img/salvado-logo.png"></a><nav class="cnav"><a class="on" href="#"><span class="en">TOP</span><span class="ja">ホーム</span></a><a href="#"><span class="en">ABOUT</span><span class="ja">紹介</span></a><a href="#"><span class="en">SERIES</span><span class="ja">作品</span></a><a href="#"><span class="en">GALLERY</span><span class="ja">ギャラリー</span></a><a href="#"><span class="en">GAME</span><span class="ja">ゲーム</span></a><a href="#"><span class="en">NEWS</span><span class="ja">お知らせ</span></a></nav></div>
    <div class="cstage">
+   <div class="cdial">
     <a class="ccirc" id="cc3" href="#"><img alt=""><span class="ccap"></span></a>
     <a class="ccirc" id="cc2" href="#"><img alt=""><span class="ccap"></span></a>
     <a class="ccirc" id="cc1" href="#"><img alt=""><span class="ccap"></span></a>
     <a class="ccirc" id="cc4" href="#"><img alt=""><span class="ccap"></span></a>
     <button class="cgo" id="cgo1" aria-label="送り"><span class="cico">↓</span></button>
     <button class="cgo" id="cgo2" aria-label="送り"><span class="cico">↓</span></button>
+   </div>
     <div class="cinfo" id="cinfo">
       <span class="citag" id="citag">SERIES</span>
       <h2 class="cititle" id="cititle"></h2>
