@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -191,36 +191,6 @@ html,body{overflow-x:clip;}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@700&display=swap" rel="stylesheet">
-<style>
-@font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
-/* === コミック回転トップ（FV差し替え） === */
-.ctop{position:relative;max-width:1200px;margin:10px auto 50px;}
-.cstage{position:relative;width:1200px;height:640px;margin:0 auto;overflow:hidden;}
-.ccirc{position:absolute;border-radius:50%;overflow:hidden;border:6px solid #1a1a1a;background:#fff;box-shadow:0 8px 0 rgba(0,0,0,.10);text-decoration:none;display:block;z-index:4;}
-.ccirc img{width:100%;height:100%;object-fit:cover;}
-.ccirc .ccap{position:absolute;left:0;right:0;bottom:0;background:rgba(20,20,20,.62);color:#fff;text-align:center;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;padding:8px 4px;letter-spacing:1px;}
-.cgo{position:absolute;z-index:8;width:58px;height:58px;border-radius:50%;background:#6FDFD6;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:26px;font-weight:900;line-height:1;transition:transform .12s,background .12s;}
-.cgo:hover{transform:scale(1.08);background:#5fd0c6;}
-.cico{display:block;}
-#cgo1{left:504px;top:128px;} #cgo1 .cico{transform:rotate(28deg);}
-#cgo2{left:169px;top:503px;} #cgo2 .cico{transform:rotate(72deg);}
-.cinfo{position:absolute;right:40px;top:54%;transform:translateY(-50%);width:470px;z-index:7;}
-.cinfo .citag{display:inline-block;font-family:'Poppins','Murecho',sans-serif;font-size:14px;letter-spacing:2px;background:#6FDFD6;color:#0a4a45;padding:4px 16px;border-radius:16px;}
-.cinfo .cititle{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;color:#222;margin:14px 0 16px;line-height:1.18;}
-.cinfo .cidesc{font-size:17px;line-height:2.0;color:#444;margin-bottom:26px;}
-.cinfo .cibtn{display:inline-block;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;color:#fff;background:#1a1a1a;text-decoration:none;padding:14px 34px;border-radius:32px;box-shadow:0 5px 0 rgba(0,0,0,.18);transition:transform .15s;}
-.cinfo .cibtn:hover{transform:translateY(-2px);}
-.cinfo.swap{animation:cinfoswap .45s ease;}
-@keyframes cinfoswap{0%{opacity:0;transform:translateY(-50%) translateX(24px);}100%{opacity:1;transform:translateY(-50%) translateX(0);}}
-.ccirc.pop{animation:cpop .32s ease;}
-@keyframes cpop{0%{transform:scale(.84);opacity:.35;}60%{transform:scale(1.04);}100%{transform:scale(1);opacity:1;}}
-/* 簡易レスポンシブ（暫定：全体を縮小して収める） */
-@media(max-width:1240px){.ctop{zoom:0.92;}}
-@media(max-width:1040px){.ctop{zoom:0.78;}}
-@media(max-width:820px){.ctop{zoom:0.62;}}
-@media(max-width:560px){.ctop{zoom:0.42;}}
-</style>
 </head>
 <body>
 
@@ -282,21 +252,39 @@ html,body{overflow-x:clip;}
     <a href="news.html">NEWS<span>お知らせ</span></a>
     </nav>
   </div>
-  <div class="ctop" id="ctop">
-   <div class="cstage">
-    <a class="ccirc" id="cc3" href="#"><img alt=""><span class="ccap"></span></a>
-    <a class="ccirc" id="cc2" href="#"><img alt=""><span class="ccap"></span></a>
-    <a class="ccirc" id="cc1" href="#"><img alt=""><span class="ccap"></span></a>
-    <a class="ccirc" id="cc4" href="#"><img alt=""><span class="ccap"></span></a>
-    <button class="cgo" id="cgo1" aria-label="送り"><span class="cico">↓</span></button>
-    <button class="cgo" id="cgo2" aria-label="送り"><span class="cico">↓</span></button>
-    <div class="cinfo" id="cinfo">
-      <span class="citag" id="citag">SERIES</span>
-      <h2 class="cititle" id="cititle"></h2>
-      <p class="cidesc" id="cidesc"></p>
-      <a class="cibtn" id="cibtn" href="#">読みに行く →</a>
+  <div class="a7-stage" id="a7Stage">
+    <div class="a7-topics-bubble" aria-hidden="true">
+      <img src="img/topics-bubble.png" alt="">
+      <span class="a7-topics-text">TOPICS</span>
     </div>
-   </div>
+    <div class="a7-promo">
+      <span class="ribbon" id="a7Ribbon">CARD GAME</span>
+      <h2 id="a7Title">サルベドTCG<br>絶賛<span class="hl">配信</span>中</h2>
+      <p id="a7Desc">サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。ブラウザだけで今すぐ遊べる、戦略バトルの世界へ。</p>
+      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="cta" id="a7Cta">今すぐ遊ぶ →</a>
+    </div>
+    <div class="a7-oval-wrap">
+      <a class="a7-oval" id="a7OvalLink" href="blog-shinigami-01.html">
+        <img src="img/shinigami-oval.jpg" alt="" id="a7OvalImg">
+        <div class="a7-oval-cap"><div class="num" id="a7OvalNum">01</div><div class="ttl" id="a7OvalTtl">第1話</div></div>
+      </a>
+    </div>
+    <div class="a7-side">
+      <button class="a7-prev-arrow" aria-label="前へ" id="a7PrevBtn" onclick="window.a7Prev&&window.a7Prev()">▲ PREV</button>
+      <div class="a7-mini-wrap" id="a7MiniWrap">
+        <div class="a7-mini">
+          <img src="img/blog/irekawari/005.jpg" alt="" id="a7MiniImg">
+          <div class="a7-mini-cap"><div class="num" id="a7MiniNum">05</div><div class="ttl" id="a7MiniTtl">前</div></div>
+        </div>
+      </div>
+      <div class="a7-mini-wrap" id="a7Mini2Wrap">
+        <div class="a7-mini">
+          <img src="img/shinigami/ep1.jpg" alt="" id="a7Mini2Img">
+          <div class="a7-mini-cap"><div class="num" id="a7Mini2Num">02</div><div class="ttl" id="a7Mini2Ttl">次</div></div>
+        </div>
+      </div>
+      <button class="a7-next-arrow" aria-label="次へ" id="a7NextBtn" onclick="window.a7Next&&window.a7Next()">NEXT ▼</button>
+    </div>
   </div>
 
   <!-- FV 直下：作品連載 + コンテンツ 統合 6カード -->
@@ -410,36 +398,350 @@ html,body{overflow-x:clip;}
 </div>
 
 <script>
-/* === コミック回転トップ === */
+/* === A7: オーバルプロモ スライダー（コンテンツ：カードゲーム / 猫四コマ漫画） === */
 (function(){
-var B='img/';
-var items=[
- {img:B+'shinigami-oval.jpg',cap:'HP限定',pos:'center',tag:'SARUBEDO MANGA',title:'ホームページ限定作品 多数公開中',desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',cta:'読みに行く →',href:'blog.html'},
- {img:B+'shinigami/ep1.jpg',cap:'死神少女',pos:'center',tag:'SERIES',title:'死神少女 原稿Ver 連載中',desc:'寿命と引き換えに願いを叶える死神と、フリーター・ジュンの切ない物語。連作短編全9話、HP限定の原稿バージョン。',cta:'第1話を読む →',href:'blog-shinigami.html'},
- {img:B+'cardgame-oval.jpg',cap:'TCG',pos:'center 26%',tag:'CARD GAME',title:'TCGカード 使い方ガイド公開',desc:'全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」のガイドを公開！デュエリストの一歩を踏み出そう。',cta:'ガイドを見る →',href:'card-guides.html'},
- {img:B+'nyanko-slide.jpg',cap:'ニャンコ',pos:'center',tag:'4-KOMA MANGA',title:'サルベド ニャンコ',desc:'サルベド漫画のマスコット「ニャンコ」たちのほのぼの4コマ漫画。日常のちょっとした幸せをお届け。',cta:'読みに行く →',href:'blog-nyanko.html'},
- {img:B+'blog/irekawari/005.jpg',cap:'入れ替わり',pos:'center',tag:'LOVECOMEDY',title:'毎日入れ替わる幼馴染と俺',desc:'落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。全54ページ＋フルボイス音声つき。',cta:'読みに行く →',href:'blog-irekawari.html'}
-];
-var CX=14,CY=-33,R=585,D2R=Math.PI/180,STEP=42;
-var keyAng=[-38,3.7,46,88,130],keySize=[180,288,498,301,180];
-function sizeAt(a){if(a<=keyAng[0])return keySize[0];for(var k=0;k<keyAng.length-1;k++){if(a<=keyAng[k+1]){var t=(a-keyAng[k])/(keyAng[k+1]-keyAng[k]);return keySize[k]+(keySize[k+1]-keySize[k])*t;}}return keySize[keySize.length-1];}
-function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;}
-function applyOne(s){var a=s.ang*D2R,sz=sizeAt(s.ang);s.el.style.width=sz+'px';s.el.style.height=sz+'px';s.el.style.left=(CX+R*Math.cos(a)-sz/2)+'px';s.el.style.top=(CY+R*Math.sin(a)-sz/2)+'px';s.el.style.zIndex=(sz>400?5:4);}
-var state=[
- {el:document.getElementById('cc3'),ang:46,it:items[0]},
- {el:document.getElementById('cc2'),ang:3.7,it:items[1]},
- {el:document.getElementById('cc1'),ang:88,it:items[4]},
- {el:document.getElementById('cc4'),ang:-38,it:items[2]}
-];
-var ptr=3;
-state.forEach(function(s){setContent(s.el,s.it);applyOne(s);});
-var infoEl=document.getElementById('cinfo');
-function updateInfo(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});var it=best.it;document.getElementById('citag').textContent=it.tag;document.getElementById('cititle').textContent=it.title;document.getElementById('cidesc').textContent=it.desc;var b=document.getElementById('cibtn');b.textContent=it.cta;b.href=it.href;infoEl.classList.remove('swap');void infoEl.offsetWidth;infoEl.classList.add('swap');}
-updateInfo();
-var busy=false;
-function step(){if(busy)return;busy=true;var t0=null,dur=620,from=state.map(function(s){return s.ang;});function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;for(var i=0;i<state.length;i++){state[i].ang=from[i]+STEP*e;applyOne(state[i]);}if(p<1)requestAnimationFrame(fr);else{for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i].ang=-38;state[i].it=items[ptr%items.length];setContent(state[i].el,state[i].it);ptr++;applyOne(state[i]);}}updateInfo();busy=false;}}requestAnimationFrame(fr);}
-document.getElementById('cgo1').onclick=step;
-document.getElementById('cgo2').onclick=step;
+  var SLIDES=[
+    {
+      ribbon:'SARUBEDO MANGA',
+      h2:'ホームページ<br>限定作品<br><span class="hl">多数</span>公開中',
+      desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',
+      cta:'読みに行く →',
+      ctaHref:'blog.html',
+      ovalImg:'img/shinigami-oval.jpg',
+      ovalNum:'01',
+      ovalTtl:'HP 限定',
+      imgScale:1.3,imgX:0,imgY:0,
+      href:'blog.html'
+    },
+    {
+      ribbon:'SERIES',
+      h2:'死神少女<br><span class="hl">原稿</span>Ver<br>連載中',
+      desc:'寿命と引き換えに願いを叶える死神と、フリーター・ジュンの切ない物語。連作短編全 9 話、HP 限定の原稿バージョン。',
+      cta:'第1話を読む →',
+      ctaHref:'blog-shinigami-01.html',
+      ovalImg:'img/shinigami/ep1.jpg',
+      ovalNum:'02',
+      ovalTtl:'死神少女',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-shinigami.html'
+    },
+    {
+      ribbon:'CARD GAME',
+      h2:'TCG<span class="hl">カード</span><br>使い方ガイド<br>公開',
+      desc:'全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」のガイドを公開！デュエリストの一歩を踏み出そう',
+      cta:'ガイドを見る →',
+      ctaHref:'card-guides.html',
+      ctaExt:false,
+      ovalImg:'img/cardgame-oval.jpg',
+      ovalNum:'03',
+      ovalTtl:'TCG',
+      imgScale:1,imgX:0,imgY:0,
+      href:'card-guides.html'
+    },
+    {
+      ribbon:'4-KOMA MANGA',
+      h2:'サルベド<br><span class="hl">ニャンコ</span>',
+      desc:'サルベド漫画のマスコット「ニャンコ」たちのほのぼの 4 コマ漫画。日常のちょっとした幸せをお届け。',
+      cta:'読みに行く →',
+      ctaHref:'blog-nyanko.html',
+      ovalImg:'img/nyanko-slide.jpg',
+      ovalNum:'04',
+      ovalTtl:'ニャンコ',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-nyanko.html'
+    },
+    {
+      ribbon:'LOVECOMEDY',
+      h2:'毎日<br>入れ替わる<br><span class="hl">幼馴染</span>と俺',
+      desc:'落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。全54ページ＋フルボイス音声つき。',
+      cta:'読みに行く →',
+      ctaHref:'blog-irekawari.html',
+      ovalImg:'img/blog/irekawari/005.jpg',
+      ovalNum:'05',
+      ovalTtl:'入れ替わり',
+      imgScale:1,imgX:0,imgY:0,
+      href:'blog-irekawari.html'
+    }
+  ];
+  var idx=0,auto=null,AUTO=5000;
+  var lastDir=1; /* +1=次方向、-1=前方向 */
+  var slideType=localStorage.getItem('a7SlideType')||'fade';
+  /* fade / vertical / horizontal / zoom / rotate */
+  function applyHide(el, type, dir){
+    el.style.transition='none';
+    el.style.opacity='0';
+    if(type==='fade'){el.style.transform='scale(0.96)';}
+    else if(type==='vertical'){el.style.transform='translateY('+(dir>0?-30:30)+'px)';}
+    else if(type==='horizontal'){el.style.transform='translateX('+(dir>0?40:-40)+'px)';}
+    else if(type==='zoom'){el.style.transform='scale(0.7)';}
+    else if(type==='rotate'){el.style.transform='rotate('+(dir>0?-12:12)+'deg) scale(0.9)';}
+  }
+  function applyShow(el){
+    el.style.transition='opacity 0.45s ease, transform 0.55s cubic-bezier(0.34, 1.3, 0.5, 1)';
+    el.style.opacity='1';
+    el.style.transform='translate(0,0) scale(1) rotate(0)';
+  }
+  /* スロット風：カード枠は固定、中の画像だけ下から上に入れ替わる */
+  function imgExit(imgEl){
+    if(!imgEl) return;
+    imgEl.style.transition='transform 0.32s cubic-bezier(0.55, 0, 0.55, 1), opacity 0.28s ease-in';
+    imgEl.style.transform='translateY(-100%) scale(1)';
+    imgEl.style.opacity='0';
+  }
+  function imgEnter(imgEl){
+    if(!imgEl) return;
+    imgEl.style.transition='none';
+    imgEl.style.transform='translateY(100%) scale(1)';
+    imgEl.style.opacity='0.4';
+    void imgEl.offsetHeight;
+    imgEl.style.transition='transform 0.55s cubic-bezier(0.22, 0.85, 0.35, 1), opacity 0.42s ease-out';
+    imgEl.style.transform='translateY(0) scale(1)';
+    imgEl.style.opacity='1';
+  }
+  /* ラベル（番号・タイトル）も軽くフェード */
+  function labelFade(els){
+    els.forEach(function(el){if(!el)return;el.style.transition='opacity 0.2s ease';el.style.opacity='0.3';});
+    setTimeout(function(){els.forEach(function(el){if(!el)return;el.style.transition='opacity 0.4s ease';el.style.opacity='1';});}, 260);
+  }
+  function render(){
+    var c=SLIDES[idx];
+    var prevSlide=SLIDES[(idx-1+SLIDES.length)%SLIDES.length];
+    var nextSlide=SLIDES[(idx+1)%SLIDES.length];
+    var ovalLink=document.getElementById('a7OvalLink');if(!ovalLink) return;
+    var ovalImg=document.getElementById('a7OvalImg');
+    var miniImg=document.getElementById('a7MiniImg');
+    var mini2Img=document.getElementById('a7Mini2Img');
+    var m1=document.getElementById('a7MiniWrap');
+    var m2wrap=document.getElementById('a7Mini2Wrap');
+    var oval=document.querySelector('.a7-oval');
+
+    /* 順番：下ミニ → 中央 → 上ミニ */
+    var STAGGER=40; /* 順次発火の間隔 (ms) */
+
+    /* シンプルなフェードのみ（カード自体は動かない） */
+    function wrapExit(el){
+      if(!el) return;
+      el.style.transition='opacity 0.22s ease-in';
+      el.style.opacity='0';
+    }
+    function wrapEnter(el){
+      if(!el) return;
+      el.style.transition='opacity 0.28s ease-out';
+      el.style.opacity='1';
+      el.style.transform='';
+    }
+
+    /* Exit: 下ミニ → 中央 → 上ミニ */
+    setTimeout(function(){wrapExit(m2wrap);}, 0);
+    setTimeout(function(){wrapExit(oval);}, STAGGER);
+    setTimeout(function(){wrapExit(m1);}, STAGGER*2);
+
+    /* オーバル画像の拡大・位置（スライドごと） */
+    function applyOvalImgTransform(){
+      if(!ovalImg) return;
+      ovalImg.style.transformOrigin='center';
+      ovalImg.style.transform='scale('+(c.imgScale||1)+') translate('+(c.imgX||0)+'px,'+(c.imgY||0)+'px)';
+    }
+    /* パネルの画像スライダー初期値を現在スライドに合わせる */
+    var sScale=document.querySelector('#a7Panel [data-slide-img="scale"]');
+    var sX=document.querySelector('#a7Panel [data-slide-img="x"]');
+    var sY=document.querySelector('#a7Panel [data-slide-img="y"]');
+    if(sScale){sScale.value=c.imgScale||1;sScale.closest('label').querySelector('.v').textContent=(c.imgScale||1);}
+    if(sX){sX.value=c.imgX||0;sX.closest('label').querySelector('.v').textContent=(c.imgX||0);}
+    if(sY){sY.value=c.imgY||0;sY.closest('label').querySelector('.v').textContent=(c.imgY||0);}
+
+    setTimeout(function(){
+      /* 内容差し替え */
+      ovalLink.href=c.href;
+      if(ovalImg) ovalImg.src=c.ovalImg;
+      applyOvalImgTransform();
+      document.getElementById('a7OvalNum').textContent=c.ovalNum;
+      document.getElementById('a7OvalTtl').textContent=c.ovalTtl;
+      if(miniImg) miniImg.src=prevSlide.ovalImg;
+      document.getElementById('a7MiniNum').textContent=prevSlide.ovalNum;
+      document.getElementById('a7MiniTtl').textContent=prevSlide.ovalTtl;
+      if(m1) m1.onclick=function(){prev();reset();};
+      if(mini2Img){
+        mini2Img.src=nextSlide.ovalImg;
+        document.getElementById('a7Mini2Num').textContent=nextSlide.ovalNum;
+        document.getElementById('a7Mini2Ttl').textContent=nextSlide.ovalTtl;
+        if(m2wrap) m2wrap.onclick=function(){next();reset();};
+      }
+      /* Enter: 下ミニ → 中央 → 上ミニ */
+      setTimeout(function(){wrapEnter(m2wrap);}, 0);
+      setTimeout(function(){wrapEnter(oval);}, STAGGER);
+      setTimeout(function(){wrapEnter(m1);}, STAGGER*2);
+    }, 280 + STAGGER*2);
+    /* 左 promo 更新 */
+    document.getElementById('a7Ribbon').textContent=c.ribbon;
+    document.getElementById('a7Title').innerHTML=c.h2;
+    document.getElementById('a7Desc').textContent=c.desc;
+    var ctaEl=document.getElementById('a7Cta');
+    ctaEl.textContent=c.cta;
+    ctaEl.href=c.ctaHref;
+    if(c.ctaExt){ctaEl.target='_blank';ctaEl.rel='noopener noreferrer';}else{ctaEl.removeAttribute('target');ctaEl.removeAttribute('rel');}
+    /* 左 promo も軽くフェード */
+    var promo=document.querySelector('.a7-promo');
+    promo.style.opacity='0.5';
+    setTimeout(function(){promo.style.transition='opacity 0.4s';promo.style.opacity='1';},20);
+  }
+  var EPS=SLIDES;
+  var isAnimating=false;
+  function next(){if(isAnimating)return;isAnimating=true;lastDir=1;idx=(idx+1)%EPS.length;render();setTimeout(function(){isAnimating=false;},700);}
+  function prev(){if(isAnimating)return;isAnimating=true;lastDir=-1;idx=(idx-1+EPS.length)%EPS.length;render();setTimeout(function(){isAnimating=false;},700);}
+  function start(){stop();auto=setInterval(function(){isAnimating=false;next();},AUTO);}
+  function stop(){if(auto){clearInterval(auto);auto=null;}}
+  function reset(){stop();start();}
+  /* グローバル公開（onclick 属性から呼ぶ用） */
+  window.a7Prev=function(){prev();reset();};
+  window.a7Next=function(){next();reset();};
+  window.A7_SLIDES=SLIDES;
+  window.A7_IDX=function(){return idx;};
+  window.A7_PauseToggle=function(){
+    if(auto){stop();return true;}else{start();return false;}
+  };
+  window.A7_IsPaused=function(){return !auto;};
+  document.getElementById('a7NextBtn').addEventListener('click',function(){next();reset();});
+  var prevBtn=document.getElementById('a7PrevBtn');
+  if(prevBtn) prevBtn.addEventListener('click',function(){prev();reset();});
+  var stage=document.getElementById('a7Stage');
+  stage.addEventListener('mouseenter',stop);
+  stage.addEventListener('mouseleave',start);
+  render();start();
+})();
+
+/* nav-toggle と header 関連はヘッダーがコメントアウト中なので無効化
+document.querySelector('.nav-toggle').addEventListener('click',function(){document.querySelectorAll('.site-header nav').forEach(function(n){n.classList.toggle('open');});});
+(function(){var h=document.querySelector('.site-header');if(!h) return;function set(){document.documentElement.style.setProperty('--mega-top', h.getBoundingClientRect().height + 'px');}set();window.addEventListener('resize',set);window.addEventListener('load',set);})();
+*/
+
+
+/* === お知らせ：news.html から上位3件を取得 === */
+(function(){
+  var target = document.getElementById('newsTop3');
+  if (!target) return;
+  fetch('news.html')
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function(html){
+      var doc = new DOMParser().parseFromString(html, 'text/html');
+      var items = doc.querySelectorAll('.news-list li');
+      if (!items.length) return;
+      var top3 = Array.prototype.slice.call(items, 0, 3);
+      target.innerHTML = '';
+      top3.forEach(function(li){ target.appendChild(li.cloneNode(true)); });
+    })
+    .catch(function(){
+      /* fetch失敗時はHTMLに直接書いた静的フォールバックを維持 */
+    });
+})();
+
+(function(){
+  var MAIN_CH = { id: 'UCd8vNU9GdaDJF-jLDyWWvMw', name: 'サルベド漫画', latestCount: 2 };
+  var channels = [
+    MAIN_CH,
+    { id: 'UCXU7pjSKDNHAFKf36YxntMw', name: 'サルベド漫画Emotional', latestCount: 1 },
+    { id: 'UCZRD5bbun-Dgxj2AG2PKbjg', name: 'サルベド漫画Fantasy', latestCount: 1 }
+  ];
+
+  // --- 最新動画カルーセル（各チャンネル最新2本 + 過去動画ランダム1本） ---
+  var gridEl = document.getElementById('latestVideos');
+  if (!gridEl) return;  // 最新動画セクションが非表示(コメントアウト)の時はYouTube取得もしない
+  var container = document.createElement('div');
+  container.className = 'video-grid-track';
+  gridEl.appendChild(container);
+
+  function fetchChannel(ch, latestCount){
+    return fetch('https://game.sarubedo.jp/yt-feed?id=' + ch.id)
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(xml){
+        var doc = new DOMParser().parseFromString(xml, 'text/xml');
+        var entries = doc.querySelectorAll('entry');
+        var latest = [], past = [];
+        for (var i = 0; i < entries.length; i++){
+          var e = entries[i];
+          var vid = e.querySelector('videoId') ? e.querySelector('videoId').textContent : '';
+          var ttl = e.querySelector('title') ? e.querySelector('title').textContent : '';
+          if (!vid) continue;
+          var item = {videoId:vid, title:ttl, chName:ch.name};
+          if (i < latestCount) latest.push(item); else past.push(item);
+        }
+        return {latest:latest, past:past};
+      })
+      .catch(function(){ return {latest:[], past:[]}; });
+  }
+
+  function buildCard(v, isPast){
+    var card = document.createElement('div');
+    card.className = 'video-card' + (isPast ? ' is-past' : '');
+    var safeTitle = v.title.replace(/"/g, '&quot;');
+    card.innerHTML = '<div class="video-thumb">' +
+        '<div class="video-thumb-poster" data-id="' + v.videoId + '">' +
+          '<img src="https://i.ytimg.com/vi/' + v.videoId + '/hqdefault.jpg" alt="' + safeTitle + '" loading="lazy" onerror="this.src=\'https://i.ytimg.com/vi/' + v.videoId + '/mqdefault.jpg\'">' +
+          '<div class="video-play-btn">▶</div>' +
+        '</div>' +
+      '</div>' +
+      '<p class="video-chname">' + v.chName + '</p>' +
+      '<p class="video-vidtitle">' + v.title + '</p>';
+    return card;
+  }
+
+  // クリック委譲：本物カードでもクローンでも .video-thumb-poster クリックで再生
+  container.addEventListener('click', function(e){
+    var poster = e.target.closest('.video-thumb-poster');
+    if (!poster) return;
+    var id = poster.dataset.id;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3';
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('frameborder', '0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    poster.parentNode.replaceChild(iframe, poster);
+  });
+
+  Promise.all(channels.map(function(ch){ return fetchChannel(ch, ch.latestCount); }))
+    .then(function(results){
+      var all = [], pastPool = [];
+      results.forEach(function(r){
+        r.latest.forEach(function(v){ all.push({v:v, past:false}); });
+        pastPool = pastPool.concat(r.past);
+      });
+      if (pastPool.length){
+        var rnd = pastPool[Math.floor(Math.random() * pastPool.length)];
+        all.push({v:rnd, past:true});
+      }
+      container.innerHTML = '';
+      all.forEach(function(item){ container.appendChild(buildCard(item.v, item.past)); });
+      if (container.children.length === 0){
+        container.innerHTML = '<p style="padding:20px;color:#888;text-align:center;width:100%;">最新動画を取得できませんでした。<a href="javascript:location.reload()">再読み込み</a></p>';
+        return;
+      }
+      initCarousel();
+    });
+
+  function initCarousel(){
+    var realCount = container.children.length;
+    if (realCount < 1) return;
+
+    // 継ぎ目なしマーキー：
+    //   1) 末尾カードを先頭にも複製（センター開始時、左側に「前のカード」が見える状態を作る）
+    //   2) 本物セットを末尾に複製（ループ用）
+    var originals = Array.prototype.slice.call(container.children);
+    container.insertBefore(originals[originals.length - 1].cloneNode(true), container.firstChild);
+    originals.forEach(function(card){
+      container.appendChild(card.cloneNode(true));
+    });
+
+    // CSS変数：移動距離は本物枚数ぶん、速度は本物枚数×5秒
+    var SECONDS_PER_CARD = 5;
+    document.documentElement.style.setProperty('--marquee-count', realCount);
+    document.documentElement.style.setProperty('--marquee-duration', (SECONDS_PER_CARD * realCount) + 's');
+
+    // アニメ再起動（変数を確実に反映）
+    container.style.animation = 'none';
+    void container.offsetWidth;
+    container.style.animation = '';
+  }
 })();
 </script>
 </body>
