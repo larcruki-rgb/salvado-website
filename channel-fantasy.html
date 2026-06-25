@@ -178,21 +178,29 @@ body{margin:0;padding:0;}
 
 /* === せり上がり演出：ヒーローを固定し、代表作が下から覆いかぶさる === */
 /* （neo-porte / natori 方式。元に戻す時はこのブロックを削除） */
-.ch-detail{
+.ch-detail{                     /* 背面：ヒーロー。固定して待つ */
   position:fixed;
   top:0; left:0; right:0;
   height:100vh;
   min-height:0;
   z-index:1;
 }
-.ch-stories{
+.ch-belowfold{                  /* 年表＋代表作をまとめた せり上がりパネル（模様を地続きで敷く） */
   position:relative;
   z-index:2;
-  margin-top:100vh;            /* 最初の1画面ぶんは固定ヒーローを見せる */
-  border-radius:26px 26px 0 0; /* せり上がるパネルの上辺を少し丸める */
+  margin-top:100vh;             /* 最初の1画面ぶんは固定ヒーローを見せる */
+  border-radius:26px 26px 0 0;
   box-shadow:0 -18px 44px rgba(0,0,0,0.20);
+  background-color:#fff;
+  overflow:hidden;             /* 模様を角丸に合わせてクリップ */
 }
-footer{                         /* 最下部でヒーローの裏に隠れないよう前面へ */
+.ch-timeline,.ch-stories{       /* 中身は透明にしてラッパーの模様を見せる */
+  position:relative;
+  z-index:1;
+  background:transparent;
+}
+.ch-stories{padding-top:24px;}  /* 年表から地続き（丸角＋影なし） */
+footer{
   position:relative;
   z-index:2;
 }
@@ -210,6 +218,40 @@ footer{                         /* 最下部でヒーローの裏に隠れない
 
 /* === 動画サムネの再生ボタン(▶)を非表示（戻す時はこの2行を削除） === */
 .ch-detail-video .video-play-btn{display:none!important;}
+
+/* === 年表セクション（せり上がり1層目／メインと同じポップ吹き出し＋にゃんこ模様） === */
+/* === 年表セクション（チャンネル別テーマ） === */
+.ch-timeline{padding:64px 24px 60px;}
+.ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
+.tl{list-style:none;margin:0;padding:0;position:relative;}
+.tl-item{position:relative;width:50%;padding:0 40px 32px 0;box-sizing:border-box;}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 32px 40px;}
+.tl-year{display:inline-block;font-size:12px;padding:3px 14px;border-radius:20px;margin-bottom:9px;line-height:1.4;}
+.tl-body{position:relative;border-radius:16px;padding:14px 18px;}
+.tl-body h3{margin:0 0 6px;font-size:15px;line-height:1.45;}
+.tl-body p{margin:0;font-size:12.5px;line-height:1.82;}
+.tl-item::before{content:'';position:absolute;top:8px;z-index:3;}
+
+.ch-belowfold{background:linear-gradient(180deg,#eef1ff 0%,#f3eeff 55%,#fff7ef 100%)!important;}
+.ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;background-image:radial-gradient(1.6px 1.6px at 25% 25%,rgba(255,210,120,.55),transparent),radial-gradient(1.6px 1.6px at 75% 65%,rgba(120,140,255,.5),transparent),radial-gradient(1.2px 1.2px at 50% 85%,rgba(150,120,255,.45),transparent);background-size:120px 120px,160px 160px,90px 90px;background-repeat:repeat;}
+.ch-timeline-title{font-size:27px;text-align:center;letter-spacing:3px;margin:0 0 14px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;text-shadow:0 2px 10px #fff;}
+.ch-timeline-lead{font-size:14px;line-height:1.95;color:#4a447a;text-align:center;max-width:720px;margin:0 auto 46px;text-shadow:0 1px 6px #fff;}
+.tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;width:4px;transform:translateX(-50%);background:linear-gradient(#8e7bff,#c9a14a);border-radius:4px;box-shadow:0 0 10px rgba(142,123,255,.6);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);}
+.tl-item::before{right:-9px;width:16px;height:16px;background:#6b5cff;border-radius:50%;box-shadow:0 0 0 3px #fff,0 0 10px rgba(107,92,255,.9);transform:rotate(45deg);}
+.tl-item:nth-child(even)::before{right:auto;left:-9px;background:#c9a14a;box-shadow:0 0 0 3px #fff,0 0 10px rgba(201,161,74,.9);}
+.tl-year{font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#fff;background:linear-gradient(135deg,#6b5cff,#241b9c);}
+.tl-item:nth-child(even) .tl-year{background:linear-gradient(135deg,#c9a14a,#9c7a1f);}
+.tl-body{background:rgba(255,255,255,.85);border:2px solid #6b5cff;box-shadow:0 6px 18px rgba(80,70,180,.18);backdrop-filter:blur(2px);}
+.tl-item:nth-child(even) .tl-body{border-color:#c9a14a;box-shadow:0 6px 18px rgba(160,130,50,.2);}
+.tl-body h3{font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;color:#241b9c;}
+.tl-body p{color:#3a3760;}
+@media(max-width:760px){
+  .ch-timeline{padding:48px 16px 44px;}
+  .ch-timeline-title{font-size:22px!important;letter-spacing:2px!important;}
+  .tl::before{left:9px!important;}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
+  .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -296,8 +338,24 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
         <a href="videos.html" class="ch-detail-more">動画をもっと見る →</a>
-        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-stories').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
+        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-timeline').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
       </div>
+    </div>
+  </section>
+
+  <div class="ch-belowfold">
+  <!-- ファンタジー年表（せり上がり1層目／※中身は仮。各チャンネル独自の出来事に差し替え予定） -->
+  <section class="ch-timeline">
+    <div class="ch-timeline-inner">
+      <h2 class="ch-timeline-title">ファンタジーチャンネル年表</h2>
+      <p class="ch-timeline-lead">2025年6月に誕生した、サルベド漫画のファンタジー系チャンネル。剣と魔法から殺し屋・タイムリープまで、現実では味わえない世界を届ける「サルベド漫画Fantasy」の歩みと魅力をご紹介します。</p>
+      <ol class="tl">
+        <li class="tl-item"><span class="tl-year">2025.06</span><div class="tl-body"><h3>ファンタジー系チャンネルとして開設</h3><p>2025年6月に開設された、ファンタジー系のサルベドチャンネル。剣と魔法、勇者と魔王といった異世界系のストーリーだけでなく、殺し屋、タイムリープ、ヒーローもの等、現実世界だと味わえないジャンルを幅広く投稿している。</p></div></li>
+        <li class="tl-item"><span class="tl-year">サルベドらしさ</span><div class="tl-body"><h3>ジャンルは多彩でも、根っこはラブコメ</h3><p>こちらもサルベドファンの方が違和感なく楽しめるように、内容はあくまでラブコメ系。しかし、本家やEmotionalにはない激しい戦闘シーンや、複雑な世界観設定を味わうことができるのが最大の魅力。</p></div></li>
+        <li class="tl-item"><span class="tl-year">ライター</span><div class="tl-body"><h3>脚本は青春詭弁・まっきーに</h3><p>こちらもメインのライターは青春詭弁、まっきーにが担当している。Fantasyで最もメジャーな魔法【モルティス・イグニス】は青春詭弁が生み出したアイデア。まっきーにを含む他のライターも、この魔法を各作品で流用している。</p></div></li>
+        <li class="tl-item"><span class="tl-year">TCG</span><div class="tl-body"><h3>サルベドTCG誕生のきっかけ</h3><p>TCG化との相性が最も良いチャンネルでもあり、最初に作るゲームでTCGを思いついたきっかけはこのチャンネルがあったから、というのはまっきーに談。</p></div></li>
+        <li class="tl-item"><span class="tl-year">二度楽しめる</span><div class="tl-body"><h3>新作がそのままカードになることも</h3><p>新しい動画が投稿されるたび、新規カードとして採用される可能性がある。サルベド漫画Fantasyのファンであり、且つサルベドTCGも楽しんでくれるファンの方からすれば、1つの作品で2度楽しむことができる。</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -342,6 +400,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       </div>
     </div>
   </section>
+  </div>
 
   <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
     <img src="img/scroll-top.png" alt="">

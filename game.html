@@ -11,13 +11,17 @@
 
 /* トップロゴ */
 .game-logo-top{text-align:center;margin:6px 0 26px;line-height:0;}
-.game-logo-top img{width:100%;max-width:720px;height:auto;}
+.game-logo-top .logo-guard{position:relative;display:inline-block;max-width:720px;width:100%;}
+.game-logo-top .logo-guard::after{content:"";position:absolute;inset:0;z-index:2;}
+.game-logo-top img{width:100%;height:auto;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;pointer-events:none;}
 
 /* イントロ（ロゴ下） */
 .game-intro{text-align:center;margin:0 0 44px;}
 .game-intro .lead{font-size:19px;font-weight:800;line-height:1.85;margin:0 0 26px;color:#0d4d49;}
 .game-intro .btn-play{display:inline-block;background:linear-gradient(135deg,#6FDFD6 0%,#58cfc4 100%);color:#0a3d3a;font-weight:900;font-size:17px;padding:16px 38px;border-radius:40px;text-decoration:none;box-shadow:0 8px 20px rgba(111,223,214,0.4);letter-spacing:1.5px;transition:transform .2s,box-shadow .2s;}
 .game-intro .btn-play:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 28px rgba(111,223,214,0.55);}
+.game-intro .btn-static{cursor:default;}
+.game-intro .btn-static:hover{transform:none;box-shadow:0 8px 20px rgba(111,223,214,0.4);}
 .game-intro .btn-note{margin:14px 0 0;font-size:12px;font-weight:700;color:#0d4d49;opacity:0.8;letter-spacing:1px;}
 
 /* セクション見出し */
@@ -69,13 +73,12 @@
 <div class="main-wrap">
   <div class="page-content game-page">
     <!-- トップロゴ -->
-    <h1 class="game-logo-top"><img src="img/tcg-logo.png?v=1" alt="サルベドカードゲーム — SARUBEDO TCG"></h1>
+    <h1 class="game-logo-top"><span class="logo-guard" oncontextmenu="return false"><img src="img/tcg-logo.png?v=1" alt="サルベドカードゲーム — SARUBEDO TCG" draggable="false"></span></h1>
 
     <!-- イントロ -->
     <div class="game-intro">
       <p class="lead">サルベドのキャラクターたちが活躍するオンライン対戦カードゲーム。<br>ブラウザだけで今すぐ遊べます。</p>
-      <a href="https://game.sarubedo.jp" target="_blank" rel="noopener noreferrer" class="btn-play">YouTubeメンバーシップ加入者限定 先行公開中</a>
-      <p class="btn-note">インストール不要・無料</p>
+      <span class="btn-play btn-static">YouTubeメンバーシップ加入者限定 先行公開中</span>
     </div>
 
     <!-- 遊び方 -->
@@ -87,7 +90,7 @@
         <p>ブラウザでアクセスするだけ。スマホでもPCでもすぐ遊べる。</p>
       </div>
       <div class="game-feature">
-        <div class="ico">⚔️</div>
+        <div class="ico"><img src="img/icon-sword.png" alt="" style="height:46px;width:auto;vertical-align:middle;"></div>
         <h3>オンライン／AI対戦</h3>
         <p>みんなと対戦も、ひとりでAI相手の練習も。好きなスタイルで。</p>
       </div>

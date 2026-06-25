@@ -161,13 +161,17 @@ body{margin:0;padding:0;}
   min-height:0;
   z-index:1;
 }
-.ch-stories{
+.ch-belowfold{                  /* 年表＋代表作をまとめた せり上がりパネル（模様を地続きで敷く） */
   position:relative;
   z-index:2;
-  margin-top:100vh;            /* 最初の1画面ぶんは固定ヒーローを見せる */
-  border-radius:26px 26px 0 0; /* せり上がるパネルの上辺を少し丸める */
+  margin-top:100vh;             /* 最初の1画面ぶんは固定ヒーローを見せる */
+  border-radius:26px 26px 0 0;
   box-shadow:0 -18px 44px rgba(0,0,0,0.20);
+  background-color:#fff;
+  overflow:hidden;
 }
+.ch-timeline,.ch-stories{position:relative;z-index:1;background:transparent;}
+.ch-stories{padding-top:24px;}
 footer{                         /* 最下部でヒーローの裏に隠れないよう前面へ */
   position:relative;
   z-index:2;
@@ -186,6 +190,46 @@ footer{                         /* 最下部でヒーローの裏に隠れない
 
 /* === 動画サムネの再生ボタン(▶)を非表示（戻す時はこの2行を削除） === */
 .ch-detail-video .video-play-btn{display:none!important;}
+
+/* === 年表セクション（メインと同じポップ吹き出し／にゃんこ模様・年表＋代表作 地続き） === */
+/* === 年表セクション（チャンネル別テーマ） === */
+.ch-timeline{padding:64px 24px 60px;}
+.ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
+.tl{list-style:none;margin:0;padding:0;position:relative;}
+.tl-item{position:relative;width:50%;padding:0 40px 32px 0;box-sizing:border-box;}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 32px 40px;}
+.tl-year{display:inline-block;font-size:12px;padding:3px 14px;border-radius:20px;margin-bottom:9px;line-height:1.4;}
+.tl-body{position:relative;border-radius:16px;padding:14px 18px;}
+.tl-body h3{margin:0 0 6px;font-size:15px;line-height:1.45;}
+.tl-body p{margin:0;font-size:12.5px;line-height:1.82;}
+.tl-item::before{content:'';position:absolute;top:8px;z-index:3;}
+
+.ch-belowfold{background:radial-gradient(120% 80% at 50% 0%,#241d2b 0%,#16121d 70%)!important;}
+.ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;background-image:radial-gradient(50% 38% at 25% 16%,rgba(139,0,25,.15),transparent),radial-gradient(45% 34% at 80% 50%,rgba(90,70,120,.17),transparent),radial-gradient(42% 30% at 45% 86%,rgba(139,0,25,.1),transparent);background-repeat:no-repeat;}
+.ch-timeline-title{font-size:26px;text-align:center;letter-spacing:6px;margin:0 0 14px;font-family:'SoukouMincho','Hiragino Mincho ProN',serif;color:#e9e1ec;text-shadow:0 2px 10px #000;}
+.ch-timeline-lead{font-size:14px;line-height:2;color:#b6a9bf;text-align:center;max-width:720px;margin:0 auto 46px;font-family:'SoukouMincho','Hiragino Mincho ProN',serif;}
+.tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;width:1px;transform:translateX(-50%);background:linear-gradient(#9a8aa6,#5a2230);-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);}
+.tl-item::before{top:7px;right:-7px;width:13px;height:13px;background:#8B0019;border:2px solid #cdbcd2;transform:rotate(45deg);}
+.tl-item:nth-child(even)::before{right:auto;left:-7px;}
+.tl-year{font-family:'SoukouMincho','Hiragino Mincho ProN',serif;color:#f3eef5;background:#8B0019;letter-spacing:2px;}
+.tl-item:nth-child(even) .tl-year{background:#4a3a5a;}
+.tl-body{background:rgba(40,33,52,.92);border:1px solid #50445e;border-radius:8px;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+.tl-body h3{font-family:'SoukouMincho','Hiragino Mincho ProN',serif;color:#ecdfe6;letter-spacing:1px;}
+.tl-body p{color:#c4b9cc;}
+/* 死神少女：代表作セクションも暗背景に合わせて明色へ */
+.ch-stories-title{color:#ecdfe6!important;font-family:'SoukouMincho','Hiragino Mincho ProN',serif!important;}
+.ch-stories-lead{color:#c4b9cc!important;}
+.ch-stories-lead a{color:#e58aa0!important;}
+.ch-story{background:rgba(40,33,52,.92)!important;border:1px solid #50445e!important;}
+.ch-story h3{color:#ecdfe6!important;}
+.ch-story p{color:#c4b9cc!important;}
+@media(max-width:760px){
+  .ch-timeline{padding:48px 16px 44px;}
+  .ch-timeline-title{font-size:22px!important;letter-spacing:2px!important;}
+  .tl::before{left:9px!important;}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
+  .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -230,8 +274,24 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
         <a href="videos.html" class="ch-detail-more">動画をもっと見る →</a>
-        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-stories').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
+        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-timeline').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
       </div>
+    </div>
+  </section>
+
+  <div class="ch-belowfold">
+  <!-- 死神少女チャンネル年表（せり上がり1層目／※中身は仮。各チャンネル独自の出来事に差し替え予定） -->
+  <section class="ch-timeline">
+    <div class="ch-timeline-inner">
+      <h2 class="ch-timeline-title">死神少女チャンネル年表</h2>
+      <p class="ch-timeline-lead">2024年12月に最初の動画が投稿された、サルベドシリーズの中で最も異色なチャンネル。総集編の特典から専用チャンネルへと生まれ変わった「死神少女」の歩みをご紹介します。</p>
+      <ol class="tl">
+        <li class="tl-item"><span class="tl-year">2024.12</span><div class="tl-body"><h3>最初の動画が本家サルベドに登場</h3><p>2024年12月に最初の動画が投稿された、サルベドシリーズの中では最も異色なチャンネル。元々は本家サルベドに投稿されていたシリーズで、初めて第一話が投稿された時は、まだサルベドがラブコメジャンル以外にも手を出していた時期だった。</p></div></li>
+        <li class="tl-item"><span class="tl-year">ジャンル違い</span><div class="tl-body"><h3>総集編の“特典”という立ち位置へ</h3><p>しかしそこからラブコメジャンルに舵を切ったことで死神少女はジャンル違いとなり、第二話以降は総集編の最後に特典的な感じでつけられるようになった。</p></div></li>
+        <li class="tl-item"><span class="tl-year">ファンの声</span><div class="tl-body"><h3>「死神少女だけでまとめてほしい」</h3><p>死神少女目的で総集編を見てくれるファンの方も多くいて、「死神少女だけでまとめてほしい」という声が複数上がったことでチャンネル化を決意。</p></div></li>
+        <li class="tl-item"><span class="tl-year">リニューアル</span><div class="tl-body"><h3>専用チャンネルとして生まれ変わる</h3><p>脚本はそのままに、イラスト、声優を全てリニューアルする形で専用チャンネルとして生まれ変わった。</p></div></li>
+        <li class="tl-item"><span class="tl-year">制作体制</span><div class="tl-body"><h3>完全固定メンバー・未公開原稿も公開中</h3><p>声優のいちこさんはもちろん、イラストレーター、シナリオライターが完全固定。その分、投稿頻度がかなり限定的になってしまっている。今はこのHPにまだ動画未公開の原稿を載せているため、続きが気になる方はぜひそちらもチェックしてみてほしい。</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -276,6 +336,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       </div>
     </div>
   </section>
+  </div>
 
   <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
     <img src="img/scroll-top.png" alt="">

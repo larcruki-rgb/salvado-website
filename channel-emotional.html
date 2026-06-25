@@ -148,13 +148,17 @@ body{margin:0;padding:0;}
   min-height:0;
   z-index:1;
 }
-.ch-stories{
+.ch-belowfold{                  /* 年表＋代表作をまとめた せり上がりパネル（模様を地続きで敷く） */
   position:relative;
   z-index:2;
-  margin-top:100vh;            /* 最初の1画面ぶんは固定ヒーローを見せる */
-  border-radius:26px 26px 0 0; /* せり上がるパネルの上辺を少し丸める */
+  margin-top:100vh;             /* 最初の1画面ぶんは固定ヒーローを見せる */
+  border-radius:26px 26px 0 0;
   box-shadow:0 -18px 44px rgba(0,0,0,0.20);
+  background-color:#fff;
+  overflow:hidden;
 }
+.ch-timeline,.ch-stories{position:relative;z-index:1;background:transparent;}
+.ch-stories{padding-top:24px;}
 footer{                         /* 最下部でヒーローの裏に隠れないよう前面へ */
   position:relative;
   z-index:2;
@@ -173,6 +177,39 @@ footer{                         /* 最下部でヒーローの裏に隠れない
 
 /* === 動画サムネの再生ボタン(▶)を非表示（戻す時はこの2行を削除） === */
 .ch-detail-video .video-play-btn{display:none!important;}
+
+/* === 年表セクション（メインと同じポップ吹き出し／にゃんこ模様・年表＋代表作 地続き） === */
+/* === 年表セクション（チャンネル別テーマ） === */
+.ch-timeline{padding:64px 24px 60px;}
+.ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
+.tl{list-style:none;margin:0;padding:0;position:relative;}
+.tl-item{position:relative;width:50%;padding:0 40px 32px 0;box-sizing:border-box;}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 32px 40px;}
+.tl-year{display:inline-block;font-size:12px;padding:3px 14px;border-radius:20px;margin-bottom:9px;line-height:1.4;}
+.tl-body{position:relative;border-radius:16px;padding:14px 18px;}
+.tl-body h3{margin:0 0 6px;font-size:15px;line-height:1.45;}
+.tl-body p{margin:0;font-size:12.5px;line-height:1.82;}
+.tl-item::before{content:'';position:absolute;top:8px;z-index:3;}
+
+.ch-belowfold{background:linear-gradient(180deg,#faf4f2 0%,#f4ebee 100%)!important;}
+.ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;background-image:radial-gradient(1px 1px at 30% 40%,rgba(150,100,120,.07),transparent),radial-gradient(1px 1px at 72% 76%,rgba(120,90,110,.06),transparent);background-size:84px 84px,116px 116px;background-repeat:repeat;}
+.ch-timeline-title{font-size:26px;text-align:center;letter-spacing:6px;margin:0 0 14px;font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;font-weight:700;color:#7a4456;}
+.ch-timeline-lead{font-size:14px;line-height:2;color:#6a5560;text-align:center;max-width:720px;margin:0 auto 46px;font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;}
+.tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;width:1px;transform:translateX(-50%);background:#cda9b4;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);}
+.tl-item::before{top:7px;right:-6px;width:11px;height:11px;border-radius:50%;background:#fff;border:2px solid #b5677a;}
+.tl-item:nth-child(even)::before{right:auto;left:-6px;}
+.tl-year{font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;color:#fff;background:#b5677a;letter-spacing:2px;}
+.tl-item:nth-child(even) .tl-year{background:#8d6f86;}
+.tl-body{background:#fffdfc;border:1px solid #e5d3d8;border-radius:10px;box-shadow:0 4px 16px rgba(120,80,95,.08);}
+.tl-body h3{font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;font-weight:700;color:#5a3a47;letter-spacing:1px;}
+.tl-body p{color:#5d525a;}
+@media(max-width:760px){
+  .ch-timeline{padding:48px 16px 44px;}
+  .ch-timeline-title{font-size:22px!important;letter-spacing:2px!important;}
+  .tl::before{left:9px!important;}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
+  .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
+}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -214,8 +251,24 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
         <a href="videos.html" class="ch-detail-more">動画をもっと見る →</a>
-        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-stories').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
+        <a href="#" class="ch-scroll-cat" onclick="document.querySelector('.ch-timeline').scrollIntoView({behavior:'smooth'});return false;"><img src="img/scroll-cat.png" alt="スクロールダウン"><span>スクロールダウン</span></a>
       </div>
+    </div>
+  </section>
+
+  <div class="ch-belowfold">
+  <!-- Emotionalチャンネル年表（せり上がり1層目／※中身は仮。各チャンネル独自の出来事に差し替え予定） -->
+  <section class="ch-timeline">
+    <div class="ch-timeline-inner">
+      <h2 class="ch-timeline-title">Emotionalチャンネル年表</h2>
+      <p class="ch-timeline-lead">2024年4月に誕生した、サルベド初のサブチャンネル。しっとり系のストーリーを中心に届ける「サルベド漫画Emotional」の成り立ちと魅力をご紹介します。</p>
+      <ol class="tl">
+        <li class="tl-item"><span class="tl-year">2024.04</span><div class="tl-body"><h3>サルベド初のサブチャンネルとして開設</h3><p>2024年4月に開設された、サルベド初のサブチャンネル。コメディ重視の本家サルベドと異なり、こちらはしっとりとしたストーリーが多く展開される。メインライターはまっきーにが務める。</p></div></li>
+        <li class="tl-item"><span class="tl-year">住み分け</span><div class="tl-body"><h3>本家とEmotionalのジャンル区分け</h3><p>この頃から完全に本家は青春詭弁中心のラブコメディ、Emotionalはまっきーに中心のしっとり系、という区分けがされるようになった。</p></div></li>
+        <li class="tl-item"><span class="tl-year">変わらないもの</span><div class="tl-body"><h3>ジャンルは違えど“サルベドらしさ”は同じ</h3><p>ただどちらのチャンネルも恋愛がメインであり、キャラクター同士がテンポのいい会話を繰り広げるサルベドらしさは変わらない。ジャンル分けはされたものの、サルベドファンの方であればどちらも楽しめるように、という思いを込めて作られたチャンネルである。</p></div></li>
+        <li class="tl-item"><span class="tl-year">投稿スタイル</span><div class="tl-body"><h3>週1本・じっくり長めのボリューム</h3><p>投稿頻度は控えめで1週間に1本。基本的には週末付近に投稿される。その分、動画時間は比較的長め。週に1本でも満足できるように、とボリュームにこだわって作っている。</p></div></li>
+        <li class="tl-item"><span class="tl-year">ライター交流</span><div class="tl-body"><h3>稀にライターが入れ替わることも</h3><p>稀に青春詭弁や他のライターがEmotionalに作品を投稿することもあり、その際は本家ではあまり見られない、しっとりとした作品を意識した青春詭弁脚本を味わうことができる。逆にまっきーにも稀に本家に顔を出すのだが、コメント欄で一部の視聴者の方に「Emotionalと間違えてない？」とよく言われている。</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -260,6 +313,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       </div>
     </div>
   </section>
+  </div>
 
   <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
     <img src="img/scroll-top.png" alt="">
