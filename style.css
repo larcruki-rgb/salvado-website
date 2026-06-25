@@ -84,7 +84,7 @@ a:hover{color:#a8862e;}
   --a7-mini-y:-42px;
 }
 body::before{content:'';position:fixed;inset:0;background-image:url('img/moyou-nyanko.png');background-repeat:repeat;background-size:var(--a7-bg-size) auto;opacity:var(--a7-bg-opacity);z-index:-1;pointer-events:none;}
-.a7-topbar{display:flex;justify-content:space-between;align-items:center;padding:var(--a7-topbar-pt) 40px 30px;gap:30px;position:relative;z-index:100;}
+.a7-topbar{display:flex;justify-content:flex-end;align-items:center;padding:var(--a7-topbar-pt) 40px 30px;gap:18px;position:relative;z-index:100;}
 .a7-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:#fff;border:1px solid #ddd;border-radius:50%;padding:0;align-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:background 0.2s,transform 0.2s;}
 .a7-hamburger span{display:block;width:20px;height:2px;background:#0a3d3a;border-radius:2px;transition:transform 0.28s ease,opacity 0.2s;}
 .a7-hamburger.open{background:#6FDFD6;}
