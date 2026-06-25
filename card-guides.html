@@ -79,10 +79,10 @@
   .nav a:hover::before { background: rgba(0,0,0,0.3); }
   .group { margin-bottom: 40px; }
   .group-title {
-    color: #3a2e1a; font-size: 22px; font-weight: bold;
-    padding: 10px 20px; margin-bottom: 16px;
-    border-left: 4px solid #8a7d5a;
-    background: rgba(90,74,42,0.08); border-radius: 0 6px 6px 0;
+    color: #0a3d3a; font-size: 22px; font-weight: bold;
+    padding: 12px 20px; margin-bottom: 16px;
+    border-left: 6px solid #6FDFD6;
+    background: rgba(111,223,214,0.14); border-radius: 0 8px 8px 0;
   }
   .subgroup-title {
     color: #5a4a2a; font-size: 16px; font-weight: bold;
@@ -236,31 +236,63 @@
   .guide-item {
     display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
     max-width: 900px; margin: 0 auto 28px; padding: 24px;
-    background: #f7f5ed; border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 14px;
+    background: #fff; border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px; box-shadow: 0 4px 16px rgba(0,0,0,0.05);
   }
   .guide-card-col { flex: 0 0 280px; }
   .guide-text { flex: 1; min-width: 300px; }
   .guide-name {
-    font-size: 20px; font-weight: bold; color: #1a1a1a; margin: 0 0 16px;
-    border-bottom: 1px solid rgba(0,0,0,0.15); padding-bottom: 8px;
+    font-size: 21px; font-weight: bold; color: #0a3d3a; margin: 0 0 18px;
+    border-bottom: 2px solid #6FDFD6; padding-bottom: 9px;
   }
-  .guide-block { margin-bottom: 14px; }
+  .guide-block {
+    margin-bottom: 12px; padding: 11px 15px 13px;
+    border-left: 4px solid #ccc; border-radius: 0 8px 8px 0;
+  }
   .guide-block .label {
     display: inline-block; font-size: 12px; font-weight: bold; color: #fff;
-    border-radius: 4px; padding: 2px 10px; margin-bottom: 6px;
+    border-radius: 5px; padding: 3px 12px; margin-bottom: 2px; letter-spacing: 1px;
   }
-  .label-summary { background: #8a7d5a; }
+  .label-summary { background: #5a9a94; }
   .label-strength { background: #4a8a4a; }
   .label-usage { background: #c08530; }
   .label-weakness { background: #b04040; }
   .label-synergy { background: #8050a0; }
-  .guide-block p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.85; color: #3a2e1a; }
+  .guide-block:has(.label-summary)  { border-left-color: #5a9a94; background: #f1f9f8; }
+  .guide-block:has(.label-strength) { border-left-color: #4a8a4a; background: #f1f8f1; }
+  .guide-block:has(.label-usage)    { border-left-color: #c08530; background: #fdf6ea; }
+  .guide-block:has(.label-weakness) { border-left-color: #b04040; background: #fbf1f1; }
+  .guide-block:has(.label-synergy)  { border-left-color: #8050a0; background: #f7f2fb; }
+  .guide-block p { margin: 6px 0 0; font-size: 14px; line-height: 1.9; color: #2e2e2e; }
   @media (max-width: 680px) {
     body { padding: 16px; }
     .guide-item { padding: 16px; gap: 18px; justify-content: center; }
     .guide-card-col { flex: 0 0 auto; }
   }
+  /* TOPへ戻る フローティングボタン */
+  .scroll-top-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:fixed;bottom:24px;right:24px;width:90px;text-decoration:none;color:#0a3d3a;font-family:'Murecho',sans-serif;font-weight:900;font-size:12px;letter-spacing:3px;z-index:300;opacity:0;pointer-events:none;transition:opacity 0.35s,transform 0.25s;transform:translateY(20px);}
+  .scroll-top-btn.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .scroll-top-btn:hover{transform:translateY(-4px);}
+  .scroll-top-btn img{width:80px;height:auto;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.18));margin-bottom:2px;}
+  .scroll-top-btn span{background:#fff;color:#0a3d3a;padding:3px 14px;border-radius:20px;box-shadow:0 4px 12px rgba(0,0,0,0.12);border:1px solid rgba(0,0,0,0.06);}
+  @media(max-width:600px){.scroll-top-btn{width:64px;bottom:14px;right:14px;}.scroll-top-btn img{width:56px;}.scroll-top-btn span{font-size:10px;padding:2px 10px;letter-spacing:2px;}}
+
+  /* ===== 索引（目次） ===== */
+  html{scroll-behavior:smooth;}
+  .guide-item{scroll-margin-top:16px;}
+  .index-wrap{max-width:1000px;margin:0 auto 50px;}
+  .index-lead{font-size:13px;color:#666;margin:0 0 14px;line-height:1.8;}
+  .index-group-title{color:#0a3d3a;font-size:18px;font-weight:bold;padding:10px 18px;margin:22px 0 14px;border-left:6px solid #6FDFD6;background:rgba(111,223,214,0.14);border-radius:0 8px 8px 0;}
+  .index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:14px;}
+  .idx{display:block;text-decoration:none;color:#0a3d3a;text-align:center;background:#fff;border:1px solid #e6e6e6;border-radius:12px;padding:8px 6px 9px;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:transform .15s,box-shadow .15s,border-color .15s;}
+  .idx:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(111,223,214,0.35);border-color:#6FDFD6;}
+  .idx .thumb{position:relative;width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:#eee;}
+  .idx .thumb img{width:100%;height:100%;object-fit:cover;}
+  .idx .thumb.noimg{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#DCD5CE,#cfe9e6);}
+  .idx .thumb .ph{font-size:10px;font-weight:bold;color:#0a3d3a;padding:4px;text-align:center;line-height:1.3;}
+  .idx .cost{position:absolute;top:4px;right:4px;min-width:22px;height:22px;border-radius:11px;background:#fff;border:2px solid #6FDFD6;color:#0a7d74;font-size:12px;font-weight:bold;display:flex;align-items:center;justify-content:center;padding:0 4px;box-sizing:border-box;}
+  .idx .nm{display:block;margin-top:6px;font-size:11px;font-weight:bold;line-height:1.3;}
+  @media(max-width:600px){.index-grid{grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px;}.idx .nm{font-size:10px;}}
 </style>
 </head>
 <body>
@@ -277,9 +309,88 @@
 </div>
 
 
+<div class="index-wrap">
+  <div class="index-lead">調べたいカードをタップすると、下の解説へジャンプします。</div>
+  <div class="index-group-title">サルベドラブコメ</div>
+  <div class="index-grid">
+    <a class="idx" href="#c-seitokaichou"><div class="thumb"><img src="https://game.sarubedo.jp/img/seitokaichou.png" loading="lazy"></div><span class="nm">生徒会長ヒロイン</span></a>
+    <a class="idx" href="#c-osananajimi"><div class="thumb"><img src="https://game.sarubedo.jp/img/osananajimi.png?v=2" loading="lazy"></div><span class="nm">幼馴染ヒロイン</span></a>
+    <a class="idx" href="#c-kanaria"><div class="thumb"><img src="https://game.sarubedo.jp/img/kanaria.png" loading="lazy"></div><span class="nm">アイドル カナリア</span></a>
+    <a class="idx" href="#c-onna_joushi"><div class="thumb"><img src="https://game.sarubedo.jp/img/onna_joushi.png" loading="lazy"></div><span class="nm">女上司ヒロイン</span></a>
+    <a class="idx" href="#c-imouto"><div class="thumb"><img src="https://game.sarubedo.jp/img/imouto.png" loading="lazy"></div><span class="nm">妹系ヒロイン</span></a>
+    <a class="idx" href="#c-ki_no_sei"><div class="thumb"><img src="https://game.sarubedo.jp/img/ki_no_sei.png" loading="lazy"></div><span class="nm">木の精</span></a>
+    <a class="idx" href="#c-mensetsu_kan"><div class="thumb"><img src="https://game.sarubedo.jp/img/mensetsu_kan.png" loading="lazy"></div><span class="nm">面接官ヒロイン</span></a>
+    <a class="idx" href="#c-dansou"><div class="thumb"><img src="https://game.sarubedo.jp/img/dansou.png" loading="lazy"></div><span class="nm">男装系ヒロイン</span></a>
+    <a class="idx" href="#c-jk"><div class="thumb"><img src="https://game.sarubedo.jp/img/jk.png" loading="lazy"></div><span class="nm">一般女子高生A</span></a>
+    <a class="idx" href="#c-mamachari"><div class="thumb"><img src="https://game.sarubedo.jp/img/mamachari.png" loading="lazy"></div><span class="nm">ママチャリ暴走族</span></a>
+    <a class="idx" href="#c-kyamakiri"><div class="thumb"><img src="https://game.sarubedo.jp/img/kyamakiri.png" loading="lazy"></div><span class="nm">キャマキリ</span></a>
+    <a class="idx" href="#c-shiko_touchou"><div class="thumb"><img src="https://game.sarubedo.jp/img/shiko_touchou.png" loading="lazy"></div><span class="nm">思考盗聴された！</span></a>
+    <a class="idx" href="#c-kanwa_kyuudai"><div class="thumb"><img src="https://game.sarubedo.jp/img/kanwa_kyuudai.png" loading="lazy"></div><span class="nm">閑話休題</span></a>
+    <a class="idx" href="#c-99wari"><div class="thumb"><img src="https://game.sarubedo.jp/img/99wari.png" loading="lazy"></div><span class="nm">99割間違いない</span></a>
+    <a class="idx" href="#c-alminium"><div class="thumb"><img src="https://game.sarubedo.jp/img/alminium.png" loading="lazy"></div><span class="nm">頭にアルミホイルを巻く</span></a>
+    <a class="idx" href="#c-healthy_sleep"><div class="thumb"><img src="https://game.sarubedo.jp/img/healthy_sleep.png" loading="lazy"></div><span class="nm">夜しか眠れない健康的な生活</span></a>
+    <a class="idx" href="#c-suisosui"><div class="thumb"><img src="https://game.sarubedo.jp/img/suisosui.png" loading="lazy"></div><span class="nm">水素水でナンパする男</span></a>
+  </div>
+  <div class="index-group-title">サルベドファンタジー</div>
+  <div class="index-grid">
+    <a class="idx" href="#c-maoria"><div class="thumb"><img src="https://game.sarubedo.jp/img/maoria.png" loading="lazy"></div><span class="nm">のちの魔王 マオリア</span></a>
+    <a class="idx" href="#c-tomo"><div class="thumb"><img src="https://game.sarubedo.jp/img/tomo.png" loading="lazy"></div><span class="nm">勇者 トモ</span></a>
+    <a class="idx" href="#c-izuna"><div class="thumb"><img src="https://game.sarubedo.jp/img/izuna.png" loading="lazy"></div><span class="nm">魔法使い イズナ</span></a>
+    <a class="idx" href="#c-miiko"><div class="thumb"><img src="https://game.sarubedo.jp/img/miiko.png" loading="lazy"></div><span class="nm">僧侶 ミーコ</span></a>
+    <a class="idx" href="#c-parasite"><div class="thumb"><img src="https://game.sarubedo.jp/img/parasite.png" loading="lazy"></div><span class="nm">魔の寄生体</span></a>
+    <a class="idx" href="#c-card22"><div class="thumb noimg"><span class="ph">元掃除屋 アサキ</span></div><span class="nm">元掃除屋 アサキ</span></a>
+    <a class="idx" href="#c-card23"><div class="thumb noimg"><span class="ph">掃除屋 アズサ</span></div><span class="nm">掃除屋 アズサ</span></a>
+    <a class="idx" href="#c-card24"><div class="thumb noimg"><span class="ph">パン屋の娘 カエラ</span></div><span class="nm">パン屋の娘 カエラ</span></a>
+    <a class="idx" href="#c-card25"><div class="thumb noimg"><span class="ph">Aレイスの追手</span></div><span class="nm">Aレイスの追手</span></a>
+    <a class="idx" href="#c-card26"><div class="thumb noimg"><span class="ph">Aレイスのボス</span></div><span class="nm">Aレイスのボス</span></a>
+    <a class="idx" href="#c-shinigami"><div class="thumb"><img src="https://game.sarubedo.jp/img/shinigami.png" loading="lazy"></div><span class="nm">死神少女</span></a>
+    <a class="idx" href="#c-jun"><div class="thumb"><img src="https://game.sarubedo.jp/img/jun.png" loading="lazy"></div><span class="nm">ジュン</span></a>
+    <a class="idx" href="#c-ark"><div class="thumb"><img src="https://game.sarubedo.jp/img/ark.png" loading="lazy"></div><span class="nm">魔王の血族 アーク</span></a>
+    <a class="idx" href="#c-milia"><div class="thumb"><img src="https://game.sarubedo.jp/img/milia.png" loading="lazy"></div><span class="nm">勇者の血族 ミリア</span></a>
+    <a class="idx" href="#c-daria"><div class="thumb"><img src="https://game.sarubedo.jp/img/daria.png" loading="lazy"></div><span class="nm">勇者の兄 ダリア</span></a>
+    <a class="idx" href="#c-reichen"><div class="thumb"><img src="https://game.sarubedo.jp/img/reichen.png" loading="lazy"></div><span class="nm">賢者 レイチェン</span></a>
+    <a class="idx" href="#c-sagi"><div class="thumb"><img src="https://game.sarubedo.jp/img/sagi.png" loading="lazy"></div><span class="nm">盗賊 サギ</span></a>
+    <a class="idx" href="#c-yuri"><div class="thumb"><img src="https://game.sarubedo.jp/img/yuri.png" loading="lazy"></div><span class="nm">アンドロイド ユリ</span></a>
+    <a class="idx" href="#c-smasher"><div class="thumb"><img src="https://game.sarubedo.jp/img/smasher.png" loading="lazy"></div><span class="nm">戦術兵器スマッシャー</span></a>
+    <a class="idx" href="#c-lucia"><div class="thumb"><img src="https://game.sarubedo.jp/img/lucia.png" loading="lazy"></div><span class="nm">ドラゴン娘 ルシア</span></a>
+    <a class="idx" href="#c-rena"><div class="thumb"><img src="https://game.sarubedo.jp/img/rena.png" loading="lazy"></div><span class="nm">地縛霊 レナ</span></a>
+  </div>
+  <div class="index-group-title">クリエイターチーム</div>
+  <div class="index-grid">
+    <a class="idx" href="#c-salvado_cat"><div class="thumb"><img src="https://game.sarubedo.jp/img/salvado_cat.png" loading="lazy"></div><span class="nm">サルベド猫</span></a>
+    <a class="idx" href="#c-makkinii"><div class="thumb"><img src="https://game.sarubedo.jp/img/makkinii.png" loading="lazy"></div><span class="nm">まっきーに</span></a>
+    <a class="idx" href="#c-akapo"><div class="thumb"><img src="https://game.sarubedo.jp/img/akapo.jpg" loading="lazy"></div><span class="nm">あかぽ</span></a>
+    <a class="idx" href="#c-nanase"><div class="thumb"><img src="https://game.sarubedo.jp/img/nanase.png" loading="lazy"></div><span class="nm">ななせ</span></a>
+    <a class="idx" href="#c-gomo"><div class="thumb"><img src="https://game.sarubedo.jp/img/gomo.png" loading="lazy"></div><span class="nm">ごも</span></a>
+    <a class="idx" href="#c-komi"><div class="thumb"><img src="https://game.sarubedo.jp/img/komi.png" loading="lazy"></div><span class="nm">komi</span></a>
+    <a class="idx" href="#c-yashiro"><div class="thumb"><img src="https://game.sarubedo.jp/img/yashiro.png" loading="lazy"></div><span class="nm">山岩ヤシロ</span></a>
+    <a class="idx" href="#c-katorina"><div class="thumb"><img src="https://game.sarubedo.jp/img/katorina.png" loading="lazy"></div><span class="nm">かとりーな</span></a>
+    <a class="idx" href="#c-sakamachi"><div class="thumb"><img src="https://game.sarubedo.jp/img/sakamachi.png" loading="lazy"></div><span class="nm">坂街透</span></a>
+    <a class="idx" href="#c-hikaru"><div class="thumb"><img src="https://game.sarubedo.jp/img/hikaru.png" loading="lazy"></div><span class="nm">ひかる</span></a>
+    <a class="idx" href="#c-oyuchi"><div class="thumb"><img src="https://game.sarubedo.jp/img/oyuchi.png" loading="lazy"></div><span class="nm">おゆち</span></a>
+    <a class="idx" href="#c-nari"><div class="thumb"><img src="https://game.sarubedo.jp/img/nari.png" loading="lazy"></div><span class="nm">NARI</span></a>
+    <a class="idx" href="#c-ai_tsubame"><div class="thumb"><img src="https://game.sarubedo.jp/img/ai_tsubame.png" loading="lazy"></div><span class="nm">愛つばめ</span></a>
+    <a class="idx" href="#c-ichiko"><div class="thumb"><img src="https://game.sarubedo.jp/img/ichiko.png" loading="lazy"></div><span class="nm">いちこ</span></a>
+    <a class="idx" href="#c-seishun_kiben"><div class="thumb"><img src="https://game.sarubedo.jp/img/seishun_kiben.png" loading="lazy"></div><span class="nm">青春詭弁</span></a>
+    <a class="idx" href="#c-salvado_cat_yarakashi"><div class="thumb"><img src="https://game.sarubedo.jp/img/salvado_cat_yarakashi.jpg" loading="lazy"></div><span class="nm">サルベド猫のやらかし</span></a>
+  </div>
+  <div class="index-group-title">チャンネル運営</div>
+  <div class="index-grid">
+    <a class="idx" href="#c-douga_sakujo"><div class="thumb"><img src="https://game.sarubedo.jp/img/douga_sakujo.jpg" loading="lazy"></div><span class="nm">動画削除</span></a>
+    <a class="idx" href="#c-shueki_teishi"><div class="thumb"><img src="https://game.sarubedo.jp/img/shueki_teishi.jpg" loading="lazy"></div><span class="nm">収益停止</span></a>
+    <a class="idx" href="#c-kikaku_botsu"><div class="thumb"><img src="https://game.sarubedo.jp/img/kikaku_botsu.jpg" loading="lazy"></div><span class="nm">企画ボツ</span></a>
+    <a class="idx" href="#c-channel_sakujo"><div class="thumb"><img src="https://game.sarubedo.jp/img/channel_sakujo.jpg" loading="lazy"></div><span class="nm">チャンネル削除</span></a>
+    <a class="idx" href="#c-douga_henshuu"><div class="thumb"><img src="https://game.sarubedo.jp/img/douga_henshuu.jpg" loading="lazy"></div><span class="nm">動画編集</span></a>
+    <a class="idx" href="#c-super_chat"><div class="thumb"><img src="https://game.sarubedo.jp/img/super_chat.jpg" loading="lazy"></div><span class="nm">投げ銭</span></a>
+    <a class="idx" href="#c-douga_fukugen"><div class="thumb"><img src="https://game.sarubedo.jp/img/douga_fukugen.png" loading="lazy"></div><span class="nm">動画復元</span></a>
+    <a class="idx" href="#c-impression_seigen"><div class="thumb"><img src="https://game.sarubedo.jp/img/impression_seigen.jpg" loading="lazy"></div><span class="nm">インプレッション制限</span></a>
+  </div>
+</div>
+
+
 <div class="guide-group" id="g-lovecome">
   <div class="group-title">サルベドラブコメ</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-seitokaichou">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -317,7 +428,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-osananajimi">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -355,7 +466,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-kanaria">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -393,7 +504,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-onna_joushi">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -431,7 +542,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-imouto">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -469,7 +580,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-ki_no_sei">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
@@ -506,7 +617,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-mensetsu_kan">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -544,7 +655,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-dansou">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -582,7 +693,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-jk">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -620,7 +731,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-mamachari">
     <div class="guide-card-col">
     <div class="card card-evil card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -658,7 +769,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-kyamakiri">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -696,7 +807,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-shiko_touchou">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support.png">
@@ -733,7 +844,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-kanwa_kyuudai">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support.png">
@@ -770,7 +881,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-99wari">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_support_ur.png">
@@ -807,7 +918,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-alminium">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant_rare.png">
@@ -844,7 +955,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-healthy_sleep">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
@@ -881,7 +992,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-suisosui">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -924,7 +1035,7 @@
 <div class="guide-group" id="g-fantasy">
   <div class="group-title">サルベドファンタジー</div>
   <div class="subgroup-title">漫画：マオリア</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-maoria">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -962,7 +1073,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-tomo">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1000,7 +1111,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-izuna">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1038,7 +1149,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-miiko">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1076,7 +1187,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-parasite">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
@@ -1114,7 +1225,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：掃除屋</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-card22">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1152,7 +1263,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-card23">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1190,7 +1301,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-card24">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1228,7 +1339,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-card25">
     <div class="guide-card-col">
     <div class="card card-evil card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1266,7 +1377,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-card26">
     <div class="guide-card-col">
     <div class="card card-evil card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1305,7 +1416,7 @@
     </div>
   </div>
   <div class="subgroup-title">死神少女</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-shinigami">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1343,7 +1454,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-jun">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1382,7 +1493,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：アーク</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-ark">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1420,7 +1531,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-milia">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1458,7 +1569,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-daria">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame.png">
@@ -1497,7 +1608,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：レイチェン</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-reichen">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1535,7 +1646,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-sagi">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1574,7 +1685,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：アンドロイド ユリ</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-yuri">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1612,7 +1723,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-smasher">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant_rare.png">
@@ -1650,7 +1761,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：ドラゴン娘</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-lucia">
     <div class="guide-card-col">
     <div class="card card-creature card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creature_rare.png">
@@ -1689,7 +1800,7 @@
     </div>
   </div>
   <div class="subgroup-title">漫画：地縛霊</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-rena">
     <div class="guide-card-col">
     <div class="card card-enchant card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_enchant.png">
@@ -1730,7 +1841,7 @@
 
 <div class="guide-group" id="g-creator">
   <div class="group-title">クリエイターチーム</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-salvado_cat">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1767,7 +1878,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-makkinii">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1804,7 +1915,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-akapo">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1841,7 +1952,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-nanase">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1878,7 +1989,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-gomo">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1915,7 +2026,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-komi">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1952,7 +2063,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-yashiro">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -1989,7 +2100,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-katorina">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2026,7 +2137,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-sakamachi">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2063,7 +2174,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-hikaru">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2100,7 +2211,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-oyuchi">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2137,7 +2248,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-nari">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2174,7 +2285,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-ai_tsubame">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2211,7 +2322,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-ichiko">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2248,7 +2359,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-seishun_kiben">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator.png">
@@ -2285,7 +2396,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-salvado_cat_yarakashi">
     <div class="guide-card-col">
     <div class="card card-support card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_creator_rare.png">
@@ -2326,7 +2437,7 @@
 
 <div class="guide-group" id="g-channel_unei">
   <div class="group-title">チャンネル運営</div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-douga_sakujo">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2363,7 +2474,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-shueki_teishi">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2400,7 +2511,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-kikaku_botsu">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2437,7 +2548,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-channel_sakujo">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku_rare.png">
@@ -2474,7 +2585,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-douga_henshuu">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2511,7 +2622,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-super_chat">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2548,7 +2659,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-douga_fukugen">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku.png">
@@ -2585,7 +2696,7 @@
       </div>
     </div>
   </div>
-  <div class="guide-item">
+  <div class="guide-item" id="c-impression_seigen">
     <div class="guide-card-col">
     <div class="card card-kiyaku card-framed">
       <img class="card-frame-img" src="https://game.sarubedo.jp/img/card_frame_kiyaku_rare.png">
@@ -2658,5 +2769,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+
+<a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+  <img src="img/scroll-top.png" alt="">
+  <span>TOP</span>
+</a>
+<script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
 </body>
 </html>
