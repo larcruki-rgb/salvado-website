@@ -8,7 +8,14 @@
 <link rel="stylesheet" href="style.css?v=12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+<!-- Murecho 英数字subsetをサイト内から先読み（「ABOUT US」見出しのチラつき防止） -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/murecho-latin.woff2" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Murecho:wght@800;900&family=Noto+Sans+JP:wght@500;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Murecho:wght@800;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* セルフホストMurecho（英数字）。Google版より後に宣言してlatin範囲を上書き＝先読み済みで即・極太表示 */
+@font-face{font-family:'Murecho';font-style:normal;font-weight:800 900;font-display:optional;src:url('fonts/murecho-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+</style>
 <style>
 :root{
   --hero-pad-top:14px;
