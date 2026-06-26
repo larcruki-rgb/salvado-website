@@ -198,7 +198,7 @@ html,body{overflow-x:clip;}
 /* トップバーは他ページと同じ .a7-topbar を使用（ロゴ・メニューのサイズ/位置を統一）。
    ヒーロー(.ctop)は100vw全幅でスクロールバー幅を含むため、バーは通常幅基準の.main-wrap直下に絶対配置して他ページと右端を揃える */
 .main-wrap{margin:0!important;padding:0!important;position:relative;}
-.main-wrap>.a7-topbar{position:absolute;top:0;left:0;right:0;z-index:100;}
+.main-wrap>.a7-topbar{position:absolute;top:0;left:0;right:0;z-index:500;}
 .ctop{position:relative;width:100vw;left:50%;margin-left:-50vw;margin-top:0;margin-bottom:50px;}
 .cstage{position:relative;width:100%;height:740px;overflow:hidden;}
 .cdial{position:relative;transform:translateX(var(--dx,21px)) scale(var(--ds,1.13));transform-origin:420px 388px;}
@@ -214,8 +214,6 @@ html,body{overflow-x:clip;}
 .cinfo .citag{display:inline-block;font-family:'Poppins','Murecho',sans-serif;font-size:14px;letter-spacing:2px;background:#6FDFD6;color:#0a4a45;padding:4px 16px;border-radius:16px;}
 .cinfo .cititle{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
 .cinfo .cbrush{display:block;width:250px;height:14px;margin:0 0 18px;background:linear-gradient(90deg,#ffb24d,#fb9a2e);border-radius:8px;transform:rotate(-1deg);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);}
-.cspk{position:absolute;color:#FDD854;z-index:6;pointer-events:none;filter:drop-shadow(0 0 3px #fff);animation:cspk 2.4s ease-in-out infinite;}
-@keyframes cspk{0%,100%{opacity:.35;transform:scale(.85);}50%{opacity:1;transform:scale(1.1);}}
 .cinfo .cidesc{font-size:17px;line-height:2.0;color:#444;margin-bottom:26px;}
 .cinfo .cibtn{display:inline-block;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;color:#fff;background:linear-gradient(180deg,#ffb24d,#fb9a2e);text-decoration:none;padding:14px 34px;border-radius:32px;box-shadow:0 5px 0 #d9791a;text-shadow:0 1px 2px rgba(0,0,0,.18);transition:transform .15s;}
 .cinfo .cibtn:hover{transform:translateY(-2px);}
@@ -230,6 +228,7 @@ html,body{overflow-x:clip;}
   .cstage{height:auto;overflow:visible;padding:84px 0 4px;}
   .cinfo{position:static;transform:none;width:auto;margin:14px 22px 0;text-align:center;z-index:1;}
   .cinfo.swap{animation:none;}
+  .cinfo .cbrush{margin:0 auto 18px;}  /* オレンジ線を中央寄せ（中央タイトルに揃える） */
   .cinfo .cititle{font-size:30px;white-space:normal;margin:10px 0 12px;}
   .cinfo .cidesc{font-size:14px;line-height:1.85;margin-bottom:18px;}
   .cinfo .cibtn{font-size:16px;padding:12px 28px;}
@@ -237,6 +236,8 @@ html,body{overflow-x:clip;}
   #cgo2{left:auto;right:14px;top:54px;bottom:auto;width:52px;height:52px;font-size:24px;}
   #cgo2 .cico{transform:rotate(-90deg);}
 }
+/* 横に余裕がある端末(iPad横等・700〜1439px)では大タイトルの強制改行を解除して流す */
+@media(min-width:700px) and (max-width:1439px){.cinfo .cititle br{display:none;}}
 /* 簡易レスポンシブ（暫定：全体を縮小して収める） */
 
 
@@ -302,9 +303,6 @@ html,body{overflow-x:clip;}
     <button class="cgo" id="cgo1" aria-label="送り"><span class="cico">↓</span></button>
     <button class="cgo" id="cgo2" aria-label="送り"><span class="cico">↓</span></button>
    </div>
-   <span class="cspk" style="left:30%;top:70px;font-size:34px;">✦</span>
-   <span class="cspk" style="left:8%;top:300px;font-size:22px;color:#6FDFD6;animation-delay:.6s;">✦</span>
-   <span class="cspk" style="left:46%;top:560px;font-size:26px;color:#FF6B9C;animation-delay:1.1s;">✦</span>
     <div class="cinfo" id="cinfo">
       <span class="citag" id="citag">SERIES</span>
       <h2 class="cititle" id="cititle"></h2>
@@ -430,16 +428,16 @@ html,body{overflow-x:clip;}
 (function(){
 var B='img/';
 var items=[
- {img:B+'shinigami-oval.jpg',cap:'HP限定',pos:'center',tag:'SARUBEDO MANGA',title:'ホームページ<br>限定作品<br>多数公開中',desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',cta:'読みに行く →',href:'blog.html'},
- {img:B+'shinigami/ep1.jpg',cap:'死神少女',pos:'center',tag:'SERIES',title:'死神少女<br>原稿Ver 連載中',desc:'寿命と引き換えに願いを叶える死神と、フリーター・ジュンの切ない物語。連作短編全9話、HP限定の原稿バージョン。',cta:'第1話を読む →',href:'blog-shinigami.html'},
- {img:B+'cardgame-oval.jpg',cap:'TCG',pos:'center 26%',tag:'CARD GAME',title:'TCGカード<br>使い方ガイド公開',desc:'全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」のガイドを公開！デュエリストの一歩を踏み出そう。',cta:'ガイドを見る →',href:'card-guides.html'},
- {img:B+'nyanko-slide.jpg',cap:'ニャンコ',pos:'center',tag:'4-KOMA MANGA',title:'サルベド ニャンコ',desc:'サルベド漫画のマスコット「ニャンコ」たちのほのぼの4コマ漫画。日常のちょっとした幸せをお届け。',cta:'読みに行く →',href:'blog-nyanko.html'},
- {img:B+'blog/irekawari/005.jpg',cap:'入れ替わり',pos:'center',tag:'LOVECOMEDY',title:'毎日入れ替わる<br>幼馴染と俺',desc:'落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。全54ページ＋フルボイス音声つき。',cta:'読みに行く →',href:'blog-irekawari.html'}
+ {img:B+'shinigami-oval.jpg',cap:'HP限定',pos:'center',tag:'SARUBEDO MANGA',title:'ホームページ<br>限定作品<br>多数公開中',desc:'サルベド漫画では YouTube で公開していない限定作品も多数公開中。連載作・ブログ・ボツ作品集など、ここでしか読めない世界へ。',cta:'読みに行く →',href:'blog.html',c:'#6FDFD6'},
+ {img:B+'shinigami/ep1.jpg',cap:'死神少女',pos:'center',tag:'SERIES',title:'死神少女<br>原稿Ver 連載中',desc:'寿命と引き換えに願いを叶える死神と、フリーター・ジュンの切ない物語。連作短編全9話、HP限定の原稿バージョン。',cta:'第1話を読む →',href:'blog-shinigami.html',c:'#8a7ab0'},
+ {img:B+'cardgame-oval.jpg',cap:'TCG',pos:'center 26%',tag:'CARD GAME',title:'TCGカード<br>使い方ガイド公開',desc:'全62枚それぞれに「ひとことで・強み・使い方・弱み・相性」のガイドを公開！デュエリストの一歩を踏み出そう。',cta:'ガイドを見る →',href:'card-guides.html',c:'#FDC06F'},
+ {img:B+'nyanko-slide.jpg',cap:'ニャンコ',pos:'center',tag:'4-KOMA MANGA',title:'サルベド ニャンコ',desc:'サルベド漫画のマスコット「ニャンコ」たちのほのぼの4コマ漫画。日常のちょっとした幸せをお届け。',cta:'読みに行く →',href:'blog-nyanko.html',c:'#FDD854'},
+ {img:B+'blog/irekawari/005.jpg',cap:'入れ替わり',pos:'center',tag:'LOVECOMEDY',title:'毎日入れ替わる<br>幼馴染と俺',desc:'落雷で身体が入れ替わってしまった高校生と幼馴染のドタバタ入れ替わりラブコメ。全54ページ＋フルボイス音声つき。',cta:'読みに行く →',href:'blog-irekawari.html',c:'#FF93B5'}
 ];
 var CX=14,CY=-33,R=585,D2R=Math.PI/180,STEP=42;
 var keyAng=[-38,3.7,46,88,130],keySize=[180,288,498,301,180];
 function sizeAt(a){if(a<=keyAng[0])return keySize[0];for(var k=0;k<keyAng.length-1;k++){if(a<=keyAng[k+1]){var t=(a-keyAng[k])/(keyAng[k+1]-keyAng[k]);return keySize[k]+(keySize[k+1]-keySize[k])*t;}}return keySize[keySize.length-1];}
-function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;}
+function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;if(it.c)el.style.borderColor=it.c;}
 function MOB(){return window.innerWidth<1440;}
 /* 狭い画面(1439px以下)の軌道ヒーロー 確定値 */
 window.CYp=634;window.R2=500;window.SPREAD=0.85;window.SIZE=404;window.OVH=42;window.DHmin=296;
@@ -482,7 +480,6 @@ var busy=false;
 function recycle(){for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i].ang=-38;state[i].it=items[ptr%items.length];setContent(state[i].el,state[i].it);ptr++;}}}
 function step(){
   if(busy)return;
-  if(MOB()){for(var i=0;i<state.length;i++){state[i].ang+=STEP;}recycle();layout();updateInfo();return;}
   busy=true;var t0=null,dur=620,from=state.map(function(s){return s.ang;});
   function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;for(var i=0;i<state.length;i++){state[i].ang=from[i]+STEP*e;}layout();if(p<1)requestAnimationFrame(fr);else{recycle();layout();updateInfo();busy=false;}}
   requestAnimationFrame(fr);
