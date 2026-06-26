@@ -83,6 +83,10 @@ html,body{overflow-x:clip;}
 .news-top3 li:last-child{border-bottom:none;}
 .news-top3 .news-date{font-size:12px;color:#888;min-width:90px;letter-spacing:1px;}
 .news-top3 .news-tag{font-size:11px;background:#F0E6CC;color:#7A5D00;padding:3px 10px;border-radius:3px;letter-spacing:1px;font-weight:800;}
+/* news.htmlと同じカテゴリ色 */
+.news-top3 .news-tag.blog{background:#FF93B5;color:#7a1840;}
+.news-top3 .news-tag.game{background:#FDC06F;color:#6e3b00;}
+.news-top3 .news-tag.site{background:#FDD854;color:#6e5600;}
 .news-top3 a{font-size:14px;color:#222;font-weight:600;flex:1;min-width:200px;}
 .news-top3 a:hover{color:#00DFD8;}
 
@@ -111,7 +115,7 @@ html,body{overflow-x:clip;}
   --f3-pad-x:32px;
   --f3-gap:24px;
   --f3-radius:16px;
-  --f3-thumb-aspect:4/2;
+  --f3-thumb-aspect:4/2.5;
   --f3-body-pad-y:0px;
   --f3-body-pad-x:22px;
   --f3-tag-fs:8px;
@@ -136,6 +140,15 @@ html,body{overflow-x:clip;}
 .feature-3-thumb{aspect-ratio:var(--f3-thumb-aspect);background:#f5f5f5;overflow:hidden;}
 .feature-3-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
 .feature-3-card:hover .feature-3-thumb img{transform:scale(1.04);}
+/* スクロールで上段=右から/下段=左からスライドイン（出現後はホバー有効） */
+.feature-6-grid .feature-3-card{opacity:0;}
+.feature-6-grid.in .feature-3-card{opacity:1;animation:f6inR .6s cubic-bezier(.22,.61,.36,1) backwards;}
+.feature-6-grid.in .feature-3-card:nth-child(n+4){animation-name:f6inL;}
+.feature-6-grid.in .feature-3-card:nth-child(2),.feature-6-grid.in .feature-3-card:nth-child(5){animation-delay:.1s;}
+.feature-6-grid.in .feature-3-card:nth-child(3),.feature-6-grid.in .feature-3-card:nth-child(6){animation-delay:.2s;}
+@keyframes f6inR{from{opacity:0;transform:translateX(70px);}to{opacity:1;transform:translateX(0);}}
+@keyframes f6inL{from{opacity:0;transform:translateX(-70px);}to{opacity:1;transform:translateX(0);}}
+@media(prefers-reduced-motion:reduce){.feature-6-grid .feature-3-card{opacity:1;animation:none;}}
 .feature-3-body{padding:var(--f3-body-pad-y) var(--f3-body-pad-x);display:flex;flex-direction:column;flex:1;}
 .feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#6FDFD6;color:#0a3d3a;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-bottom:10px;align-self:flex-start;box-shadow:0 2px 6px rgba(111,223,214,0.4);}
 .feature-3-card h3{font-size:var(--f3-h3-fs);font-weight:900;color:#1a1a1a;letter-spacing:var(--f3-h3-ls);margin-bottom:var(--f3-h3-mb);}
@@ -316,8 +329,7 @@ html,body{overflow-x:clip;}
   <!-- FV 直下：作品連載 + コンテンツ 統合 6カード -->
   <section class="section feature-3-wrap">
     <div class="contents-heading">
-      <span class="en">CONTENTS</span>
-      <h2>コンテンツ</h2>
+      <h2><span class="big">CONTENTS</span><span class="sub">コンテンツ</span></h2>
     </div>
     <div class="feature-3-grid feature-6-grid">
       <a href="blog-harem.html" class="feature-3-card">
@@ -349,11 +361,11 @@ html,body{overflow-x:clip;}
 
   <!-- お知らせ（3件） -->
   <section class="section">
-    <h2>お知らせ</h2>
+    <div class="contents-heading"><h2><span class="big">NEWS</span><span class="sub">お知らせ</span></h2></div>
     <ul class="news-list news-top3" id="newsTop3">
-      <li><span class="news-date">2026.06.20</span><span class="news-tag">ブログ</span><a href="blog-monochrome.html">モノクロ2ページ漫画「白黒漫画」を公開しました（5作品）</a></li>
-      <li><span class="news-date">2026.06.19</span><span class="news-tag">ブログ</span><a href="blog-harem.html">青春詭弁さんの小説「俺がハーレムを全力で阻止する！」を公開しました</a></li>
-      <li><span class="news-date">2026.06.06</span><span class="news-tag">ブログ</span><a href="blog-irekawari.html">恋愛漫画「毎日身体が入れ替わる幼馴染と俺」を公開しました</a></li>
+      <li><span class="news-date">2026.06.20</span><span class="news-tag blog">ブログ</span><a href="blog-monochrome.html">モノクロ2ページ漫画「白黒漫画」を公開しました（5作品）</a></li>
+      <li><span class="news-date">2026.06.19</span><span class="news-tag blog">ブログ</span><a href="blog-harem.html">青春詭弁さんの小説「俺がハーレムを全力で阻止する！」を公開しました</a></li>
+      <li><span class="news-date">2026.06.06</span><span class="news-tag blog">ブログ</span><a href="blog-irekawari.html">恋愛漫画「毎日身体が入れ替わる幼馴染と俺」を公開しました</a></li>
     </ul>
     <div class="section-more"><a href="news.html">お知らせ一覧 →</a></div>
   </section>
@@ -362,7 +374,7 @@ html,body{overflow-x:clip;}
   <!-- 死神少女 9話（非対称：1ヒーロー＋8小） -->
   <section class="shinigami-section" id="shinigamiSection">
     <div class="shinigami-section-head">
-      <div class="shinigami-section-title">死神少女<span class="en">SHINIGAMI SHOJO</span></div>
+      <div class="shinigami-section-title">死神少女</div>
       <div style="text-align:center;"><a href="blog-shinigami.html" class="shinigami-section-more">全話を見る →</a></div>
     </div>
     <div class="sh-asym-layout">
@@ -408,6 +420,7 @@ html,body{overflow-x:clip;}
     <span>TOP</span>
   </a>
   <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
+  <script>(function(){var g=document.querySelector('.feature-6-grid');if(!g)return;if(!('IntersectionObserver'in window)){g.classList.add('in');return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){g.classList.add('in');io.disconnect();}});},{threshold:0.2});io.observe(g);})();</script>
 
   <footer>
     <div class="footer-inner">
