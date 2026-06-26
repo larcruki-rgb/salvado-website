@@ -7,11 +7,30 @@
 <title>お知らせ — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=12">
 <style>
-.page-content{width:100%!important;box-sizing:border-box;}
+/* page-adjust の max-width:var(--page-mw)!important(初期740px) が効いているので、変数自体を上げて本文幅を広げる */
+:root{--page-mw:1000px;}
+.page-content{width:100%!important;box-sizing:border-box;max-width:1000px;}
+/* 見出しを作品・連載(blog)と同じフォントに */
+.page-content h1{font-family:'Murecho',sans-serif;font-size:34px;font-weight:900;letter-spacing:8px;color:#0a3d3a;}
+@media(max-width:760px){.page-content h1{font-size:24px;letter-spacing:5px;}}
+/* 猫柄(opacity0.4)の上だと本文が読みにくいので、タブ〜一覧に白い下地を敷いて文字も濃くする（見出しは下地の外） */
+.news-panel{background:rgba(255,255,255,0.92);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.06);padding:8px 28px 22px;}
+.news-panel .news-tabs{margin-top:14px;}
+.news-list a{color:#1a1a1a;}
+.news-date{color:#555;}
+@media(max-width:760px){.news-panel{padding:6px 16px 16px;}}
 .news-tabs{display:flex;width:100%;margin:24px 0 28px;box-sizing:border-box;}
 .news-tab{flex:1 1 0;min-width:0;padding:14px 8px;background:#fff;border:1.5px solid #1a1a1a;border-right-width:0;color:#1a1a1a;font-weight:800;font-size:13px;letter-spacing:3px;cursor:pointer;transition:all 0.2s;font-family:inherit;text-align:center;box-sizing:border-box;}
 .news-tab:last-child{border-right-width:1.5px;}
-.news-tab.active{background:#1a1a1a;color:#fff;}
+.news-tab.active{background:#6FDFD6;color:#0a3d3a;}
+/* カテゴリ別の選択色（すべて=メイン水色 / ゲーム=オレンジ / サイト=イエロー / ブログ=ピンク） */
+.news-tab.active[data-filter="ゲーム"]{background:#FDC06F;color:#6e3b00;}
+.news-tab.active[data-filter="サイト"]{background:#FDD854;color:#6e5600;}
+.news-tab.active[data-filter="ブログ"]{background:#FF93B5;color:#7a1840;}
+/* タグも同じカテゴリ色に */
+.news-tag.game{background:#FDC06F;color:#6e3b00;}
+.news-tag.site{background:#FDD854;color:#6e5600;}
+.news-tag.blog{background:#FF93B5;color:#7a1840;}
 .news-tab:hover:not(.active){background:#f5f5f5;}
 .news-list.is-hidden{display:none;}
 .news-empty{padding:24px 0;color:#888;text-align:center;font-size:14px;}
@@ -46,6 +65,7 @@
 <div class="main-wrap">
   <div class="page-content">
     <h1>お知らせ</h1>
+    <div class="news-panel">
     <div class="news-tabs" id="newsTabs">
       <button class="news-tab active" data-filter="all">すべて</button>
       <button class="news-tab" data-filter="サイト">サイト</button>
@@ -54,19 +74,20 @@
     </div>
     <p class="news-empty" id="newsEmpty" hidden>該当するお知らせはありません</p>
     <ul class="news-list" id="newsList">
-      <li><span class="news-date">2026.06.20</span><span class="news-tag">ブログ</span><a href="blog-monochrome.html">モノクロ2ページ漫画「白黒漫画」を公開しました（5作品）</a></li>
-      <li><span class="news-date">2026.06.19</span><span class="news-tag">ブログ</span><a href="blog-harem.html">青春詭弁さんの小説「俺がハーレムを全力で阻止する！」を公開しました</a></li>
-      <li><span class="news-date">2026.06.06</span><span class="news-tag">ブログ</span><a href="blog-irekawari.html">恋愛漫画「毎日身体が入れ替わる幼馴染と俺」を公開しました</a></li>
-      <li><span class="news-date">2026.06.06</span><span class="news-tag">ブログ</span><a href="blog-nyanko.html">4コマ漫画「サルベドニャンコ」を公開しました</a></li>
-      <li><span class="news-date">2026.06.05</span><span class="news-tag">ゲーム</span><a href="card-guides.html">カードゲーム 全カードの使い方ガイドを公開しました</a></li>
-      <li><span class="news-date">2026.05.24</span><span class="news-tag">サイト</span><a href="contact.html">お問い合わせページを追加しました</a></li>
-      <li><span class="news-date">2026.05.24</span><span class="news-tag">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を各話個別ページに対応しました</a></li>
-      <li><span class="news-date">2026.05.23</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームのカードデザインリニューアル準備中</a></li>
-      <li><span class="news-date">2026.05.22</span><span class="news-tag">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を公開しました</a></li>
-      <li><span class="news-date">2026.05.19</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームのターン演出を改善しました</a></li>
-      <li><span class="news-date">2026.05.09</span><span class="news-tag">ゲーム</span><a href="game.html">カードゲームにアニメーション機能を追加しました</a></li>
-      <li><span class="news-date">2026.05.09</span><span class="news-tag">サイト</span><a href="index.html">公式サイトを公開しました</a></li>
+      <li><span class="news-date">2026.06.20</span><span class="news-tag blog">ブログ</span><a href="blog-monochrome.html">モノクロ2ページ漫画「白黒漫画」を公開しました（5作品）</a></li>
+      <li><span class="news-date">2026.06.19</span><span class="news-tag blog">ブログ</span><a href="blog-harem.html">青春詭弁さんの小説「俺がハーレムを全力で阻止する！」を公開しました</a></li>
+      <li><span class="news-date">2026.06.06</span><span class="news-tag blog">ブログ</span><a href="blog-irekawari.html">恋愛漫画「毎日身体が入れ替わる幼馴染と俺」を公開しました</a></li>
+      <li><span class="news-date">2026.06.06</span><span class="news-tag blog">ブログ</span><a href="blog-nyanko.html">4コマ漫画「サルベドニャンコ」を公開しました</a></li>
+      <li><span class="news-date">2026.06.05</span><span class="news-tag game">ゲーム</span><a href="card-guides.html">カードゲーム 全カードの使い方ガイドを公開しました</a></li>
+      <li><span class="news-date">2026.05.24</span><span class="news-tag site">サイト</span><a href="contact.html">お問い合わせページを追加しました</a></li>
+      <li><span class="news-date">2026.05.24</span><span class="news-tag blog">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を各話個別ページに対応しました</a></li>
+      <li><span class="news-date">2026.05.23</span><span class="news-tag game">ゲーム</span><a href="game.html">カードゲームのカードデザインリニューアル準備中</a></li>
+      <li><span class="news-date">2026.05.22</span><span class="news-tag blog">ブログ</span><a href="blog-shinigami.html">死神少女【原稿Ver】を公開しました</a></li>
+      <li><span class="news-date">2026.05.19</span><span class="news-tag game">ゲーム</span><a href="game.html">カードゲームのターン演出を改善しました</a></li>
+      <li><span class="news-date">2026.05.09</span><span class="news-tag game">ゲーム</span><a href="game.html">カードゲームにアニメーション機能を追加しました</a></li>
+      <li><span class="news-date">2026.05.09</span><span class="news-tag site">サイト</span><a href="index.html">公式サイトを公開しました</a></li>
     </ul>
+    </div>
   </div>
 
   <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
