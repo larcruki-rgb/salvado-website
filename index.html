@@ -235,8 +235,8 @@ html,body{overflow-x:clip;}
 @media(max-width:1023px){
   .cdial{transform:none!important;}
   .ctop{height:auto;margin-bottom:24px;}
-  .cstage{height:auto;overflow:visible;padding:54px 0 4px;}
-  .cnavwrap{top:8px;right:10px;gap:6px;z-index:40;}
+  .cstage{height:auto;overflow:visible;padding:84px 0 4px;}
+  .cnavwrap{top:0;left:0;right:0;gap:0;padding:12px 16px 8px;justify-content:space-between;align-items:center;z-index:40;}
   .cnavlogo{width:46px;height:46px;}
   .cnav{padding:4px 8px;gap:1px;flex-wrap:wrap;max-width:74vw;justify-content:flex-end;}
   .cnav a{padding:3px 6px;border-radius:14px;}
@@ -304,7 +304,7 @@ html,body{overflow-x:clip;}
 
 
 <div class="main-wrap">
-  <div class="ctop" id="ctop"><div class="cnavwrap"><a class="cnavlogo" href="index.html"><img src="img/salvado-logo.png"></a><nav class="cnav"><a class="on" href="index.html"><span class="en">TOP</span><span class="ja">ホーム</span></a><a href="about.html"><span class="en">ABOUT</span><span class="ja">紹介</span></a><a href="blog.html"><span class="en">SERIES</span><span class="ja">作品</span></a><a href="gallery.html"><span class="en">GALLERY</span><span class="ja">ギャラリー</span></a><a href="game.html"><span class="en">GAME</span><span class="ja">ゲーム</span></a><a href="news.html"><span class="en">NEWS</span><span class="ja">お知らせ</span></a></nav></div>
+  <div class="ctop" id="ctop"><div class="cnavwrap"><a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a><button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button><nav class="a7-nav"><a href="index.html" class="active">TOP<span>ホーム</span></a><a href="about.html">ABOUT<span>紹介</span></a><a href="videos.html">VIDEOS<span>動画</span></a><a href="blog.html">SERIES<span>作品</span></a><a href="gallery.html">GALLERY<span>ギャラリー</span></a><a href="game.html">GAME<span>ゲーム</span></a><a href="news.html">NEWS<span>お知らせ</span></a></nav></div>
    <div class="cstage">
    <div class="cdial">
     <a class="ccirc" id="cc3" href="#"><img alt=""><span class="ccap"></span></a>
