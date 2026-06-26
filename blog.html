@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
+<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');})();</script>
 <meta name="description" content="サルベド漫画の作品・連載">
 <title>作品・連載 — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=12">
@@ -14,6 +14,11 @@
 
 .blog-mag-head{padding:0 0 22px;}
 .blog-mag-issue{font-family:'Murecho',sans-serif;font-size:11px;letter-spacing:3px;color:#888;}
+/* 見出し: 大きな英語タイトル + 横に小さい日本語（お知らせと統一） */
+.blog-mag-head h1{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+.blog-mag-head h1 .big{font-family:'Murecho',sans-serif;font-weight:900;font-size:40px;letter-spacing:6px;color:#0a3d3a;line-height:1.1;}
+.blog-mag-head h1 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#888;}
+@media(max-width:760px){.blog-mag-head h1 .big{font-size:30px;letter-spacing:4px;}.blog-mag-head h1 .sub{font-size:13px;}}
 
 /* === 付箋ボード（コルク風） === */
 .blog-mag-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:28px!important;padding:30px 26px 36px!important;background:linear-gradient(135deg,#f4ecd6,#e8dcc0)!important;border-radius:16px!important;box-shadow:inset 0 4px 12px rgba(120,90,30,0.15)!important;position:relative;}
@@ -75,8 +80,7 @@
     <!-- マガジン風 2×3 均一 -->
     <div class="blog-mag-wrap">
       <div class="blog-mag-head">
-        <h1>作品・連載</h1>
-        <span class="en">SERIES &amp; BLOG</span>
+        <h1><span class="big">SERIES</span><span class="sub">作品・連載</span></h1>
         <span class="blog-mag-issue">VOL.01 / 2026</span>
       </div>
       <div class="blog-mag-grid">

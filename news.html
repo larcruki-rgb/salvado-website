@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
+<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');})();</script>
 <meta name="description" content="サルベド漫画のお知らせ・更新情報">
 <title>お知らせ — サルベド漫画</title>
 <link rel="stylesheet" href="style.css?v=12">
@@ -10,9 +10,11 @@
 /* page-adjust の max-width:var(--page-mw)!important(初期740px) が効いているので、変数自体を上げて本文幅を広げる */
 :root{--page-mw:1000px;}
 .page-content{width:100%!important;box-sizing:border-box;max-width:1000px;}
-/* 見出しを作品・連載(blog)と同じフォントに */
-.page-content h1{font-family:'Murecho',sans-serif;font-size:34px;font-weight:900;letter-spacing:8px;color:#0a3d3a;}
-@media(max-width:760px){.page-content h1{font-size:24px;letter-spacing:5px;}}
+/* 見出し: 大きな英語タイトル + 横に小さい日本語 */
+.page-content h1{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+.page-content h1 .big{font-family:'Murecho',sans-serif;font-weight:900;font-size:40px;letter-spacing:6px;color:#0a3d3a;line-height:1.1;}
+.page-content h1 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#888;}
+@media(max-width:760px){.page-content h1 .big{font-size:30px;letter-spacing:4px;}.page-content h1 .sub{font-size:13px;}}
 /* 猫柄(opacity0.4)の上だと本文が読みにくいので、タブ〜一覧に白い下地を敷いて文字も濃くする（見出しは下地の外） */
 .news-panel{background:rgba(255,255,255,0.92);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.06);padding:8px 28px 22px;}
 .news-panel .news-tabs{margin-top:14px;}
@@ -64,7 +66,7 @@
 
 <div class="main-wrap">
   <div class="page-content">
-    <h1>お知らせ</h1>
+    <h1><span class="big">NEWS</span><span class="sub">お知らせ</span></h1>
     <div class="news-panel">
     <div class="news-tabs" id="newsTabs">
       <button class="news-tab active" data-filter="all">すべて</button>

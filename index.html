@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;if(w>=768&&w<1400&&w>h){document.write('<meta name="viewport" content="width=1280, initial-scale='+(w/1280).toFixed(3)+', maximum-scale=2.0">');}else{document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');}})();</script>
+<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');})();</script>
 <meta name="description" content="サルベド漫画 公式サイト — 漫画動画・カードゲーム・グッズ情報">
 <title>サルベド漫画 公式サイト</title>
 <link rel="stylesheet" href="style.css?v=12">
@@ -212,7 +212,7 @@ html,body{overflow-x:clip;}
 #cgo2{left:169px;top:503px;} #cgo2 .cico{transform:rotate(72deg);}
 .cinfo{position:absolute;right:130px;top:54%;transform:translateY(-50%);width:470px;z-index:7;}
 .cinfo .citag{display:inline-block;font-family:'Poppins','Murecho',sans-serif;font-size:14px;letter-spacing:2px;background:#6FDFD6;color:#0a4a45;padding:4px 16px;border-radius:16px;}
-.cinfo .cititle{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.18;}
+.cinfo .cititle{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
 .cinfo .cbrush{display:block;width:250px;height:14px;margin:0 0 18px;background:linear-gradient(90deg,#ffb24d,#fb9a2e);border-radius:8px;transform:rotate(-1deg);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);}
 .cspk{position:absolute;color:#FDD854;z-index:6;pointer-events:none;filter:drop-shadow(0 0 3px #fff);animation:cspk 2.4s ease-in-out infinite;}
 @keyframes cspk{0%,100%{opacity:.35;transform:scale(.85);}50%{opacity:1;transform:scale(1.1);}}
@@ -223,9 +223,9 @@ html,body{overflow-x:clip;}
 @keyframes cinfoswap{0%{opacity:0;transform:translateY(-50%) translateX(24px);}100%{opacity:1;transform:translateY(-50%) translateX(0);}}
 .ccirc.pop{animation:cpop .32s ease;}
 @keyframes cpop{0%{transform:scale(.84);opacity:.35;}60%{transform:scale(1.04);}100%{transform:scale(1);opacity:1;}}
-/* === モバイル：中央1枚＋下に紹介文のシンプルカルーセル === */
-@media(max-width:1023px){
-  .cdial{transform:none!important;}
+/* === 中央1枚＋下に紹介文のシンプル版（1440px未満。ダイヤル型は1440px以上のみ） === */
+@media(max-width:1439px){
+  .cdial{transform:none!important;position:relative;height:var(--ndh,420px);}
   .ctop{height:auto;margin-bottom:24px;}
   .cstage{height:auto;overflow:visible;padding:84px 0 4px;}
   .cinfo{position:static;transform:none;width:auto;margin:14px 22px 0;text-align:center;z-index:1;}
@@ -287,6 +287,7 @@ html,body{overflow-x:clip;}
   </nav>
 </header>
 -->
+
 
 
 <div class="main-wrap">
@@ -439,17 +440,33 @@ var CX=14,CY=-33,R=585,D2R=Math.PI/180,STEP=42;
 var keyAng=[-38,3.7,46,88,130],keySize=[180,288,498,301,180];
 function sizeAt(a){if(a<=keyAng[0])return keySize[0];for(var k=0;k<keyAng.length-1;k++){if(a<=keyAng[k+1]){var t=(a-keyAng[k])/(keyAng[k+1]-keyAng[k]);return keySize[k]+(keySize[k+1]-keySize[k])*t;}}return keySize[keySize.length-1];}
 function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;}
-function MOB(){return window.innerWidth<=1023;}
+function MOB(){return window.innerWidth<1440;}
+/* 狭い画面(1439px以下)の軌道ヒーロー 確定値 */
+window.CYp=634;window.R2=500;window.SPREAD=0.85;window.SIZE=404;window.OVH=42;window.DHmin=296;
 function featured(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});return best;}
 function applyOne(s,feat){
   if(MOB()){
-    if(s===feat){var sz=Math.min(window.innerWidth*0.74,330);s.el.style.display='block';s.el.style.position='static';s.el.style.margin='4px auto 0';s.el.style.left='auto';s.el.style.top='auto';s.el.style.width=sz+'px';s.el.style.height=sz+'px';s.el.style.zIndex=5;}
-    else{s.el.style.display='none';}
+    var W=window.innerWidth;
+    var off=(s.ang-46)*window.SPREAD;          /* フィーチャー(46°)からのズレ */
+    var sideOff=STEP*window.SPREAD;            /* 隣(前/次)のoff */
+    if(Math.abs(off)>sideOff*1.5){s.el.style.display='none';return;} /* 画面に映るのは中央±1＝最大3つ */
+    var Rx=(W/2+window.OVH)/Math.sin(sideOff*D2R); /* 横半径はWに比例→前後が必ず端で見きれる */
+    var Ry=window.R2;                           /* 縦半径＝弧の高さ */
+    var ang=(-90+off)*D2R;                      /* -90°=頂点。太陽が昇って沈む弧 */
+    var base=Math.min(window.SIZE,Math.max(window.SIZE*0.7,W*0.62)); /* 円サイズをclamp: 最小(SIZE*0.7)〜画面幅連動〜最大(SIZE)。小さくならず・崩れず */
+    var sz=base*Math.max(0.4,1-Math.abs(off)/100); /* 中央=正円で最大、左右ほど小さく */
+    s.el.style.display='block';s.el.style.position='absolute';s.el.style.margin='0';
+    s.el.style.width=sz+'px';s.el.style.height=sz+'px';
+    s.el.style.left=(W/2+Rx*Math.cos(ang)-sz/2)+'px';   /* 横中心は常に画面中央 */
+    s.el.style.top=(window.CYp+Ry*Math.sin(ang)-sz/2)+'px';
+    s.el.style.zIndex=Math.round(100-Math.abs(off));
     return;
   }
   s.el.style.display='block';s.el.style.position='absolute';s.el.style.margin='0';
   var a=s.ang*D2R,sz=sizeAt(s.ang);s.el.style.width=sz+'px';s.el.style.height=sz+'px';s.el.style.left=(CX+R*Math.cos(a)-sz/2)+'px';s.el.style.top=(CY+R*Math.sin(a)-sz/2)+'px';s.el.style.zIndex=(sz>400?5:4);}
-function layout(){var f=featured();state.forEach(function(s){applyOne(s,f);});}
+function layout(){var f=featured();state.forEach(function(s){applyOne(s,f);});
+  if(MOB()){var mb=0;state.forEach(function(s){if(s.el.style.display!=='none'){var t=parseFloat(s.el.style.top)||0,h=parseFloat(s.el.style.height)||0;if(t+h>mb)mb=t+h;}});
+  document.documentElement.style.setProperty('--ndh',Math.max(window.DHmin||0,mb+30)+'px');}}
 var state=[
  {el:document.getElementById('cc3'),ang:46,it:items[0]},
  {el:document.getElementById('cc2'),ang:3.7,it:items[1]},
