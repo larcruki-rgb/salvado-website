@@ -63,7 +63,7 @@
   .channel-icon .icon-circle{width:140px;height:140px;}
 }
 /* 登場アニメ（出現後はtransformを解放＝ホバー効果と両立） */
-@keyframes avReveal{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes avReveal{from{opacity:0;transform:translateY(-24px);}to{opacity:1;transform:translateY(0);}}
 .anim-ready .about-us-hero h1,.anim-ready .about-us-hero .sub,.anim-ready .about-us-hero .divider,.anim-ready .about-us-intro p,.anim-ready .channel-icon{opacity:0;}
 .anim-ready .is-in{opacity:1!important;animation:avReveal .7s cubic-bezier(.22,.61,.36,1) backwards;}
 .about-us-hero .sub.is-in{animation-delay:.1s;}
@@ -153,8 +153,10 @@
 <script>
 document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
-/* 登場アニメ：スクロールで見えたらふわっと表示 */
-(function(){document.body.classList.add('anim-ready');
+/* 登場アニメ：スクロールで見えたらふわっと表示（同セッションで一度見たら以降は再生しない） */
+(function(){
+  try{if(sessionStorage.getItem('aboutAnimSeen')){return;}sessionStorage.setItem('aboutAnimSeen','1');}catch(e){}
+  document.body.classList.add('anim-ready');
   var els=document.querySelectorAll('.about-us-hero h1,.about-us-hero .sub,.about-us-hero .divider,.about-us-intro p,.channel-icon');
   if(!els.length)return;
   if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('is-in');});return;}
