@@ -239,8 +239,9 @@ html,body{overflow-x:clip;}
 .cinfo .cititle{font-family:'AkazukinPOP','SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
 .cinfo .cbrush{display:block;width:250px;height:14px;margin:0 0 18px;background:linear-gradient(90deg,#ffb24d,#fb9a2e);border-radius:8px;transform:rotate(-1deg);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);}
 .cinfo .cidesc{font-size:17px;line-height:2.0;color:#444;margin-bottom:26px;}
-.cinfo .cibtn{display:inline-block;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;color:#fff;background:linear-gradient(180deg,#ffb24d,#fb9a2e);text-decoration:none;padding:14px 34px;border-radius:32px;box-shadow:0 5px 0 #d9791a;text-shadow:0 1px 2px rgba(0,0,0,.18);transition:transform .15s;}
-.cinfo .cibtn:hover{transform:translateY(-2px);}
+.cinfo .cibtn{display:inline-flex;align-items:center;gap:10px;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:800;font-size:18px;letter-spacing:1px;color:#fff;background:#F0588A;text-decoration:none;padding:12px 30px 12px 24px;border-radius:30px;box-shadow:0 4px 14px rgba(240,88,138,.45);transition:transform .15s,background .15s,box-shadow .15s;}
+.cinfo .cibtn .paw{width:24px;height:22px;flex:none;background:#fff;-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;}
+.cinfo .cibtn:hover{transform:translateY(-2px);background:#e0447a;box-shadow:0 7px 18px rgba(240,88,138,.55);}
 .cinfo.swap{animation:cinfoswap .45s ease;}
 @keyframes cinfoswap{0%{opacity:0;transform:translateY(-50%) translateX(24px);}100%{opacity:1;transform:translateY(-50%) translateX(0);}}
 .ccirc.pop{animation:cpop .32s ease;}
@@ -333,7 +334,7 @@ html,body{overflow-x:clip;}
       <h2 class="cititle" id="cititle"></h2>
       <span class="cbrush"></span>
       <p class="cidesc" id="cidesc"></p>
-      <a class="cibtn" id="cibtn" href="#">読みに行く →</a>
+      <a class="cibtn" id="cibtn" href="#"><span class="paw"></span><span class="cibtn-txt">読みに行く</span></a>
     </div>
    </div>
   </div>
@@ -510,7 +511,7 @@ var state=[
 var ptr=3;
 state.forEach(function(s){setContent(s.el,s.it);});layout();
 var infoEl=document.getElementById('cinfo');
-function updateInfo(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});var it=best.it;document.getElementById('citag').textContent=it.tag;document.getElementById('cititle').innerHTML=it.title;document.getElementById('cidesc').textContent=it.desc;var b=document.getElementById('cibtn');b.textContent=it.cta;b.href=it.href;infoEl.classList.remove('swap');void infoEl.offsetWidth;infoEl.classList.add('swap');}
+function updateInfo(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});var it=best.it;document.getElementById('citag').textContent=it.tag;document.getElementById('cititle').innerHTML=it.title;document.getElementById('cidesc').textContent=it.desc;var b=document.getElementById('cibtn');var bt=b.querySelector('.cibtn-txt');if(bt){bt.textContent=it.cta;}else{b.textContent=it.cta;}b.href=it.href;infoEl.classList.remove('swap');void infoEl.offsetWidth;infoEl.classList.add('swap');}
 updateInfo();
 var busy=false;
 function recycle(){for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i].ang=-38;state[i].it=items[ptr%items.length];setContent(state[i].el,state[i].it);ptr++;}}}
