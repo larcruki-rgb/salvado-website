@@ -226,9 +226,9 @@ body.page-adjust .page-content,body.page-adjust .goods-page{transform:translate(
 
 .contents-heading{text-align:center;margin-bottom:36px;padding-top:10px;}
 /* 作品・連載と同じ：大英語タイトル＋横に小さい日本語 */
-.contents-heading h2{display:inline-flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;font-family:'Murecho',sans-serif;}
-.contents-heading h2 .big{font-weight:900;font-size:40px;letter-spacing:6px;color:#0a3d3a;line-height:1.1;}
-.contents-heading h2 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#888;}
+.contents-heading h2{display:inline-flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;font-family:'Murecho',sans-serif;}
+.contents-heading h2 .big{font-weight:900;font-size:40px;letter-spacing:6px;color:#6FDFD6;-webkit-text-stroke:1.5px #0a6b63;paint-order:stroke fill;line-height:1.1;}
+.contents-heading h2 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#7FB8B2;}
 .contents-heading::after{content:'';display:block;width:48px;height:3px;background:#6FDFD6;margin:14px auto 0;border-radius:2px;}
 @media(max-width:760px){.contents-heading{margin-bottom:24px;}.contents-heading h2 .big{font-size:28px;letter-spacing:4px;}.contents-heading h2 .sub{font-size:13px;}}
 

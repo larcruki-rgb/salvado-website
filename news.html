@@ -11,9 +11,9 @@
 :root{--page-mw:1000px;}
 .page-content{width:100%!important;box-sizing:border-box;max-width:1000px;}
 /* 見出し: 大きな英語タイトル + 横に小さい日本語 */
-.page-content h1{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
-.page-content h1 .big{font-family:'Murecho',sans-serif;font-weight:900;font-size:40px;letter-spacing:6px;color:#0a3d3a;line-height:1.1;}
-.page-content h1 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#888;}
+.page-content h1{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+.page-content h1 .big{font-family:'Murecho',sans-serif;font-weight:900;font-size:40px;letter-spacing:6px;color:#6FDFD6;-webkit-text-stroke:1.5px #0a6b63;paint-order:stroke fill;line-height:1.1;}
+.page-content h1 .sub{font-size:15px;font-weight:800;letter-spacing:3px;color:#7FB8B2;}
 @media(max-width:760px){.page-content h1 .big{font-size:30px;letter-spacing:4px;}.page-content h1 .sub{font-size:13px;}}
 /* 猫柄(opacity0.4)の上だと本文が読みにくいので、タブ〜一覧に白い下地を敷いて文字も濃くする（見出しは下地の外） */
 .news-panel{background:rgba(255,255,255,0.92);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.06);padding:8px 28px 22px;}

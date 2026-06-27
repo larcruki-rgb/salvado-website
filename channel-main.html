@@ -11,14 +11,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'AkazukinPOP';src:url('fonts/AkazukiPOP.woff2') format('woff2');font-display:swap;}
+@font-face{font-family:'KeiFont';src:url('fonts/keifont-title.woff2') format('woff2');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
 .ch-detail::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.28);pointer-events:none;}
 .ch-detail > *{position:relative;z-index:1;}
 .ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
 .ch-detail-header{display:grid;grid-template-columns:1fr max-content;gap:40px;margin-bottom:40px;align-items:end;}
-.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
+.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
 .ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
-.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
+.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
 .ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
 .ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
 .ch-detail-video .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
@@ -178,7 +179,7 @@ footer{
 /* にゃんこ模様：年表＋代表作の共通ラッパーに地続きで敷く（横は画像1枚ぶん） */
 .ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('img/moyou-nyanko.png');background-repeat:repeat-y;background-size:100% auto;background-position:top center;opacity:0.25;}
 .ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
-.ch-timeline-title{font-size:27px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
+.ch-timeline-title{font-size:27px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
 .ch-timeline-lead{font-size:14px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;text-shadow:0 1px 6px #fff;}
 .tl{list-style:none;margin:0;padding:0;position:relative;}
 .tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;border-left:4px dashed #6FDFD6;transform:translateX(-50%);-webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);}
@@ -206,8 +207,8 @@ footer{
 .tl-item:nth-child(4n+3) .tl-body::after{border-left-color:#FDC06F;}
 .tl-item:nth-child(4n+2) .tl-body::after{border-right-color:#FF6B9C;}
 .tl-item:nth-child(4n) .tl-body::after{border-right-color:#7EC8F0;}
-.tl-body h3{font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:15px;color:#0a3d3a;margin:0 0 6px;line-height:1.45;}
-.tl-body p{font-size:12.5px;line-height:1.82;color:#444;margin:0;}
+.tl-body h3{font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:15px;color:#0a3d3a;margin:0 0 6px;line-height:1.45;}
+.tl-body p{font-size:14px;line-height:1.85;color:#222;font-weight:500;margin:0;}
 @media(max-width:760px){
   .ch-timeline{padding:48px 16px 56px;}
   .ch-timeline-title{font-size:22px;letter-spacing:2px;}
