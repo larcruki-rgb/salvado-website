@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<script>(function(){var w=window.innerWidth||document.documentElement.clientWidth;var h=window.innerHeight||document.documentElement.clientHeight;document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">');})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="サルベド漫画 公式サイト — 漫画動画・カードゲーム・グッズ情報">
 <title>サルベド漫画 公式サイト</title>
 <link rel="stylesheet" href="style.css?v=12">
@@ -130,6 +130,16 @@ html,body{overflow-x:clip;}
   --f3-cta-ls:1px;
 }
 .feature-3-wrap{max-width:1100px;padding:var(--f3-pad-y) var(--f3-pad-x);}
+/* チャンネル紹介セクション */
+.hp-channels-wrap{max-width:1100px;}
+.hp-channels{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1000px;margin:0 auto;justify-items:center;}
+.hp-ch{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:inherit;transition:transform .25s;}
+.hp-ch:hover{transform:translateY(-6px);}
+.hp-ch-circle{width:160px;height:160px;border-radius:50%;overflow:hidden;margin-bottom:13px;box-shadow:0 4px 14px rgba(0,0,0,0.12);transition:box-shadow .25s;background:#f5f5f5;}
+.hp-ch:hover .hp-ch-circle{box-shadow:0 12px 28px rgba(0,0,0,0.2);}
+.hp-ch-circle img{width:100%;height:100%;object-fit:cover;display:block;}
+.hp-ch-name{font-size:14px;font-weight:800;color:#1a1a1a;letter-spacing:2px;text-align:center;font-family:'Murecho',sans-serif;}
+@media(max-width:760px){.hp-channels{grid-template-columns:repeat(2,1fr);gap:28px;}.hp-ch-circle{width:130px;height:130px;}}
 .feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
 .feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--f3-gap);}
 .feature-3-card{background:#fff;border:3px solid #FF6B9C;border-radius:var(--f3-radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
@@ -207,6 +217,7 @@ html,body{overflow-x:clip;}
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@700&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
+@font-face{font-family:'AkazukinPOP';src:url('fonts/AkazukiPOP.woff2') format('woff2');font-display:swap;}
 /* === コミック回転トップ（FV差し替え） === */
 /* トップバーは他ページと同じ .a7-topbar を使用（ロゴ・メニューのサイズ/位置を統一）。
    ヒーロー(.ctop)は100vw全幅でスクロールバー幅を含むため、バーは通常幅基準の.main-wrap直下に絶対配置して他ページと右端を揃える */
@@ -225,7 +236,7 @@ html,body{overflow-x:clip;}
 #cgo2{left:169px;top:503px;} #cgo2 .cico{transform:rotate(72deg);}
 .cinfo{position:absolute;right:130px;top:54%;transform:translateY(-50%);width:470px;z-index:7;}
 .cinfo .citag{display:inline-block;font-family:'Poppins','Murecho',sans-serif;font-size:14px;letter-spacing:2px;background:#6FDFD6;color:#0a4a45;padding:4px 16px;border-radius:16px;}
-.cinfo .cititle{font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
+.cinfo .cititle{font-family:'AkazukinPOP','SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
 .cinfo .cbrush{display:block;width:250px;height:14px;margin:0 0 18px;background:linear-gradient(90deg,#ffb24d,#fb9a2e);border-radius:8px;transform:rotate(-1deg);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 90%,transparent);}
 .cinfo .cidesc{font-size:17px;line-height:2.0;color:#444;margin-bottom:26px;}
 .cinfo .cibtn{display:inline-block;font-family:'SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:19px;color:#fff;background:linear-gradient(180deg,#ffb24d,#fb9a2e);text-decoration:none;padding:14px 34px;border-radius:32px;box-shadow:0 5px 0 #d9791a;text-shadow:0 1px 2px rgba(0,0,0,.18);transition:transform .15s;}
@@ -234,8 +245,8 @@ html,body{overflow-x:clip;}
 @keyframes cinfoswap{0%{opacity:0;transform:translateY(-50%) translateX(24px);}100%{opacity:1;transform:translateY(-50%) translateX(0);}}
 .ccirc.pop{animation:cpop .32s ease;}
 @keyframes cpop{0%{transform:scale(.84);opacity:.35;}60%{transform:scale(1.04);}100%{transform:scale(1);opacity:1;}}
-/* === 中央1枚＋下に紹介文のシンプル版（1440px未満。ダイヤル型は1440px以上のみ） === */
-@media(max-width:1439px){
+/* === 中央1枚＋下に紹介文のシンプル版（999px以下。ダイヤル型は1000px以上） === */
+@media(max-width:999px){
   .cdial{transform:none!important;position:relative;height:var(--ndh,420px);}
   .ctop{height:auto;margin-bottom:24px;}
   .cstage{height:auto;overflow:visible;padding:84px 0 4px;}
@@ -250,7 +261,7 @@ html,body{overflow-x:clip;}
   #cgo2 .cico{transform:rotate(-90deg);}
 }
 /* 横に余裕がある端末(iPad横等・700〜1439px)では大タイトルの強制改行を解除して流す */
-@media(min-width:700px) and (max-width:1439px){.cinfo .cititle br{display:none;}}
+@media(min-width:700px) and (max-width:999px){.cinfo .cititle br{display:none;}}
 /* 簡易レスポンシブ（暫定：全体を縮小して収める） */
 
 
@@ -304,6 +315,7 @@ html,body{overflow-x:clip;}
 
 
 
+
 <div class="main-wrap">
   <div class="a7-topbar"><a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a><button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button><nav class="a7-nav"><a href="index.html" class="active">TOP<span>ホーム</span></a><a href="about.html">ABOUT<span>紹介</span></a><a href="videos.html">VIDEOS<span>動画</span></a><a href="blog.html">SERIES<span>作品</span></a><a href="gallery.html">GALLERY<span>ギャラリー</span></a><a href="game.html">GAME<span>ゲーム</span></a><a href="news.html">NEWS<span>お知らせ</span></a></nav></div>
   <div class="ctop" id="ctop">
@@ -325,6 +337,17 @@ html,body{overflow-x:clip;}
     </div>
    </div>
   </div>
+
+  <!-- チャンネル紹介 -->
+  <section class="section hp-channels-wrap">
+    <div class="contents-heading"><h2><span class="big">CHANNELS</span><span class="sub">チャンネル紹介</span></h2></div>
+    <div class="hp-channels">
+      <a href="channel-main.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/salvado-logo.png" alt="サルベド漫画"></div><span class="hp-ch-name">サルベド漫画</span></a>
+      <a href="channel-emotional.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/emotional-icon.jpg" alt="サルベド漫画Emotional"></div><span class="hp-ch-name">サルベド漫画Emotional</span></a>
+      <a href="channel-fantasy.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/fantasy-icon.png" alt="サルベド漫画Fantasy"></div><span class="hp-ch-name">サルベド漫画Fantasy</span></a>
+      <a href="channel-shinigami.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/shinigami-icon.png" alt="死神少女"></div><span class="hp-ch-name">死神少女</span></a>
+    </div>
+  </section>
 
   <!-- FV 直下：作品連載 + コンテンツ 統合 6カード -->
   <section class="section feature-3-wrap">
@@ -451,7 +474,7 @@ var CX=14,CY=-33,R=585,D2R=Math.PI/180,STEP=42;
 var keyAng=[-38,3.7,46,88,130],keySize=[180,288,498,301,180];
 function sizeAt(a){if(a<=keyAng[0])return keySize[0];for(var k=0;k<keyAng.length-1;k++){if(a<=keyAng[k+1]){var t=(a-keyAng[k])/(keyAng[k+1]-keyAng[k]);return keySize[k]+(keySize[k+1]-keySize[k])*t;}}return keySize[keySize.length-1];}
 function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;if(it.c)el.style.borderColor=it.c;}
-function MOB(){return window.innerWidth<1440;}
+function MOB(){return window.innerWidth<1000;}
 /* 狭い画面(1439px以下)の軌道ヒーロー 確定値 */
 window.CYp=634;window.R2=500;window.SPREAD=0.85;window.SIZE=404;window.OVH=42;window.DHmin=296;
 function featured(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});return best;}
@@ -502,5 +525,13 @@ document.getElementById('cgo2').onclick=step;
 var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTimeout(layout,150);});
 })();
 </script>
+<script>/* 1000〜1439px: ダイヤル(設計幅1440)をCSS拡大縮小でウィンドウに合わせ縮小（viewport不使用＝iPad安全・重なり無し） */
+(function(){
+  function sc(){var w=window.innerWidth,ct=document.querySelector('.ctop'),cs=document.querySelector('.cstage');if(!ct||!cs)return;
+    if(w>=1000&&w<1440){var s=w/1440;cs.style.width='1440px';cs.style.transformOrigin='top left';cs.style.transform='scale('+s.toFixed(4)+')';ct.style.height=Math.round(740*s)+'px';ct.style.overflow='hidden';}
+    else{cs.style.width='';cs.style.transformOrigin='';cs.style.transform='';ct.style.height='';ct.style.overflow='';}
+  }
+  sc();window.addEventListener('resize',function(){clearTimeout(window.__sct);window.__sct=setTimeout(sc,120);});
+})();</script>
 </body>
 </html>
