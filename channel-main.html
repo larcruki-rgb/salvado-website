@@ -10,13 +10,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'AkazukinPOP';src:url('fonts/AkazukiPOP.woff2') format('woff2');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
 .ch-detail::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.28);pointer-events:none;}
 .ch-detail > *{position:relative;z-index:1;}
 .ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
 .ch-detail-header{display:grid;grid-template-columns:1fr max-content;gap:40px;margin-bottom:40px;align-items:end;}
 .ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
-.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
+.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
 .ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
 .ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
 .ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
@@ -177,7 +178,7 @@ footer{
 /* にゃんこ模様：年表＋代表作の共通ラッパーに地続きで敷く（横は画像1枚ぶん） */
 .ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('img/moyou-nyanko.png');background-repeat:repeat-y;background-size:100% auto;background-position:top center;opacity:0.25;}
 .ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
-.ch-timeline-title{font-size:27px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
+.ch-timeline-title{font-size:27px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
 .ch-timeline-lead{font-size:14px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;text-shadow:0 1px 6px #fff;}
 .tl{list-style:none;margin:0;padding:0;position:relative;}
 .tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;border-left:4px dashed #6FDFD6;transform:translateX(-50%);-webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);}
@@ -205,7 +206,7 @@ footer{
 .tl-item:nth-child(4n+3) .tl-body::after{border-left-color:#FDC06F;}
 .tl-item:nth-child(4n+2) .tl-body::after{border-right-color:#FF6B9C;}
 .tl-item:nth-child(4n) .tl-body::after{border-right-color:#7EC8F0;}
-.tl-body h3{font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:15px;color:#0a3d3a;margin:0 0 6px;line-height:1.45;}
+.tl-body h3{font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;font-size:15px;color:#0a3d3a;margin:0 0 6px;line-height:1.45;}
 .tl-body p{font-size:12.5px;line-height:1.82;color:#444;margin:0;}
 @media(max-width:760px){
   .ch-timeline{padding:48px 16px 56px;}
@@ -243,6 +244,12 @@ footer{
 .tl-item.is-date::before{display:block;}
 .tl-item.is-date .tl-year,.tl-item.is-date:nth-child(odd) .tl-year,.tl-item.is-date:nth-child(even) .tl-year{position:static;transform:none;top:auto;left:auto;right:auto;margin-bottom:9px;font-size:12px;padding:3px 14px;border-radius:20px;border:0;box-shadow:none;white-space:normal;}
 }
+
+/* 肉球マーカー（日付なし項目の○を肉球型に） */
+:root{--paw-w:20px;--paw-h:18px;--paw-scale:1;--paw-top:7px;--paw-x:-10px;--paw-xm:-5px;--paw-bd:0px;--paw-bdc:#ffffff;}
+.tl-item::before{width:var(--paw-w)!important;height:var(--paw-h)!important;top:var(--paw-top)!important;background:#6FDFD6!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:scale(var(--paw-scale))!important;filter:drop-shadow(var(--paw-bd) 0 0 var(--paw-bdc)) drop-shadow(calc(-1*var(--paw-bd)) 0 0 var(--paw-bdc)) drop-shadow(0 var(--paw-bd) 0 var(--paw-bdc)) drop-shadow(0 calc(-1*var(--paw-bd)) 0 var(--paw-bdc)) drop-shadow(calc(.72*var(--paw-bd)) calc(.72*var(--paw-bd)) 0 var(--paw-bdc)) drop-shadow(calc(-.72*var(--paw-bd)) calc(.72*var(--paw-bd)) 0 var(--paw-bdc)) drop-shadow(calc(.72*var(--paw-bd)) calc(-.72*var(--paw-bd)) 0 var(--paw-bdc)) drop-shadow(calc(-.72*var(--paw-bd)) calc(-.72*var(--paw-bd)) 0 var(--paw-bdc)) drop-shadow(0 1px 1.5px rgba(0,0,0,.28));-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;right:var(--paw-x)!important;}
+.tl-item:nth-child(even)::before{left:var(--paw-x)!important;right:auto!important;background:#6FDFD6!important;}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.tl-item::before,.tl-item:nth-child(even)::before{left:var(--paw-xm)!important;right:auto!important;}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -302,14 +309,18 @@ footer{
       </p>
       <ol class="tl">
         <li class="tl-item is-date"><span class="tl-year">2019.12.16</span><div class="tl-body"><h3>サルベド漫画 チャンネル開設</h3><p>サルベドシリーズ最古のチャンネル。初期メンバーでライターとして参戦した青春詭弁とまっきーには、今でも現役で執筆するサルベドチャンネル、最古のメンバー。現在でもほぼ全ての動画の脚本が青春詭弁とまっきーにが占めており、脚本にはライターの個性が色濃く出ている。</p></div></li>
+        <li class="tl-item"><span class="tl-year">🐾 にゃんこメモ</span><div class="tl-body"><p>今のサルベド猫は開設当初からあったのにゃ！</p></div></li>
         <li class="tl-item"><span class="tl-year">開設当初</span><div class="tl-body"><h3>ラブコメジャンルへの転身</h3><p>元々は恋愛チャンネルというわけではなく、ありとあらゆるジャンルを幅広く取り扱っていたが、コミュニティのアンケートでラブコメを求める声が多かったため、ラブコメ特化に。開設当初は青春詭弁がラブコメ特化型ライター、まっきーにが多ジャンルライターだったため、まっきーにもラブコメジャンルをメインで執筆するようになった。</p></div></li>
-        <li class="tl-item is-date"><span class="tl-year">2020〜21頃</span><div class="tl-body"><h3>イラストレーター拡大、今の原型へ</h3><p>開設1年ほどで作画陣を拡大。まず かとりーな・あかぽ・ちず・雪雪崩 が加入し、続いて komi・ひかる・愛ツバメ・山岩ヤシロ・歩吉・坂街透・waata が加入して、現在のサルベド漫画の原型が完成。サムネの特徴的な帯文字は雪雪崩によるデザイン。</p></div></li>
-        <li class="tl-item is-date"><span class="tl-year">2023頃</span><div class="tl-body"><h3>チャンネルを分割（Emotional 誕生）</h3><p>コメディ寄りの青春詭弁脚本と、しっとりしたまっきーに脚本が混在していたチャンネルを分割。しっとり系はサブチャンネル「サルベド漫画Emotional」へ。本家はコメディ系が中心に（稀に両者が逆のチャンネルに顔を出すことも）。</p></div></li>
+        <li class="tl-item"><span class="tl-year">同時期</span><div class="tl-body"><h3>声優・いちこ 参入</h3><p>時同じくして、声優のいちこが参入。「サルベドと言えばこの声！」と言われるほど、サルベドの関わるほぼ全ての動画に声を当てるようになる。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2020〜21頃</span><div class="tl-body"><h3>イラストレーター拡大、今の原型へ</h3><p>元々は少数のイラストレーターで運営していたサルベド漫画だが、1年ほど経った頃にイラストレーターの拡大を決意。<br>最初にかとりーな　あかぽ　ちず　雪雪崩の4人が加入。<br>その後しばらくして、komi　ひかる　愛ツバメ　山岩ヤシロ　歩吉　坂街透　waataが加入し、今のサルベド漫画の原型が出来上がった。なお、サムネイルの特徴的な帯文字は雪雪崩氏のデザインである。</p></div></li>
+        <li class="tl-item"><span class="tl-year">🐾 にゃんこメモ</span><div class="tl-body"><p>「ひどくね？」「美味しい水素水飲みにいかない？」等、ファンの方々からサルベド語録と言われるもののほとんどは青春詭弁の脚本から生み出されており、この語録は青春詭弁の気分次第で追加されたり破棄されたりしているのにゃ。<br>なお、まっきーに脚本の作品で語録を使うことは殆どないのにゃ。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2023頃</span><div class="tl-body"><h3>チャンネルを分割（Emotional 誕生）</h3><p>開設してからしばらくはコメディ重視の青春詭弁の脚本、しっとりとした作品重視のまっきーにの脚本が混在するチャンネルだったが、4年ほど経った頃にチャンネルを分けることに決定。<br><br>しっとりとした作品はサブチャンネルのサルベド漫画Emotionalに移ることになり、現在はサルベド漫画本家は殆どがコメディ系作品が占めるようになっている。<br>ただし、まっきーに作品がごく稀に本家に顔を出すこともあるし、青春詭弁の作品がEmotionalに顔を出すこともある。</p></div></li>
         <li class="tl-item is-date"><span class="tl-year">2024.02</span><div class="tl-body"><h3>ネットプリント第一弾を販売</h3><p>サルベド史上初の、YouTube以外でのコンテンツ販売。</p></div></li>
         <li class="tl-item is-date"><span class="tl-year">2024.10</span><div class="tl-body"><h3>ネットプリント第二弾＋初の電子書籍</h3><p>ハロウィンをモチーフにしたネットプリント第二弾を販売。直後に、サルベド漫画初の電子書籍を公開。</p></div></li>
         <li class="tl-item is-date"><span class="tl-year">2025.02</span><div class="tl-body"><h3>アプリゲームコラボ／初の紙の本</h3><p>有名アプリゲームとのコラボ動画を投稿。同月の東京コミティアに参加し、サルベド初の紙の本を販売。</p></div></li>
-        <li class="tl-item is-date"><span class="tl-year">2025.08・12</span><div class="tl-body"><h3>コミックマーケット参戦・グッズ展開</h3><p>東京コミックマーケットに出展。本に加え、アクリルキーホルダーやスタンドなどのグッズも販売。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2025.08・12</span><div class="tl-body"><h3>コミックマーケット参戦・グッズ展開</h3><p>東京コミックマーケットに出展。本に加え、アクリルキーホルダーやアクリルブロックなどのグッズも販売。</p></div></li>
         <li class="tl-item is-date"><span class="tl-year">2026.05</span><div class="tl-body"><h3>関西コミティア参戦</h3><p>関西コミティアにも出展し、YouTube以外での活躍の幅をさらに拡大中。</p></div></li>
+        <li class="tl-item is-date"><span class="tl-year">2026.07〜</span><div class="tl-body"><h3>公式HP設立・さらなる拡大へ</h3><p>2026年7月現在は、サルベド公式HPの設立と共にサルベドのコンテンツを活かしたネットゲームの開発も進んでおり、今後更なるコンテンツの拡大を模索している。<br><br>また現在は新しいライターさんの採用にも力を入れており、サルベドイズムを色濃く受け継いでくれている新ライターさんも各チャンネルで活躍の幅を広げつつある。</p></div></li>
       </ol>
     </div>
   </section>
@@ -357,9 +368,9 @@ footer{
   </section>
   </div>
 
-  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <img src="img/scroll-top.png" alt="">
-    <span>TOP</span>
+  <a href="#" class="scroll-top-btn stb-emblem" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <svg class="stb-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="stbPath" d="M50,50 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/></defs><text><textPath href="#stbPath">★ PAGE TOP ★ PAGE TOP </textPath></text></svg>
+    <span class="stb-core"><img src="img/scroll-top.png" alt=""></span>
   </a>
   <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
 

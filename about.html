@@ -62,6 +62,18 @@
   .about-us-hero .sub{font-size:11px;letter-spacing:5px;}
   .channel-icon .icon-circle{width:140px;height:140px;}
 }
+/* 登場アニメ（出現後はtransformを解放＝ホバー効果と両立） */
+@keyframes avReveal{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.anim-ready .about-us-hero h1,.anim-ready .about-us-hero .sub,.anim-ready .about-us-hero .divider,.anim-ready .about-us-intro p,.anim-ready .channel-icon{opacity:0;}
+.anim-ready .is-in{opacity:1!important;animation:avReveal .7s cubic-bezier(.22,.61,.36,1) backwards;}
+.about-us-hero .sub.is-in{animation-delay:.1s;}
+.about-us-hero .divider.is-in{animation-delay:.2s;}
+.about-us-intro p:nth-child(2).is-in{animation-delay:.1s;}
+.about-us-intro p:nth-child(3).is-in{animation-delay:.2s;}
+.channel-icon:nth-child(2).is-in{animation-delay:.1s;}
+.channel-icon:nth-child(3).is-in{animation-delay:.2s;}
+.channel-icon:nth-child(4).is-in{animation-delay:.3s;}
+@media(prefers-reduced-motion:reduce){.anim-ready .about-us-hero h1,.anim-ready .about-us-hero .sub,.anim-ready .about-us-hero .divider,.anim-ready .about-us-intro p,.anim-ready .channel-icon{opacity:1;animation:none;}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -118,9 +130,9 @@
     </div>
   </div>
 
-  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <img src="img/scroll-top.png" alt="">
-    <span>TOP</span>
+  <a href="#" class="scroll-top-btn stb-emblem" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <svg class="stb-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="stbPath" d="M50,50 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/></defs><text><textPath href="#stbPath">★ PAGE TOP ★ PAGE TOP </textPath></text></svg>
+    <span class="stb-core"><img src="img/scroll-top.png" alt=""></span>
   </a>
   <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
 
@@ -141,6 +153,14 @@
 <script>
 document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
 
+/* 登場アニメ：スクロールで見えたらふわっと表示 */
+(function(){document.body.classList.add('anim-ready');
+  var els=document.querySelectorAll('.about-us-hero h1,.about-us-hero .sub,.about-us-hero .divider,.about-us-intro p,.channel-icon');
+  if(!els.length)return;
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('is-in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
 </script>
 </body>
 </html>

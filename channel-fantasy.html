@@ -268,6 +268,11 @@ footer{
   .tl-item,.tl-item:nth-child(even){width:100%;margin:0;padding:0 0 28px 30px;}
   .tl-item::before,.tl-item:nth-child(even)::before{left:0!important;right:auto!important;}
 }
+
+/* 肉球マーカー（日付なし項目の○を肉球型に） */
+.tl-item::before{width:20px!important;height:18px!important;background:#6b5cff!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.30));-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;right:-10px!important;}
+.tl-item:nth-child(even)::before{left:-10px!important;right:auto!important;background:#c9a14a!important;}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.tl-item::before,.tl-item:nth-child(even)::before{left:-5px!important;right:auto!important;}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -369,7 +374,7 @@ footer{
         <li class="tl-item is-date"><span class="tl-year">2025.06</span><div class="tl-body"><h3>ファンタジー系チャンネルとして開設</h3><p>2025年6月に開設された、ファンタジー系のサルベドチャンネル。剣と魔法、勇者と魔王といった異世界系のストーリーだけでなく、殺し屋、タイムリープ、ヒーローもの等、現実世界だと味わえないジャンルを幅広く投稿している。</p></div></li>
         <li class="tl-item"><span class="tl-year">サルベドらしさ</span><div class="tl-body"><h3>ジャンルは多彩でも、根っこはラブコメ</h3><p>こちらもサルベドファンの方が違和感なく楽しめるように、内容はあくまでラブコメ系。しかし、本家やEmotionalにはない激しい戦闘シーンや、複雑な世界観設定を味わうことができるのが最大の魅力。</p></div></li>
         <li class="tl-item"><span class="tl-year">ライター</span><div class="tl-body"><h3>脚本は青春詭弁・まっきーに</h3><p>こちらもメインのライターは青春詭弁、まっきーにが担当している。Fantasyで最もメジャーな魔法【モルティス・イグニス】は青春詭弁が生み出したアイデア。まっきーにを含む他のライターも、この魔法を各作品で流用している。</p></div></li>
-        <li class="tl-item"><span class="tl-year">TCG</span><div class="tl-body"><h3>サルベドTCG誕生のきっかけ</h3><p>TCG化との相性が最も良いチャンネルでもあり、最初に作るゲームでTCGを思いついたきっかけはこのチャンネルがあったから、というのはまっきーに談。</p></div></li>
+        <li class="tl-item"><span class="tl-year">🐾 にゃんこメモ</span><div class="tl-body"><p>TCG化との相性が最も良いチャンネルでもあり、最初に作るゲームでTCGを思いついたきっかけはこのチャンネルがあったから、というのはまっきーに談なのにゃ。</p></div></li>
         <li class="tl-item"><span class="tl-year">二度楽しめる</span><div class="tl-body"><h3>TCG化の道</h3><p>新しい動画が投稿されるたび、新規カードとして採用される可能性がある。サルベド漫画Fantasyのファンであり、且つサルベドTCGも楽しんでくれるファンの方からすれば、1つの作品で2度楽しむことができる。</p></div></li>
       </ol>
     </div>
@@ -418,9 +423,9 @@ footer{
   </section>
   </div>
 
-  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <img src="img/scroll-top.png" alt="">
-    <span>TOP</span>
+  <a href="#" class="scroll-top-btn stb-emblem" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <svg class="stb-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="stbPath" d="M50,50 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/></defs><text><textPath href="#stbPath">★ PAGE TOP ★ PAGE TOP </textPath></text></svg>
+    <span class="stb-core"><img src="img/scroll-top.png" alt=""></span>
   </a>
   <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
 

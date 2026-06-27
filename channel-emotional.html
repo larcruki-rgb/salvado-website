@@ -226,6 +226,11 @@ footer{                         /* 最下部でヒーローの裏に隠れない
 .tl-item.is-date::before{display:block;}
 .tl-item.is-date .tl-year,.tl-item.is-date:nth-child(odd) .tl-year,.tl-item.is-date:nth-child(even) .tl-year{position:static;transform:none;top:auto;left:auto;right:auto;margin-bottom:9px;font-size:12px;padding:3px 14px;border-radius:20px;border:0;box-shadow:none;white-space:normal;}
 }
+
+/* 肉球マーカー（日付なし項目の○を肉球型に） */
+.tl-item::before{width:20px!important;height:18px!important;background:#b5677a!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.30));-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Cellipse%20cx='50'%20cy='67'%20rx='27'%20ry='24'/%3E%3Cellipse%20cx='21'%20cy='43'%20rx='9'%20ry='12'/%3E%3Cellipse%20cx='40'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='60'%20cy='27'%20rx='9.5'%20ry='13'/%3E%3Cellipse%20cx='79'%20cy='43'%20rx='9'%20ry='12'/%3E%3C/svg%3E") center/contain no-repeat;right:-10px!important;}
+.tl-item:nth-child(even)::before{left:-10px!important;right:auto!important;background:#8d6f86!important;}
+@media(max-width:760px),(max-width:1100px) and (orientation:portrait){.tl-item::before,.tl-item:nth-child(even)::before{left:-5px!important;right:auto!important;}}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -280,7 +285,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
       <p class="ch-timeline-lead">2024年4月に誕生した、サルベド初のサブチャンネル。しっとり系のストーリーを中心に届ける「サルベド漫画Emotional」の成り立ちと魅力をご紹介します。</p>
       <ol class="tl">
         <li class="tl-item is-date"><span class="tl-year">2024.04</span><div class="tl-body"><h3>サルベド初のサブチャンネルとして開設</h3><p>2024年4月に開設された、サルベド初のサブチャンネル。コメディ重視の本家サルベドと異なり、こちらはしっとりとしたストーリーが多く展開される。メインライターはまっきーにが務める。</p></div></li>
-        <li class="tl-item"><span class="tl-year">住み分け</span><div class="tl-body"><h3>本家とEmotionalのジャンル区分け</h3><p>この頃から完全に本家は青春詭弁中心のラブコメディ、Emotionalはまっきーに中心のしっとり系、という区分けがされるようになった。</p></div></li>
+        <li class="tl-item"><span class="tl-year">🐾 にゃんこメモ</span><div class="tl-body"><p>この頃から完全に本家は青春詭弁中心のラブコメディ、Emotionalはまっきーに中心のしっとり系、という区分けがされるようになったのにゃ。</p></div></li>
         <li class="tl-item"><span class="tl-year">変わらないもの</span><div class="tl-body"><h3>ジャンルは違えど“サルベドらしさ”は同じ</h3><p>ただどちらのチャンネルも恋愛がメインであり、キャラクター同士がテンポのいい会話を繰り広げるサルベドらしさは変わらない。ジャンル分けはされたものの、サルベドファンの方であればどちらも楽しめるように、という思いを込めて作られたチャンネルである。</p></div></li>
         <li class="tl-item"><span class="tl-year">投稿スタイル</span><div class="tl-body"><h3>週1本・じっくり長めのボリューム</h3><p>投稿頻度は控えめで1週間に1本。基本的には週末付近に投稿される。その分、動画時間は比較的長め。週に1本でも満足できるように、とボリュームにこだわって作っている。</p></div></li>
         <li class="tl-item"><span class="tl-year">ライター交流</span><div class="tl-body"><h3>稀にライターが入れ替わることも</h3><p>稀に青春詭弁や他のライターがEmotionalに作品を投稿することもあり、その際は本家ではあまり見られない、しっとりとした作品を意識した青春詭弁脚本を味わうことができる。逆にまっきーにも稀に本家に顔を出すのだが、コメント欄で一部の視聴者の方に「Emotionalと間違えてない？」とよく言われている。</p></div></li>
@@ -331,9 +336,9 @@ footer{                         /* 最下部でヒーローの裏に隠れない
   </section>
   </div>
 
-  <a href="#" class="scroll-top-btn" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <img src="img/scroll-top.png" alt="">
-    <span>TOP</span>
+  <a href="#" class="scroll-top-btn stb-emblem" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <svg class="stb-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="stbPath" d="M50,50 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/></defs><text><textPath href="#stbPath">★ PAGE TOP ★ PAGE TOP </textPath></text></svg>
+    <span class="stb-core"><img src="img/scroll-top.png" alt=""></span>
   </a>
   <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
 
