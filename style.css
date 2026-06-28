@@ -85,7 +85,7 @@ a:hover{color:#a8862e;}
 }
 body::before{content:'';position:fixed;inset:0;background-image:url('img/moyou-nyanko.png');background-repeat:repeat;background-size:var(--a7-bg-size) auto;opacity:var(--a7-bg-opacity);z-index:-1;pointer-events:none;}
 .a7-topbar{display:flex;justify-content:flex-end;align-items:center;padding:14px 26px 30px;gap:14px;position:relative;z-index:100;}
-.a7-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:#fff;border:1px solid #ddd;border-radius:50%;padding:0;align-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:background 0.2s,transform 0.2s;}
+.a7-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:#fff;border:1px solid #ddd;border-radius:50%;padding:0;align-items:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.12);transition:background 0.2s,transform 0.2s;}
 .a7-hamburger span{display:block;width:20px;height:2px;background:#0a3d3a;border-radius:2px;transition:transform 0.28s ease,opacity 0.2s;}
 .a7-hamburger.open{background:#6FDFD6;}
 .a7-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -95,9 +95,12 @@ body::before{content:'';position:fixed;inset:0;background-image:url('img/moyou-n
 .a7-logo img{width:100%;display:block;}
 
 /* ナビ：横並びピル背景・上下2行（英大文字＋小さい日本語） */
-.a7-nav{display:flex;align-items:stretch;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:50px;padding:6px 8px;box-shadow:0 4px 18px rgba(0,0,0,0.08);font-family:'Murecho',sans-serif;flex-wrap:wrap;transform:translateY(var(--a7-menu-y));}
-.a7-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 16px;color:#1a1a1a;font-size:12px;font-weight:900;letter-spacing:2px;border-radius:30px;transition:background 0.2s,color 0.2s;line-height:1;}
-.a7-nav a span{display:block;font-size:9px;letter-spacing:2px;color:#888;font-weight:700;margin-top:5px;}
+/* 全デバイス：ハンバーガー開閉のドロップダウン */
+.a7-nav{display:none;position:absolute;top:calc(100% - 4px);right:16px;left:auto;width:min(264px,calc(100vw - 32px));flex-direction:column;align-items:stretch;background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:14px;padding:10px;box-shadow:0 14px 36px rgba(0,0,0,0.18);font-family:'Murecho',sans-serif;z-index:200;border:1px solid rgba(0,0,0,0.05);}
+.a7-nav.open{display:flex;animation:a7NavSlide 0.25s ease-out;}
+@keyframes a7NavSlide{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.a7-nav a{display:flex;flex-direction:row;align-items:center;gap:10px;justify-content:flex-start;width:100%;padding:12px 18px;color:#1a1a1a;font-size:13px;font-weight:900;letter-spacing:3px;border-radius:10px;transition:background 0.2s,color 0.2s;line-height:1;}
+.a7-nav a span{display:inline-block;font-size:10px;letter-spacing:2px;color:#888;font-weight:700;margin-top:0;}
 .a7-nav a:hover{background:rgba(111,223,214,0.2);color:#0a3d3a;}
 .a7-nav a:hover span{color:#0a3d3a;}
 .a7-nav a.active{background:#6FDFD6;color:#0a3d3a;}
@@ -149,7 +152,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url('img/moyou-n
 /* === モバイル表示（999px以下）：トップバー＝ロゴ＋ハンバーガー。1000px以上=PC（ダイヤル） === */
 @media(max-width:999px){
   /* トップバー：ロゴ＋ハンバーガー */
-  .a7-topbar{flex-direction:row;align-items:center;justify-content:space-between;gap:0;padding:14px 16px 10px;}
+  .a7-topbar{flex-direction:row;align-items:center;justify-content:flex-end;gap:12px;padding:14px 16px 10px;}
   .a7-logo{width:52px;transform:none;}
   .a7-hamburger{display:flex;}
   /* ナビ：閉じてる時は非表示、開いたらドロップダウン */
