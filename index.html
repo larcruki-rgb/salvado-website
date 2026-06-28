@@ -232,8 +232,10 @@ html,body{overflow-x:clip;}
 .cgo{position:absolute;z-index:8;width:58px;height:58px;border-radius:50%;background:#6FDFD6;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;font-size:26px;font-weight:900;line-height:1;transition:transform .12s,background .12s;}
 .cgo:hover{transform:scale(1.08);background:#5fd0c6;}
 .cico{display:block;}
-#cgo1{left:504px;top:128px;} #cgo1 .cico{transform:rotate(28deg);}
-#cgo2{left:169px;top:503px;} #cgo2 .cico{transform:rotate(72deg);}
+/* ダイヤルと紹介文の間（隙間の中央）に縦並び。left:50%+50px=画面中央やや右＝隙間中央に一致 */
+#cgo1,#cgo2{left:calc(50% + 50px);margin-left:-29px;}
+#cgo1{top:calc(50% - 64px);}   /* 上＝戻る */
+#cgo2{top:calc(50% + 6px);}    /* 下＝次へ */
 .cinfo{position:absolute;right:130px;top:54%;transform:translateY(-50%);width:470px;z-index:7;}
 .cinfo .citag{display:inline-block;font-family:'Poppins','Murecho',sans-serif;font-size:14px;letter-spacing:2px;background:#6FDFD6;color:#0a4a45;padding:4px 16px;border-radius:16px;}
 .cinfo .cititle{font-family:'AkazukinPOP','SoeiKakuPop','Mochiy Pop One',sans-serif;font-size:52px;white-space:nowrap;color:#222;margin:14px 0 10px;line-height:1.26;letter-spacing:7px;}
@@ -257,9 +259,11 @@ html,body{overflow-x:clip;}
   .cinfo .cititle{font-size:30px;white-space:normal;margin:10px 0 12px;}
   .cinfo .cidesc{font-size:14px;line-height:1.85;margin-bottom:18px;}
   .cinfo .cibtn{font-size:16px;padding:12px 28px;}
-  #cgo1{display:none;}
-  #cgo2{left:auto;right:14px;top:54px;bottom:auto;width:52px;height:52px;font-size:24px;}
-  #cgo2 .cico{transform:rotate(-90deg);}
+  /* スマホ：カード下端の左右に振り分け（左=戻る / 右=次へ）。縦はダイヤル高さ--ndhに追従 */
+  #cgo1,#cgo2{top:calc(84px + var(--ndh,420px) - 56px);bottom:auto;margin-left:0;width:52px;height:52px;font-size:24px;}
+  #cgo1{display:flex;left:20px;right:auto;}    /* 左下＝戻る */
+  #cgo2{left:auto;right:20px;}                  /* 右下＝次へ */
+  #cgo1 .cico,#cgo2 .cico{transform:rotate(-90deg);}  /* ↑→← / ↓→→ */
 }
 /* 横に余裕がある端末(iPad横等・700〜1439px)では大タイトルの強制改行を解除して流す */
 @media(min-width:700px) and (max-width:999px){.cinfo .cititle br{display:none;}}
@@ -361,9 +365,9 @@ body.splash-lock{overflow:hidden;}
     <a class="ccirc" id="cc2" href="#"><img alt=""><span class="ccap"></span></a>
     <a class="ccirc" id="cc1" href="#"><img alt=""><span class="ccap"></span></a>
     <a class="ccirc" id="cc4" href="#"><img alt=""><span class="ccap"></span></a>
-    <button class="cgo" id="cgo1" aria-label="送り"><span class="cico">↓</span></button>
-    <button class="cgo" id="cgo2" aria-label="送り"><span class="cico">↓</span></button>
    </div>
+    <button class="cgo" id="cgo1" aria-label="前のカードへ戻る"><span class="cico">↑</span></button>
+    <button class="cgo" id="cgo2" aria-label="次のカードへ送る"><span class="cico">↓</span></button>
     <div class="cinfo" id="cinfo">
       <span class="citag" id="citag">SERIES</span>
       <h2 class="cititle" id="cititle"></h2>
@@ -549,15 +553,17 @@ var infoEl=document.getElementById('cinfo');
 function updateInfo(){var best=state[0],bd=999;state.forEach(function(s){var d=Math.abs(s.ang-46);if(d<bd){bd=d;best=s;}});var it=best.it;document.getElementById('citag').textContent=it.tag;document.getElementById('cititle').innerHTML=it.title;document.getElementById('cidesc').textContent=it.desc;var b=document.getElementById('cibtn');var bt=b.querySelector('.cibtn-txt');if(bt){bt.textContent=it.cta;}else{b.textContent=it.cta;}b.href=it.href;infoEl.classList.remove('swap');void infoEl.offsetWidth;infoEl.classList.add('swap');}
 updateInfo();
 var busy=false;
-function recycle(){for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i].ang=-38;state[i].it=items[ptr%items.length];setContent(state[i].el,state[i].it);ptr++;}}}
-function step(){
+function nidx(p){var L=items.length;return ((p%L)+L)%L;}   /* ptrが負でも安全に正規化 */
+function recycle(){for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i].ang-=168;state[i].it=items[nidx(ptr)];setContent(state[i].el,state[i].it);ptr++;}}}
+function recycleBack(){for(var i=0;i<state.length;i++){if(state[i].ang<=-37){state[i].ang+=168;state[i].it=items[nidx(ptr)];setContent(state[i].el,state[i].it);ptr--;}}}
+function spin(dir){                                       /* dir:+1=次へ / -1=戻る（ボタン操作） */
   if(busy)return;
   busy=true;var t0=null,dur=620,from=state.map(function(s){return s.ang;});
-  function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;for(var i=0;i<state.length;i++){state[i].ang=from[i]+STEP*e;}layout();if(p<1)requestAnimationFrame(fr);else{recycle();layout();updateInfo();busy=false;}}
+  function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;for(var i=0;i<state.length;i++){state[i].ang=from[i]+dir*STEP*e;}layout();if(p<1)requestAnimationFrame(fr);else{(dir>0?recycle:recycleBack)();layout();updateInfo();busy=false;}}
   requestAnimationFrame(fr);
 }
-document.getElementById('cgo1').onclick=step;
-document.getElementById('cgo2').onclick=step;
+document.getElementById('cgo1').onclick=function(){spin(-1);};   /* 上＝前のカードへ戻る */
+document.getElementById('cgo2').onclick=function(){spin(1);};    /* 下＝次のカードへ送る */
 var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTimeout(layout,150);});
 })();
 </script>
