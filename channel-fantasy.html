@@ -9,14 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'KillgoU-NB';src:url('img/fonts/KillgoU-NB.ttf') format('truetype');font-display:swap;}
+@font-face{font-family:'KeiFont';src:url('fonts/keifont-full.woff2') format('woff2');font-display:swap;}
 .ch-detail{position:relative;min-height:calc(100vh - 110px);padding:60px 32px 60px;background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;width:100%!important;box-sizing:border-box;}
 .ch-detail::before{content:'';position:absolute;inset:0;background:transparent;pointer-events:none;}
 .ch-detail > *{position:relative;z-index:1;}
 .ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
 .ch-detail-header{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;align-items:end;}
-.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:500;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
-.ch-detail-name{font-size:var(--name-fs,48px);font-weight:500;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
-.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:500;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.88);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:500;color:#1B11FF;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
+.ch-detail-name{font-size:var(--name-fs,48px);font-weight:500;color:#1B11FF;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
+.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1B11FF;font-weight:500;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.88);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
 .ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
 .ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
 .ch-detail-video .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
@@ -163,13 +164,13 @@ body{margin:0;padding:0;}
 /* === 代表作紹介セクション（テキスト） === */
 .ch-stories{background:#ffffff;padding:64px 24px 84px;}
 .ch-stories-inner{max-width:1000px;margin:0 auto;}
-.ch-stories-title{font-size:26px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-stories-title{font-size:26px;color:#1B11FF;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
 .ch-stories-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:820px;margin:0 auto 46px;}
 .ch-stories-lead a{color:#0a8f86;text-decoration:underline;}
 .ch-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
+.ch-story{background:#f7fbfb;border:3px solid #6b5cff;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 6px 0 rgba(107,92,255,.30);}
 .ch-story-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;margin:0 0 16px;}
-.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 24px 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-story h3{font-size:17px;color:#1B11FF;margin:0 24px 10px;line-height:1.55;font-family:'KeiFont','Hiragino Kaku Gothic Pro',sans-serif;}
 .ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0 24px;}
 @media(max-width:760px){
   .ch-stories{padding:48px 18px 60px;}
