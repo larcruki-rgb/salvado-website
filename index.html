@@ -299,6 +299,22 @@ html,body{overflow-x:clip;}
 /* トップバーは他ページと同じ .a7-topbar を使用（ロゴ・メニューのサイズ/位置を統一）。
    ヒーロー(.ctop)は100vw全幅でスクロールバー幅を含むため、バーは通常幅基準の.main-wrap直下に絶対配置して他ページと右端を揃える */
 .main-wrap{margin:0!important;padding:0!important;position:relative;}
+/* 左上の飾り猫（顔＋腕） */
+.neko-corner{position:absolute;top:0;left:0;width:0;height:0;z-index:200;pointer-events:none;}
+.neko-corner img{position:absolute;display:block;pointer-events:none;}
+/* サイズ・位置は vw 基準（自動リサイズ）。狭いほど上へ */
+#nekoArm{left:-0.916vw;top:-0.916vw;width:23.037vw;}
+#nekoBody{left:-0.916vw;top:-0.916vw;width:25.654vw;}
+/* iPad等（〜1024px）：少し上げる */
+@media(max-width:1024px){
+  #nekoArm{left:1.656vw;top:-7.660vw;width:37.484vw;}
+  #nekoBody{left:-0.129vw;top:-7.039vw;width:43.210vw;}
+}
+/* スマホ（〜600px）：大きめ＆上へ */
+@media(max-width:600px){
+  #nekoArm{left:1.657vw;top:-7.664vw;width:51.200vw;}
+  #nekoBody{left:-0.129vw;top:-7.043vw;width:64.000vw;}
+}
 .main-wrap>.a7-topbar{position:absolute;top:0;left:0;right:0;z-index:500;}
 .ctop{position:relative;width:100vw;left:50%;margin-left:-50vw;margin-top:0;margin-bottom:50px;}
 .cstage{position:relative;width:100%;height:740px;overflow:hidden;}
@@ -434,6 +450,10 @@ body.splash-lock{overflow:hidden;}
 
 
 <div class="main-wrap">
+<div class="neko-corner" id="nekoCorner">
+  <img id="nekoArm" src="img/neko-corner-arm.png" alt="" data-k="arm">
+  <img id="nekoBody" src="img/neko-corner-body.png" alt="" data-k="body">
+</div>
   <div class="a7-topbar"><a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a><button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button><nav class="a7-nav"><a href="index.html" class="active">TOP<span>ホーム</span></a><a href="about.html">ABOUT<span>紹介</span></a><a href="videos.html">VIDEOS<span>動画</span></a><a href="blog.html">SERIES<span>作品</span></a><a href="gallery.html">GALLERY<span>ギャラリー</span></a><a href="game.html">GAME<span>ゲーム</span></a><a href="news.html">NEWS<span>お知らせ</span></a></nav></div>
   <div class="ctop" id="ctop">
    <div class="cstage">
