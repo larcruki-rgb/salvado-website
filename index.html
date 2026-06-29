@@ -116,7 +116,7 @@ html,body{overflow-x:clip;}
   --f3-gap:24px;
   --f3-radius:16px;
   --f3-thumb-aspect:4/2.5;
-  --f3-body-pad-y:0px;
+  --f3-body-pad-y:13px;
   --f3-body-pad-x:22px;
   --f3-tag-fs:8px;
   --f3-tag-ls:2px;
@@ -140,6 +140,75 @@ html,body{overflow-x:clip;}
 .hp-ch-circle img{width:100%;height:100%;object-fit:cover;display:block;}
 .hp-ch-name{font-size:14px;font-weight:800;color:#1a1a1a;letter-spacing:2px;text-align:center;font-family:'Murecho',sans-serif;}
 @media(max-width:760px){.hp-channels{grid-template-columns:repeat(2,1fr);gap:28px;}.hp-ch-circle{width:130px;height:130px;}}
+/* チャンネル紹介：水色画面入りノートPC＋猫→拡大して帯がせり出す */
+:root{
+  --lap-init:min(750px,90vw);   /* 初期のPC幅 */
+  --lap-grow:71vw;              /* 拡大後のPC幅（調整ポイント） */
+  --lap-left:-19vw;            /* 拡大後のPC左位置 */
+  --lap-top:-5vw;             /* ブロック全体の上下位置 */
+  --band-c1:#7ee8df; --band-c2:#52cabf;  /* 帯の色 */
+}
+.hp-stage{position:relative;width:100vw;margin-left:calc(50% - 50vw);margin-top:var(--lap-top,0px);height:calc(var(--lap-init)*0.8006);overflow:hidden;transition:height 1s cubic-bezier(.2,.75,.2,1),margin-top .6s ease;}
+.hp-laptop{position:absolute;top:0;left:50%;width:var(--lap-init);transform:translateX(-50%);transition:left 1s cubic-bezier(.2,.75,.2,1),width 1s cubic-bezier(.2,.75,.2,1),transform 1s cubic-bezier(.2,.75,.2,1);}
+.hp-laptop img{display:block;width:100%;height:auto;}
+.hp-laptop-screen{position:absolute;inset:0;z-index:1;background:linear-gradient(170deg,#3b4350 0%,#0c1018 55%,#04060a 100%);-webkit-mask:url('img/ch-screen.png') center/100% 100% no-repeat;mask:url('img/ch-screen.png') center/100% 100% no-repeat;}
+/* チャンネル背景（拡大後にフェードイン。初期は真っ暗な画面） */
+.hp-screen-bg{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .5s ease;-webkit-mask:url('img/ch-screen.png') center/100% 100% no-repeat;mask:url('img/ch-screen.png') center/100% 100% no-repeat;}
+.hp-stage.go .hp-screen-bg{opacity:1;transition:opacity .6s ease .8s;}
+.hp-laptop-frame{position:relative;z-index:2;}
+.hp-laptop img.hp-cat{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;cursor:pointer;transform-origin:60% 70%;transition:transform .7s cubic-bezier(.5,-0.2,.8,.5),opacity .7s ease-in;}
+.hp-cat:hover{transform:translateY(-2%) rotate(-2deg);}
+.hp-cat.run{transform:translate(-80%,12%) rotate(-12deg) scale(.82);opacity:0;pointer-events:none;}
+/* 帯（PC画面の右からせり出す。初期は隠れている） */
+.hp-band{position:absolute;z-index:0;
+  left:calc(var(--lap-left) + var(--lap-grow)*var(--band-leftf,0.875));
+  top:calc(var(--lap-grow)*var(--band-topf,0.155));
+  height:calc(var(--lap-grow)*var(--band-hf,0.44));
+  right:0;
+  background:linear-gradient(100deg,var(--band-c1) 0%,var(--band-c2) 72%);
+  border-radius:0 16px 16px 0;box-shadow:0 10px 26px rgba(80,200,190,.25);
+  clip-path:inset(0 100% 0 0 round 0 16px 16px 0);opacity:0;
+  transition:clip-path .85s cubic-bezier(.2,.75,.2,1) .3s,opacity .4s ease .3s;}
+/* 帯の文字 ABOUT US ＋ リード文（拡大後に表示） */
+.hp-band-inner{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
+.hp-band-panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:5% 8% 9%;box-sizing:border-box;text-align:center;color:#fff;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s;}
+.hp-band-panel.is-active{opacity:1;visibility:visible;}
+.hp-band-text{font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:900;font-size:clamp(22px,3.2vw,54px);letter-spacing:.14em;text-shadow:0 2px 10px rgba(0,90,84,.28);}
+.hp-band-desc{margin:0;max-width:32em;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:600;font-size:clamp(11px,1.05vw,17px);line-height:2.25;letter-spacing:.09em;text-shadow:0 1px 5px rgba(0,90,84,.22);word-break:auto-phrase;line-break:strict;}
+/* 各セクション＝対応チャンネルページと同じフォント */
+.ch-f-main .hp-band-text{font-family:'AkazukinPOP','Mochiy Pop One',sans-serif;}
+.ch-f-main .hp-band-desc{font-family:'KeiFont','Mochiy Pop One',sans-serif;}
+.ch-f-emo .hp-band-text,.ch-f-emo .hp-band-desc{font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;}
+.ch-f-fan .hp-band-text,.ch-f-fan .hp-band-desc{font-family:'KillgoU-NB','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-f-shini .hp-band-text,.ch-f-shini .hp-band-desc{font-family:'SoukouMincho','Hiragino Mincho ProN',serif;}
+/* 送りボタン（▶） */
+/* セクション選択ドット（PC画面の下に重ねる） */
+.hp-dots{position:absolute;right:4%;bottom:9%;z-index:5;display:flex;gap:min(1.6vw,14px);align-items:center;justify-content:flex-end;opacity:0;transition:opacity .5s ease;}
+.hp-dot{width:clamp(9px,1vw,16px);height:clamp(9px,1vw,16px);border-radius:50%;border:0;background:#FDD854;opacity:.5;cursor:pointer;padding:0;transition:opacity .2s,transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.hp-dot.is-active{opacity:1;transform:scale(1.35);background:#FDC06F;}
+.hp-stage.go .hp-dots{opacity:1;transition:opacity .6s ease .85s;}
+/* PC画面の中身（ロゴ。拡大後に表示） */
+.hp-screen-content{position:absolute;left:12.9%;top:13.8%;width:74.5%;height:54.8%;z-index:2;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .5s ease;pointer-events:none;}
+.hp-screen-content img{height:58%;aspect-ratio:1/1;width:auto;object-fit:cover;border-radius:50%;border:4px solid rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(0,0,0,.25);}
+/* 拡大後 */
+.hp-stage.go{height:calc(var(--lap-grow)*0.8006);}
+.hp-stage.go .hp-laptop{left:var(--lap-left);transform:translateX(0);width:var(--lap-grow);}
+.hp-stage.go .hp-band{clip-path:inset(0 0 0 0 round 0 16px 16px 0);opacity:1;}
+.hp-stage.go .hp-band-inner{opacity:1;transition:opacity .6s ease 1s;}
+.hp-stage.go .hp-screen-content{opacity:1;transition:opacity .6s ease .85s;}
+/* PCでは帯にABOUT USを出すので、下のラベルは非表示 */
+.hp-ch-label{display:none;}
+@media(max-width:760px){
+  :root{--lap-init:64vw;--lap-grow:98vw;--lap-left:5vw;}
+  .hp-band{display:none;}
+  .hp-stage.go .hp-laptop{left:50%;transform:translateX(-50%);}
+  /* モバイル：帯が無いのでPCの下にABOUT US＋リード文（拡大後に表示） */
+  .hp-ch-label{display:block;text-align:center;margin:16px auto 0;max-width:92%;opacity:0;transition:opacity .5s ease;}
+  .hp-ch-label-title{display:block;color:#0a8f86;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:900;font-size:26px;letter-spacing:.14em;}
+  .hp-ch-label-desc{margin:10px 0 0;color:#3a4a48;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:600;font-size:13px;line-height:1.95;letter-spacing:.02em;}
+  .hp-stage.go ~ .hp-ch-label{opacity:1;transition:opacity .6s ease .9s;}
+}
+@media(prefers-reduced-motion:reduce){.hp-stage,.hp-laptop,.hp-cat,.hp-band{transition:none;}}
 .feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
 .feature-3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--f3-gap);}
 .feature-3-card{background:#fff;border:3px solid #FF6B9C;border-radius:var(--f3-radius);overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
@@ -160,8 +229,8 @@ html,body{overflow-x:clip;}
 @keyframes f6inL{from{opacity:0;transform:translateX(-70px);}to{opacity:1;transform:translateX(0);}}
 @media(prefers-reduced-motion:reduce){.feature-6-grid .feature-3-card{opacity:1;animation:none;}}
 .feature-3-body{padding:var(--f3-body-pad-y) var(--f3-body-pad-x);display:flex;flex-direction:column;flex:1;}
-.feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#6FDFD6;color:#0a3d3a;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-bottom:10px;align-self:flex-start;box-shadow:0 2px 6px rgba(111,223,214,0.4);}
-.feature-3-card h3{font-size:var(--f3-h3-fs);font-weight:900;color:#1a1a1a;letter-spacing:var(--f3-h3-ls);margin-bottom:var(--f3-h3-mb);}
+.feature-3-tag{display:inline-block;font-size:var(--f3-tag-fs);font-weight:900;background:#6FDFD6;color:#0a3d3a;padding:3px 10px;border-radius:3px;letter-spacing:var(--f3-tag-ls);margin-top:var(--f3-tag-mt,0px);margin-bottom:var(--f3-tag-mb,10px);align-self:flex-start;box-shadow:0 2px 6px rgba(111,223,214,0.4);}
+.feature-3-card h3{font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-size:var(--f3-h3-fs);font-weight:800;color:#6FDFD6;-webkit-text-stroke:2px #0a6b63;paint-order:stroke fill;letter-spacing:var(--f3-h3-ls);margin-bottom:var(--f3-h3-mb);}
 .feature-3-card p{font-size:var(--f3-p-fs);color:#666;line-height:var(--f3-p-lh);margin-bottom:var(--f3-p-mb);flex:1;}
 .feature-3-cta{font-size:var(--f3-cta-fs);color:#00DFD8;font-weight:800;letter-spacing:var(--f3-cta-ls);}
 
@@ -214,10 +283,13 @@ html,body{overflow-x:clip;}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
-<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@700;900&family=Poppins:wght@700&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'SoeiKakuPop';src:url('https://game.sarubedo.jp/fonts/HGRPP1.ttf') format('truetype');font-display:swap;}
 @font-face{font-family:'AkazukinPOP';src:url('fonts/AkazukiPOP.woff2') format('woff2');font-display:swap;}
+@font-face{font-family:'KeiFont';src:url('fonts/keifont-title.woff2') format('woff2');font-display:swap;}
+@font-face{font-family:'KillgoU-NB';src:url('img/fonts/KillgoU-NB.ttf') format('truetype');font-display:swap;}
+@font-face{font-family:'SoukouMincho';src:url('img/fonts/SoukouMincho.ttf') format('truetype');font-display:swap;}
 /* === コミック回転トップ（FV差し替え） === */
 /* トップバーは他ページと同じ .a7-topbar を使用（ロゴ・メニューのサイズ/位置を統一）。
    ヒーロー(.ctop)は100vw全幅でスクロールバー幅を含むため、バーは通常幅基準の.main-wrap直下に絶対配置して他ページと右端を揃える */
@@ -274,7 +346,7 @@ html,body{overflow-x:clip;}
 
 </style>
 <style>
-/* === スプラッシュ（オープニングアニメ）=== */
+/* === スプラッシュ（オープニングアニメ）復元 === */
 .splash{position:fixed;inset:0;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity 0.8s ease;}
 .splash.done{opacity:0;pointer-events:none;}
 .splash-stage{position:relative;width:72%;max-width:1100px;aspect-ratio:16/9;}
@@ -380,13 +452,42 @@ body.splash-lock{overflow:hidden;}
 
   <!-- チャンネル紹介 -->
   <section class="section hp-channels-wrap">
-    <div class="contents-heading"><h2><span class="big">CHANNELS</span><span class="sub">チャンネル紹介</span></h2></div>
-    <div class="hp-channels">
-      <a href="channel-main.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/salvado-logo.png" alt="サルベド漫画"></div><span class="hp-ch-name">サルベド漫画</span></a>
-      <a href="channel-emotional.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/emotional-icon.jpg" alt="サルベド漫画Emotional"></div><span class="hp-ch-name">サルベド漫画Emotional</span></a>
-      <a href="channel-fantasy.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/fantasy-icon.png" alt="サルベド漫画Fantasy"></div><span class="hp-ch-name">サルベド漫画Fantasy</span></a>
-      <a href="channel-shinigami.html" class="hp-ch"><div class="hp-ch-circle"><img src="img/shinigami-icon.png" alt="死神少女"></div><span class="hp-ch-name">死神少女</span></a>
+    <div class="hp-stage" id="hpStage">
+      <div class="hp-band" id="hpBand">
+        <div class="hp-band-inner" id="hpBandInner">
+          <div class="hp-band-panel ch-f-main is-active" data-screen="img/ch-icon-main.jpg" data-bg="url('img/main-bg.jpg') 35% 50%/cover" data-band="linear-gradient(100deg,#7ee8df 0%,#52cabf 72%)" data-name="サルベド漫画" data-tag="メインチャンネル">
+            <span class="hp-band-text">サルベド漫画とは</span>
+            <p class="hp-band-desc">オリジナルラブコメ漫画動画を配信するYouTubeチャンネル<br><br>「感情が動く、気分が上がるオリジナル漫画をあなたにお届けしたい！」をモットーに<br>コンテンツを作り続けています<br><br>現在4つのチャンネルを運営しております</p>
+          </div>
+          <div class="hp-band-panel ch-f-emo" data-screen="img/emotional-icon.jpg" data-bg="url('img/emotional-bg.jpg') center/cover" data-band="linear-gradient(100deg,#e0617f 0%,#8b2982 78%)" data-name="サルベド漫画 Emotional" data-tag="感動・しっとり系">
+            <span class="hp-band-text">サルベド漫画Emotional</span>
+            <p class="hp-band-desc">本家よりもしっとりとした、重いストーリーが中心。伏線あり、感動ありだが、時折コメディもしっかり忘れないのはサルベドクオリティ。</p>
+          </div>
+          <div class="hp-band-panel ch-f-fan" data-screen="img/fantasy-icon.png" data-bg="url('img/fantasy-bg.png') center/cover" data-band="linear-gradient(100deg,#6c7bff 0%,#1b11d9 78%)" data-name="サルベド漫画 Fantasy" data-tag="異世界・ファンタジー">
+            <span class="hp-band-text">サルベド漫画Fantasy</span>
+            <p class="hp-band-desc">異世界、魔法、タイムリープにドラゴン…現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</p>
+          </div>
+          <div class="hp-band-panel ch-f-shini" data-screen="img/shinigami-icon.png" data-bg="url('img/shinigami-bg.png') center/cover" data-band="linear-gradient(100deg,#9a2138 0%,#5a0012 80%)" data-name="死神少女" data-tag="原稿Ver 連載中">
+            <span class="hp-band-text">死神少女</span>
+            <p class="hp-band-desc">寿命と引き換えに願いを叶える力を持つ死神少女。サブチャンネルの中で最も重いストーリーが展開される。</p>
+          </div>
+        </div>
+        <div class="hp-dots" id="hpDots">
+          <button class="hp-dot is-active" data-i="0" aria-label="セクション1"></button>
+          <button class="hp-dot" data-i="1" aria-label="セクション2"></button>
+          <button class="hp-dot" data-i="2" aria-label="セクション3"></button>
+          <button class="hp-dot" data-i="3" aria-label="セクション4"></button>
+        </div>
+      </div>
+      <div class="hp-laptop" id="hpLaptop">
+        <div class="hp-laptop-screen" id="hpScreen"></div>
+        <div class="hp-screen-bg" id="hpScreenBg"></div>
+        <div class="hp-screen-content"><img src="img/ch-icon-main.jpg" alt=""></div>
+        <img class="hp-laptop-frame" src="img/ch-laptop.png" alt="ノートパソコン">
+        <img class="hp-cat" id="hpCat" src="img/ch-cat1.png" alt="ねこ（クリック）" role="button" tabindex="0" title="クリックしてね">
+      </div>
     </div>
+    <div class="hp-ch-label"><span class="hp-ch-label-title">サルベド漫画とは</span><p class="hp-ch-label-desc">オリジナルラブコメ漫画動画を配信するYouTubeチャンネル<br><br>「感情が動く、気分が上がるオリジナル漫画をあなたにお届けしたい！」をモットーに<br>コンテンツを作り続けています<br><br>現在4つのチャンネルを運営しております</p></div>
   </section>
 
   <!-- FV 直下：作品連載 + コンテンツ 統合 6カード -->
@@ -396,7 +497,7 @@ body.splash-lock{overflow:hidden;}
     </div>
     <div class="feature-3-grid feature-6-grid">
       <a href="blog-harem.html" class="feature-3-card">
-        <div class="feature-3-thumb"><img src="img/harem-cover.jpg" alt="ハレ阻止！" style="object-position:center 40%;"></div>
+        <div class="feature-3-thumb"><img src="img/harem-cover.jpg" alt="ハレ阻止！" style="object-position:64% 40%;"></div>
         <div class="feature-3-body"><span class="feature-3-tag">LOVECOMEDY</span><h3>ハレ阻止！</h3></div>
       </a>
       <a href="blog-sakamachi.html" class="feature-3-card">
@@ -513,7 +614,8 @@ var items=[
 var CX=14,CY=-33,R=585,D2R=Math.PI/180,STEP=42;
 var keyAng=[-38,3.7,46,88,130],keySize=[180,288,498,301,180];
 function sizeAt(a){if(a<=keyAng[0])return keySize[0];for(var k=0;k<keyAng.length-1;k++){if(a<=keyAng[k+1]){var t=(a-keyAng[k])/(keyAng[k+1]-keyAng[k]);return keySize[k]+(keySize[k+1]-keySize[k])*t;}}return keySize[keySize.length-1];}
-function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;if(it.c)el.style.borderColor=it.c;}
+var SHADOWC={'#6FDFD6':'#FF93B5','#8a7ab0':'#FDD854','#FDC06F':'#6FDFD6','#FDD854':'#8a7ab0','#FF93B5':'#6FDFD6'};
+function setContent(el,it){var img=el.querySelector('img'),cap=el.querySelector('.ccap');img.src=it.img;img.style.objectPosition=it.pos;cap.textContent=it.cap;if(it.c){el.style.borderColor=it.c;var sc=SHADOWC[it.c]||'#FDC06F';var h=sc.replace('#','');var r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);el.style.boxShadow='0 9px 0 rgba('+r+','+g+','+b+',0.6)';}}
 function MOB(){return window.innerWidth<1000;}
 /* 狭い画面(1439px以下)の軌道ヒーロー 確定値 */
 window.CYp=634;window.R2=500;window.SPREAD=0.85;window.SIZE=404;window.OVH=42;window.DHmin=296;
@@ -576,11 +678,80 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   sc();window.addEventListener('resize',function(){clearTimeout(window.__sct);window.__sct=setTimeout(sc,120);});
 })();</script>
 
+<!-- チャンネル紹介：猫クリック → ねこ2で逃げる → PC拡大 -->
+<script>
+(function(){
+  var cat=document.getElementById('hpCat'),stage=document.getElementById('hpStage');
+  if(!cat||!stage)return;
+  var done=false;
+  function go(){
+    if(done)return;done=true;
+    cat.src='img/ch-cat2.png';      // ねこ2の画像に
+    // 1フレーム置いてから逃げモーション開始（src差し替えを反映させる）
+    requestAnimationFrame(function(){requestAnimationFrame(function(){cat.classList.add('run');});});
+    var grown=false;
+    function grow(){if(grown)return;grown=true;cat.style.display='none';stage.classList.add('go');
+      setTimeout(function(){
+        var r=stage.getBoundingClientRect();
+        var target=window.pageYOffset+r.top-(window.innerHeight-r.height)/2;
+        if(target<0)target=0;
+        var startY=window.pageYOffset,diff=target-startY,t0=null,dur=1300;
+        function ease(p){return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;}
+        function stp(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);window.scrollTo(0,startY+diff*ease(p));if(p<1)requestAnimationFrame(stp);}
+        requestAnimationFrame(stp);
+      },700);}
+    cat.addEventListener('transitionend',grow,{once:true});
+    setTimeout(grow,900);           // 念のためのフォールバック
+  }
+  cat.addEventListener('click',go);
+  cat.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
+})();
+</script>
+
+<!-- チャンネル紹介：セクション切替（ドット＋送りボタン） -->
+<script>
+(function(){
+  var panels=[].slice.call(document.querySelectorAll('.hp-band-panel'));
+  var dots=[].slice.call(document.querySelectorAll('.hp-dot'));
+  var next=document.getElementById('hpNext');
+  var screenImg=document.querySelector('.hp-screen-content img');
+  var scName=document.querySelector('.hp-sc-name'),scTag=document.querySelector('.hp-sc-tag');
+  var screenBg=document.getElementById('hpScreenBg');
+  var band=document.getElementById('hpBand');
+  var lblT=document.querySelector('.hp-ch-label-title'),lblD=document.querySelector('.hp-ch-label-desc');
+  if(!panels.length)return;
+  var cur=0;
+  function set(i){
+    cur=(i+panels.length)%panels.length;
+    panels.forEach(function(p,n){p.classList.toggle('is-active',n===cur);});
+    dots.forEach(function(d,n){d.classList.toggle('is-active',n===cur);});
+    var p=panels[cur],sc=p.getAttribute('data-screen'),bg=p.getAttribute('data-bg');
+    if(sc&&screenImg)screenImg.src=sc;
+    if(bg&&screenBg)screenBg.style.background=bg;   /* 画面背景を各チャンネルのテーマ色に */
+    var bd=p.getAttribute('data-band');if(bd&&band)band.style.background=bd;   /* 帯の色を各チャンネルに */
+    if(scName)scName.textContent=p.getAttribute('data-name')||'';
+    if(scTag)scTag.textContent=p.getAttribute('data-tag')||'';
+    var t=p.querySelector('.hp-band-text'),d=p.querySelector('.hp-band-desc');
+    if(lblT&&t)lblT.textContent=t.textContent;       /* モバイル用ラベルも同期 */
+    if(lblD&&d)lblD.innerHTML=d.innerHTML;
+  }
+  next&&next.addEventListener('click',function(){set(cur+1);});
+  dots.forEach(function(d){d.addEventListener('click',function(){set(parseInt(d.getAttribute('data-i'),10));});});
+  set(0);   /* 初期表示（セクション1のアイコン＋背景） */
+})();
+</script>
+
+
 <!-- スプラッシュ（オープニングアニメ） -->
 <script>
 (function(){
   var splash = document.getElementById('splash');
   if (!splash) return;
+  /* ローカル(編集中)はスプラッシュを即スキップ。公開ドメインでは再生 */
+  var _h=location.hostname;
+  if(_h==='localhost'||_h==='127.0.0.1'||_h===''||/^192\.168\./.test(_h)||/^10\./.test(_h)){
+    splash.style.display='none';document.body.classList.remove('splash-lock');return;
+  }
   var layers = splash.querySelectorAll('.splash-layer');
   var gradient = document.getElementById('splashGradient');
   var streak = document.getElementById('splashStreak');
@@ -617,6 +788,8 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   setTimeout(showPair, 150);
 })();
 </script>
+
+
 
 </body>
 </html>
