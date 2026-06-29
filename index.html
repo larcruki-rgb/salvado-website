@@ -293,8 +293,8 @@ html,body{overflow-x:clip;}
 #nekoArm{transform-origin:42% 10%;}
 #nekoArm.tap{animation:nekoArmTap .55s cubic-bezier(.3,1.4,.5,1);}
 @keyframes nekoArmTap{0%{transform:rotate(0)}25%{transform:rotate(-11deg)}55%{transform:rotate(5deg)}100%{transform:rotate(0)}}
-/* iPad等（〜1024px）：少し上げる */
-@media(max-width:1024px){
+/* iPad縦など（〜999px）：少し上げる。1000〜1024はPC寄りの小さいサイズ */
+@media(max-width:999px){
   #nekoArm{left:1.656vw;top:-7.660vw;width:37.484vw;}
   #nekoBody{left:-0.129vw;top:-7.039vw;width:43.210vw;}
 }
