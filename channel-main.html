@@ -209,7 +209,7 @@ footer{
 .tl-item:nth-child(4n+3) .tl-body{border-color:#FDC06F;box-shadow:0 6px 0 rgba(253,192,111,.42);}
 .tl-item:nth-child(4n) .tl-body{border-color:#7EC8F0;box-shadow:0 6px 0 rgba(126,200,240,.38);}
 /* 吹き出しのしっぽ：奇数=左列(右向き) / 偶数=右列(左向き) */
-.tl-body::after{content:'';position:absolute;top:16px;right:-15px;border:8px solid transparent;border-left-color:#6FDFD6;}
+.tl-body::after{display:none;}
 .tl-item:nth-child(even) .tl-body::after{right:auto;left:-15px;border-left-color:transparent;border-right-color:#6FDFD6;}
 .tl-item:nth-child(4n+3) .tl-body::after{border-left-color:#FDC06F;}
 .tl-item:nth-child(4n+2) .tl-body::after{border-right-color:#FF6B9C;}
