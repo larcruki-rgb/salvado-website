@@ -175,7 +175,7 @@ html,body{overflow-x:clip;}
 .hp-prog-track{position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,.55);border-radius:2px;}
 .hp-prog-fill{position:absolute;left:0;top:50%;height:4px;transform:translateY(-50%);background:#e8392f;border-radius:2px;width:0;transition:width .55s cubic-bezier(.4,.6,.2,1);}
 /* 点＝独立して位置・間隔を調整 */
-.hp-dots-row{position:absolute;left:var(--dot-x,59%);top:var(--dot-y,60%);z-index:7;display:inline-flex;align-items:center;gap:var(--dot-gap,3.45vw);opacity:0;transition:opacity .5s ease;}
+.hp-dots-row{position:absolute;left:var(--dot-x,53%);top:var(--dot-y,60%);z-index:7;display:inline-flex;align-items:center;gap:var(--dot-gap,3.45vw);opacity:0;transition:opacity .5s ease;}
 .hp-dot{position:relative;width:15px;height:15px;border-radius:50%;border:2px solid #fff;background:#FDD854;cursor:pointer;padding:0;transition:transform .2s,background .2s;box-shadow:0 1px 3px rgba(0,0,0,.25);}
 .hp-dot.is-active{background:#e8392f;transform:scale(1.25);}
 .hp-stage.go .hp-prog,.hp-stage.go .hp-dots-row{opacity:1;transition:opacity .6s ease .85s;}
@@ -199,6 +199,31 @@ html,body{overflow-x:clip;}
   .hp-ch-label-title{display:block;color:#0a8f86;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:900;font-size:26px;letter-spacing:.14em;}
   .hp-ch-label-desc{margin:10px 0 0;color:#3a4a48;font-family:'Murecho','Hiragino Kaku Gothic Pro',sans-serif;font-weight:600;font-size:13px;line-height:1.95;letter-spacing:.02em;}
   .hp-stage.go ~ .hp-ch-label{opacity:1;transition:opacity .6s ease .9s;}
+}
+/* 縦長(portrait)：帯はPCの下から下方向に出て、下へフェード（スマホ含む全幅） */
+@media (orientation:portrait){
+  :root{--lap-grow:88vw;--lap-left:0vw;
+    --pb-h:52vw;--pb-into:10vw;--pb-fade:20%;--pb-fadeend:101%;--pb-side:9vw;--pb-bottom:0vw;--pb-tpad:6vw;--pb-up:1vw;
+    --lap-draw:0.6985;}  /* パソコン描画の最下端＝画像の高さ69.85%(画像解析で検出) */
+  .hp-laptop{left:50%;transform:translateX(-50%);}
+  .hp-stage.go .hp-laptop{left:50%;transform:translateX(-50%);width:var(--lap-grow);}
+  .hp-stage.go{height:calc(var(--lap-grow)*var(--lap-draw,0.6985) + var(--pb-bandh,60vw));}
+  .hp-band{
+    display:block!important;
+    left:var(--pb-side,9vw);right:var(--pb-side,9vw);bottom:auto;
+    top:calc(var(--lap-grow)*var(--lap-draw,0.6985) - var(--pb-up,1vw));   /* パソコン描画の下端のすぐ下から */
+    height:var(--pb-bandh,60vw);
+    border-radius:0;
+    -webkit-mask:linear-gradient(180deg,#000 0%,#000 var(--pb-fade,52%),transparent var(--pb-fadeend,100%));
+            mask:linear-gradient(180deg,#000 0%,#000 var(--pb-fade,52%),transparent var(--pb-fadeend,100%));
+    clip-path:inset(100% 0 0 0);
+    transition:clip-path .85s cubic-bezier(.2,.75,.2,1) .3s,opacity .4s ease .3s;
+  }
+  .hp-stage.go .hp-band{clip-path:inset(0 0 0 0);}
+  .hp-band-panel{justify-content:flex-start;padding:var(--pb-tpad,18vw) 9vw 0;gap:2.2vw;}
+  .hp-band-desc{font-size:clamp(14px,3.6vw,24px);line-height:1.95;}
+  .hp-band-text{font-size:clamp(26px,7vw,52px);}
+  .hp-ch-label{display:none;}
 }
 @media(prefers-reduced-motion:reduce){.hp-stage,.hp-laptop,.hp-cat,.hp-band{transition:none;}}
 .feature-3-heading{font-size:14px;font-weight:900;color:#888;letter-spacing:6px;text-align:center;margin-bottom:32px;}
@@ -667,6 +692,7 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   var screenImg=document.querySelector('.hp-screen-content img');
   var screenBg=document.getElementById('hpScreenBg');
   var band=document.getElementById('hpBand');
+  var stage=document.getElementById('hpStage');
   var progFill=document.getElementById('hpProgFill');
   var lblT=document.querySelector('.hp-ch-label-title'),lblD=document.querySelector('.hp-ch-label-desc');
   if(!panels.length)return;
@@ -680,6 +706,19 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
     progFill.style.width=(Math.max(0,Math.min(1.05,frac))*100).toFixed(2)+'%';
   }
   window.addEventListener('resize',syncFill);
+  function fitBand(){
+    if(!band)return;
+    var root=document.documentElement;
+    if(!window.matchMedia('(orientation:portrait)').matches){root.style.removeProperty('--pb-bandh');root.style.removeProperty('--pb-fade');return;}
+    var ap=panels[cur];if(!ap)return;
+    var t=ap.querySelector('.hp-band-text'),d=ap.querySelector('.hp-band-desc');
+    var vw=window.innerWidth/100, padTop=6*vw, tail=22*vw;     /* padTop=--pb-tpad と一致 */
+    var textH=(t?t.offsetHeight:0)+(d?d.offsetHeight:0)+2.2*vw;
+    var solid=1*vw/*--pb-up食い込み*/+padTop+textH+2*vw;        /* 文字の下端まで濃く */
+    var H=solid+tail;                                          /* ＋下のフェード */
+    root.style.setProperty('--pb-bandh', Math.round(H)+'px');
+    root.style.setProperty('--pb-fade', (solid/H*100).toFixed(1)+'%');
+  }
   function set(i){
     cur=(i+panels.length)%panels.length;
     panels.forEach(function(p,n){p.classList.toggle('is-active',n===cur);});
@@ -692,8 +731,10 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
     var t=p.querySelector('.hp-band-text'),d=p.querySelector('.hp-band-desc');
     if(lblT&&t)lblT.textContent=t.textContent;       /* モバイル用ラベルも同期 */
     if(lblD&&d)lblD.innerHTML=d.innerHTML;
+    requestAnimationFrame(fitBand);   /* 文字量に合わせて帯の濃い範囲を自動調整（縦長時） */
   }
   dots.forEach(function(d){d.addEventListener('click',function(){set(parseInt(d.getAttribute('data-i'),10));});});
+  window.addEventListener('resize',function(){clearTimeout(window.__fbt);window.__fbt=setTimeout(fitBand,150);});
   set(0);   /* 初期表示（セクション1のアイコン＋背景） */
 })();
 </script>
