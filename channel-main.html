@@ -17,9 +17,9 @@
 .ch-detail > *{position:relative;z-index:1;}
 .ch-detail-inner{max-width:1200px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;}
 .ch-detail-header{display:grid;grid-template-columns:1fr max-content;gap:40px;margin-bottom:40px;align-items:end;}
-.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#1a1a1a;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
-.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#1a1a1a;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'AkazukinPOP','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
-.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#1a1a1a;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.55);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
+.ch-detail-category{font-size:var(--cat-fs,18px);font-weight:400;color:#F5870E;letter-spacing:var(--cat-ls,5px);margin-bottom:6px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:2px 0 0 #fff,-2px 0 0 #fff,0 2px 0 #fff,0 -2px 0 #fff,1.5px 1.5px 0 #fff,-1.5px -1.5px 0 #fff,1.5px -1.5px 0 #fff,-1.5px 1.5px 0 #fff;}
+.ch-detail-name{font-size:var(--name-fs,48px);font-weight:400;color:#F5870E;letter-spacing:var(--name-ls,7px);line-height:1.2;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;padding-left:var(--name-pl,40px);text-shadow:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff;}
+.ch-detail-desc{font-size:var(--desc-fs,16px);line-height:1.8;color:#F5870E;font-weight:400;letter-spacing:var(--desc-ls,1px);padding:14px 18px;background:rgba(255,255,255,0.78);border-radius:8px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;white-space:nowrap;}
 .ch-detail-video{max-width:var(--video-w,680px);margin:0 auto 50px;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.45);position:relative;background:#000;}
 .ch-detail-video .video-thumb-poster{position:relative;width:100%;height:100%;cursor:pointer;background:#000;overflow:hidden;display:block;}
 .ch-detail-video .video-thumb-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s ease;}
@@ -73,6 +73,13 @@
 .ch-detail-footer{opacity:0;animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.95s forwards;}
 @keyframes bgFadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes popIn{0%{opacity:0;transform:scale(0.6);}60%{opacity:1;transform:scale(1.08);}100%{opacity:1;transform:scale(1);}}
+/* 代表動画の登場と同時に 稲妻・星が飛び出す演出 */
+.ch-video-fx{position:relative;max-width:var(--video-w,680px);width:100%;margin:0 auto;}
+.ch-video-fx .ch-detail-video{margin-left:0;margin-right:0;z-index:1;}
+.ch-zap{position:absolute;inset:0;z-index:0;pointer-events:none;transform-origin:center;opacity:0;animation:chZapPop var(--zdur,1.9s) cubic-bezier(.34,1.56,.64,1) var(--zdelay,.72s) forwards;}
+.ch-zap .shp{position:absolute;}
+.ch-zap .shp svg{width:100%;height:100%;display:block;overflow:visible;}
+@keyframes chZapPop{0%{transform:scale(.35);opacity:0;}24%{transform:scale(1.06);opacity:1;}40%{transform:scale(1);opacity:1;}100%{opacity:0;transform:scale(1.05);}}
 
 /* === モバイル専用 調整変数（サルベド漫画 確定値） === */
 :root{
@@ -131,12 +138,12 @@ body{margin:0;padding:0;}
 /* === 代表作紹介セクション（テキスト） === */
 .ch-stories{background:#ffffff;padding:64px 24px 84px;}
 .ch-stories-inner{max-width:1000px;margin:0 auto;}
-.ch-stories-title{font-size:26px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-stories-title{font-size:26px;color:#0a7d74;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
 .ch-stories-lead{font-size:15px;line-height:2;color:#333;text-align:center;max-width:780px;margin:0 auto 46px;}
 .ch-stories-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-.ch-story{background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.04);}
+.ch-story{background:#f7fbfb;border:3px solid #6FDFD6;border-radius:12px;padding:0 0 22px;overflow:hidden;box-shadow:0 6px 0 rgba(111,223,214,.35);}
 .ch-story-thumb{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#000;margin:0 0 16px;}
-.ch-story h3{font-size:17px;color:#0a3d3a;margin:0 24px 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
+.ch-story h3{font-size:17px;color:#0a7d74;margin:0 24px 10px;line-height:1.55;font-family:'Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;}
 .ch-story p{font-size:14px;line-height:1.9;color:#333;margin:0 24px;}
 @media(max-width:760px){
   .ch-stories{padding:48px 18px 60px;}
@@ -179,7 +186,7 @@ footer{
 /* にゃんこ模様：年表＋代表作の共通ラッパーに地続きで敷く（横は画像1枚ぶん） */
 .ch-belowfold::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url('img/moyou-nyanko.png');background-repeat:repeat-y;background-size:100% auto;background-position:top center;opacity:0.25;}
 .ch-timeline-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;}
-.ch-timeline-title{font-size:27px;color:#1a1a1a;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
+.ch-timeline-title{font-size:27px;color:#0a7d74;text-align:center;letter-spacing:3px;margin:0 0 18px;font-family:'KeiFont','Mochiy Pop One','Hiragino Kaku Gothic Pro',sans-serif;text-shadow:0 2px 8px #fff,0 0 8px #fff;}
 .ch-timeline-lead{font-size:14px;line-height:2;color:#333;text-align:center;max-width:720px;margin:0 auto 50px;text-shadow:0 1px 6px #fff;}
 .tl{list-style:none;margin:0;padding:0;position:relative;}
 .tl::before{content:'';position:absolute;left:50%;top:4px;bottom:4px;border-left:4px dashed #6FDFD6;transform:translateX(-50%);-webkit-mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);mask-image:linear-gradient(to bottom,#000 74%,transparent 100%);}
@@ -281,10 +288,13 @@ footer{
           <span class="desc-mb">テンポのいいラブコメディが中心の、<br>サルベド漫画のメインチャンネル！<br>サルベド語録はここからはじまった。</span>
         </p>
       </div>
-      <div class="ch-detail-video">
-        <div class="video-thumb-poster" data-id="oys9pZGfkvo">
-          <img src="https://i.ytimg.com/vi/oys9pZGfkvo/hqdefault.jpg" alt="サルベド漫画 代表動画">
-          <div class="video-play-btn">▶</div>
+      <div class="ch-video-fx">
+        <div class="ch-zap" id="chZap"></div>
+        <div class="ch-detail-video">
+          <div class="video-thumb-poster" data-id="oys9pZGfkvo">
+            <img src="https://i.ytimg.com/vi/oys9pZGfkvo/hqdefault.jpg" alt="サルベド漫画 代表動画">
+            <div class="video-play-btn">▶</div>
+          </div>
         </div>
       </div>
       <div class="ch-detail-footer">
@@ -399,6 +409,32 @@ document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").add
 //     this.parentNode.replaceChild(iframe, this);
 //   });
 // });
+</script>
+
+<script>
+/* 代表動画の登場と同時に 稲妻・星を飛び出させる（固定配置・1回） */
+(function(){
+ var mk=document.getElementById('chZap');if(!mk)return;
+ function boltSVG(rot,fill){return '<svg viewBox="0 0 52 100" style="transform:rotate('+rot+'deg)"><path d="M32 2 L11 54 L25 54 L19 98 L42 44 L27 44 Z" fill="'+(fill||'#fff')+'" stroke="#fff" stroke-width="5" stroke-linejoin="round"/></svg>';}
+ function starSVG(fill,rot){var cx=50,cy=50,ro=46,ri=19,d='';for(var i=0;i<10;i++){var a=-Math.PI/2+i*Math.PI/5;var r=(i%2===0)?ro:ri;d+=(i===0?'M':'L')+(cx+Math.cos(a)*r).toFixed(1)+' '+(cy+Math.sin(a)*r).toFixed(1)+' ';}return '<svg viewBox="0 0 100 100" style="transform:rotate('+rot+'deg)"><path d="'+d+'Z" fill="'+fill+'" stroke="#fff" stroke-width="6" stroke-linejoin="round"/></svg>';}
+ var ITEMS=[
+  {lx:42.8, ly:-24.4, s:110, t:'b', c:'#6FDFD6', rot:-20},
+  {lx:106.2, ly:-10.4, s:112, t:'s', c:'#FDD854', rot:-8},
+  {lx:-14.3, ly:23.4, s:96, t:'s', c:'#FF6B9C', rot:-16},
+  {lx:116.0, ly:15.9, s:110, t:'b', c:'#FDC06F', rot:63},
+  {lx:-13.6, ly:80.6, s:132, t:'b', c:'#9D8DF1', rot:40},
+  {lx:111.4, ly:83.0, s:120, t:'s', c:'#FDC06F', rot:24}
+ ];
+ ITEMS.forEach(function(it,i){
+  var sz=it.s;
+  var inner=(it.t==='b')?boltSVG(it.rot||0,it.c):starSVG(it.c,it.rot||0);
+  var d=document.createElement('div');d.className='shp';
+  d.style.left='calc('+it.lx+'% - '+sz/2+'px)';
+  d.style.top='calc('+it.ly+'% - '+sz/2+'px)';
+  d.style.width=sz+'px';d.style.height=sz+'px';d.style.zIndex=20-i;
+  d.innerHTML=inner;mk.appendChild(d);
+ });
+})();
 </script>
 
 </body>
