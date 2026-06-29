@@ -90,25 +90,6 @@ html,body{overflow-x:clip;}
 .news-top3 a{font-size:14px;color:#222;font-weight:600;flex:1;min-width:200px;}
 .news-top3 a:hover{color:#00DFD8;}
 
-/* === 作品・連載 誘導バナー（確定値） === */
-:root{
-  --bb-max-w:1090px;
-  --bb-pad-y:24px;
-  --bb-pad-x:26px;
-  --bb-aspect:3.7/1.8;
-  --bb-radius:17px;
-}
-.blog-banner-wrap{max-width:var(--bb-max-w);padding:var(--bb-pad-y) var(--bb-pad-x);}
-.blog-banner{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border:1px solid #e0e0e0;border-radius:var(--bb-radius);overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(0,0,0,0.06);}
-.blog-banner-image{aspect-ratio:var(--bb-aspect);background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.55);font-size:13px;letter-spacing:3px;overflow:hidden;}
-.blog-banner-image img{width:100%;height:100%;object-fit:cover;display:block;}
-.blog-banner-placeholder{padding:24px;text-align:center;}
-.blog-banner-text{padding:32px 36px;display:flex;flex-direction:column;justify-content:center;}
-.blog-banner-label{font-size:11px;color:#888;letter-spacing:3px;margin-bottom:8px;font-weight:800;}
-.blog-banner-text h2{font-size:24px;color:#1a1a1a;font-weight:900;letter-spacing:2px;margin-bottom:14px;}
-.blog-banner-desc{font-size:13px;color:#666;line-height:1.8;margin-bottom:18px;}
-.blog-banner-cta{font-size:13px;color:#00DFD8;font-weight:800;letter-spacing:2px;display:inline-flex;align-items:center;}
-
 /* === 3コンテンツ（確定値） === */
 :root{
   --f3-pad-y:0px;
@@ -245,37 +226,7 @@ html,body{overflow-x:clip;}
 .feature-3-card p{font-size:var(--f3-p-fs);color:#666;line-height:var(--f3-p-lh);margin-bottom:var(--f3-p-mb);flex:1;}
 .feature-3-cta{font-size:var(--f3-cta-fs);color:#00DFD8;font-weight:800;letter-spacing:var(--f3-cta-ls);}
 
-/* === トップ：死神少女スライダー（step方式） === */
-:root{
-  --tm-card-w:39%;
-  --tm-edge:0px;
-  --tm-gap:14px;
-  --tm-transition:0.6s;
-}
-.top-marquee-wrap{position:relative;width:100%;overflow:hidden;padding:8px var(--tm-edge) 0;box-sizing:border-box;}
-.top-marquee-track{display:flex;width:100%;gap:var(--tm-gap);transition:transform var(--tm-transition) cubic-bezier(0.4,0,0.2,1);}
-.top-marquee-card{flex:0 0 var(--tm-card-w);width:var(--tm-card-w);max-width:none;background:#000;border-radius:12px;overflow:hidden;text-decoration:none;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.25);position:relative;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
-.top-marquee-card img{width:100%;height:100%;object-fit:cover;display:block;}
-.top-marquee-card .tm-label{position:absolute;left:0;right:0;bottom:0;padding:10px 14px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%);font-size:14px;font-weight:800;letter-spacing:2px;text-align:center;}
-.top-marquee-card.tm-intro{background:linear-gradient(135deg,#0a3d3a 0%,#173e5a 100%);padding:24px;text-align:center;}
-.top-marquee-card.tm-intro .tm-intro-label{font-size:11px;letter-spacing:4px;color:rgba(255,255,255,0.65);font-weight:800;margin-bottom:10px;}
-.top-marquee-card.tm-intro h3{font-size:22px;line-height:1.3;letter-spacing:2px;font-weight:900;color:#fff;}
-
-/* 矢印 */
-.tm-arrow{position:absolute;top:calc(50% - 8px);transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.95);border:1px solid #e0e0e0;box-shadow:0 4px 14px rgba(0,0,0,0.18);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#333;z-index:3;transition:background 0.2s,transform 0.2s;}
-.tm-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06);}
-.tm-arrow.prev{left:12px;}
-.tm-arrow.next{right:12px;}
-/* ドット */
-.tm-dots{display:flex;justify-content:center;gap:6px;padding:14px 0 4px;flex-wrap:wrap;}
-.tm-dot{width:24px;height:4px;background:#ddd;border:none;cursor:pointer;border-radius:2px;transition:background 0.2s,transform 0.2s;padding:0;}
-.tm-dot:hover{background:#aaa;}
-.tm-dot.active{background:#6FDFD6;transform:scaleY(1.5);}
-
 @media(max-width:760px){
-  .blog-banner{grid-template-columns:1fr;}
-  .blog-banner-image{aspect-ratio:auto;height:var(--mobile-banner-h,240px);}
-  .blog-banner-text{padding:24px 22px;}
   .feature-3-grid{grid-template-columns:1fr;gap:16px;}
 }
 
@@ -413,48 +364,6 @@ body.splash-lock{overflow:hidden;}
     <img id="splashManga" class="splash-manga" src="img/splash/漫画.png" alt="">
   </div>
 </div>
-
-<!-- ヘッダーは一旦コメントアウト（デザイン作り直し中）
-<header class="site-header">
-  <button class="nav-toggle" aria-label="メニュー">☰</button>
-  <nav class="nav-left">
-    <div class="nav-item">
-      <a href="about.html">チャンネル紹介</a>
-      <div class="nav-sub">
-        <a href="channel-main.html">サルベド漫画</a>
-        <a href="channel-emotional.html">Emotional</a>
-        <a href="channel-fantasy.html">Fantasy</a>
-        <a href="channel-shinigami.html">死神少女</a>
-      </div>
-    </div>
-    <a href="videos.html">動画一覧</a>
-    <div class="nav-item">
-      <a href="blog.html">作品・連載</a>
-      <div class="nav-sub">
-        <a href="blog-shinigami.html">死神少女</a>
-        <a href="blog-botsu.html">ボツの館</a>
-        <a href="blog-sakamachi.html">坂街透</a>
-      </div>
-    </div>
-    <a href="news.html">NEWS<span>お知らせ</span></a>
-  </nav>
-  <a href="index.html" class="logo" aria-label="サルベド漫画">
-    <img src="img/salvado-logo.png" alt="サルベド漫画">
-  </a>
-  <nav class="nav-right">
-    <a href="game.html">カードゲーム</a>
-    <div class="nav-item">
-      <a href="goods.html">グッズ</a>
-      <div class="nav-sub">
-        <a href="https://sarubedo.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
-        <a href="https://store.line.me/stickershop/product/20622058/ja" target="_blank" rel="noopener noreferrer">LINEスタンプ</a>
-      </div>
-    </div>
-    <a href="ebooks.html">電子書籍</a>
-    <a href="news.html">お知らせ</a>
-  </nav>
-</header>
--->
 
 
 
@@ -755,9 +664,7 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
 (function(){
   var panels=[].slice.call(document.querySelectorAll('.hp-band-panel'));
   var dots=[].slice.call(document.querySelectorAll('.hp-dot'));
-  var next=document.getElementById('hpNext');
   var screenImg=document.querySelector('.hp-screen-content img');
-  var scName=document.querySelector('.hp-sc-name'),scTag=document.querySelector('.hp-sc-tag');
   var screenBg=document.getElementById('hpScreenBg');
   var band=document.getElementById('hpBand');
   var progFill=document.getElementById('hpProgFill');
@@ -782,13 +689,10 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
     if(sc&&screenImg)screenImg.src=sc;
     if(bg&&screenBg)screenBg.style.background=bg;   /* 画面背景を各チャンネルのテーマ色に */
     var bd=p.getAttribute('data-band');if(bd&&band)band.style.background=bd;   /* 帯の色を各チャンネルに */
-    if(scName)scName.textContent=p.getAttribute('data-name')||'';
-    if(scTag)scTag.textContent=p.getAttribute('data-tag')||'';
     var t=p.querySelector('.hp-band-text'),d=p.querySelector('.hp-band-desc');
     if(lblT&&t)lblT.textContent=t.textContent;       /* モバイル用ラベルも同期 */
     if(lblD&&d)lblD.innerHTML=d.innerHTML;
   }
-  next&&next.addEventListener('click',function(){set(cur+1);});
   dots.forEach(function(d){d.addEventListener('click',function(){set(parseInt(d.getAttribute('data-i'),10));});});
   set(0);   /* 初期表示（セクション1のアイコン＋背景） */
 })();
