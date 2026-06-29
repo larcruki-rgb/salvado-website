@@ -136,7 +136,7 @@ html,body{overflow-x:clip;}
 /* チャンネル背景（拡大後にフェードイン。初期は真っ暗な画面） */
 .hp-screen-bg{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .5s ease;-webkit-mask:url('img/ch-screen.png') center/100% 100% no-repeat;mask:url('img/ch-screen.png') center/100% 100% no-repeat;}
 .hp-stage.go .hp-screen-bg{opacity:1;transition:opacity .6s ease .8s;}
-.hp-laptop-frame{position:relative;z-index:2;}
+.hp-laptop-frame{position:relative;z-index:2;pointer-events:none;}
 .hp-laptop img.hp-cat{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;cursor:pointer;transform-origin:60% 70%;transition:transform .7s cubic-bezier(.5,-0.2,.8,.5),opacity .7s ease-in;}
 .hp-cat:hover{transform:translateY(-2%) rotate(-2deg);}
 .hp-cat.run{transform:translate(-80%,12%) rotate(-12deg) scale(.82);opacity:0;pointer-events:none;}
@@ -188,6 +188,8 @@ html,body{overflow-x:clip;}
 .hp-stage.go .hp-band{clip-path:inset(0 0 0 0);opacity:1;}
 .hp-stage.go .hp-band-inner{opacity:1;transition:opacity .6s ease 1s;}
 .hp-stage.go .hp-screen-content{opacity:1;transition:opacity .6s ease .85s;}
+.hp-stage.go .hp-screen-content img{pointer-events:auto;cursor:pointer;transition:transform .2s;}
+.hp-stage.go .hp-screen-content img:hover{transform:scale(1.06);}
 /* PCでは帯にABOUT USを出すので、下のラベルは非表示 */
 .hp-ch-label{display:none;}
 @media(max-width:600px){ /* 極端に狭いスマホのみ従来のモバイル表示。601px以上はPC版を縮小表示 */
@@ -424,19 +426,19 @@ body.splash-lock{overflow:hidden;}
     <div class="hp-stage" id="hpStage">
       <div class="hp-band" id="hpBand">
         <div class="hp-band-inner" id="hpBandInner">
-          <div class="hp-band-panel ch-f-main is-active" data-screen="img/ch-icon-main.jpg" data-bg="url('img/main-bg.jpg') 35% 50%/cover" data-band="linear-gradient(100deg,#2fd2c4 0%,#0fa294 80%)" data-name="サルベド漫画" data-tag="メインチャンネル">
+          <div class="hp-band-panel ch-f-main is-active" data-href="channel-main.html" data-screen="img/ch-icon-main.jpg" data-bg="url('img/main-bg.jpg') 35% 50%/cover" data-band="linear-gradient(100deg,#2fd2c4 0%,#0fa294 80%)" data-name="サルベド漫画" data-tag="メインチャンネル">
             <span class="hp-band-text">サルベド漫画とは</span>
             <p class="hp-band-desc">オリジナルラブコメ漫画動画を配信するYouTubeチャンネル<br><br>「感情が動く、気分が上がるオリジナル漫画をあなたにお届けしたい！」をモットーに<br>コンテンツを作り続けています<br><br>現在4つのチャンネルを運営しております</p>
           </div>
-          <div class="hp-band-panel ch-f-emo" data-screen="img/emotional-icon.jpg" data-bg="url('img/emotional-bg.jpg') center/cover" data-band="linear-gradient(100deg,#e0617f 0%,#8b2982 78%)" data-name="サルベド漫画 Emotional" data-tag="感動・しっとり系">
+          <div class="hp-band-panel ch-f-emo" data-href="channel-emotional.html" data-screen="img/emotional-icon.jpg" data-bg="url('img/emotional-bg.jpg') center/cover" data-band="linear-gradient(100deg,#e0617f 0%,#8b2982 78%)" data-name="サルベド漫画 Emotional" data-tag="感動・しっとり系">
             <span class="hp-band-text">サルベド漫画Emotional</span>
             <p class="hp-band-desc">本家よりもしっとりとした、重いストーリーが中心。伏線あり、感動ありだが、時折コメディもしっかり忘れないのはサルベドクオリティ。</p>
           </div>
-          <div class="hp-band-panel ch-f-fan" data-screen="img/fantasy-icon.png" data-bg="url('img/fantasy-bg.png') center/cover" data-band="linear-gradient(100deg,#6c7bff 0%,#1b11d9 78%)" data-name="サルベド漫画 Fantasy" data-tag="異世界・ファンタジー">
+          <div class="hp-band-panel ch-f-fan" data-href="channel-fantasy.html" data-screen="img/fantasy-icon.png" data-bg="url('img/fantasy-bg.png') center/cover" data-band="linear-gradient(100deg,#6c7bff 0%,#1b11d9 78%)" data-name="サルベド漫画 Fantasy" data-tag="異世界・ファンタジー">
             <span class="hp-band-text">サルベド漫画Fantasy</span>
             <p class="hp-band-desc">異世界、魔法、タイムリープにドラゴン…現実じゃありえない舞台を中心に繰り広げられるサルベドワールド。</p>
           </div>
-          <div class="hp-band-panel ch-f-shini" data-screen="img/shinigami-icon.png" data-bg="url('img/shinigami-bg.png') center/cover" data-band="linear-gradient(100deg,#9a2138 0%,#5a0012 80%)" data-name="死神少女" data-tag="原稿Ver 連載中">
+          <div class="hp-band-panel ch-f-shini" data-href="channel-shinigami.html" data-screen="img/shinigami-icon.png" data-bg="url('img/shinigami-bg.png') center/cover" data-band="linear-gradient(100deg,#9a2138 0%,#5a0012 80%)" data-name="死神少女" data-tag="原稿Ver 連載中">
             <span class="hp-band-text">死神少女</span>
             <p class="hp-band-desc">寿命と引き換えに願いを叶える力を持つ死神少女。サブチャンネルの中で最も重いストーリーが展開される。</p>
           </div>
@@ -731,8 +733,11 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
     var t=p.querySelector('.hp-band-text'),d=p.querySelector('.hp-band-desc');
     if(lblT&&t)lblT.textContent=t.textContent;       /* モバイル用ラベルも同期 */
     if(lblD&&d)lblD.innerHTML=d.innerHTML;
+    curHref=p.getAttribute('data-href')||'';   /* アイコンクリックの遷移先 */
     requestAnimationFrame(fitBand);   /* 文字量に合わせて帯の濃い範囲を自動調整（縦長時） */
   }
+  var curHref='';
+  if(screenImg){screenImg.addEventListener('click',function(){if(curHref)location.href=curHref;});}
   dots.forEach(function(d){d.addEventListener('click',function(){set(parseInt(d.getAttribute('data-i'),10));});});
   window.addEventListener('resize',function(){clearTimeout(window.__fbt);window.__fbt=setTimeout(fitBand,150);});
   set(0);   /* 初期表示（セクション1のアイコン＋背景） */
