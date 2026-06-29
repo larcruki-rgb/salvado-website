@@ -731,11 +731,20 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   var lblT=document.querySelector('.hp-ch-label-title'),lblD=document.querySelector('.hp-ch-label-desc');
   if(!panels.length)return;
   var cur=0;
+  function syncFill(){
+    if(!progFill||!dots[cur])return;
+    var bar=progFill.parentElement.getBoundingClientRect();
+    if(!bar.width)return;
+    var d=dots[cur].getBoundingClientRect();
+    var frac=(d.left+d.width/2-bar.left)/bar.width;
+    progFill.style.width=(Math.max(0,Math.min(1.05,frac))*100).toFixed(2)+'%';
+  }
+  window.addEventListener('resize',syncFill);
   function set(i){
     cur=(i+panels.length)%panels.length;
     panels.forEach(function(p,n){p.classList.toggle('is-active',n===cur);});
     dots.forEach(function(d,n){d.classList.toggle('is-active',n===cur);});
-    if(progFill)progFill.style.width=((cur+0.5)/panels.length*100)+'%';   /* 赤い線が伸びる（最初の点の後ろにも） */
+    syncFill();   /* 赤線の先端をアクティブなドット位置に合わせる */
     var p=panels[cur],sc=p.getAttribute('data-screen'),bg=p.getAttribute('data-bg');
     if(sc&&screenImg)screenImg.src=sc;
     if(bg&&screenBg)screenBg.style.background=bg;   /* 画面背景を各チャンネルのテーマ色に */
