@@ -159,6 +159,12 @@ html,body{overflow-x:clip;}
 .hp-laptop img.hp-cat{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;cursor:pointer;transform-origin:60% 70%;transition:transform .7s cubic-bezier(.5,-0.2,.8,.5),opacity .7s ease-in;}
 .hp-cat:hover{transform:translateY(-2%) rotate(-2deg);}
 .hp-cat.run{transform:translate(-80%,12%) rotate(-12deg) scale(.82);opacity:0;pointer-events:none;}
+/* 猫まわりの きらきら（画像） */
+.neko-fx{position:absolute;left:77.20%;top:19.47%;--nfx-w:9.00vw;z-index:3;pointer-events:none;transform:translate(-50%,-50%);}
+.neko-fx img{display:block;width:var(--nfx-w,9vw);height:auto;}
+.hp-stage.go .neko-fx{opacity:0;transition:opacity .3s ease;}
+.neko-fx.play img{animation:nekoBlink 4.5s ease-in-out infinite;}
+@keyframes nekoBlink{0%{opacity:1}4%{opacity:0}8%{opacity:1}12%{opacity:0}16%{opacity:1}100%{opacity:1}}
 /* 帯（PC画面の右からせり出す。初期は隠れている） */
 .hp-band{position:absolute;z-index:0;
   left:calc(var(--lap-left) + var(--lap-grow)*var(--band-leftf,0.875));
@@ -166,8 +172,8 @@ html,body{overflow-x:clip;}
   height:calc(var(--lap-grow)*var(--band-hf,0.44));
   right:0;
   background:linear-gradient(100deg,var(--band-c1) 0%,var(--band-c2) 72%);
-  border-radius:0 16px 16px 0;box-shadow:0 10px 26px rgba(80,200,190,.25);
-  clip-path:inset(0 100% 0 0 round 0 16px 16px 0);opacity:0;
+  border-radius:0;box-shadow:0 10px 26px rgba(80,200,190,.25);
+  clip-path:inset(0 100% 0 0);opacity:0;
   transition:clip-path .85s cubic-bezier(.2,.75,.2,1) .3s,opacity .4s ease .3s;}
 /* 帯の文字 ABOUT US ＋ リード文（拡大後に表示） */
 .hp-band-inner{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
@@ -198,7 +204,7 @@ html,body{overflow-x:clip;}
 /* 拡大後 */
 .hp-stage.go{height:calc(var(--lap-grow)*0.8006);}
 .hp-stage.go .hp-laptop{left:var(--lap-left);transform:translateX(0);width:var(--lap-grow);}
-.hp-stage.go .hp-band{clip-path:inset(0 0 0 0 round 0 16px 16px 0);opacity:1;}
+.hp-stage.go .hp-band{clip-path:inset(0 0 0 0);opacity:1;}
 .hp-stage.go .hp-band-inner{opacity:1;transition:opacity .6s ease 1s;}
 .hp-stage.go .hp-screen-content{opacity:1;transition:opacity .6s ease .85s;}
 /* PCでは帯にABOUT USを出すので、下のラベルは非表示 */
@@ -513,6 +519,7 @@ body.splash-lock{overflow:hidden;}
           <button class="hp-dot" data-i="3" aria-label="セクション4"></button>
         </div>
         <img class="hp-laptop-frame" src="img/ch-laptop.png" alt="ノートパソコン">
+        <div class="neko-fx" id="nekoFx"><img id="nfxImg" src="img/neko-kirakira.png" alt=""></div>
         <img class="hp-cat" id="hpCat" src="img/ch-cat1.png" alt="ねこ（クリック）" role="button" tabindex="0" title="クリックしてね">
       </div>
     </div>
@@ -715,6 +722,7 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   var done=false;
   function go(){
     if(done)return;done=true;
+    var fx=document.getElementById('nekoFx');if(fx){fx.style.transition='opacity .25s ease';fx.style.opacity='0';}  // クリック即きらきらを消す
     cat.src='img/ch-cat2.png';      // ねこ2の画像に
     // 1フレーム置いてから逃げモーション開始（src差し替えを反映させる）
     requestAnimationFrame(function(){requestAnimationFrame(function(){cat.classList.add('run');});});
@@ -831,5 +839,16 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
 
 
 
+<script>
+/* きらきら：セクションが画面に入ったら2回点滅（毎回） */
+(function(){
+ var fx=document.getElementById('nekoFx');if(!fx||!('IntersectionObserver' in window))return;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){
+   if(e.isIntersecting && !document.querySelector('.hp-stage.go')){fx.classList.add('play');}
+   else{fx.classList.remove('play');}
+ });},{threshold:0.55});
+ io.observe(fx);
+})();
+</script>
 </body>
 </html>
