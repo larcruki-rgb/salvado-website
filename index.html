@@ -183,10 +183,15 @@ html,body{overflow-x:clip;}
 .ch-f-shini .hp-band-text,.ch-f-shini .hp-band-desc{font-family:'SoukouMincho','Hiragino Mincho ProN',serif;}
 /* 送りボタン（▶） */
 /* セクション選択ドット（PC画面の下に重ねる） */
-.hp-dots{position:absolute;right:4%;bottom:9%;z-index:5;display:flex;gap:min(1.6vw,14px);align-items:center;justify-content:flex-end;opacity:0;transition:opacity .5s ease;}
-.hp-dot{width:clamp(9px,1vw,16px);height:clamp(9px,1vw,16px);border-radius:50%;border:0;background:#FDD854;opacity:.5;cursor:pointer;padding:0;transition:opacity .2s,transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
-.hp-dot.is-active{opacity:1;transform:scale(1.35);background:#FDC06F;}
-.hp-stage.go .hp-dots{opacity:1;transition:opacity .6s ease .85s;}
+/* セクション切替＝再生バー（赤い線が伸びる）＝位置・長さ固定 */
+.hp-prog{position:absolute;left:var(--prog-x,18%);width:var(--prog-w,64%);top:var(--prog-y,60%);z-index:6;height:18px;opacity:0;transition:opacity .5s ease;}
+.hp-prog-track{position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,.55);border-radius:2px;}
+.hp-prog-fill{position:absolute;left:0;top:50%;height:4px;transform:translateY(-50%);background:#e8392f;border-radius:2px;width:0;transition:width .55s cubic-bezier(.4,.6,.2,1);}
+/* 点＝独立して位置・間隔を調整 */
+.hp-dots-row{position:absolute;left:var(--dot-x,59%);top:var(--dot-y,60%);z-index:7;display:inline-flex;align-items:center;gap:var(--dot-gap,3.45vw);opacity:0;transition:opacity .5s ease;}
+.hp-dot{position:relative;width:15px;height:15px;border-radius:50%;border:2px solid #fff;background:#FDD854;cursor:pointer;padding:0;transition:transform .2s,background .2s;box-shadow:0 1px 3px rgba(0,0,0,.25);}
+.hp-dot.is-active{background:#e8392f;transform:scale(1.25);}
+.hp-stage.go .hp-prog,.hp-stage.go .hp-dots-row{opacity:1;transition:opacity .6s ease .85s;}
 /* PC画面の中身（ロゴ。拡大後に表示） */
 .hp-screen-content{position:absolute;left:12.9%;top:13.8%;width:74.5%;height:54.8%;z-index:2;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .5s ease;pointer-events:none;}
 .hp-screen-content img{height:58%;aspect-ratio:1/1;width:auto;object-fit:cover;border-radius:50%;border:4px solid rgba(255,255,255,.9);box-shadow:0 6px 18px rgba(0,0,0,.25);}
@@ -198,7 +203,7 @@ html,body{overflow-x:clip;}
 .hp-stage.go .hp-screen-content{opacity:1;transition:opacity .6s ease .85s;}
 /* PCでは帯にABOUT USを出すので、下のラベルは非表示 */
 .hp-ch-label{display:none;}
-@media(max-width:760px){
+@media(max-width:1100px){
   :root{--lap-init:64vw;--lap-grow:98vw;--lap-left:5vw;}
   .hp-band{display:none;}
   .hp-stage.go .hp-laptop{left:50%;transform:translateX(-50%);}
@@ -472,17 +477,21 @@ body.splash-lock{overflow:hidden;}
             <p class="hp-band-desc">寿命と引き換えに願いを叶える力を持つ死神少女。サブチャンネルの中で最も重いストーリーが展開される。</p>
           </div>
         </div>
-        <div class="hp-dots" id="hpDots">
-          <button class="hp-dot is-active" data-i="0" aria-label="セクション1"></button>
-          <button class="hp-dot" data-i="1" aria-label="セクション2"></button>
-          <button class="hp-dot" data-i="2" aria-label="セクション3"></button>
-          <button class="hp-dot" data-i="3" aria-label="セクション4"></button>
-        </div>
       </div>
       <div class="hp-laptop" id="hpLaptop">
         <div class="hp-laptop-screen" id="hpScreen"></div>
         <div class="hp-screen-bg" id="hpScreenBg"></div>
         <div class="hp-screen-content"><img src="img/ch-icon-main.jpg" alt=""></div>
+        <div class="hp-prog">
+          <span class="hp-prog-track"></span>
+          <span class="hp-prog-fill" id="hpProgFill"></span>
+        </div>
+        <div class="hp-dots-row" id="hpDots">
+          <button class="hp-dot is-active" data-i="0" aria-label="セクション1"></button>
+          <button class="hp-dot" data-i="1" aria-label="セクション2"></button>
+          <button class="hp-dot" data-i="2" aria-label="セクション3"></button>
+          <button class="hp-dot" data-i="3" aria-label="セクション4"></button>
+        </div>
         <img class="hp-laptop-frame" src="img/ch-laptop.png" alt="ノートパソコン">
         <img class="hp-cat" id="hpCat" src="img/ch-cat1.png" alt="ねこ（クリック）" role="button" tabindex="0" title="クリックしてね">
       </div>
@@ -718,6 +727,7 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   var scName=document.querySelector('.hp-sc-name'),scTag=document.querySelector('.hp-sc-tag');
   var screenBg=document.getElementById('hpScreenBg');
   var band=document.getElementById('hpBand');
+  var progFill=document.getElementById('hpProgFill');
   var lblT=document.querySelector('.hp-ch-label-title'),lblD=document.querySelector('.hp-ch-label-desc');
   if(!panels.length)return;
   var cur=0;
@@ -725,6 +735,7 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
     cur=(i+panels.length)%panels.length;
     panels.forEach(function(p,n){p.classList.toggle('is-active',n===cur);});
     dots.forEach(function(d,n){d.classList.toggle('is-active',n===cur);});
+    if(progFill)progFill.style.width=((cur+0.5)/panels.length*100)+'%';   /* 赤い線が伸びる（最初の点の後ろにも） */
     var p=panels[cur],sc=p.getAttribute('data-screen'),bg=p.getAttribute('data-bg');
     if(sc&&screenImg)screenImg.src=sc;
     if(bg&&screenBg)screenBg.style.background=bg;   /* 画面背景を各チャンネルのテーマ色に */
