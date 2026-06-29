@@ -311,6 +311,10 @@ html,body{overflow-x:clip;}
 /* サイズ・位置は vw 基準（自動リサイズ）。狭いほど上へ */
 #nekoArm{left:-0.916vw;top:-0.916vw;width:23.037vw;}
 #nekoBody{left:-0.916vw;top:-0.916vw;width:25.654vw;}
+/* ダイヤル送りのたびに腕をピコッと振る */
+#nekoArm{transform-origin:42% 10%;}
+#nekoArm.tap{animation:nekoArmTap .55s cubic-bezier(.3,1.4,.5,1);}
+@keyframes nekoArmTap{0%{transform:rotate(0)}25%{transform:rotate(-11deg)}55%{transform:rotate(5deg)}100%{transform:rotate(0)}}
 /* iPad等（〜1024px）：少し上げる */
 @media(max-width:1024px){
   #nekoArm{left:1.656vw;top:-7.660vw;width:37.484vw;}
@@ -696,6 +700,7 @@ function recycle(){for(var i=0;i<state.length;i++){if(state[i].ang>=129){state[i
 function recycleBack(){for(var i=0;i<state.length;i++){if(state[i].ang<=-37){state[i].ang+=168;state[i].it=items[nidx(ptr)];setContent(state[i].el,state[i].it);ptr--;}}}
 function spin(dir){                                       /* dir:+1=次へ / -1=戻る（ボタン操作） */
   if(busy)return;
+  var arm=document.getElementById('nekoArm');if(arm){arm.classList.remove('tap');void arm.offsetWidth;arm.classList.add('tap');}  /* 送るたびに腕を振る */
   busy=true;var t0=null,dur=620,from=state.map(function(s){return s.ang;});
   function fr(ts){if(t0===null)t0=ts;var p=Math.min((ts-t0)/dur,1);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;for(var i=0;i<state.length;i++){state[i].ang=from[i]+dir*STEP*e;}layout();if(p<1)requestAnimationFrame(fr);else{(dir>0?recycle:recycleBack)();layout();updateInfo();busy=false;}}
   requestAnimationFrame(fr);
