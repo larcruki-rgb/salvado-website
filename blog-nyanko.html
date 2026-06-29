@@ -87,57 +87,5 @@
   </footer>
 </div>
 
-<script>
-document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").addEventListener("click",function(){document.querySelectorAll(".site-header nav").forEach(function(n){n.classList.toggle("open");});});
-
-var COMMENT_API = 'https://game.sarubedo.jp/comments';
-
-function renderComments(el, comments) {
-  if (!comments.length) { el.innerHTML = '<p style="color:#666;font-size:14px;">まだコメントはありません</p>'; return; }
-  el.innerHTML = comments.map(function(c) {
-    var d = new Date(c.date);
-    var ds = d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0'+d.getMinutes()).slice(-2);
-    var escaped = c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-    var nameEsc = c.name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    return '<div class="comment-item"><div class="comment-header"><span class="comment-name">' + nameEsc + '</span><span class="comment-date">' + ds + '</span></div><div class="comment-body">' + escaped + '</div></div>';
-  }).join('');
-}
-
-function loadComments(section) {
-  var pageId = section.getAttribute('data-page');
-  var listEl = section.querySelector('.comment-list');
-  fetch(COMMENT_API + '?page=' + pageId).then(function(r) { return r.json(); }).then(function(comments) {
-    renderComments(listEl, comments);
-  }).catch(function() {
-    listEl.innerHTML = '<p style="color:#666;font-size:14px;">コメントの読み込みに失敗しました</p>';
-  });
-}
-
-function postComment(section) {
-  var pageId = section.getAttribute('data-page');
-  var name = section.querySelector('.comment-name-input').value;
-  var text = section.querySelector('.comment-text-input').value;
-  if (!text.trim()) return;
-  fetch(COMMENT_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ page: pageId, name: name, text: text })
-  }).then(function(r) {
-    if (r.status === 429) { alert('連投制限中です。30秒後にお試しください。'); return; }
-    return r.json();
-  }).then(function(data) {
-    if (!data) return;
-    section.querySelector('.comment-text-input').value = '';
-    loadComments(section);
-  });
-}
-
-document.querySelectorAll('.comment-section').forEach(function(section) {
-  loadComments(section);
-  section.querySelector('.comment-submit').addEventListener('click', function() {
-    postComment(section);
-  });
-});
-</script>
 </body>
 </html>
