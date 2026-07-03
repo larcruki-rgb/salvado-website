@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ブラウザで遊べるサルベドTCGの入門ガイド。勝利条件、視聴者と応援のシステム、カードの種類、タップの駆け引き、最初に頼れるカードまで解説。">
+<title>はじめてのサルベドTCG — ルールと戦い方まるわかり入門ガイド — サルベド漫画</title>
+<link rel="stylesheet" href="style.css?v=12">
+<style>
+.article-tag{display:inline-block;font-size:11px;font-weight:800;background:#6FDFD6;color:#0a3d3a;padding:3px 12px;border-radius:3px;letter-spacing:2px;margin-bottom:10px;}
+.blog-article-card h3{margin-top:34px;}
+.article-nav-links{display:flex;justify-content:space-between;gap:12px;margin:26px 0 10px;flex-wrap:wrap;}
+.article-nav-links a{font-size:14px;}
+</style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-E6JYMJBJDL");</script>
+</head>
+<body>
+
+<!-- A7 トップバー（ホーム画面と同じ） -->
+<div class="a7-topbar">
+  <a href="index.html" class="a7-logo"><img src="img/salvado-logo.png" alt="サルベド漫画"></a>
+  <button class="a7-hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.a7-nav').classList.toggle('open');"><span></span><span></span><span></span></button>
+  <nav class="a7-nav">
+    <a href="index.html">TOP<span>ホーム</span></a>
+    <a href="about.html">ABOUT<span>紹介</span></a>
+    <a href="videos.html">VIDEOS<span>動画</span></a>
+    <a href="blog.html">SERIES<span>作品</span></a>
+    <a href="gallery.html">GALLERY<span>ギャラリー</span></a>
+    <a href="game.html">GAME<span>ゲーム</span></a>
+    <a href="news.html">NEWS<span>お知らせ</span></a>
+  </nav>
+</div>
+
+<div class="main-wrap">
+  <div class="page-content">
+    <p style="margin-bottom:8px;"><a href="articles.html">&larr; 読み物一覧に戻る</a></p>
+    <h1>はじめてのサルベドTCG — ルールと戦い方まるわかり入門ガイド</h1>
+    <p class="blog-meta">サルベド漫画 読み物</p>
+
+    <article class="blog-article-card" id="article-tcg-guide">
+      <span class="article-tag">カードゲーム</span>
+      <h2>はじめてのサルベドTCG — ルールと戦い方まるわかり入門ガイド</h2>
+
+<h3>サルベドTCGってどんなゲーム？</h3>
+<p>サルベドTCGは、サルベド漫画のおなじみのキャラクターたちがカードになって戦う、<a href="game.html">オンライン対戦カードゲーム</a>です。インストール不要、ブラウザでアクセスするだけでスマホでもPCでもすぐ遊べます。友達とのオンライン対戦はもちろん、AI相手のひとり練習にも対応。ラブコメのヒロインたち、ファンタジーの勇者や魔王、そしてサルベドのクリエイターチームまで、多彩なカードたちが戦場で待っています。カードは今後も続々追加予定です。</p>
+
+<h3>勝利条件はシンプル「相手のLPを0にする」</h3>
+<p>お互い<strong>LP（ライフポイント）2000</strong>からスタートし、先に相手のLPを0にした方の勝ちです。デッキは60枚で、最初の手札は7枚。カードを場に出して攻撃し、相手のLPを削っていくのが基本の流れです（同じカードはデッキに4枚まで。※一部、枚数に制限のあるカードもあります）。</p>
+
+<h3>このゲームの心臓部 —「視聴者」と「応援」</h3>
+<p>サルベドTCGが面白いのは、カードを出すためのコストがサルベドの世界観に合わせてデザインされているところ。このゲームでは、カードを場に出すために<strong>「応援」</strong>が必要です。そして、その応援を届けてくれるのが<strong>「視聴者」</strong>。あなたの投稿キャラたちは、視聴者の応援があってはじめて戦場に立てるのです。</p>
+<ul>
+<li>ゲーム開始時、デッキの上から3枚が自動で視聴者ゾーンに置かれ、<strong>最初から視聴者3人があなたを応援してくれています</strong></li>
+<li>さらに毎ターン、手札1枚を視聴者ゾーンに置けます（<strong>フォロー</strong>）</li>
+<li>応援してくれた視聴者はいなくなりません。次のターンもまた応援してくれて、そこに新しい視聴者がもう一人加わっていく——<strong>応援が、次の応援を呼ぶ</strong>のです</li>
+</ul>
+<p>視聴者が増えるほど、より大きなキャラを場に送り出せる。序盤は小さなキャラから始まり、応援の輪が広がるにつれて盤面がにぎやかに育っていく——この「視聴者と応援の関係で場を展開していく」感覚こそ、サルベドTCGならではの醍醐味です。ただし視聴者にしたカードは手札には戻らないので、「どのカードを視聴者に回すか」が最初の悩みどころです。</p>
+
+<h3>カードは3種類</h3>
+<p><strong>① 投稿キャラ</strong> — ATKとHPを持つ、戦いの主役。攻撃もブロックもこなします。出したターンは攻撃できません（「俊足」持ちは例外で即攻撃OK）。</p>
+<p><strong>② サポート</strong> — 使い切りの効果カード。基本は自分のターンに使いますが、「割り込み」持ちは相手ターンにも使えます。</p>
+<p><strong>③ エンチャント</strong> — 味方の投稿キャラに装備して強化するカード。装備先が破壊されると一緒に墓地へ行くため、<strong>装備するタイミングと、誰につけるか</strong>が腕の見せどころです。</p>
+
+<h3>戦闘のキモは「タップ」— 攻めと守りのトレードオフ</h3>
+<p>攻撃したキャラは<strong>タップ</strong>状態になります（行動済みの合図として、カードが横向きになります）。タップ中のキャラは相手のターンにブロックができません。つまり——<strong>全員で殴れば守りがガラ空きになる</strong>。この攻守のトレードオフこそ、サルベドTCGの駆け引きの核です。攻撃はブロックされなければ相手のLPに直撃。キャラが受けたダメージはターンをまたいで蓄積するので、一度で倒しきれなくても削り続ければ落とせます。</p>
+
+<h3>覚えておきたいキーワード能力</h3>
+<ul>
+<li><strong>油断しない</strong> — 攻撃してもタップしない。攻めと守りを両立できる優等生</li>
+<li><strong>俊足</strong> — 出たターンからすぐ攻撃できる</li>
+<li><strong>割り込み</strong> — 相手の行動の直後に使える。相手ターンでも動ける奇襲の要</li>
+<li><strong>飛行</strong> — 飛行を持つキャラは、飛行持ちにしかブロックされません。地上のキャラでは止められないため、LPを直接削りやすい強力な能力です</li>
+</ul>
+
+<h3>最初のデッキで頼れるカードたち</h3>
+<ul>
+<li><strong>生徒会長ヒロイン（コスト2）</strong> — 出た時に1枚ドローするので手札が減らず、「油断しない」で攻守両方に使える序盤の優等生</li>
+<li><strong>ジュン（コスト2）</strong> — 登場時にデッキから「死神少女」を手札に呼び込める。低コストで戦力と次の一手を同時に用意できる、物語通りの名コンビ</li>
+<li><strong>ママチャリ暴走族（コスト2）</strong> — 「俊足」で出たターンからいきなり攻撃可能。序盤のペースを一気に握れるアタッカー</li>
+<li><strong>勇者の兄 ダリア（コスト3）</strong> — 攻撃はできない代わりに、ブロックしても戦闘ダメージを一切受けない鉄壁の守り手。置いておくだけで相手の攻撃を止め続けます</li>
+<li><strong>動画編集（コスト2・サポート）</strong> — キャラ1体のATKとHPをターン終了時まで300下げる。序盤はHP300を超えるキャラがほぼいないため、実質どんなキャラでも倒せる除去として大活躍します</li>
+</ul>
+<p>カード1枚1枚の詳しい使い方は、全カードを解説した<a href="card-guides.html">「カード使い方ガイド」</a>で紹介しています。デッキ構築に迷ったら、まずは気になるカードの「強み・使い方・弱み・相性」をチェックしてみてください。続編の<a href="article-tcg-deck.html">デッキ構築入門</a>もどうぞ。</p>
+
+      <div class="comment-section" data-page="article-tcg-guide">
+        <h4>この記事へのコメント</h4>
+        <div class="comment-list"></div>
+        <div class="comment-form">
+          <input class="comment-name-input" placeholder="名前（省略可）" maxlength="30">
+          <textarea class="comment-text-input" placeholder="コメントを書く..." maxlength="1000" rows="3"></textarea>
+          <button class="comment-submit">送信</button>
+        </div>
+      </div>
+    </article>
+
+    <div class="article-nav-links">
+      <a href="article-shinigami-guide.html">&larr; 作品ガイド</a>
+      <a href="articles.html">読み物一覧に戻る</a>
+      <a href="article-making.html">制作の裏側 &rarr;</a>
+    </div>
+
+    <p style="margin-top:20px;"><a href="index.html">&larr; トップページに戻る</a></p>
+  </div>
+
+  <a href="#" class="scroll-top-btn stb-emblem" id="scrollTopBtn" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+    <svg class="stb-ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="stbPath" d="M50,50 m-46,0 a46,46 0 1,0 92,0 a46,46 0 1,0 -92,0"/></defs><text><textPath href="#stbPath">★ PAGE TOP ★ PAGE TOP </textPath></text></svg>
+    <span class="stb-core"><img src="img/scroll-top.png" alt=""></span>
+  </a>
+  <script>(function(){var b=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){if(window.scrollY>500){b.classList.add('show');}else{b.classList.remove('show');}});})();</script>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="company.html">会社情報</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 サルベド漫画 All Rights Reserved.</p>
+      <p class="footer-notice">このホームページに掲載されている一切の文書・図版・写真等を、手段や形態を問わず複製、転載することを禁じます。</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+var COMMENT_API = 'https://game.sarubedo.jp/comments';
+function renderComments(el, comments) {
+  if (!comments.length) { el.innerHTML = '<p style="color:#666;font-size:14px;">まだコメントはありません</p>'; return; }
+  el.innerHTML = comments.map(function(c) {
+    var d = new Date(c.date);
+    var ds = d.getFullYear() + '/' + (d.getMonth()+1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + ('0'+d.getMinutes()).slice(-2);
+    var escaped = c.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+    var nameEsc = c.name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return '<div class="comment-item"><div class="comment-header"><span class="comment-name">' + nameEsc + '</span><span class="comment-date">' + ds + '</span></div><div class="comment-body">' + escaped + '</div></div>';
+  }).join('');
+}
+function loadComments(section) {
+  var pageId = section.getAttribute('data-page');
+  var listEl = section.querySelector('.comment-list');
+  fetch(COMMENT_API + '?page=' + pageId).then(function(r) { return r.json(); }).then(function(comments) {
+    renderComments(listEl, comments);
+  }).catch(function() {
+    listEl.innerHTML = '<p style="color:#666;font-size:14px;">コメントの読み込みに失敗しました</p>';
+  });
+}
+function postComment(section) {
+  var pageId = section.getAttribute('data-page');
+  var name = section.querySelector('.comment-name-input').value;
+  var text = section.querySelector('.comment-text-input').value;
+  if (!text.trim()) return;
+  fetch(COMMENT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ page: pageId, name: name, text: text })
+  }).then(function(r) {
+    if (r.status === 429) { alert('連投制限中です。30秒後にお試しください。'); return; }
+    return r.json();
+  }).then(function(data) {
+    if (!data) return;
+    section.querySelector('.comment-text-input').value = '';
+    loadComments(section);
+  });
+}
+document.querySelectorAll('.comment-section').forEach(function(section) {
+  loadComments(section);
+  section.querySelector('.comment-submit').addEventListener('click', function() {
+    postComment(section);
+  });
+});
+</script>
+</body>
+</html>
