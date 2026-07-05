@@ -197,13 +197,18 @@ LIST_TMPL = '''<!DOCTYPE html>
 </html>
 '''
 
+# 公開しない記事の id（データは articles_data.py に残したまま、生成物だけ外す）
+# 後で公開するときは、この集合から id を外して再ビルドするだけ
+EXCLUDE_IDS = {"shinigami-guide", "harem-guide", "shinigami-world"}
+
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     os.chdir(here)
+    articles = [a for a in ARTICLES if a["id"] not in EXCLUDE_IDS]
     # 記事ページ
-    for i, a in enumerate(ARTICLES):
-        prev_a = ARTICLES[i-1] if i > 0 else None
-        next_a = ARTICLES[i+1] if i < len(ARTICLES)-1 else None
+    for i, a in enumerate(articles):
+        prev_a = articles[i-1] if i > 0 else None
+        next_a = articles[i+1] if i < len(articles)-1 else None
         prev = '<a href="%s">&larr; %s</a>' % (prev_a["file"], prev_a["tag"]) if prev_a else '<span></span>'
         nxt = '<a href="%s">%s &rarr;</a>' % (next_a["file"], next_a["tag"]) if next_a else '<span></span>'
         html = PAGE_TMPL.format(
@@ -212,9 +217,14 @@ def main():
             scrolltop=SCROLLTOP, comment_js=COMMENT_JS, prev=prev, next=nxt)
         open(a["file"], "w", encoding="utf-8").write(html)
         print("wrote", a["file"])
+    # 除外記事の生成物が残っていれば削除
+    for a in ARTICLES:
+        if a["id"] in EXCLUDE_IDS and os.path.exists(a["file"]):
+            os.remove(a["file"])
+            print("removed (excluded)", a["file"])
     # 一覧ページ
     cards = []
-    for a in ARTICLES:
+    for a in articles:
         cards.append('''      <a class="article-card" href="{f}">
         <span class="article-tag">{tag}</span>
         <h2>{t}</h2>
@@ -224,7 +234,7 @@ def main():
     html = LIST_TMPL.format(css=LIST_CSS, nav=NAV, footer=FOOTER, scrolltop=SCROLLTOP, cards="\n".join(cards))
     open("articles.html", "w", encoding="utf-8").write(html)
     print("wrote articles.html")
-    print("done:", len(ARTICLES), "articles")
+    print("done:", len(articles), "articles (excluded:", len(EXCLUDE_IDS), ")")
 
 if __name__ == "__main__":
     main()
