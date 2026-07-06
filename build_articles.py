@@ -202,7 +202,7 @@ LIST_TMPL = '''<!DOCTYPE html>
 
 # 公開しない記事の id（データは articles_data.py に残したまま、生成物だけ外す）
 # 後で公開するときは、この集合から id を外して再ビルドするだけ
-EXCLUDE_IDS = {"shinigami-guide", "harem-guide", "shinigami-world"}
+EXCLUDE_IDS = set()
 
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
