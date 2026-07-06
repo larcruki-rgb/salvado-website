@@ -13,6 +13,11 @@
 .gallery-heading .en{font-size:11px;letter-spacing:6px;color:#7FB8B2;font-weight:800;margin-top:10px;}
 
 /* サムネイル均一グリッド */
+.gallery-lead{font-size:13px;line-height:2.1;color:#555;max-width:820px;margin:0 auto 26px;}
+.gallery-about{max-width:820px;margin:40px auto 10px;padding:22px 24px;background:#f7fbfb;border:1px solid #e3f1f0;border-radius:12px;}
+.gallery-about h2{font-size:15px;letter-spacing:2px;color:#2a6f6a;margin:0 0 14px;}
+.gallery-about p{font-size:13px;line-height:2.1;color:#555;margin:0 0 12px;}
+.gallery-about p:last-child{margin-bottom:0;}
 .gallery-masonry{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
 .gallery-item{display:block;break-inside:avoid;border-radius:4px;overflow:hidden;text-decoration:none;color:inherit;background:#f0f0f0;transition:transform 0.2s,box-shadow 0.2s;position:relative;aspect-ratio:1;}
 .gallery-item:hover{transform:scale(1.04);box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:2;}
@@ -134,6 +139,8 @@
       <h1>GALLERY</h1>
     </div>
 
+    <p class="gallery-lead">サルベド漫画のギャラリーでは、作品づくりを支えるイラストレーターさんの描き下ろしイラストや、ファンアートを展示しています。登録者数の節目を祝う記念イラスト、お正月やハロウィンなどの季節の描き下ろし、コミティアや冬コミといったイベントの応援イラストまで、一枚一枚に「その時」の思い出が詰まっています。気になる一枚をクリックすると、拡大表示とあわせて作品の背景もご覧いただけます。動画とはまた違う、絵そのものの魅力をゆっくり楽しんでいってください。</p>
+
     <div class="gallery-filter" id="galleryFilter">
       <div class="gf-search"><input type="text" id="gfInput" placeholder="イラストレーター名で検索…"></div>
       <div class="gf-chips" id="gfChips"></div>
@@ -210,6 +217,13 @@
       <a class="gallery-item" href="img/gallery/suiri-202206.jpg" data-artist="翠璃" data-date="2022.06"><img src="img/gallery/suiri-202206.jpg" alt="翠璃 イラスト"></a>
       <a class="gallery-item" href="img/gallery/au-illust-01.png" data-artist="逢" data-date="2021.05" data-desc="初一般公開配信イラスト"><img src="img/gallery/au-illust-01.png" alt="逢さん イラスト リクエスト御礼"></a>
     </div>
+
+    <section class="gallery-about">
+      <h2>展示作品について</h2>
+      <p><strong>記念イラスト</strong> — 登録者20万人・30万人・40万人、チャンネル5周年、担当動画の100万再生達成など、サルベド漫画の節目のたびに描き下ろされてきたお祝いのイラストです。その時々の喜びを、作画を担当するイラストレーターさんが一枚の絵に込めてくれています。</p>
+      <p><strong>季節・イベントのイラスト</strong> — お正月の年賀状絵、バレンタイン、ハロウィンといった季節の描き下ろしのほか、東京コミティアや冬コミなどイベントへの応援イラスト、記念生放送にあわせた一枚もあります。季節ごとに衣装や雰囲気が変わるキャラクターたちの姿は、このギャラリーならではの楽しみです。</p>
+      <p><strong>ファンアート</strong> — サルベド漫画の動画を見てくださった方々から寄せられたイラストです。作品への熱いコメントが添えられたものもあり、拡大表示するとあわせてお読みいただけます。キャラクターたちが描き手によってさまざまな表情を見せてくれるのも、ファンアートの魅力です。</p>
+    </section>
   </div>
 
   <!-- ライトボックス -->
