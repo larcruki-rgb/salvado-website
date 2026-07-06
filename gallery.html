@@ -85,33 +85,6 @@
   .lb-next{right:6px;}
 }
 
-/* === 並べ替え編集モード（#edit のときだけ） === */
-.edit-mode .gallery-item{cursor:grab;}
-.edit-mode .gallery-item:hover{transform:none;box-shadow:0 0 0 2px #6FDFD6;}
-.edit-mode .gallery-item.dragging{opacity:0.35;cursor:grabbing;}
-.edit-mode .gallery-item.sel{box-shadow:0 0 0 3px #FDC06F;}
-.edit-mode .gallery-item::after{content:attr(data-pos);position:absolute;top:3px;left:3px;background:rgba(10,61,58,0.85);color:#fff;font-size:11px;font-weight:800;padding:1px 6px;border-radius:8px;z-index:3;pointer-events:none;}
-.edit-mode .gallery-item[data-artist]:not([data-artist=""])::before{content:"✎ " attr(data-artist);position:absolute;bottom:0;left:0;right:0;background:rgba(253,192,111,0.95);color:#5a3300;font-size:10px;font-weight:800;padding:2px 4px;z-index:3;pointer-events:none;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.edit-bar .eb-fields{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);padding:6px 10px;border-radius:20px;flex-wrap:wrap;}
-.edit-bar .eb-fields input{border:none;border-radius:14px;padding:7px 12px;font-size:13px;font-weight:700;font-family:inherit;}
-.edit-bar .eb-fields #ebArtist{width:120px;}
-.edit-bar .eb-fields #ebDate{width:120px;}
-.edit-bar .eb-fields #ebDesc{width:240px;}
-.edit-bar .eb-fields input:disabled{opacity:0.5;}
-.edit-bar .eb-fields .eb-sel-name{font-size:12px;opacity:0.85;font-weight:600;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.edit-bar{position:fixed;left:0;right:0;bottom:0;z-index:9998;background:rgba(10,61,58,0.96);color:#fff;display:flex;align-items:center;gap:14px;padding:12px 18px;font-size:13px;font-weight:700;letter-spacing:1px;box-shadow:0 -4px 18px rgba(0,0,0,0.3);flex-wrap:wrap;}
-.edit-bar button{background:#6FDFD6;color:#0a3d3a;border:none;font-weight:800;font-size:13px;padding:10px 22px;border-radius:24px;cursor:pointer;letter-spacing:1px;}
-.edit-bar button:hover{filter:brightness(1.07);}
-.edit-bar .eb-note{opacity:0.85;font-weight:600;}
-.edit-out{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:24px;}
-.edit-out.open{display:flex;}
-.edit-out-inner{background:#fff;border-radius:10px;max-width:760px;width:100%;padding:20px;box-sizing:border-box;}
-.edit-out-inner h4{margin:0 0 10px;color:#0a3d3a;font-size:15px;}
-.edit-out-inner textarea{width:100%;height:260px;box-sizing:border-box;font-family:monospace;font-size:12px;border:1.5px solid #ccc;border-radius:6px;padding:10px;}
-.edit-out-inner .eo-actions{margin-top:12px;display:flex;gap:10px;justify-content:flex-end;}
-.edit-out-inner .eo-actions button{padding:9px 20px;border-radius:20px;border:none;font-weight:800;cursor:pointer;}
-.eo-copy{background:#6FDFD6;color:#0a3d3a;}
-.eo-close{background:#eee;color:#333;}
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4654447730346692" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E6JYMJBJDL"></script>
@@ -242,34 +215,10 @@
     <div class="lb-counter" id="lbCounter"></div>
   </div>
 
-  <!-- 並べ替え編集モード UI（#edit のときだけ表示） -->
-  <div class="edit-bar" id="editBar" style="display:none;">
-    <span class="eb-head">🖱 ドラッグで並べ替え／クリックで選択</span>
-    <span class="eb-fields">
-      <span class="eb-sel-name" id="ebSelName">画像を選択</span>
-      <input id="ebArtist" type="text" placeholder="絵師名" disabled>
-      <input id="ebDate" type="text" placeholder="日付 例:2022.10" disabled>
-      <input id="ebDesc" type="text" placeholder="一言・絵の説明" disabled>
-    </span>
-    <button id="ebExport">📋 コピー</button>
-    <span class="eb-note">Enterで次の画像へ／終えたら「コピー」→ サマンサに貼ってね</span>
-  </div>
-  <div class="edit-out" id="editOut">
-    <div class="edit-out-inner">
-      <h4>この内容をまるごとコピーしてサマンサに貼ってください</h4>
-      <textarea id="editOutText" readonly></textarea>
-      <div class="eo-actions">
-        <button class="eo-copy" id="eoCopy">📋 コピー</button>
-        <button class="eo-close" id="eoClose">閉じる</button>
-      </div>
-    </div>
-  </div>
-
   <script>
   (function(){
     var grid=document.getElementById('galleryGrid');
     var items=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item'));
-    var EDIT=location.hash==='#edit';
 
     /* ===== ライトボックス（通常モード） ===== */
     var lb=document.getElementById('lightbox');
@@ -309,7 +258,7 @@
     }
     function next(){idx=(idx+1)%curList.length;open(idx);}
     function prev(){idx=(idx-1+curList.length)%curList.length;open(idx);}
-    items.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(EDIT)return;curList=visibleItems();open(curList.indexOf(a));});});
+    items.forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();curList=visibleItems();open(curList.indexOf(a));});});
     document.getElementById('lbClose').addEventListener('click',close);
     document.getElementById('lbNext').addEventListener('click',function(e){e.stopPropagation();next();});
     document.getElementById('lbPrev').addEventListener('click',function(e){e.stopPropagation();prev();});
@@ -323,9 +272,7 @@
 
     /* ===== イラストレーター絞り込み ===== */
     (function(){
-      var filterWrap=document.getElementById('galleryFilter');
       var emptyEl=document.getElementById('gfEmpty');
-      if(EDIT){filterWrap.style.display='none';return;}
       var chipsEl=document.getElementById('gfChips');
       var input=document.getElementById('gfInput');
       /* 個々の絵師を集計（＆の連名は分解） */
@@ -373,136 +320,6 @@
         applyFilter(v);
       });
     })();
-
-    if(!EDIT)return;
-
-    /* ===== 並べ替え編集モード ===== */
-    document.body.classList.add('edit-mode');
-    document.getElementById('editBar').style.display='flex';
-    grid.style.paddingBottom='70px';
-
-    function renumber(){
-      Array.prototype.slice.call(grid.querySelectorAll('.gallery-item')).forEach(function(it,i){
-        it.setAttribute('data-pos',i+1);
-      });
-    }
-    renumber();
-
-    var dragEl=null;
-    grid.querySelectorAll('.gallery-item').forEach(function(it){it.setAttribute('draggable','true');});
-
-    grid.addEventListener('dragstart',function(e){
-      var it=e.target.closest('.gallery-item');if(!it)return;
-      dragEl=it;it.classList.add('dragging');
-      e.dataTransfer.effectAllowed='move';
-      try{e.dataTransfer.setData('text/plain','');}catch(_){}
-    });
-    grid.addEventListener('dragend',function(){
-      if(dragEl)dragEl.classList.remove('dragging');
-      dragEl=null;renumber();
-    });
-    grid.addEventListener('dragover',function(e){
-      e.preventDefault();if(!dragEl)return;
-      var after=getAfter(e.clientX,e.clientY);
-      if(after==null){grid.appendChild(dragEl);}
-      else if(after!==dragEl){grid.insertBefore(dragEl,after);}
-    });
-
-    /* マウス位置から「この要素の前に入れる」対象を求める（グリッド対応） */
-    function getAfter(x,y){
-      var els=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item:not(.dragging)'));
-      var closest=null,closestDist=Infinity;
-      els.forEach(function(el){
-        var r=el.getBoundingClientRect();
-        var cx=r.left+r.width/2, cy=r.top+r.height/2;
-        var d=Math.pow(x-cx,2)+Math.pow(y-cy,2);
-        if(d<closestDist){
-          closestDist=d;
-          /* カーソルが中心より左/上なら、その要素の前に入れる */
-          if(y<cy-2 || (Math.abs(y-cy)<=r.height/2 && x<cx)){closest=el;}
-          else{closest=el.nextElementSibling;}
-        }
-      });
-      return closest;
-    }
-
-    /* ===== クリックで選択 → 絵師名・日付・説明を入力 ===== */
-    var selEl=null;
-    var artistInput=document.getElementById('ebArtist');
-    var dateInput=document.getElementById('ebDate');
-    var descInput=document.getElementById('ebDesc');
-    var selNameLabel=document.getElementById('ebSelName');
-    var fields=[
-      {el:artistInput,attr:'data-artist'},
-      {el:dateInput,attr:'data-date'},
-      {el:descInput,attr:'data-desc'}
-    ];
-    function selectItem(it){
-      if(selEl)selEl.classList.remove('sel');
-      selEl=it;it.classList.add('sel');
-      fields.forEach(function(f){
-        f.el.disabled=false;
-        f.el.value=it.getAttribute(f.attr)||'';
-      });
-      selNameLabel.textContent='選択中 #'+it.getAttribute('data-pos');
-      artistInput.focus();artistInput.select();
-      it.scrollIntoView({block:'nearest'});
-    }
-    grid.addEventListener('click',function(e){
-      var it=e.target.closest('.gallery-item');if(!it)return;
-      e.preventDefault();
-      selectItem(it);
-    });
-    function gotoNext(){
-      var all=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item'));
-      var i=all.indexOf(selEl);
-      if(i>=0&&i<all.length-1)selectItem(all[i+1]);
-    }
-    fields.forEach(function(f){
-      f.el.addEventListener('input',function(){
-        if(!selEl)return;
-        var v=this.value.trim();
-        if(v)selEl.setAttribute(f.attr,v);
-        else selEl.removeAttribute(f.attr);
-      });
-      /* Enter で次の画像へジャンプ（連続入力用） */
-      f.el.addEventListener('keydown',function(e){
-        if(e.key!=='Enter')return;
-        e.preventDefault();gotoNext();
-      });
-    });
-
-    /* ===== 並び順＋絵師名・日付・説明を出力 ===== */
-    function attr(a,name){
-      var v=a.getAttribute(name);
-      return v?(' '+name+'="'+v.replace(/"/g,'&quot;')+'"'):'';
-    }
-    function buildHTML(){
-      var lines=Array.prototype.slice.call(grid.querySelectorAll('.gallery-item')).map(function(a){
-        var href=a.getAttribute('href');
-        var img=a.querySelector('img');
-        var src=img.getAttribute('src');
-        var alt=(img.getAttribute('alt')||'').replace(/"/g,'&quot;');
-        return '      <a class="gallery-item" href="'+href+'"'+attr(a,'data-artist')+attr(a,'data-date')+attr(a,'data-desc')+'><img src="'+src+'" alt="'+alt+'"></a>';
-      });
-      return lines.join('\n');
-    }
-    var outBox=document.getElementById('editOut');
-    var outText=document.getElementById('editOutText');
-    document.getElementById('ebExport').addEventListener('click',function(){
-      outText.value=buildHTML();
-      outBox.classList.add('open');
-      outText.focus();outText.select();
-    });
-    document.getElementById('eoCopy').addEventListener('click',function(){
-      outText.select();
-      var ok=false;
-      try{ok=document.execCommand('copy');}catch(_){}
-      if(navigator.clipboard){navigator.clipboard.writeText(outText.value).then(function(){alert('コピーしました。サマンサに貼ってね。');},function(){if(ok)alert('コピーしました。サマンサに貼ってね。');});}
-      else if(ok){alert('コピーしました。サマンサに貼ってね。');}
-    });
-    document.getElementById('eoClose').addEventListener('click',function(){outBox.classList.remove('open');});
-    outBox.addEventListener('click',function(e){if(e.target===outBox)outBox.classList.remove('open');});
   })();
   </script>
 
