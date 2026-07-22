@@ -14,6 +14,7 @@ NAV = '''<!-- A7 トップバー（ホーム画面と同じ） -->
     <a href="about.html">ABOUT<span>紹介</span></a>
     <a href="videos.html">VIDEOS<span>動画</span></a>
     <a href="blog.html">SERIES<span>作品</span></a>
+    <a href="articles.html" class="active">READ<span>読み物</span></a>
     <a href="gallery.html">GALLERY<span>ギャラリー</span></a>
     <a href="game.html">GAME<span>ゲーム</span></a>
     <a href="news.html">NEWS<span>お知らせ</span></a>
