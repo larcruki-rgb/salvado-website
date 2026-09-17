@@ -82,6 +82,7 @@
         <div class="vid-ch-latest">
           <span class="vid-ch-block-label">最新動画</span>
           <div class="video-grid" data-channel="UCd8vNU9GdaDJF-jLDyWWvMw"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        <p class="vid-ch-ytlink" style="margin:10px 0 0;font-size:13px;"><a href="https://www.youtube.com/channel/UCd8vNU9GdaDJF-jLDyWWvMw" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;font-weight:700;text-decoration:none;">▶ サルベド漫画 のYouTubeチャンネルへ →</a></p>
         </div>
         <a class="vid-ch-more" href="channel-main.html">サルベド漫画の作品紹介を見る →</a>
       </div>
@@ -97,6 +98,7 @@
         <div class="vid-ch-latest">
           <span class="vid-ch-block-label">最新動画</span>
           <div class="video-grid" data-channel="UCXU7pjSKDNHAFKf36YxntMw"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        <p class="vid-ch-ytlink" style="margin:10px 0 0;font-size:13px;"><a href="https://www.youtube.com/channel/UCXU7pjSKDNHAFKf36YxntMw" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;font-weight:700;text-decoration:none;">▶ サルベド漫画Emotional のYouTubeチャンネルへ →</a></p>
         </div>
         <a class="vid-ch-more" href="channel-emotional.html">Emotionalの作品紹介を見る →</a>
       </div>
@@ -112,6 +114,7 @@
         <div class="vid-ch-latest">
           <span class="vid-ch-block-label">最新動画</span>
           <div class="video-grid" data-channel="UCZRD5bbun-Dgxj2AG2PKbjg"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        <p class="vid-ch-ytlink" style="margin:10px 0 0;font-size:13px;"><a href="https://www.youtube.com/channel/UCZRD5bbun-Dgxj2AG2PKbjg" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;font-weight:700;text-decoration:none;">▶ サルベド漫画Fantasy のYouTubeチャンネルへ →</a></p>
         </div>
         <a class="vid-ch-more" href="channel-fantasy.html">Fantasyの作品紹介を見る →</a>
       </div>
@@ -127,6 +130,7 @@
         <div class="vid-ch-latest">
           <span class="vid-ch-block-label">最新動画</span>
           <div class="video-grid" data-channel="UCfQc3kV_jTqhbUInszNxArA"><div class="video-card"><div class="video-thumb" style="aspect-ratio:16/9;background:#f0f0f0;display:flex;align-items:center;justify-content:center;color:#888;">読み込み中...</div></div></div>
+        <p class="vid-ch-ytlink" style="margin:10px 0 0;font-size:13px;"><a href="https://www.youtube.com/channel/UCfQc3kV_jTqhbUInszNxArA" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;font-weight:700;text-decoration:none;">▶ 死神少女 のYouTubeチャンネルへ →</a></p>
         </div>
         <a class="vid-ch-more" href="channel-shinigami.html">死神少女の物語を読む →</a>
       </div>
@@ -175,9 +179,9 @@ document.querySelector(".nav-toggle")&&document.querySelector(".nav-toggle").add
           var title = entry.querySelector('title') ? entry.querySelector('title').textContent : '';
           var card = document.createElement('div');
           card.className = 'video-card';
-          // YouTube埋め込みは無効化中。サムネ画像のみ表示（クリックしても再生しない）
-          card.innerHTML = '<div class="video-thumb" style="aspect-ratio:16/9;overflow:hidden;background:#000;"><img src="https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://i.ytimg.com/vi/' + videoId + '/mqdefault.jpg\'"></div>' +
-            '<p class="video-title" style="font-size:13px;margin-top:6px;">' + title + '</p>';
+          // サムネとタイトルをYouTubeの動画ページへのリンクにする
+          card.innerHTML = '<a href="https://www.youtube.com/watch?v=' + videoId + '" target="_blank" rel="noopener noreferrer" style="display:block;color:inherit;text-decoration:none;"><div class="video-thumb" style="aspect-ratio:16/9;overflow:hidden;background:#000;"><img src="https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.src=\'https://i.ytimg.com/vi/' + videoId + '/mqdefault.jpg\'"></div>' +
+            '<p class="video-title" style="font-size:13px;margin-top:6px;">' + title + '</p></a>';
           targetGrid.appendChild(card);
         }
       } else if (retries > 0) {
