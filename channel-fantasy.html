@@ -353,10 +353,10 @@ footer{
           <img src="https://i.ytimg.com/vi/wmeMsUhmYE4/hqdefault.jpg" alt="サルベド漫画Fantasy 代表動画">
           <div class="video-play-btn">▶</div>
         </div>
-          <p class="ch-yt-link" style="margin:8px 0 0;text-align:right;font-size:13px;"><a href="https://www.youtube.com/watch?v=wmeMsUhmYE4" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;text-decoration:none;font-weight:700;">YouTubeで観る →</a></p>
       </div>
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
+        <a href="https://www.youtube.com/watch?v=wmeMsUhmYE4" class="ch-detail-more" target="_blank" rel="noopener noreferrer">YouTubeで観る →</a>
         <a href="videos.html" class="ch-detail-more">動画をもっと見る →</a>
       </div>
     </div>
@@ -446,7 +446,7 @@ footer{
 
 <script>
 
-サムネをクリックしたらYouTube埋め込みプレーヤーに切り替える（遅延読み込み）
+// サムネをクリックしたらYouTube埋め込みプレーヤーに切り替える（遅延読み込み）
 document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
   poster.addEventListener('click', function(){
     var id = this.dataset.id;
