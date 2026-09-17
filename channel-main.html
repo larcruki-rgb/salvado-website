@@ -287,6 +287,7 @@ footer{
             <img src="https://i.ytimg.com/vi/oys9pZGfkvo/hqdefault.jpg" alt="サルベド漫画 代表動画">
             <div class="video-play-btn">▶</div>
           </div>
+          <p class="ch-yt-link" style="margin:8px 0 0;text-align:right;font-size:13px;"><a href="https://www.youtube.com/watch?v=oys9pZGfkvo" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;text-decoration:none;font-weight:700;">YouTubeで観る →</a></p>
         </div>
       </div>
       <div class="ch-detail-footer">
@@ -297,7 +298,7 @@ footer{
   </section>
 
   <div class="ch-belowfold">
-  <!-- サルベド年表（2層目・せり上がり／※中身は仮。本物の年表をもらったら差し替え） -->
+  <!-- サルベド年表（2層目・せり上がり／年表） -->
   <section class="ch-timeline">
     <div class="ch-timeline-inner">
       <h2 class="ch-timeline-title">サルベド年表</h2>
@@ -390,19 +391,19 @@ footer{
 
 <script>
 
-// YouTube再生は無効化中（サムネ表示のみ・クリックしても再生しない）
-// document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
-//   poster.addEventListener('click', function(){
-//     var id = this.dataset.id;
-//     var iframe = document.createElement('iframe');
-//     iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
-//     iframe.setAttribute('allowfullscreen','');
-//     iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
-//     iframe.setAttribute('frameborder','0');
-//     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
-//     this.parentNode.replaceChild(iframe, this);
-//   });
-// });
+サムネをクリックしたらYouTube埋め込みプレーヤーに切り替える（遅延読み込み）
+document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
+  poster.addEventListener('click', function(){
+    var id = this.dataset.id;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.setAttribute('allowfullscreen','');
+    iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('frameborder','0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    this.parentNode.replaceChild(iframe, this);
+  });
+});
 </script>
 
 <script>

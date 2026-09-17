@@ -256,6 +256,7 @@ footer{                         /* 最下部でヒーローの裏に隠れない
           <img src="https://i.ytimg.com/vi/mU7wxeaFT_U/hqdefault.jpg" alt="サルベド漫画Emotional 代表動画">
           <div class="video-play-btn">▶</div>
         </div>
+          <p class="ch-yt-link" style="margin:8px 0 0;text-align:right;font-size:13px;"><a href="https://www.youtube.com/watch?v=mU7wxeaFT_U" target="_blank" rel="noopener noreferrer" style="color:#0a8f86;text-decoration:none;font-weight:700;">YouTubeで観る →</a></p>
       </div>
       <div class="ch-detail-footer">
         <a href="about.html" class="ch-detail-back">← 戻る</a>
@@ -348,19 +349,19 @@ footer{                         /* 最下部でヒーローの裏に隠れない
 
 <script>
 
-// YouTube再生は無効化中（サムネ表示のみ・クリックしても再生しない）
-// document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
-//   poster.addEventListener('click', function(){
-//     var id = this.dataset.id;
-//     var iframe = document.createElement('iframe');
-//     iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
-//     iframe.setAttribute('allowfullscreen','');
-//     iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
-//     iframe.setAttribute('frameborder','0');
-//     iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
-//     this.parentNode.replaceChild(iframe, this);
-//   });
-// });
+サムネをクリックしたらYouTube埋め込みプレーヤーに切り替える（遅延読み込み）
+document.querySelectorAll('.video-thumb-poster').forEach(function(poster){
+  poster.addEventListener('click', function(){
+    var id = this.dataset.id;
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.setAttribute('allowfullscreen','');
+    iframe.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('frameborder','0');
+    iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+    this.parentNode.replaceChild(iframe, this);
+  });
+});
 </script>
 </body>
 </html>
