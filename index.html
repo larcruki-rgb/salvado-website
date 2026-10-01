@@ -489,6 +489,10 @@ body.splash-lock{overflow:hidden;}
       <h2><span class="big">CONTENTS</span><span class="sub">コンテンツ</span></h2>
     </div>
     <div class="feature-3-grid feature-6-grid">
+      <a href="blog-yuri.html" class="feature-3-card">
+        <div class="feature-3-thumb"><img src="img/yuri-cover.jpg" alt="奉仕用美少女アンドロイド「ユリ」"></div>
+        <div class="feature-3-body"><span class="feature-3-tag">FANTASY</span><h3>奉仕用美少女アンドロイド「ユリ」</h3></div>
+      </a>
       <a href="blog-harem.html" class="feature-3-card">
         <div class="feature-3-thumb"><img src="img/harem-cover.jpg" alt="ハレ阻止！" style="object-position:64% 40%;"></div>
         <div class="feature-3-body"><span class="feature-3-tag">LOVECOMEDY</span><h3>ハレ阻止！</h3></div>
@@ -508,10 +512,6 @@ body.splash-lock{overflow:hidden;}
       <a href="game.html" class="feature-3-card">
         <div class="feature-3-thumb"><img src="img/cardgame-oval.jpg" alt="カードゲーム"></div>
         <div class="feature-3-body"><span class="feature-3-tag">GAME</span><h3>カードゲーム</h3></div>
-      </a>
-      <a href="blog-yuri.html" class="feature-3-card">
-        <div class="feature-3-thumb"><img src="img/yuri-cover.jpg" alt="奉仕用美少女アンドロイド「ユリ」"></div>
-        <div class="feature-3-body"><span class="feature-3-tag">FANTASY</span><h3>奉仕用美少女アンドロイド「ユリ」</h3></div>
       </a>
     </div>
   </section>
@@ -812,6 +812,14 @@ var rzt;window.addEventListener('resize',function(){clearTimeout(rzt);rzt=setTim
   if(_h==='localhost'||_h==='127.0.0.1'||_h===''||/^192\.168\./.test(_h)||/^10\./.test(_h)){
     splash.style.display='none';document.body.classList.remove('splash-lock');return;
   }
+  /* 一度見た人には二度目以降スキップ */
+  var SPLASH_KEY='sarubedo_splash_shown';
+  try{
+    if(localStorage.getItem(SPLASH_KEY)){
+      splash.style.display='none';document.body.classList.remove('splash-lock');return;
+    }
+    localStorage.setItem(SPLASH_KEY,'1');
+  }catch(e){}
   var layers = splash.querySelectorAll('.splash-layer');
   var gradient = document.getElementById('splashGradient');
   var streak = document.getElementById('splashStreak');
